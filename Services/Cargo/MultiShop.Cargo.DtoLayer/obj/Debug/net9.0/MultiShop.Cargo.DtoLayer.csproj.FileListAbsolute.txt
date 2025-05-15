@@ -1,0 +1,11 @@
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\bin\Debug\net9.0\MultiShop.Cargo.DtoLayer.deps.json
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\bin\Debug\net9.0\MultiShop.Cargo.DtoLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\bin\Debug\net9.0\MultiShop.Cargo.DtoLayer.pdb
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.AssemblyInfoInputs.cache
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.AssemblyInfo.cs
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.csproj.CoreCompileInputs.cache
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\refint\MultiShop.Cargo.DtoLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.pdb
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\ref\MultiShop.Cargo.DtoLayer.dll

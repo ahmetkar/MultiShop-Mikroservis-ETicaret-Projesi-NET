@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Yeni Profil",
+    "Projects": [
+      {
+        "Path": "Services\\Catalog\\MultiShop.Catalog\\MultiShop.Catalog.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

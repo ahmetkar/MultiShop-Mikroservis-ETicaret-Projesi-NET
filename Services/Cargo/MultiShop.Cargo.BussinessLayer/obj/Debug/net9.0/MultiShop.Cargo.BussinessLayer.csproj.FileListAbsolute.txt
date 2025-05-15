@@ -1,0 +1,17 @@
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.BussinessLayer.deps.json
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.BussinessLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.BussinessLayer.pdb
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.AssemblyInfoInputs.cache
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.AssemblyInfo.cs
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.csproj.CoreCompileInputs.cache
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\refint\MultiShop.Cargo.BussinessLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.pdb
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\ref\MultiShop.Cargo.BussinessLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.EntityLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.pdb
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.EntityLayer.pdb
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.csproj.AssemblyReference.cache
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiSho.7CF9507C.Up2Date

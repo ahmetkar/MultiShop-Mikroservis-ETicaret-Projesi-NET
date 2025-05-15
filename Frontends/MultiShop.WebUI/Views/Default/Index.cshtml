@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+<!-- Breadcrumb Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="#">Home</a>
+                <span class="breadcrumb-item active">Ürün Listesi</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+@await Component.InvokeAsync("_CarouselDefaultViewComponentPartial")
+
+@await Component.InvokeAsync("_FeatureDefaultViewComponentPartial")
+
+@await Component.InvokeAsync("_CategoriesDefaultViewComponentPartial")
+
+@await Component.InvokeAsync("_FeatureProductsDefaultViewComponentPartial")
+
+@await Component.InvokeAsync("_OfferDiscountDefaultViewComponentPartial")
+
+
+@await Component.InvokeAsync("_VendorDefaultViewComponentPartial")
+
+<!--  Start -->
+<div class="container-fluid">
+  
+</div>
+<!--  End -->
