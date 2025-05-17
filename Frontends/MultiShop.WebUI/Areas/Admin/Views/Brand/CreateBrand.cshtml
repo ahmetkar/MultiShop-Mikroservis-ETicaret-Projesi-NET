@@ -1,0 +1,30 @@
+﻿@model CreateBrandDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Marka Ekleme<h4>
+              
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Marka Başlık: </label>
+                            <input type="text"  asp-for="BrandName" class="form-control" placeholder="Marka isim :">
+                         <label>Marka Resim Url : </label>
+                            <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Marka resim url :">
+
+
+                      <button class="btn btn-primary" type="submit">Ekle</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

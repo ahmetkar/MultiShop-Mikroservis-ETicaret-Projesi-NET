@@ -11,7 +11,7 @@ namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
         {
             _httpService = httpService;
 
-            _httpService.setUrl("http://localhost:7070/api/");
+            _httpService.setUrl("CatalogApi");
         }
 
 

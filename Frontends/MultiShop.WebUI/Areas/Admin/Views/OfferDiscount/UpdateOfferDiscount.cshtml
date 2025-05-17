@@ -1,0 +1,35 @@
+﻿@model UpdateOfferDiscountDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>
+                    Özel İndirim Teklifi Güncelleme<h4>
+
+                        <div class="bs-example" data-example-id="bordered-table">
+                            <form method="post">
+                                <input type="hidden" asp-for="OfferDiscountId" />
+                                <label>Özel Teklif Başlığı : </label>
+                                <input type="text" asp-for="Title" class="form-control" placeholder="Teklif Başlığı">
+                                <label>Özel Teklif Alt Başlığı : </label>
+                                <input type="text" asp-for="Subtitle" class="form-control" placeholder="Teklif Alt Başlığı">
+                                <label>Buton Yazısı : </label>
+                                <input type="text" asp-for="ButtonTitle" class="form-control" placeholder="Button yazısı">
+                                <label>Resim url : </label>
+                                <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Resim Url">
+
+                                <button class="btn btn-primary" type="submit">Özel İndirim Teklifi Güncelle</button>
+                            </form>
+
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>

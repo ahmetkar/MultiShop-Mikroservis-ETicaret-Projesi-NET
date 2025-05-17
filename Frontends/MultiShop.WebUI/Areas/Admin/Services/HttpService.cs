@@ -7,18 +7,27 @@ namespace MultiShop.WebUI.Areas.Admin.Services
 {
     public class HttpService : IHttpService
     {
-        //
 
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IConfiguration _configuration;
         private string _url = "";
 
-        public HttpService(IHttpClientFactory httpClientFactory) {
+        public HttpService(IHttpClientFactory httpClientFactory,IConfiguration configuration) {
             _httpClientFactory = httpClientFactory;
+            _configuration = configuration;
         }
 
-        public void setUrl(string url)
+        public void setUrl(string kind)
         {
-            _url = url;
+            var urls = _configuration.GetSection("ApiUrls");
+            if (kind == "CatalogApi")
+            {
+                var url = urls.GetValue<string>("CatalogApiUrl");
+                if(_url != null)
+                {
+                    _url = url;
+                }
+            }
         }
            
            public async Task<List<T>?> Get<T>(string endpoint)

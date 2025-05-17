@@ -16,7 +16,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             _httpService = httpService;
 
-            _httpService.setUrl("http://localhost:7070/api/");
+            _httpService.setUrl("CatalogApi");
         }
 
 

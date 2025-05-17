@@ -1,5 +1,79 @@
 [
   {
+    "ContainingType": "MultiShop.Catalog.Controllers.BrandsController",
+    "Method": "BrandList",
+    "RelativePath": "api/Brands",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.BrandsController",
+    "Method": "CreateBrand",
+    "RelativePath": "api/Brands",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createBrandDto",
+        "Type": "MultiShop.Catalog.DTOs.BrandDTOs.CreateBrandDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.BrandsController",
+    "Method": "DeleteBrand",
+    "RelativePath": "api/Brands",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.BrandsController",
+    "Method": "UpdateBrand",
+    "RelativePath": "api/Brands",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateBrandDto",
+        "Type": "MultiShop.Catalog.DTOs.BrandDTOs.UpdateBrandDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.BrandsController",
+    "Method": "GetBrandById",
+    "RelativePath": "api/Brands/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MultiShop.Catalog.Controllers.CategoriesController",
     "Method": "CategoryList",
     "RelativePath": "api/Categories",
@@ -209,6 +283,80 @@
     "ContainingType": "MultiShop.Catalog.Controllers.FeatureSlidersController",
     "Method": "GetFeatureSliderById",
     "RelativePath": "api/FeatureSliders/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.OfferDiscountsController",
+    "Method": "OfferDiscountList",
+    "RelativePath": "api/OfferDiscounts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.OfferDiscountsController",
+    "Method": "CreateOfferDiscount",
+    "RelativePath": "api/OfferDiscounts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createOfferDiscountDto",
+        "Type": "MultiShop.Catalog.DTOs.OfferDiscountDTOs.CreateOfferDiscountDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.OfferDiscountsController",
+    "Method": "DeleteOfferDiscount",
+    "RelativePath": "api/OfferDiscounts",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.OfferDiscountsController",
+    "Method": "UpdateOfferDiscount",
+    "RelativePath": "api/OfferDiscounts",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateOfferDiscountDto",
+        "Type": "MultiShop.Catalog.DTOs.OfferDiscountDTOs.UpdateOfferDiscountDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.OfferDiscountsController",
+    "Method": "GetOfferDiscountById",
+    "RelativePath": "api/OfferDiscounts/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

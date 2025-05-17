@@ -81,24 +81,92 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\carousel1.jpg",
-      "PackagePath": "staticwebassets\\img\\carousel1.jpg"
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-1.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-1.jpg"
     },
     {
-      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\carousel2.jpg",
-      "PackagePath": "staticwebassets\\img\\carousel2.jpg"
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-2.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-2.jpg"
     },
     {
-      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\carousel3.jpg",
-      "PackagePath": "staticwebassets\\img\\carousel3.jpg"
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-3.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-3.jpg"
     },
     {
-      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\discount1.jpg",
-      "PackagePath": "staticwebassets\\img\\discount1.jpg"
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-4.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-4.jpg"
     },
     {
-      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\discount2.jpg",
-      "PackagePath": "staticwebassets\\img\\discount2.jpg"
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-5.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-5.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-6.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-6.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-7.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-7.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\brands\\vendor-8.jpg",
+      "PackagePath": "staticwebassets\\img\\brands\\vendor-8.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\carousel\\carousel1.jpg",
+      "PackagePath": "staticwebassets\\img\\carousel\\carousel1.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\carousel\\carousel2.jpg",
+      "PackagePath": "staticwebassets\\img\\carousel\\carousel2.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\carousel\\carousel3.jpg",
+      "PackagePath": "staticwebassets\\img\\carousel\\carousel3.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\childclothes.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\childclothes.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\cleaning.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\cleaning.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\computer.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\computer.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\electronic.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\electronic.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\housedevices.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\housedevices.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\maleclothes.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\maleclothes.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\mobile.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\mobile.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\toys.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\toys.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\categoryimages\\womenclothes.png",
+      "PackagePath": "staticwebassets\\img\\categoryimages\\womenclothes.png"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\discount\\discount1.jpg",
+      "PackagePath": "staticwebassets\\img\\discount\\discount1.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\discount\\discount2.jpg",
+      "PackagePath": "staticwebassets\\img\\discount\\discount2.jpg"
     },
     {
       "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\logos\\MULTISHOPPNG.png",
@@ -113,12 +181,48 @@
       "PackagePath": "staticwebassets\\img\\logos\\multishop.jpg"
     },
     {
-      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\offer1.jpeg",
-      "PackagePath": "staticwebassets\\img\\offer1.jpeg"
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\offer\\offer1.jpeg",
+      "PackagePath": "staticwebassets\\img\\offer\\offer1.jpeg"
     },
     {
-      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\offer2.jpeg",
-      "PackagePath": "staticwebassets\\img\\offer2.jpeg"
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\offer\\offer2.jpeg",
+      "PackagePath": "staticwebassets\\img\\offer\\offer2.jpeg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim1.jpg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim1.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim2.jpeg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim2.jpeg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim3.jpg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim3.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim4.jpg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim4.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim5.jpg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim5.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim6.jpg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim6.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim7.jpeg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim7.jpeg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim8.jpg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim8.jpg"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\productimages\\ornek-urun-resim9.jpg",
+      "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim9.jpg"
     },
     {
       "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\js\\site.js",

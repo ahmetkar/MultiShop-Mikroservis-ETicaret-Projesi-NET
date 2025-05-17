@@ -1,11 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.DtoLayer.CatalogDtos.BrandDtos;
+using MultiShop.WebUI.Areas.Admin.Services;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _VendorDefaultViewComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+  
+        private readonly IHttpService _httpService;
+        public _VendorDefaultViewComponentPartial(IHttpService httpService)
         {
+            _httpService = httpService;
+
+            _httpService.setUrl("CatalogApi");
+        }
+
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var result = await _httpService.Get<ResultBrandDto>("Brands");
+            if (result != null) return View(result);
             return View();
         }
     }
