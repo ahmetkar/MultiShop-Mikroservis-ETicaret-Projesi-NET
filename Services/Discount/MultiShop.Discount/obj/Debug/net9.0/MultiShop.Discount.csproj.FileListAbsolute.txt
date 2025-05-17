@@ -169,3 +169,4 @@ D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\ref\MultiShop.Discount.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\MultiShop.Discount.sourcelink.json

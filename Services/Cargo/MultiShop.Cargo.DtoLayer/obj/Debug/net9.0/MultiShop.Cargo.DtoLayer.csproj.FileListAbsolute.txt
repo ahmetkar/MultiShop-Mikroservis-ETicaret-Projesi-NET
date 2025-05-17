@@ -9,3 +9,4 @@ D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\ne
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\refint\MultiShop.Cargo.DtoLayer.dll
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.pdb
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\ref\MultiShop.Cargo.DtoLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DtoLayer\obj\Debug\net9.0\MultiShop.Cargo.DtoLayer.sourcelink.json

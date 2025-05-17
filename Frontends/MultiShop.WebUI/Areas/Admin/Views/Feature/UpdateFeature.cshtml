@@ -1,0 +1,30 @@
+﻿@model UpdateFeatureDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>
+                    Öne Çıkan Alan Güncelleme<h4>
+
+                        <div class="bs-example" data-example-id="bordered-table">
+                            <form method="post">
+                                <input type="hidden" asp-for="FeatureID" />
+                                <label>Öne Çıkan Alan Başlık : </label>
+                                <input type="text" asp-for="Title" class="form-control" placeholder="Öne Çıkan Alan Başlık">
+                                <label>Öne Çıkan Alan İcon : </label>
+                                <input type="text" asp-for="Icon" class="form-control" placeholder="Öne Çıkan Alan Icon">
+
+                                <button class="btn btn-primary" type="submit">Güncelle</button>
+                            </form>
+
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>

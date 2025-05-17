@@ -44,6 +44,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcVXBkYXRlQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/FeatureSlider/CreateFeatureSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVNsaWRlclxDcmVhdGVGZWF0dXJlU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/FeatureSlider/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVNsaWRlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/FeatureSlider/UpdateFeatureSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVNsaWRlclxVcGRhdGVGZWF0dXJlU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/Feature/CreateFeature.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVxDcmVhdGVGZWF0dXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/Feature/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/Feature/UpdateFeature.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVxVcGRhdGVGZWF0dXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/Product/CreateProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDcmVhdGVQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -78,6 +102,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/Shared/Components/_AdminLayoutTopSectionComponentPartial/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluTGF5b3V0VG9wU2VjdGlvbkNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/SpecialOffer/CreateSpecialOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3BlY2lhbE9mZmVyXENyZWF0ZVNwZWNpYWxPZmZlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/SpecialOffer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3BlY2lhbE9mZmVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/SpecialOffer/UpdateSpecialOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3BlY2lhbE9mZmVyXFVwZGF0ZVNwZWNpYWxPZmZlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Areas/Admin/Views/_ViewImports.cshtml]

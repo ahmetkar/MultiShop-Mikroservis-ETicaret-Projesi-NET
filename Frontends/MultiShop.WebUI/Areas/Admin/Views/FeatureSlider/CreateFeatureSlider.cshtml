@@ -1,0 +1,34 @@
+﻿@model CreateFeatureSliderDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Görsel Ekleme<h4>
+              
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Görsel Başlığı : </label>
+                                <input type="text" asp-for="Title" class="form-control" placeholder="Görsel Başlığı">
+                        <br />
+                         <label>Görsel Açıklaması : </label>
+                         <input type="text" asp-for="Description" class="form-control" placeholder="Görsel Açıklaması">
+                         <br />
+                          <label>Görsel Urlsi : </label>
+                          <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Görsel Resim Url ">
+                          <br />
+
+                      <button class="btn btn-primary" type="submit">Görsel Ekle</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

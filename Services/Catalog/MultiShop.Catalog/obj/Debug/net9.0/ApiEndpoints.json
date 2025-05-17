@@ -74,6 +74,154 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeaturesController",
+    "Method": "FeatureList",
+    "RelativePath": "api/Features",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeaturesController",
+    "Method": "CreateFeature",
+    "RelativePath": "api/Features",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createFeatureDto",
+        "Type": "MultiShop.Catalog.DTOs.FeatureDTOs.CreateFeatureDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeaturesController",
+    "Method": "DeleteFeature",
+    "RelativePath": "api/Features",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeaturesController",
+    "Method": "UpdateFeature",
+    "RelativePath": "api/Features",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateFeatureDto",
+        "Type": "MultiShop.Catalog.DTOs.FeatureDTOs.UpdateFeatureDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeaturesController",
+    "Method": "GetFeatureById",
+    "RelativePath": "api/Features/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeatureSlidersController",
+    "Method": "FeatureSliderList",
+    "RelativePath": "api/FeatureSliders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeatureSlidersController",
+    "Method": "CreateFeatureSlider",
+    "RelativePath": "api/FeatureSliders",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createFeatureSliderDto",
+        "Type": "MultiShop.Catalog.DTOs.FeatureSliderDTOs.CreateFeatureSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeatureSlidersController",
+    "Method": "DeleteFeatureSlider",
+    "RelativePath": "api/FeatureSliders",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeatureSlidersController",
+    "Method": "UpdateFeatureSlider",
+    "RelativePath": "api/FeatureSliders",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateFeatureSliderDto",
+        "Type": "MultiShop.Catalog.DTOs.FeatureSliderDTOs.UpdateFeatureSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.FeatureSlidersController",
+    "Method": "GetFeatureSliderById",
+    "RelativePath": "api/FeatureSliders/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MultiShop.Catalog.Controllers.ProductDetailsController",
     "Method": "ProductDetailList",
     "RelativePath": "api/ProductDetails",
@@ -303,6 +451,80 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.SpecialOffersController",
+    "Method": "SpecialOfferList",
+    "RelativePath": "api/SpecialOffers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.SpecialOffersController",
+    "Method": "CreateSpecialOffer",
+    "RelativePath": "api/SpecialOffers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createSpecialOfferDto",
+        "Type": "MultiShop.Catalog.DTOs.SpecialOfferDTOs.CreateSpecialOfferDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.SpecialOffersController",
+    "Method": "DeleteSpecialOffer",
+    "RelativePath": "api/SpecialOffers",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.SpecialOffersController",
+    "Method": "UpdateSpecialOffer",
+    "RelativePath": "api/SpecialOffers",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateSpecialOfferDto",
+        "Type": "MultiShop.Catalog.DTOs.SpecialOfferDTOs.UpdateSpecialOfferDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Catalog.Controllers.SpecialOffersController",
+    "Method": "GetSpecialOfferById",
+    "RelativePath": "api/SpecialOffers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

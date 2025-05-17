@@ -4,6 +4,9 @@ using MultiShop.Catalog.DTOs.ProductDetailDTOs;
 using MultiShop.Catalog.DTOs.ProductImageDTOs;
 using MultiShop.Catalog.DTOs.ProductDTOs;
 using MultiShop.Catalog.Entities;
+using MultiShop.Catalog.DTOs.FeatureSliderDTOs;
+using MultiShop.Catalog.DTOs.SpecialOfferDTOs;
+using MultiShop.Catalog.DTOs.FeatureDTOs;
 
 namespace MultiShop.Catalog.Mapping
 {
@@ -32,6 +35,23 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<ProductImage, GetByIdProductImageDto>().ReverseMap();
 
             CreateMap<Product, ResultProductsWithCategoryDto>().ReverseMap();
+
+            CreateMap<FeatureSlider, CreateFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, UpdateFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, ResultFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, GetByIdFeatureSliderDto>().ReverseMap();
+
+            CreateMap<SpecialOffer, CreateSpecialOfferDto>().ReverseMap();
+            CreateMap<SpecialOffer, UpdateSpecialOfferDto>().ReverseMap();
+            CreateMap<SpecialOffer, ResultSpecialOfferDto>().ReverseMap();
+            CreateMap<SpecialOffer, GetByIdSpecialOfferDto>().ReverseMap();
+
+
+            CreateMap<Feature, CreateFeatureDto>().ReverseMap();
+            CreateMap<Feature, UpdateFeatureDto>().ReverseMap();
+            CreateMap<Feature, ResultFeatureDto>().ReverseMap();
+            CreateMap<Feature, GetByIdFeatureDto>().ReverseMap();
+
         }
     }
 }

@@ -12,3 +12,4 @@ D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.EntityLayer\obj\Debug
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.EntityLayer\obj\Debug\net9.0\MultiShop.Cargo.EntityLayer.pdb
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.EntityLayer\obj\Debug\net9.0\MultiShop.Cargo.EntityLayer.genruntimeconfig.cache
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.EntityLayer\obj\Debug\net9.0\ref\MultiShop.Cargo.EntityLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.EntityLayer\obj\Debug\net9.0\MultiShop.Cargo.EntityLayer.sourcelink.json

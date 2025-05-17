@@ -42,3 +42,4 @@ D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\re
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiShop.Basket.pdb
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiShop.Basket.genruntimeconfig.cache
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\ref\MultiShop.Basket.dll
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiShop.Basket.sourcelink.json

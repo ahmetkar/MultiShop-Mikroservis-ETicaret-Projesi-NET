@@ -9,3 +9,4 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.DtoLayer\obj\Debug\net9.0\MultiS
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.DtoLayer\obj\Debug\net9.0\refint\MultiShop.DtoLayer.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.DtoLayer\obj\Debug\net9.0\MultiShop.DtoLayer.pdb
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.DtoLayer\obj\Debug\net9.0\ref\MultiShop.DtoLayer.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.DtoLayer\obj\Debug\net9.0\MultiShop.DtoLayer.sourcelink.json

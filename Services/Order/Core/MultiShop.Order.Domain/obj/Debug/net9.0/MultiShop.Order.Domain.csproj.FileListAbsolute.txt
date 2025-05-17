@@ -20,3 +20,4 @@ D:\0Dotnet\MultiShopProject\Services\Order\Core\MultiShop.Order.Domain\obj\Debug
 D:\0Dotnet\MultiShopProject\Services\Order\Core\MultiShop.Order.Domain\obj\Debug\net9.0\refint\MultiShop.Order.Domain.dll
 D:\0Dotnet\MultiShopProject\Services\Order\Core\MultiShop.Order.Domain\obj\Debug\net9.0\MultiShop.Order.Domain.pdb
 D:\0Dotnet\MultiShopProject\Services\Order\Core\MultiShop.Order.Domain\obj\Debug\net9.0\ref\MultiShop.Order.Domain.dll
+D:\0Dotnet\MultiShopProject\Services\Order\Core\MultiShop.Order.Domain\obj\Debug\net9.0\MultiShop.Order.Domain.sourcelink.json

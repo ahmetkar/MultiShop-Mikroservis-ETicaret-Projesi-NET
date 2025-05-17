@@ -1,8 +1,80 @@
 {
   "Files": [
     {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\all.css",
+      "PackagePath": "staticwebassets\\css\\all.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\all.min.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\brands.css",
+      "PackagePath": "staticwebassets\\css\\brands.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\brands.min.css",
+      "PackagePath": "staticwebassets\\css\\brands.min.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\css\\fontawesome.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\fontawesome.min.css",
+      "PackagePath": "staticwebassets\\css\\fontawesome.min.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\regular.css",
+      "PackagePath": "staticwebassets\\css\\regular.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\regular.min.css",
+      "PackagePath": "staticwebassets\\css\\regular.min.css"
+    },
+    {
       "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\solid.css",
+      "PackagePath": "staticwebassets\\css\\solid.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\solid.min.css",
+      "PackagePath": "staticwebassets\\css\\solid.min.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\svg-with-js.css",
+      "PackagePath": "staticwebassets\\css\\svg-with-js.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\svg-with-js.min.css",
+      "PackagePath": "staticwebassets\\css\\svg-with-js.min.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\v4-font-face.css",
+      "PackagePath": "staticwebassets\\css\\v4-font-face.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\v4-font-face.min.css",
+      "PackagePath": "staticwebassets\\css\\v4-font-face.min.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\v4-shims.css",
+      "PackagePath": "staticwebassets\\css\\v4-shims.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\v4-shims.min.css",
+      "PackagePath": "staticwebassets\\css\\v4-shims.min.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\v5-font-face.css",
+      "PackagePath": "staticwebassets\\css\\v5-font-face.css"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\css\\v5-font-face.min.css",
+      "PackagePath": "staticwebassets\\css\\v5-font-face.min.css"
     },
     {
       "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\favicon.ico",
@@ -1907,6 +1979,38 @@
     {
       "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\ovioadmin\\widgets.html",
       "PackagePath": "staticwebassets\\ovioadmin\\widgets.html"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\webfonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.woff2"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.MultiShop.WebUI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

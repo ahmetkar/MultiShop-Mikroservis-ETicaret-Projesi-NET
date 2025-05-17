@@ -15,3 +15,4 @@ D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\De
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\bin\Debug\net9.0\MultiShop.Cargo.EntityLayer.pdb
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.csproj.AssemblyReference.cache
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiSho.7CF9507C.Up2Date
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.BussinessLayer\obj\Debug\net9.0\MultiShop.Cargo.BussinessLayer.sourcelink.json

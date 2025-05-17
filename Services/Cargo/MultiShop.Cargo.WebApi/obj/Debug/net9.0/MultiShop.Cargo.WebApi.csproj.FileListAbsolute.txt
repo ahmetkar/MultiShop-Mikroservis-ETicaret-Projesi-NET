@@ -176,3 +176,4 @@ D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.WebApi\bin\Debug\net9
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.WebApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.WebApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.WebApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.WebApi\obj\Debug\net9.0\MultiShop.Cargo.WebApi.sourcelink.json

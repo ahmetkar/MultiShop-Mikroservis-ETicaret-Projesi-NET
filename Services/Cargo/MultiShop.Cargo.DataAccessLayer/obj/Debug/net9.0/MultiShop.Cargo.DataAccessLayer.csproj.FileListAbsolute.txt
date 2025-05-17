@@ -13,3 +13,4 @@ D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\D
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\refint\MultiShop.Cargo.DataAccessLayer.dll
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.pdb
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\ref\MultiShop.Cargo.DataAccessLayer.dll
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.sourcelink.json

@@ -36,3 +36,4 @@ D:\0Dotnet\MultiShopProject\Services\Order\Infrastructure\MultiShop.Order.Persis
 D:\0Dotnet\MultiShopProject\Services\Order\Infrastructure\MultiShop.Order.Persistance\obj\Debug\net9.0\MultiShop.Order.Persistance.pdb
 D:\0Dotnet\MultiShopProject\Services\Order\Infrastructure\MultiShop.Order.Persistance\obj\Debug\net9.0\MultiShop.Order.Persistance.genruntimeconfig.cache
 D:\0Dotnet\MultiShopProject\Services\Order\Infrastructure\MultiShop.Order.Persistance\obj\Debug\net9.0\ref\MultiShop.Order.Persistance.dll
+D:\0Dotnet\MultiShopProject\Services\Order\Infrastructure\MultiShop.Order.Persistance\obj\Debug\net9.0\MultiShop.Order.Persistance.sourcelink.json
