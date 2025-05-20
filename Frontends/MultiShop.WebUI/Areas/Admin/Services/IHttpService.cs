@@ -7,6 +7,7 @@
         Task<bool> DeleteById(string endpoint, string id);
         Task<T?> GetById<T>(string endpoint, string id);
         Task<bool> Update<T>(string endpoint, T dto);
+        Task<T?> GetOne<T>(string endpoint);
         void setUrl(string url);
 
     }

@@ -45,6 +45,21 @@ namespace MultiShop.WebUI.Areas.Admin.Services
                 return null;
               
             }
+        
+           public async Task<T?> GetOne<T>(string endpoint)
+            {
+
+                var client = _httpClientFactory.CreateClient();
+                var response = await client.GetAsync(_url + endpoint);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonData = await response.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<T>(jsonData);
+                    return values;
+                }
+
+                return default(T);
+            }
 
 
          

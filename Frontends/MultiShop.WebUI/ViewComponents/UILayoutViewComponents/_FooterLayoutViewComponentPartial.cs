@@ -1,11 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.DtoLayer.CatalogDtos.AboutDtos;
+using MultiShop.WebUI.Areas.Admin.Services;
 
 namespace MultiShop.WebUI.ViewComponents.UILayoutViewComponents
 {
     public class _FooterLayoutViewComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IHttpService _httpService;
+        public _FooterLayoutViewComponentPartial(IHttpService httpService)
         {
+            _httpService = httpService;
+
+            _httpService.setUrl("CatalogApi");
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var result = await _httpService.GetOne<ResultAboutDto>("Abouts/GetLastAbout");
+            if (result != null) return View(result);
             return View();
         }
     }

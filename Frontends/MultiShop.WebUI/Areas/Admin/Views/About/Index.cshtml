@@ -1,0 +1,49 @@
+﻿@model List<ResultAboutDto>
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Hakkımızda Alanları Listesi</h4>
+                <p>En son eklenen geçerli olur.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Açıklama</th>
+                                <th>Email</th>
+                                <th>Adres</th>
+                                <th>Telefon</th>
+                                <th> </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Description</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Phone</td>
+                                    <td> <a class="btn btn-danger" href="/Admin/About/DeleteAbout/@item.AboutId">Sil</a></td>
+                                    <td> <a class="btn btn-success" href="/Admin/About/UpdateAbout/@item.AboutId">Güncelle</a></td>
+                                </tr>
+                            }
+                            
+                        </tbody>
+                    </table>    
+                    <a class="btn btn-success" href="/Admin/About/CreateAbout">Hakkımızda Alanı Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

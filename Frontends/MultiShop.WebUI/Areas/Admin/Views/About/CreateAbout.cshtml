@@ -1,0 +1,33 @@
+﻿@model CreateAboutDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Hakkımızda Alanı Ekleme<h4>
+              
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Açıklama : </label>
+                        <input type="text" asp-for="Description" class="form-control" placeholder="Açıklama">
+                        <label>Adres : </label>
+                        <input type="text" asp-for="Address" class="form-control" placeholder="Adres girin">
+                      <label>Email : </label>
+                                <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+                    <label>Telefon nu : </label>
+                         <input type="text" asp-for="Phone" class="form-control" placeholder="Telefon nu">
+
+                      <button class="btn btn-primary" type="submit">Ekle</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

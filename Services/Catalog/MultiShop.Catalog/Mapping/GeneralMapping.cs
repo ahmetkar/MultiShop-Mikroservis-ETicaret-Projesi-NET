@@ -9,6 +9,7 @@ using MultiShop.Catalog.DTOs.SpecialOfferDTOs;
 using MultiShop.Catalog.DTOs.FeatureDTOs;
 using MultiShop.Catalog.DTOs.OfferDiscountDTOs;
 using MultiShop.Catalog.DTOs.BrandDTOs;
+using MultiShop.Catalog.DTOs.AboutDTOs;
 
 namespace MultiShop.Catalog.Mapping
 {
@@ -63,6 +64,12 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<Brand, UpdateBrandDto>().ReverseMap();
             CreateMap<Brand, ResultBrandDto>().ReverseMap();
             CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
+
+
+            CreateMap<About, CreateAboutDto>().ReverseMap();
+            CreateMap<About, UpdateAboutDto>().ReverseMap();
+            CreateMap<About, ResultAboutDto>().ReverseMap();
+            CreateMap<About, GetByIdAboutDto>().ReverseMap();
 
         }
     }
