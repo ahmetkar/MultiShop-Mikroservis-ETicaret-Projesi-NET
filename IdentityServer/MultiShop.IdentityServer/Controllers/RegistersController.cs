@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace MultiShop.IdentityServer.Controllers
 {
-    [Authorize(IdentityServer4.IdentityServerConstants.LocalApi.PolicyName)]
+    //[Authorize(IdentityServer4.IdentityServerConstants.LocalApi.PolicyName)]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistersController : ControllerBase
@@ -39,7 +40,10 @@ namespace MultiShop.IdentityServer.Controllers
             else
             {
                 var errors = result.Errors.ToList();
-                return Ok("Bir hata oluştu." + errors[0].Description+" "+ errors[1].Description);
+
+                var errorstring = "";
+                foreach(var error in errors) errorstring+="Hatalar : "+error.Description + "\n";
+                return Ok("Hata oluştu."+errorstring);
             }
         }
 

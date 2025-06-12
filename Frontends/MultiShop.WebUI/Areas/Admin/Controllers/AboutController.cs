@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.AboutDtos;
-using MultiShop.WebUI.Areas.Admin.Services;
+using MultiShop.WebUI.Services;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
-    
+
     [Area("Admin")]
     [AllowAnonymous]
     [Route("Admin/About")]

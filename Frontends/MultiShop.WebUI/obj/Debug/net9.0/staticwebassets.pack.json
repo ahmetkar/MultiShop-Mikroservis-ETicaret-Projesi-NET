@@ -225,6 +225,10 @@
       "PackagePath": "staticwebassets\\img\\productimages\\ornek-urun-resim9.jpg"
     },
     {
+      "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\img\\user.jpg",
+      "PackagePath": "staticwebassets\\img\\user.jpg"
+    },
+    {
       "Id": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

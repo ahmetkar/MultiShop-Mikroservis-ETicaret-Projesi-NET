@@ -1,0 +1,38 @@
+﻿@model UpdateCommentDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4> Yorum Güncelleme <h4>
+
+                        <div class="bs-example" data-example-id="bordered-table">
+                            <form method="post">
+                                <input type="hidden" asp-for="UserCommentId" class="form-control" readonly>
+                                <input type="hidden" asp-for="ProductId" class="form-control" readonly>
+                                <input type="hidden" asp-for="Rating" class="form-control" readonly>
+                                <input type="hidden" asp-for="CreatedDate" class="form-control" readonly>
+                                <input type="hidden" asp-for="Email" readonly />
+                                <label>Yorum yapan kişi ad soyad :</label>
+                                <input type="text" asp-for="NameSurname" class="form-control" placeholder="Ad ve soyad">
+                                <label>Yorum : </label>
+                                <input type="text" asp-for="CommentDetail" class="form-control" placeholder="Yorum">
+                                <label>Kullanıcı Görseli : </label>
+                                <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Kullanıcı görsel url : ">
+                                <label>Yorum Durumu :</label>
+                                <select asp-for="Status" class="form-control">
+                                    <option value="true">Onaylı</option>
+                                    <option value="false">Onaysız</option>
+                                </select>
+                                <button class="btn btn-primary" type="submit">Yorum Güncelle</button>
+                            </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>

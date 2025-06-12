@@ -1,0 +1,82 @@
+﻿@model CreateLoginiDto
+@{
+    ViewData["Title"] = "Giriş Yap";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Giriş Yap</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/ovioadmin/bootstrap/css/bootstrap.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Template style -->
+    <link rel="stylesheet" href="~/ovioadmin/dist/css/style.css">
+    <link rel="stylesheet" href="~/ovioadmin/pages/et-line-font/et-line-font.css">
+    <link rel="stylesheet" href="~/ovioadmin/pages/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="~/ovioadmin/dist/weather/weather-icons.min.css">
+    <link type="text/css" rel="stylesheet" href="~/ovioadmin/dist/weather/weather-icons-wind.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body class="body-bg-color">
+    <div class="wrapper">
+        <div class="form-body">
+            <form action="" method="post" class="col-form" novalidate>
+                <div class="col-logo"><a href="../index.html"><img width="300px" height="60px" alt="" src="~/img/logos/MULTISHOPPNG.png"></a></div>
+                <header>Giriş Yap</header>
+                <fieldset>
+                    <section>
+                        <div class="form-group has-feedback">
+                            <label class="control-label">Kullanıcı adınız : </label>
+                            <input asp-for="Username" class="form-control" placeholder="Kullanıcı adı ." type="text">
+                            <span class="fa fa-envelope form-control-feedback" aria-hidden="true"></span>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="form-group has-feedback">
+                            <label class="control-label">Şifre : </label>
+                            <input asp-for="Password" class="form-control" placeholder="Şifre :" type="password">
+                            <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6 checkbox"> <a href="forgot-password.html" class="modal-opener">Forgot password?</a> </div>
+                            <div class="col-md-6 text-right">
+                                <label class="checkbox">
+                                    <input asp-for="RememberMe" name="remember" checked="" type="checkbox">
+                                    <i></i>Bilgilerimi Hatırla
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+                </fieldset>
+                <footer class="text-right">
+                    <button type="submit" class="btn btn-info pull-right">Giriş Yap</button>
+                    <a href="/Register/Index" class="button button-secondary">Kayıt Ol</a>
+                </footer>
+            </form>
+        </div>
+    </div>
+    <!-- wrapper -->
+    <!-- jQuery -->
+    <script src="~/ovioadmin/dist/js/jquery.min.js"></script>
+    <script src="~/ovioadmin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/ovioadmin/dist/js/ovio.js"></script>
+</body>
+</html>

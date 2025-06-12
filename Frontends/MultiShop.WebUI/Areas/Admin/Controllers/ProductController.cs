@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
-using MultiShop.WebUI.Areas.Admin.Services;
+using MultiShop.WebUI.Services;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -121,7 +121,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         [Route("UpdateProduct/{id}")]
         [HttpPost]
-        public async Task<IActionResult> UpdateCategory(UpdateProductDto updateProductDto)
+        public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
 
             var result = await _httpService.Update<UpdateProductDto>("Products", updateProductDto);

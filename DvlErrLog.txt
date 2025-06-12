@@ -1,0 +1,3 @@
+System.Exception: Please select a driver project.
+   konum: Microsoft.SdvMenuCommand.DriverVerificationLicense..ctor()
+   konum: Microsoft.SdvMenuCommand.SdvMenuCommandPackage.StaticToolsLogoMenuItemCallback(Object sender, EventArgs e)

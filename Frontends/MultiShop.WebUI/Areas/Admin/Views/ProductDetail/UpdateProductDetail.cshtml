@@ -1,0 +1,41 @@
+﻿@model UpdateProductDetailDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+
+                @if ((bool)TempData.Peek("MustAdd"))
+                {
+                    <h4> Ürüne Yeni Detaylar Ekle</h4>
+                }else {
+                    <h4>
+                        Detayları Güncelle</h4>
+                }
+
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        @if (!(bool)TempData.Peek("MustAdd"))
+                        {
+                            <input type="hidden" asp-for="ProductDetailId" class="form-control" readonly>
+                            <input type="hidden" asp-for="ProductId" class="form-control" readonly>
+                        }
+                        
+                                <label>Açıklama: </label>
+                                <textarea type="text" asp-for="ProductDescription" class="form-control" placeholder="Ürün açıklaması : "></textarea>
+                                <label>Ürün Bilgileri: </label>
+                                <textarea type="text" asp-for="ProductInfo" class="form-control" placeholder="Ürün Bilgileri : "></textarea>
+                           
+
+                                <button class="btn btn-primary" type="submit">Detayları Güncelle</button>
+                            </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>

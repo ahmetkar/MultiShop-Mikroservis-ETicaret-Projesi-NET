@@ -6,15 +6,16 @@ using MultiShop.Catalog.Services.AboutServices;
 using System.Formats.Asn1;
 
 namespace MultiShop.Catalog.Controllers
+
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AboutsController : ControllerBase
     {
         private readonly IAboutService _aboutService;
-        public AboutsController(IAboutService AboutService)
-        {
+        public AboutsController(IAboutService AboutService) {
+     
             _aboutService = AboutService;
         }
 

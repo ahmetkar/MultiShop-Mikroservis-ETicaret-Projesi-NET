@@ -21,6 +21,8 @@
                                 <th>Ürün Adı</th>
                                 <th>Ürün Fiyatı</th>
                                 <th>Ürün Kategorisi</th>
+                                <th>Ürün Görselleri</th>
+                                <th>Ürün Açıklamaları</th>
                                 <th> </th>
                                 <th> </th>
                             </tr>
@@ -34,8 +36,11 @@
                                         <td>@item.ProductName</td>
                                         <td>@item.ProductPrice</td>
                                         <td>@item.Category.CategoryName</td>
+                                    <td> <a class="btn btn-warning" href="/Admin/ProductImage/UpdateProductImage/@item.ProductId">Ürün Görsellerini Güncelle</a></td>
+                                    <td> <a class="btn btn-warning" href="/Admin/ProductDetail/UpdateProductDetail/@item.ProductId">Ürün Detayları Güncelle</a></td>
+                                    <td> <a class="btn btn-success" href="/Admin/Product/UpdateProduct/@item.ProductId">Güncelle</a></td>
                                         <td> <a class="btn btn-danger" href="/Admin/Product/DeleteProduct/@item.ProductId">Sil</a></td>
-                                        <td> <a class="btn btn-success" href="/Admin/Product/UpdateProduct/@item.ProductId">Güncelle</a></td>
+                                        
                                     </tr>
                             }
 

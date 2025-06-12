@@ -305,6 +305,7 @@ wwwroot\img\productimages\ornek-urun-resim6.jpg
 wwwroot\img\productimages\ornek-urun-resim7.jpeg
 wwwroot\img\productimages\ornek-urun-resim8.jpg
 wwwroot\img\productimages\ornek-urun-resim9.jpg
+wwwroot\img\user.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

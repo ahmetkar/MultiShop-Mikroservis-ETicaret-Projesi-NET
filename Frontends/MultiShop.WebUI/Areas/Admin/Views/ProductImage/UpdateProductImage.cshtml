@@ -1,0 +1,44 @@
+﻿@model UpdateProductImageDto
+
+@{
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+
+                @if ((bool)TempData.Peek("MustAdd"))
+                {
+                    <h4> Ürüne Yeni Resimler Ekle</h4>
+                }else {
+                    <h4>
+                        Resimleri Güncelleme</h4>
+                }
+
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        @if (!(bool)TempData.Peek("MustAdd"))
+                        {
+                            <input type="hidden" asp-for="ProductImageID" class="form-control" readonly>
+                            <input type="hidden" asp-for="ProductId" class="form-control" readonly>
+                        }
+                        
+                                <label>Resim 1 URL: </label>
+                                <input type="text" asp-for="Image1" class="form-control" placeholder="Resim 1 URL : ">
+                                <label>Resim 2 URL: </label>
+                                <input type="text" asp-for="Image2" class="form-control" placeholder="Resim 2 URL : ">
+                                <label>Resim 3 URL: </label>
+                                <input type="text" asp-for="Image3" class="form-control" placeholder="Resim 3 URL : ">
+                                <label>Resim 4 URL: </label>
+                                <input type="text" asp-for="Image4" class="form-control" placeholder="Resim 4 URL : ">
+
+                                <button class="btn btn-primary" type="submit">Resimleri Güncelle</button>
+                            </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>

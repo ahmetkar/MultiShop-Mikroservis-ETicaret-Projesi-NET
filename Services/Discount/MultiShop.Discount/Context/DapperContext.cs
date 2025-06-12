@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using MultiShop.Discount.Entities;
 using System.Data;
 
+//Burada ef core migration için kullanılıyor
+
 namespace MultiShop.Discount.Context
 {
     public class DapperContext : DbContext
@@ -20,7 +22,6 @@ namespace MultiShop.Discount.Context
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(_connectionString);
-            
         }
 
         public DbSet<Coupon> Coupons { get; set; }

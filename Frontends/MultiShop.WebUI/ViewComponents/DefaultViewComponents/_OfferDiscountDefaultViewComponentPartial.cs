@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.OfferDiscountDtos;
-using MultiShop.WebUI.Areas.Admin.Services;
+using MultiShop.WebUI.Services;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {

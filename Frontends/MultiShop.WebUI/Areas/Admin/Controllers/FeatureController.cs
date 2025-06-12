@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FeatureDTOs;
-using MultiShop.WebUI.Areas.Admin.Services;
+using MultiShop.WebUI.Services;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
