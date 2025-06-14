@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.AboutDtos;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.ViewComponents.UILayoutViewComponents
 {

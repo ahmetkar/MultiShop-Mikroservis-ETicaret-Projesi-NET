@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "RknozGafBYO2UInI19S0unoGv6gtcERoq/uiTS41HWw=",
+  "Source": "MultiShop.OcelotGateway",
+  "BasePath": "_content/MultiShop.OcelotGateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

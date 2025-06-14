@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {

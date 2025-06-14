@@ -1,0 +1,11 @@
+"Catalog": "http://localhost:7070/",
+"Discount":"http://localhost:7071",
+"Order":"http://localhost:7072",
+"Cargo": "http://localhost:7073",
+"Basket":http://localhost:7074,
+"Comment": "http://localhost:7075/",
+"Payment": "http://localhost:7076/",
+"Images": "http://localhost:7077/",
+"Identity": "http://localhost:5001/",
+"WebUI": "http://localhost:7021",
+"ApiGateway": "http://localhost:5000"

@@ -479,3 +479,5 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\IdentityServer4.Storage.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\IdentityModel.dll

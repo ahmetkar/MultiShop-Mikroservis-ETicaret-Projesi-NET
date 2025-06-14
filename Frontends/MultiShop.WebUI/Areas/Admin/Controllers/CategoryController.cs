@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.Interfaces;
 using Newtonsoft.Json;
 using System.Threading.Tasks.Dataflow;
 

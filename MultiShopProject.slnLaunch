@@ -11,6 +11,14 @@
         "Action": "Start"
       },
       {
+        "Path": "ApiGateway\\MultiShop.OcelotGateway\\MultiShop.OcelotGateway.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj",
+        "Action": "Start"
+      },
+      {
         "Path": "Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
         "Action": "Start"
       }

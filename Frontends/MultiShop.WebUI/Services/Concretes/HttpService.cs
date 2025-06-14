@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging.Abstractions;
+using MultiShop.WebUI.Services.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace MultiShop.WebUI.Services
+namespace MultiShop.WebUI.Services.Concretes
 {
     public class HttpService : IHttpService
     {
@@ -68,12 +69,10 @@ namespace MultiShop.WebUI.Services
         public async Task<List<T>?> Get<T>(string endpoint)
         {
 
-        
-            var token = await GetTokenForVisitor();
-
-
+            string token = await GetTokenForVisitor();
 
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             var response = await client.GetAsync(_url + endpoint);
             if (response.IsSuccessStatusCode)
             {
@@ -88,8 +87,10 @@ namespace MultiShop.WebUI.Services
 
         public async Task<T?> GetOne<T>(string endpoint)
         {
+            string token = await GetTokenForVisitor();
 
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             var response = await client.GetAsync(_url + endpoint);
             if (response.IsSuccessStatusCode)
             {

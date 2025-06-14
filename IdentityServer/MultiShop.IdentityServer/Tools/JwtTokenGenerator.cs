@@ -27,7 +27,7 @@ namespace MultiShop.IdentityServer.Tools
             var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expireDate = DateTime.UtcNow.AddDays(JwtTokenDefaults.Expire);
 
-            JwtSecurityToken token = new JwtSecurityToken(issuer:JwtTokenDefaults.ValidIssuer,audience:JwtTokenDefaults.ValidAudience,
+            JwtSecurityToken token = new JwtSecurityToken(issuer:JwtTokenDefaults.ValidIssuer,audience:JwtTokenDefaults.ValidAudience,claims:claims,
                 notBefore:DateTime.UtcNow,expires:expireDate,signingCredentials:signingCredentials);
 
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();

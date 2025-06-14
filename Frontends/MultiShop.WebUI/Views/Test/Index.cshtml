@@ -1,0 +1,12 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<p>
+@foreach(var item in Model){
+    <a>@item.CategoryName - @item.CategoryID</a>
+        <br />
+    }
+</p>
