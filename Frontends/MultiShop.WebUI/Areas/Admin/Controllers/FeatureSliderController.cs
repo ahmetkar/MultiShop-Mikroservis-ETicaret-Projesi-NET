@@ -2,33 +2,39 @@
 using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
 using Microsoft.AspNetCore.Authorization;
 using MultiShop.WebUI.Services.Interfaces;
+using MultiShop.WebUI.Services.CatalogServices.SliderServices;
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
     [Route("Admin/FeatureSlider")]
     public class FeatureSliderController : Controller
     {
-        private readonly IHttpService _httpService;
-        public FeatureSliderController(IHttpService httpService)
+        private readonly IFeatureSliderService _featureSliderService;
+        public FeatureSliderController(IHttpService httpService,IFeatureSliderService featureSliderService)
         {
-            _httpService = httpService;
+            _featureSliderService = featureSliderService;
 
-            _httpService.setUrl("CatalogApi");
+        
+        }
+
+
+        void FeatureSliderViewBag(string pagename)
+        {
+            ViewBag.v0 = "Öne Çıkan Görsel İşlemleri";
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Öne Çıkan Görseller";
+            ViewBag.v3 = pagename;
+
         }
 
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.v0 = "Öne Çıkan Görsel İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Öne Çıkan Görseller";
-            ViewBag.v3 = "Öne Çıkan Görsel Listesi";
+            FeatureSliderViewBag("Öne Çıkan Görsel Listesi");
 
 
-            var result = await _httpService.Get<ResultFeatureSliderDto>("FeatureSliders");
-            if (result != null) return View(result);
-            return View();
+            var result = await _featureSliderService.GetAllFeatureSliderAsync();
+            return View(result);
         }
             
 
@@ -36,10 +42,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateFeatureSlider")]
         public IActionResult CreateFeatureSlider()
         {
-            ViewBag.v0 = "Öne Çıkan Görsel İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Öne Çıkan Görseller";
-            ViewBag.v3 = "Öne Çıkan Görsel Ekle";
+            FeatureSliderViewBag("Öne Çıkan Görsel Ekle");
 
             return View();
         }
@@ -50,10 +53,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
 
             createFeatureSliderDto.Status = false;
-            var result = await _httpService.Create<CreateFeatureSliderDto>("FeatureSliders", createFeatureSliderDto);
+            await _featureSliderService.CreateFeatureSliderAsync(createFeatureSliderDto);
 
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            return RedirectToAction("Index","FeatureSlider", new { area = "Admin" });
         }
 
 
@@ -61,33 +63,27 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteFeatureSlider(string id)
         {
 
-            var result = await _httpService.DeleteById("FeatureSliders", id);
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            await _featureSliderService.DeleteFeatureSliderAsync(id);
+            return RedirectToAction("Index", new { area = "Admin" }); 
+       
         }
 
         [Route("UpdateFeatureSlider/{id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateFeatureSlider(string id)
         {
-            ViewBag.v0 = "Öne Çıkan Görsel İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Öne Çıkan Görseller";
-            ViewBag.v3 = "Öne Çıkan Görsel Güncelle";
+            FeatureSliderViewBag("Öne Çıkan Görsel Güncelle");
 
-            var result = await _httpService.GetById<UpdateFeatureSliderDto>("FeatureSliders", id);
-            if (result != null) return View(result);
-            return View();
+            var result = await _featureSliderService.GetByIdFeatureSlider(id);
+            return View(result);
         }
 
         [Route("UpdateFeatureSlider/{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateFeatureSlider(UpdateFeatureSliderDto updateFeatureSliderDto)
         {
-
-            var result = await _httpService.Update<UpdateFeatureSliderDto>("FeatureSliders", updateFeatureSliderDto);
-            if (result) { return RedirectToAction("Index", "FeatureSlider", new { area = "Admin" }); }
-            return View();
+            await _featureSliderService.UpdateFeatureSliderAsync(updateFeatureSliderDto);
+            return RedirectToAction("Index", "FeatureSlider", new { area = "Admin" }); 
         }
     }
 }

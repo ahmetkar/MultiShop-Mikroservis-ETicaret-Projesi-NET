@@ -58,13 +58,11 @@ D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Composition.TypedParts.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Drawing.Common.dll
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Formats.Asn1.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Memory.Data.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Runtime.Caching.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Security.Permissions.dll
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Text.Json.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\System.Windows.Extensions.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -154,12 +152,6 @@ D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.Discount.Microsoft.AspNetCore.StaticWebAssets.props
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.Discount.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets\msbuild.build.MultiShop.Discount.props
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MultiShop.Discount.props
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MultiShop.Discount.props
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.pack.json
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\MultiSho.5AC482D7.Up2Date
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\MultiShop.Discount.dll
@@ -170,3 +162,8 @@ D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\MultiShop.Discount.sourcelink.json
+D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.build.json.cache

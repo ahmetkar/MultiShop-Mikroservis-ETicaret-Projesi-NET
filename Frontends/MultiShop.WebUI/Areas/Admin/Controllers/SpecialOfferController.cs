@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.SpecialOfferDTOs;
+using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
@@ -11,26 +12,28 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Route("Admin/SpecialOffer")]
     public class SpecialOfferController : Controller
     {
-        private readonly IHttpService _httpService;
-        public SpecialOfferController(IHttpService httpService)
-        {
-            _httpService = httpService;
+        private readonly ISpecialOfferService _specialOfferService;
 
-            _httpService.setUrl("CatalogApi");
+        public SpecialOfferController(IHttpService httpService,ISpecialOfferService specialOfferService)
+        {
+            _specialOfferService = specialOfferService;
+
         }
 
-
-        public async Task<IActionResult> Index()
+        void SpecialOfferViewBag(string pagename)
         {
             ViewBag.v0 = "Özel Teklif İşlemleri";
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Özel Teklifler";
-            ViewBag.v3 = "Özel Teklif Listesi";
+            ViewBag.v3 = pagename;
+        }
+         
+        public async Task<IActionResult> Index()
+        {
+            SpecialOfferViewBag("Özel Teklif Listesi");
 
-
-            var result = await _httpService.Get<ResultSpecialOfferDto>("SpecialOffers");
-            if (result != null) return View(result);
-            return View();
+            var result = await _specialOfferService.GetAllSpecialOfferAsync();
+            return View(result);
         }
 
 
@@ -38,11 +41,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateSpecialOffer")]
         public IActionResult CreateSpecialOffer()
         {
-            ViewBag.v0 = "Özel Teklif İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Özel Teklifler";
-            ViewBag.v3 = "Özel Teklif Ekle";
-
+            SpecialOfferViewBag("Özel Teklif Ekle");
             return View();
         }
 
@@ -50,37 +49,26 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateSpecialOffer")]
         public async Task<IActionResult> CreateSpecialOffer(CreateSpecialOfferDto createSpecialOfferDto)
         {
-
-
-            var result = await _httpService.Create<CreateSpecialOfferDto>("SpecialOffers", createSpecialOfferDto);
-
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            await _specialOfferService.CreateSpecialOfferAsync(createSpecialOfferDto);
+            return RedirectToAction("Index","SpecialOffer", new { area = "Admin" });
         }
 
 
         [Route("DeleteSpecialOffer/{id}")]
         public async Task<IActionResult> DeleteSpecialOffer(string id)
         {
-
-
-            var result = await _httpService.DeleteById("SpecialOffers", id);
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            await _specialOfferService.DeleteSpecialOfferAsync(id);
+            return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
         }
 
         [Route("UpdateSpecialOffer/{id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateSpecialOffer(string id)
         {
-            ViewBag.v0 = "Özel Teklif İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Özel Teklifler";
-            ViewBag.v3 = "Özel Teklif Güncelle";
+            SpecialOfferViewBag("Özel Teklif Güncelle");
 
-            var result = await _httpService.GetById<UpdateSpecialOfferDto>("SpecialOffers", id);
-            if (result != null) return View(result);
-            return View();
+            var result = await _specialOfferService.GetByIdSpecialOffer(id);
+            return View(result);
         }
 
         [Route("UpdateSpecialOffer/{id}")]
@@ -88,9 +76,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto)
         {
 
-            var result = await _httpService.Update<UpdateSpecialOfferDto>("SpecialOffers", updateSpecialOfferDto);
-            if (result) { return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" }); }
-            return View();
+            await _specialOfferService.UpdateSpecialOfferAsync(updateSpecialOfferDto);
+            return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
         }
     }
 }

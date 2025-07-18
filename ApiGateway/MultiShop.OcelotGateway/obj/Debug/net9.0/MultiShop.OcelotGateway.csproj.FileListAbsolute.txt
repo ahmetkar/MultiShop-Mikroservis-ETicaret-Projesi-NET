@@ -29,12 +29,6 @@ D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.OcelotGateway.Microsoft.AspNetCore.StaticWebAssets.props
-D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.OcelotGateway.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets\msbuild.build.MultiShop.OcelotGateway.props
-D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MultiShop.OcelotGateway.props
-D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MultiShop.OcelotGateway.props
-D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.pack.json
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\MultiSho.8BA34CC5.Up2Date
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\MultiShop.OcelotGateway.dll
@@ -50,3 +44,8 @@ D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\bin\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.build.json.cache

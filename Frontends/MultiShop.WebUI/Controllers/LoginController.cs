@@ -26,8 +26,10 @@ namespace MultiShop.WebUI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Index(CreateLoginiDto createLoginiDto)
+        public async Task<IActionResult> Index(SignInDto signInDto)
         {
+            await _identityService.SignIn(signInDto);
+            return RedirectToAction("Index", "User");
             /*
             var client = _httpClientFactory.CreateClient();
             var content = new StringContent(JsonSerializer.Serialize(createLoginiDto), Encoding.UTF8, "application/json");
@@ -66,23 +68,21 @@ namespace MultiShop.WebUI.Controllers
         }
 
 
-       /* [HttpGet]
-        public IActionResult SignIn()
-        {
-            return View();
-        }*/
+        /* [HttpGet]
+         public IActionResult SignIn()
+         {
+             return View();
+         }
 
-       // [HttpPost]
-        public async Task<IActionResult> SignIn(SignInDto signInDto)
-        {   
-            signInDto.Username = "ahmetkar";
-            signInDto.Password = "12345Aa*";
-            signInDto.RememberMe = false;
-            await _identityService.SignIn(signInDto);
-            return RedirectToAction("Index", "Test");
-
-
-        }
+        // [HttpPost]
+         public async Task<IActionResult> SignIn(SignInDto signInDto)
+         {   
+             signInDto.Username = "ahmetkar";
+             signInDto.Password = "12345Aa*";
+             signInDto.RememberMe = false;
+             await _identityService.SignIn(signInDto);
+             return RedirectToAction("Index", "User");
+         }*/
 
         public IActionResult Index()
         {

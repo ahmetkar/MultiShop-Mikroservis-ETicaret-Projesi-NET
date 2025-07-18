@@ -295,12 +295,6 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compresse
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.WebUI.Microsoft.AspNetCore.StaticWebAssets.props
-D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.WebUI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets\msbuild.build.MultiShop.WebUI.props
-D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MultiShop.WebUI.props
-D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MultiShop.WebUI.props
-D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets.pack.json
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiSho.490B4246.Up2Date
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.dll
@@ -481,3 +475,12 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\IdentityServer4.Storage.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\IdentityModel.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Duende.AccessTokenManagement.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Duende.IdentityModel.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\IdentityModel.AspNetCore.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll

@@ -26,12 +26,6 @@ D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.Catalog.Microsoft.AspNetCore.StaticWebAssets.props
-D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.Catalog.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets\msbuild.build.MultiShop.Catalog.props
-D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MultiShop.Catalog.props
-D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MultiShop.Catalog.props
-D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.pack.json
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\MultiSho.C11EF5E0.Up2Date
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\MultiShop.Catalog.dll
@@ -51,3 +45,8 @@ D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\bin\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\MultiShop.Catalog.sourcelink.json
+D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.build.json.cache

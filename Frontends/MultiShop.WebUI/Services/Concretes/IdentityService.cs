@@ -25,7 +25,7 @@ namespace MultiShop.WebUI.Services.Concretes
             _serviceApiSettings = serviceApiSettings.Value;
         }
 
-        public async Task GetRefreshToken()
+        public async Task<bool> GetRefreshToken()
         {
             var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
             {
@@ -74,11 +74,13 @@ namespace MultiShop.WebUI.Services.Concretes
 
 
             var result = await _httpContextAccessor.HttpContext.AuthenticateAsync();
+            if (!result.Succeeded) return false;
             var properties = result.Properties;
             properties.StoreTokens(authToken);
 
             await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,result.Principal,properties);
 
+            return true;
         }
 
         public async Task<bool> SignIn(SignInDto signInDto)

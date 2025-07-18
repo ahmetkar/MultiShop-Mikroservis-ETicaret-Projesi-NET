@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
+using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.Interfaces;
 using Newtonsoft.Json;
 using System.Threading.Tasks.Dataflow;
@@ -8,31 +9,34 @@ using System.Threading.Tasks.Dataflow;
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
     [Route("Admin/Category")]
     public class CategoryController : Controller
     {
 
-        private readonly IHttpService _httpService;
-        public CategoryController(IHttpService httpService)
+        private readonly ICategoryService _categoryService;
+       
+        public CategoryController(ICategoryService categoryService)
         {
-            _httpService = httpService;
-
-            _httpService.setUrl("CatalogApi");
+   
+            _categoryService = categoryService;
         }
 
-      
-        public async Task<IActionResult> Index()
+
+        void CategoryViewBags(string pagename)
         {
             ViewBag.v0 = "Kategori İşlemleri";
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Listesi";
+            ViewBag.v3 = pagename;
+        }
 
-      
-            var result = await _httpService.Get<ResultCategoryDto>("Categories");
-            if (result != null) return View(result);
-            return View();
+        public async Task<IActionResult> Index()
+        {
+
+            CategoryViewBags("Kategori Listesi");
+
+            var values = await _categoryService.GetAllCategoryAsync();
+            return View(values);
         }
 
 
@@ -40,11 +44,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateCategory")]
         public IActionResult CreateCategory()
         {
-            ViewBag.v0 = "Kategori İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Ekle";
-
+            CategoryViewBags("Kategori Ekle");
             return View();
         }
 
@@ -52,48 +52,44 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateCategory")]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
-       
+            await _categoryService.CreateCatagoryAsync(createCategoryDto);
 
-            var result = await _httpService.Create<CreateCategoryDto>("Categories", createCategoryDto);
-
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            return RedirectToAction("Index","Category", new { area = "Admin" });
         }
+        
 
 
         [Route("DeleteCategory/{id}")]
         public async Task<IActionResult> DeleteCategory(string id)
         {
-         
 
-            var result = await _httpService.DeleteById("Categories", id);
-            if(result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            await _categoryService.DeleteCategoryAsync(id);
+            return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
 
         [Route("UpdateCategory/{id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateCategory(string id)
         {
-            ViewBag.v0 = "Kategori İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Güncelle";
+            CategoryViewBags("Kategori Güncelle");
+            var value = await _categoryService.GetByIdCategory(id);
 
-            var result = await _httpService.GetById<UpdateCategoryDto>("Categories", id);
-            if(result != null) return View(result);
-            return View();
+            var realvalue = new UpdateCategoryDto
+            {
+                CategoryID = value.CategoryID,
+                CategoryName = value.CategoryName,
+                ImageUrl = value.ImageUrl
+            };
+            return View(realvalue);
         }
 
         [Route("UpdateCategory/{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
-      
 
-            var result = await _httpService.Update<UpdateCategoryDto>("Categories", updateCategoryDto);
-            if (result) { return RedirectToAction("Index","Category", new { area = "Admin" }); }
-            return View();
+           await _categoryService.UpdateCategoryAsync(updateCategoryDto);
+           return RedirectToAction("Index","Category", new { area = "Admin" }); 
         }
     }
 }
