@@ -46,9 +46,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             ProductViewBags("Ürün Listesi");
 
-
-           /* var result = await _httpService.Get<ResultProductWithCategory>("Products/ProductListWithCategory");
-            if (result != null) return View(result);*/
+            var result = await _productService.GetProductsWithCategoryAsync();
+            if (result != null) return View(result);
             return View();
         }
 
@@ -108,7 +107,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 ViewBag.Categories = null;
             }
 
-            var result = await _productService.GetByIdProduct(id);
+            var result = await _productService.GetByIdProductForUpdate(id);
             if (result != null) return View(result);
             return View();
         }

@@ -1,21 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.ProductImageDTOs;
+using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
     [Route("Admin/ProductImage")]
     public class ProductImageController : Controller
     {
-        private readonly IHttpService _httpService;
-        public ProductImageController(IHttpService httpService)
-        {
-            _httpService = httpService;
 
-            _httpService.setUrl("CatalogApi");
+        private readonly IProductImageService _productImageService;
+        public ProductImageController(IProductImageService productImageService)
+        {
+            _productImageService = productImageService;
         }
     
         [Route("UpdateProductImage/{id}")]
@@ -27,7 +26,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Ürün Resimiler";
             ViewBag.v3 = "Ürün Resimi Güncelle";
 
-            var result = await _httpService.GetOne<UpdateProductImageDto>("ProductImages/ProductImagesByProductId?id="+ id);
+            var result = await _productImageService.GetByProductIdProductImagesAsync(id);
             if (result != null)
             {
                 TempData["MustAdd"] = false;    
@@ -55,14 +54,14 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                     Image3 = updateProductImageDto.Image3,
                     Image4 = updateProductImageDto.Image4
                 };
-                result = await _httpService.Create<CreateProductImageDto>("ProductImages",createProductImageDto);
+               await _productImageService.CreateProductImageAsync(createProductImageDto);
+               
             }
             else
             {
-                result = await _httpService.Update<UpdateProductImageDto>("ProductImages", updateProductImageDto);
+                await _productImageService.UpdateProductImageAsync(updateProductImageDto);
             }
-            if (result) { return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" }); }
-            return View();
+            return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
         }
     }
 }

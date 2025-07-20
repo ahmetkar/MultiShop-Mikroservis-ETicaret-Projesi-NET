@@ -13,7 +13,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public FeatureSliderController(IHttpService httpService,IFeatureSliderService featureSliderService)
         {
             _featureSliderService = featureSliderService;
-
         
         }
 

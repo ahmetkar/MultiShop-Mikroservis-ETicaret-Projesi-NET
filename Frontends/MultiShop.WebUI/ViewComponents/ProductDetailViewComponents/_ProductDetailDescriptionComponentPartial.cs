@@ -1,24 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.ProductDetailDTOs;
+using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.ViewComponents.ProductDetailViewComponents
 {
     public class _ProductDetailDescriptionComponentPartial : ViewComponent
     {
-        private readonly IHttpService _httpService;
-        public _ProductDetailDescriptionComponentPartial(IHttpService httpService)
+        private readonly IProductDetailService _productDetailService;
+        public _ProductDetailDescriptionComponentPartial(IProductDetailService productDetailService)
         {
-            _httpService = httpService;
-
-            _httpService.setUrl("CatalogApi");
+            _productDetailService = productDetailService;
         }
-
-
 
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
-            var result = await _httpService.GetOne<GetByIdProductDetailDto>("ProductDetails/GetProductDetailByProductId?id=" + id);
+            var result = await _productDetailService.GetByProductIdProductDetail(id);
             if (result != null) return View(result);
             return View();
         }

@@ -1,25 +1,25 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.ProductDetailDTOs;
+using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
     [Route("Admin/ProductDetail")]
     public class ProductDetailController : Controller
     {
         
-        private readonly IHttpService _httpService;
-        public ProductDetailController(IHttpService httpService)
-        {
-            _httpService = httpService;
 
-            _httpService.setUrl("CatalogApi");
+        private readonly IProductDetailService _productDetailService;
+        public ProductDetailController(IProductDetailService productDetailService)
+        {
+            _productDetailService = productDetailService;
         }
 
 
+        //id -> product id
         [Route("UpdateProductDetail/{id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateProductDetail(string id)
@@ -29,7 +29,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Ürün Detayları";
             ViewBag.v3 = "Ürün Detay Güncelle";
 
-            var result = await _httpService.GetOne<UpdateProductDetailDto>("ProductDetails/GetProductDetailByProductId?id=" + id);
+            var result = await _productDetailService.GetByProductIdProductDetailForUpdate(id);
+        
             if (result != null)
             {
                 TempData["MustAdd"] = false;
@@ -56,14 +57,13 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                     ProductDescription = updateProductDetailDto.ProductDescription,
                     ProductInfo = updateProductDetailDto.ProductInfo
                 };
-                result = await _httpService.Create<CreateProductDetailDto>("ProductDetails", createProductDetailDto);
+                await _productDetailService.CreateProductDetailAsync(createProductDetailDto);
             }
             else
             {
-                result = await _httpService.Update<UpdateProductDetailDto>("ProductDetails", updateProductDetailDto);
+                await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);
             }
-            if (result) { return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" }); }
-            return View();
+            return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
         }
     }
 }

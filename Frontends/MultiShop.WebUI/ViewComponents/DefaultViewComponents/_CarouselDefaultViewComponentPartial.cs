@@ -1,27 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
+using MultiShop.WebUI.Services.CatalogServices.SliderServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _CarouselDefaultViewComponentPartial : ViewComponent
     {
-        private readonly IHttpService _httpService;
-        public _CarouselDefaultViewComponentPartial(IHttpService httpService)
-        {
-            _httpService = httpService;
 
-            _httpService.setUrl("CatalogApi");
+        private readonly IFeatureSliderService _featureSliderService;
+        public _CarouselDefaultViewComponentPartial(IFeatureSliderService featureSliderService)
+        {
+           _featureSliderService = featureSliderService;
         }
 
-
-    
         public async  Task<IViewComponentResult> InvokeAsync()
         {
-
-            var result = await _httpService.Get<ResultFeatureSliderDto>("FeatureSliders");
-            if (result != null) return View(result);
-            return View();
+            var result = await _featureSliderService.GetAllFeatureSliderAsync();
+            return View(result);
         }
     }
 }

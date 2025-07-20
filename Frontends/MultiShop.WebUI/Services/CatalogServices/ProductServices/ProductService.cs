@@ -35,21 +35,33 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductServices
             return values;
         }
 
-        public async Task<UpdateProductDto> GetByIdProduct(string id)
+        public async Task<UpdateProductDto> GetByIdProductForUpdate(string id)
         {
             var resp = await _httpClient.GetAsync("products/" + id);
             var values = await resp.Content.ReadFromJsonAsync<UpdateProductDto>();
             return values;
         }
 
+        public async Task<ResultProductDto> GetByIdProduct(string id)
+        {
+            var resp = await _httpClient.GetAsync("products/" + id);
+            var values = await resp.Content.ReadFromJsonAsync<ResultProductDto>();
+            return values;
+        }
+
         public async Task<List<ResultProductWithCategory>> GetProductsWithCategoryAsync()
         {
-            throw new NotImplementedException();
+            var resp = await _httpClient.GetAsync("products/ProductListWithCategory");
+            var values = await resp.Content.ReadFromJsonAsync<List<ResultProductWithCategory>>();
+            return values;
         }
 
         public async Task<List<ResultProductWithCategory>> GetProductsWithCategoryByCategoryIdAsync(string CategoryId)
         {
-            throw new NotImplementedException();
+            //ProductListWithCategoryByCategoryId
+            var resp = await _httpClient.GetAsync("products/ProductListWithCategoryByCategoryId?id="+CategoryId);
+            var values = await resp.Content.ReadFromJsonAsync<List<ResultProductWithCategory>>();
+            return values;
         }
 
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto)

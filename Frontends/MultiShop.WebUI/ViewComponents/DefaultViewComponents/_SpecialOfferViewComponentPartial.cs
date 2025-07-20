@@ -1,28 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.SpecialOfferDTOs;
+using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _SpecialOfferViewComponentPartial : ViewComponent
     {
-
-
-        private readonly IHttpService _httpService;
-        public _SpecialOfferViewComponentPartial(IHttpService httpService)
+        private readonly ISpecialOfferService _specialOfferService;
+        public _SpecialOfferViewComponentPartial(ISpecialOfferService specialOfferService)
         {
-            _httpService = httpService;
-
-            _httpService.setUrl("CatalogApi");
+            _specialOfferService = specialOfferService;
         }
-
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-
-            var result = await _httpService.Get<ResultSpecialOfferDto>("SpecialOffers");
-            if (result != null) return View(result);
-            return View();
+            var result = await _specialOfferService.GetAllSpecialOfferAsync();
+            return View(result);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.BrandDtos;
+using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
@@ -10,26 +11,28 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Route("Admin/Brand")]
     public class BrandController : Controller
     {
-        private readonly IHttpService _httpService;
-        public BrandController(IHttpService httpService)
+        private readonly IBrandService _brandService;
+        public BrandController(IHttpService httpService,IBrandService brandService)
         {
-            _httpService = httpService;
+            _brandService = brandService;
 
-            _httpService.setUrl("CatalogApi");
         }
 
-
-        public async Task<IActionResult> Index()
+        void ViewBagList(string pagename)
         {
             ViewBag.v0 = "Marka İşlemleri";
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Markalar";
-            ViewBag.v3 = "Marka Listesi";
+            ViewBag.v3 = pagename;
 
+        }
 
-            var result = await _httpService.Get<ResultBrandDto>("Brands");
-            if (result != null) return View(result);
-            return View();
+        public async Task<IActionResult> Index()
+        {
+            ViewBagList("Marka Listesi");
+
+            var result = await _brandService.GetAllBrandAsync();
+            return View(result);
         }
 
 
@@ -37,10 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateBrand")]
         public IActionResult CreateBrand()
         {
-            ViewBag.v0 = "Marka İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Markalar";
-            ViewBag.v3 = "Marka Ekle";
+            ViewBagList("Marka Ekle");
 
             return View();
         }
@@ -49,41 +49,34 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateBrand")]
         public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)
         {
-            var result = await _httpService.Create<CreateBrandDto>("Brands", createBrandDto);
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            await _brandService.CreateBrandAsync(createBrandDto);
+            return RedirectToAction("Index", new { area = "Admin" });
         }
 
 
         [Route("DeleteBrand/{id}")]
         public async Task<IActionResult> DeleteBrand(string id)
         {
-            var result = await _httpService.DeleteById("Brands", id);
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            await _brandService.DeleteBrandAsync(id);
+            return RedirectToAction("Index", new { area = "Admin" });
         }
 
         [Route("UpdateBrand/{id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateBrand(string id)
         {
-            ViewBag.v0 = "Marka İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Markalar";
-            ViewBag.v3 = "Marka Güncelle";
+            ViewBagList("Marka Güncelle");
 
-            var result = await _httpService.GetById<UpdateBrandDto>("Brands", id);
-            if (result != null) return View(result);
-            return View();
+            var result = await _brandService.GetByIdBrand(id);
+            return View(result);
         }
 
         [Route("UpdateBrand/{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateBrand(UpdateBrandDto updateBrandDto)
         {
-            var result = await _httpService.Update<UpdateBrandDto>("Brands", updateBrandDto);
-            if (result) { return RedirectToAction("Index", "Brand", new { area = "Admin" }); }
-            return View();
+            await _brandService.UpdateBrandAsync(updateBrandDto);
+            return RedirectToAction("Index", "Brand", new { area = "Admin" });
         }
     }
 }
