@@ -38,6 +38,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<ILoginService,LoginService>();
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RedisSettings"));
+
 builder.Services.AddSingleton<RedisService>(sp =>
 {
     var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
@@ -56,12 +57,16 @@ builder.Services.AddControllers(opt =>
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

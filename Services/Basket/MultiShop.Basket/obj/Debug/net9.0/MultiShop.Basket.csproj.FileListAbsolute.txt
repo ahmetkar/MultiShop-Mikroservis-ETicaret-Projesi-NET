@@ -29,12 +29,6 @@ D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\sc
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.Basket.Microsoft.AspNetCore.StaticWebAssets.props
-D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets\msbuild.MultiShop.Basket.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets\msbuild.build.MultiShop.Basket.props
-D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MultiShop.Basket.props
-D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MultiShop.Basket.props
-D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.pack.json
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiSho.1E2CD437.Up2Date
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiShop.Basket.dll
@@ -43,3 +37,11 @@ D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\Mu
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiShop.Basket.genruntimeconfig.cache
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\ref\MultiShop.Basket.dll
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiShop.Basket.sourcelink.json
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

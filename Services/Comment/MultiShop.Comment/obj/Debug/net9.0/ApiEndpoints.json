@@ -76,7 +76,7 @@
   {
     "ContainingType": "MultiShop.Comment.Controllers.CommentsController",
     "Method": "GetCommentsByProductId",
-    "RelativePath": "api/Comments/CommentsByProductId",
+    "RelativePath": "api/Comments/CommentsByProductId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -84,7 +84,7 @@
       {
         "Name": "id",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
