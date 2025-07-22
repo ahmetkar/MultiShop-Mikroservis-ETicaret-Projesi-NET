@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var x = 1;
 
 var requireAuthorizationPolicy = new AuthorizationPolicyBuilder()
     .RequireAuthenticatedUser()
