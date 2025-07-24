@@ -17,11 +17,31 @@ namespace MultiShop.WebUI.Controllers
             _productService = productService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string code,string discountrate,string totalpricewithcoupon)
         {
             ViewBag.Directory1 = "Ana Sayfa";
             ViewBag.Directory2 = "Ürünler";
             ViewBag.Directory3 = "Sepetim";
+
+
+            ViewBag.TotalPriceWithTaxAndCoupon = totalpricewithcoupon;
+            ViewBag.code = code;
+            ViewBag.DiscountRate = discountrate;
+
+
+            var basketitems = await _basketService.GetBasket();
+            ViewBag.TotalPrice = (basketitems).TotalPrice;
+
+            int KDVPercent = 10;
+            double KDV = ((double)basketitems.TotalPrice * KDVPercent) / 100;
+            ViewBag.KDV = KDV;
+
+            double totalPriceWithTax = (double)basketitems.TotalPrice + KDV ;
+            ViewBag.TotalPriceWithTax = totalPriceWithTax;
+
+
+           
+
             return View();
         }
 

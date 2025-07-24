@@ -5,10 +5,10 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Coupon": {
+    "/api/Discounts": {
       "get": {
         "tags": [
-          "Coupon"
+          "Discounts"
         ],
         "responses": {
           "200": {
@@ -18,7 +18,7 @@
       },
       "post": {
         "tags": [
-          "Coupon"
+          "Discounts"
         ],
         "requestBody": {
           "content": {
@@ -47,7 +47,7 @@
       },
       "delete": {
         "tags": [
-          "Coupon"
+          "Discounts"
         ],
         "parameters": [
           {
@@ -67,7 +67,7 @@
       },
       "put": {
         "tags": [
-          "Coupon"
+          "Discounts"
         ],
         "requestBody": {
           "content": {
@@ -95,10 +95,10 @@
         }
       }
     },
-    "/api/Coupon/{id}": {
+    "/api/Discounts/{id}": {
       "get": {
         "tags": [
-          "Coupon"
+          "Discounts"
         ],
         "parameters": [
           {
@@ -108,6 +108,50 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Discounts/GetCodeDetailByCode/{code}": {
+      "get": {
+        "tags": [
+          "Discounts"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Discounts/GetDiscountCouponCountRate/{code}": {
+      "get": {
+        "tags": [
+          "Discounts"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],

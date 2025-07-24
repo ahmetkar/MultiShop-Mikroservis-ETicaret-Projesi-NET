@@ -25,6 +25,10 @@
       {
         "Path": "Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj",
+        "Action": "Start"
       }
     ]
   }
