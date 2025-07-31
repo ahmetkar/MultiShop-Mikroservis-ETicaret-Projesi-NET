@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MultiShop.Comment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf360859dab5be00fea1ddb777003999667aba49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e425c7d236a7ec91180e84d7cc0cf79947e0f9e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MultiShop.Comment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MultiShop.Comment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

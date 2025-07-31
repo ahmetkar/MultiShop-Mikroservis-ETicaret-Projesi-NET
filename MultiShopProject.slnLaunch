@@ -29,6 +29,10 @@
       {
         "Path": "Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
+        "Action": "Start"
       }
     ]
   }

@@ -1,6 +1,6 @@
 ﻿using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
 
-namespace MultiShop.WebUI.Services.CatalogServices.SliderServices
+namespace MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices
 {
     public class FeatureSliderService : IFeatureSliderService
     {
@@ -13,7 +13,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.SliderServices
 
         public async Task CreateFeatureSliderAsync(CreateFeatureSliderDto createFeatureSliderDto)
         {
-            await _httpClient.PostAsJsonAsync<CreateFeatureSliderDto>("featuresliders", createFeatureSliderDto);
+            await _httpClient.PostAsJsonAsync("featuresliders", createFeatureSliderDto);
 
         }
 
@@ -49,7 +49,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.SliderServices
 
         public async Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto updateFeatureSliderDto)
         {
-            await _httpClient.PutAsJsonAsync<UpdateFeatureSliderDto>("featuresliders", updateFeatureSliderDto);
+            await _httpClient.PutAsJsonAsync("featuresliders", updateFeatureSliderDto);
 
         }
 

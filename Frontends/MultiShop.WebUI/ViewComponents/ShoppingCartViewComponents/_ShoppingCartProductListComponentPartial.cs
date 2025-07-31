@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiShop.WebUI.Services.CatalogServices.BasketServices;
+using MultiShop.WebUI.Services.BasketServices;
 
 namespace MultiShop.WebUI.ViewComponents.ShoppingCartViewComponents
 {

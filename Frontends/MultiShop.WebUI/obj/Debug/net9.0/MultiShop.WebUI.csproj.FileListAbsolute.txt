@@ -264,7 +264,6 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compresse
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\r5k26bn2in-87fc7y1x7t.gz
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\2774ftvq6u-mlv21k5csn.gz
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\xftkk2vsc5-i5toegtvoh.gz
-D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\y4mtec6pnz-wmwnf78cnh.gz
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\yh6hcoklj3-0bkrhou1fn.gz
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\01wkunskws-5cvsbhso3i.gz
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\u8qbp06pcv-4xobxujq4g.gz
@@ -484,3 +483,4 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Duende.Ac
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Duende.IdentityModel.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\IdentityModel.AspNetCore.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\y4mtec6pnz-qnndijt5bl.gz

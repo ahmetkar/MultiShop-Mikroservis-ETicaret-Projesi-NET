@@ -2,7 +2,7 @@
 using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
 using Microsoft.AspNetCore.Authorization;
 using MultiShop.WebUI.Services.Interfaces;
-using MultiShop.WebUI.Services.CatalogServices.SliderServices;
+using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]

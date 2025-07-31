@@ -78,7 +78,7 @@
       "MultiShop.Order.Domain/1.0.0": {
         "runtime": {
           "MultiShop.Order.Domain.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
