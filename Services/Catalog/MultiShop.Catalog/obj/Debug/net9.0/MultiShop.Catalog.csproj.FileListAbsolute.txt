@@ -26,7 +26,6 @@ D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\MultiSho.C11EF5E0.Up2Date
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\MultiShop.Catalog.dll
 D:\0Dotnet\MultiShopProject\Services\Catalog\MultiShop.Catalog\obj\Debug\net9.0\refint\MultiShop.Catalog.dll

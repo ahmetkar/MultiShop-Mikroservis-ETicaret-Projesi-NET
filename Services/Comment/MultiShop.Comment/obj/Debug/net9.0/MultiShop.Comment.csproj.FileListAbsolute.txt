@@ -150,7 +150,6 @@ D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\MultiSho.E7BC7B8A.Up2Date
 D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\MultiShop.Comment.dll
 D:\0Dotnet\MultiShopProject\Services\Comment\MultiShop.Comment\obj\Debug\net9.0\refint\MultiShop.Comment.dll

@@ -29,7 +29,6 @@ D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\MultiSho.8BA34CC5.Up2Date
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\MultiShop.OcelotGateway.dll
 D:\0Dotnet\MultiShopProject\ApiGateway\MultiShop.OcelotGateway\obj\Debug\net9.0\refint\MultiShop.OcelotGateway.dll

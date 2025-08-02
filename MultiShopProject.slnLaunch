@@ -33,6 +33,10 @@
       {
         "Path": "Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
+        "Action": "Start"
       }
     ]
   }

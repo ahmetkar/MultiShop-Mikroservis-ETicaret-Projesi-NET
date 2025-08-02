@@ -29,7 +29,6 @@ D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\sc
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiSho.1E2CD437.Up2Date
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\MultiShop.Basket.dll
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\refint\MultiShop.Basket.dll

@@ -112,7 +112,6 @@ D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\ne
 D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\net9.0\MultiSho.91E21653.Up2Date
 D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\net9.0\MultiShop.IdentityServer.dll
 D:\0Dotnet\MultiShopProject\IdentityServer\MultiShop.IdentityServer\obj\Debug\net9.0\refint\MultiShop.IdentityServer.dll

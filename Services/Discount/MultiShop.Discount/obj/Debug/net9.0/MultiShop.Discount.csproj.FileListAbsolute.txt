@@ -152,7 +152,6 @@ D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.build.json
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.development.json
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\MultiSho.5AC482D7.Up2Date
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\MultiShop.Discount.dll
 D:\0Dotnet\MultiShopProject\Services\Discount\MultiShop.Discount\obj\Debug\net9.0\refint\MultiShop.Discount.dll
