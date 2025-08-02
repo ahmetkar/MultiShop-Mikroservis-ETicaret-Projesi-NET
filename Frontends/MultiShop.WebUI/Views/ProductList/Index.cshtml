@@ -9,7 +9,7 @@
     <div class="row px-xl-5">
         <!-- Shop Sidebar Start -->
         <div class="col-lg-3 col-md-4">
-            <!-- Price Start -->
+         @*   <!-- Price Start -->
             @await Component.InvokeAsync("_ProductListPriceFilterComponentPartial")
             <!-- Price End -->
 
@@ -18,7 +18,8 @@
             <!-- Color End -->
             <!-- Size Start -->
             @await Component.InvokeAsync("_ProductListSizeFilterComponentPartial")
-            <!-- Size End -->
+            <!-- Size End -->*@ 
+             @await Component.InvokeAsync("_ProductsFilterListComponentPartial", new { categoryid = ViewBag.i })
         </div>
         <!-- Shop Sidebar End -->
         <!-- Shop Product Start -->
@@ -26,7 +27,7 @@
             <div class="row pb-3">
                 @await Component.InvokeAsync("_ProductListGetProductCountComponentPartial")
 
-                @await Component.InvokeAsync("_ProductListComponentPartial",new {id=ViewBag.i})
+                @await Component.InvokeAsync("_ProductListComponentPartial",new {categoryid=ViewBag.i})
 
                 @await Component.InvokeAsync("_ProductListPaginationComponentPartial")
 

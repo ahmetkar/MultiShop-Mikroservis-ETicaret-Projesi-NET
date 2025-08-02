@@ -10,14 +10,12 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Route("Admin/ProductDetail")]
     public class ProductDetailController : Controller
     {
-        
-
+       
         private readonly IProductDetailService _productDetailService;
         public ProductDetailController(IProductDetailService productDetailService)
         {
             _productDetailService = productDetailService;
         }
-
 
         //id -> product id
         [Route("UpdateProductDetail/{id}")]

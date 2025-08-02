@@ -66,6 +66,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Çözüm Öğeleri", "Çözüm Öğeleri", "{73CDE5B5-D895-47B0-971F-51426CC01D01}"
 	ProjectSection(SolutionItems) = preProject
 		Ports.txt = Ports.txt
+		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{70FE811C-B919-441A-AED3-C7C2A1865B63}"

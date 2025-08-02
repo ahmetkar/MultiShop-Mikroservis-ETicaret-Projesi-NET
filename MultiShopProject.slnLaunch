@@ -37,6 +37,10 @@
       {
         "Path": "Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
+        "Action": "Start"
       }
     ]
   }

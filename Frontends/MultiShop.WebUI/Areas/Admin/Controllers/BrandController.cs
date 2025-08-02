@@ -12,7 +12,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class BrandController : Controller
     {
         private readonly IBrandService _brandService;
-        public BrandController(IHttpService httpService,IBrandService brandService)
+        public BrandController(IBrandService brandService)
         {
             _brandService = brandService;
 

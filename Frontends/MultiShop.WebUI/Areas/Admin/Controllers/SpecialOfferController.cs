@@ -14,7 +14,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     {
         private readonly ISpecialOfferService _specialOfferService;
 
-        public SpecialOfferController(IHttpService httpService,ISpecialOfferService specialOfferService)
+        public SpecialOfferController(ISpecialOfferService specialOfferService)
         {
             _specialOfferService = specialOfferService;
 

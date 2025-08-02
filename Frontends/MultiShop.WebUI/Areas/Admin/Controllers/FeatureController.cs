@@ -18,8 +18,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             _featureService = featureService;
 
         }
-
-
         void ViewBagList(string pagename)
         {
             ViewBag.v0 = "Öne Çıkan Alanlar İşlemleri";

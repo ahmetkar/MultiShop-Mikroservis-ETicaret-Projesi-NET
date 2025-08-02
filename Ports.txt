@@ -6,6 +6,7 @@
 "Comment": "http://localhost:7075/",
 "Payment": "http://localhost:7076/",
 "Images": "http://localhost:7077/",
+"Message":"http://localhost:7078/",
 "Identity": "http://localhost:5001/",
 "WebUI": "http://localhost:7021",
 "ApiGateway": "http://localhost:5000"

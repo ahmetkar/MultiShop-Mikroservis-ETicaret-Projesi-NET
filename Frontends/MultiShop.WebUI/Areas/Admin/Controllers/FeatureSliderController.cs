@@ -10,7 +10,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class FeatureSliderController : Controller
     {
         private readonly IFeatureSliderService _featureSliderService;
-        public FeatureSliderController(IHttpService httpService,IFeatureSliderService featureSliderService)
+        public FeatureSliderController(IFeatureSliderService featureSliderService)
         {
             _featureSliderService = featureSliderService;
         

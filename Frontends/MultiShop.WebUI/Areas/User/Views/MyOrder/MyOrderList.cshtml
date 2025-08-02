@@ -6,12 +6,17 @@
     Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
     int count = 0;
 }
-<section class="content container-fluid">
+
     <div class="row">
-        <div class="col-md-12">
-            <div class="chart-box">
-                <div class="bs-example" data-example-id="bordered-table">
-                    <table class="table table-bordered table-striped">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Table</h4>
+                <p class="card-description">
+                    Add class <code>.table</code>
+                </p>
+                <div class="table-responsive">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -23,7 +28,7 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                count++; 
+                                count++;
                                 <tr>
                                     <th>@count</th>
                                     <td>@item.TotalPrice</td>
@@ -37,4 +42,4 @@
             </div>
         </div>
     </div>
-</section>
+    </div>

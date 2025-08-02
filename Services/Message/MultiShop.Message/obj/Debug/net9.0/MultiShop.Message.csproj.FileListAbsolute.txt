@@ -133,3 +133,11 @@ D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

@@ -60,7 +60,7 @@
   {
     "ContainingType": "MultiShop.Message.Controllers.UserMessageController",
     "Method": "GetMessageInbox",
-    "RelativePath": "api/UserMessage/GetMessageInbox",
+    "RelativePath": "api/UserMessage/GetMessageInbox/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -68,15 +68,15 @@
       {
         "Name": "id",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "MultiShop.Message.Controllers.UserMessageController",
-    "Method": "GetMessageSendBox",
-    "RelativePath": "api/UserMessage/GetMessageSendBox",
+    "Method": "GetMessageSendbox",
+    "RelativePath": "api/UserMessage/GetMessageSendbox/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -84,7 +84,7 @@
       {
         "Name": "id",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
