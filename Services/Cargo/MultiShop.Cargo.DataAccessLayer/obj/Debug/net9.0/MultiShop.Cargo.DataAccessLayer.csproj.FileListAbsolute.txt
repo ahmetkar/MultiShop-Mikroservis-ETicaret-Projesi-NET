@@ -14,3 +14,5 @@ D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\D
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.pdb
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\ref\MultiShop.Cargo.DataAccessLayer.dll
 D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.sourcelink.json
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\bin\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.runtimeconfig.json
+D:\0Dotnet\MultiShopProject\Services\Cargo\MultiShop.Cargo.DataAccessLayer\obj\Debug\net9.0\MultiShop.Cargo.DataAccessLayer.genruntimeconfig.cache

@@ -32,6 +32,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MultiShop.IdentityServer.Controllers.StatisticsController",
+    "Method": "GetUserCount",
+    "RelativePath": "api/Statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MultiShop.IdentityServer.Controllers.UsersController",
     "Method": "GetAllUserList",
     "RelativePath": "api/Users/GetAllUserList",

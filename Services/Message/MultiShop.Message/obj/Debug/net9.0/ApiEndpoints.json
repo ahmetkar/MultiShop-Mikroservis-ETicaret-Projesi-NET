@@ -88,5 +88,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Message.Controllers.UserMessageController",
+    "Method": "GetReceivedMessageCount",
+    "RelativePath": "api/UserMessage/GetReceivedMessageCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

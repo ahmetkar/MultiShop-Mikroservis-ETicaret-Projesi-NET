@@ -88,5 +88,25 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Comment.Controllers.CommentsController",
+    "Method": "GetActiveCommentCount",
+    "RelativePath": "api/Comments/GetActiveCommentCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Comment.Controllers.CommentsController",
+    "Method": "GetTotalCommentCount",
+    "RelativePath": "api/Comments/GetTotalCommentCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

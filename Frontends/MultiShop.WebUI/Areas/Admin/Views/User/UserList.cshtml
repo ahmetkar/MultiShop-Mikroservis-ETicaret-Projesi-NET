@@ -21,7 +21,8 @@
                                 <th>Ad ve soyad</th>
                                 <th>Email</th>
                                 <th>Telefon nu</th>
-                                <th>Kilitli mi ?</th>
+                                <th>Lockout enabled ?</th>
+                                <th>Adres detayları</th>
                                 <th> </th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                     <td>@item.email</td>
                                     <td>@item.phoneNumber (@item.phoneNumberConfirmed)</td>
                                     <td>@item.lockoutEnabled</td>
+                                    <td><a class="btn btn-danger" href="/Admin/User/UserAddressInfo/@item.id">Adres Detaylarını Gör</a></td>
                                     <td> <a class="btn btn-danger" href="/Admin/User/DeleteUser/@item.id">Sil</a></td>
                                     
                                 </tr>

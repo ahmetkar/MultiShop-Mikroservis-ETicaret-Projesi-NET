@@ -38,6 +38,14 @@ namespace MultiShop.IdentityServer.Controllers
             });
         }
 
+        [HttpGet("GetUserId")]
+        public async Task<IActionResult> GetUserId()
+        {
+            var userClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
+            var user = await _userManager.FindByIdAsync(userClaim.Value);
+            return Ok(user.Id);
+        }
+
         [HttpGet("GetAllUserList")]
         public async Task<IActionResult> GetAllUserList()
         {

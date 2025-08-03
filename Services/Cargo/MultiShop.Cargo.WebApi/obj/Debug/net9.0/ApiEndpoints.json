@@ -148,6 +148,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MultiShop.Cargo.WebApi.Controllers.CargoCustomersController",
+    "Method": "GetCargoCustomerById",
+    "RelativePath": "api/CargoCustomers/GetCargoCustomerById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MultiShop.Cargo.WebApi.Controllers.CargoDetailsController",
     "Method": "CargoDetailsList",
     "RelativePath": "api/CargoDetails",

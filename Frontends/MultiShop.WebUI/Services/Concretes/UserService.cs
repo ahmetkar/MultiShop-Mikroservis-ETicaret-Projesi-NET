@@ -18,5 +18,10 @@ namespace MultiShop.WebUI.Services.Concretes
         {
             return await _httpClient.GetFromJsonAsync<UserDetailViewModel>("/api/users/getuserinfo");
         }
+
+        public async Task<string> GetUserId()
+        {
+            return await _httpClient.GetFromJsonAsync<string>("/api/users/getuserid");
+        }
     }   
 }

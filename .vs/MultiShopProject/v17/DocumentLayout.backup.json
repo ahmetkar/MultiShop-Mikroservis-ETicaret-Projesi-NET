@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "D:\\0Dotnet\\MultiShopProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\views\\cargo\\createcargocompany.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\views\\cargo\\createcargocompany.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\views\\shared\\components\\_adminlayoutheadercomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\views\\shared\\components\\_adminlayoutheadercomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\viewcomponents\\adminlayoutviewcomponents\\_adminlayoutheadercomponentpartial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\viewcomponents\\adminlayoutviewcomponents\\_adminlayoutheadercomponentpartial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\services\\cargoservices\\cargocompanyservices\\cargocompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\cargoservices\\cargocompanyservices\\cargocompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B8B53719-FD80-45BC-8172-CEB977036ABF}|Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj|d:\\0dotnet\\multishopproject\\services\\message\\multishop.message\\services\\usermessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8B53719-FD80-45BC-8172-CEB977036ABF}|Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj|solutionrelative:services\\message\\multishop.message\\services\\usermessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\views\\shared\\components\\_adminlayoutsidebarcomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\views\\shared\\components\\_adminlayoutsidebarcomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B8B53719-FD80-45BC-8172-CEB977036ABF}|Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj|d:\\0dotnet\\multishopproject\\services\\message\\multishop.message\\controllers\\usermessagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8B53719-FD80-45BC-8172-CEB977036ABF}|Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj|solutionrelative:services\\message\\multishop.message\\controllers\\usermessagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\services\\catalogservices\\aboutservices\\aboutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\catalogservices\\aboutservices\\aboutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\views\\cargo\\cargocompanylist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\views\\cargo\\cargocompanylist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|d:\\0dotnet\\multishopproject\\services\\signalr\\multishop.signalrrealtimeapi\\hubs\\signalrhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|solutionrelative:services\\signalr\\multishop.signalrrealtimeapi\\hubs\\signalrhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,92 +51,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CreateCargoCompany.cshtml",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CreateCargoCompany.cshtml",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CreateCargoCompany.cshtml",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CreateCargoCompany.cshtml",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CreateCargoCompany.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-02T22:00:31.659Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Default.cshtml",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutSidebarComponentPartial\\Default.cshtml",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutSidebarComponentPartial\\Default.cshtml",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutSidebarComponentPartial\\Default.cshtml",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutSidebarComponentPartial\\Default.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAB8AAAAAAAAAA==",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-02T21:33:31.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CargoCompanyList.cshtml",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CargoCompanyList.cshtml",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CargoCompanyList.cshtml",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CargoCompanyList.cshtml",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Cargo\\CargoCompanyList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-02T21:27:02.733Z",
+              "WhenOpened": "2025-08-03T22:09:14.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CargoController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Controllers\\CargoController.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Controllers\\CargoController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Controllers\\CargoController.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Controllers\\CargoController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABwAAAAyAAAAAAAAAA==",
+              "Title": "_AdminLayoutHeaderComponentPartial.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T21:25:48.349Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Program.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Program.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Program.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Program.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAAAGIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T21:23:57.663Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AboutService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\CatalogServices\\AboutServices\\AboutService.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\CatalogServices\\AboutServices\\AboutService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\CatalogServices\\AboutServices\\AboutService.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\CatalogServices\\AboutServices\\AboutService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAmwCYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T21:19:55.878Z",
+              "WhenOpened": "2025-08-03T22:05:53.256Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CargoCompanyService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\CargoServices\\CargoCompanyServices\\CargoCompanyService.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\CargoServices\\CargoCompanyServices\\CargoCompanyService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\CargoServices\\CargoCompanyServices\\CargoCompanyService.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\CargoServices\\CargoCompanyServices\\CargoCompanyService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "Title": "UserMessageService.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\Services\\UserMessageService.cs",
+              "RelativeDocumentMoniker": "Services\\Message\\MultiShop.Message\\Services\\UserMessageService.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\Services\\UserMessageService.cs",
+              "RelativeToolTip": "Services\\Message\\MultiShop.Message\\Services\\UserMessageService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T21:17:09.677Z",
+              "WhenOpened": "2025-08-03T22:00:12.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserMessageController.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\Controllers\\UserMessageController.cs",
+              "RelativeDocumentMoniker": "Services\\Message\\MultiShop.Message\\Controllers\\UserMessageController.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\Controllers\\UserMessageController.cs",
+              "RelativeToolTip": "Services\\Message\\MultiShop.Message\\Controllers\\UserMessageController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADoAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T21:59:34.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SignalRHub.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
+              "RelativeDocumentMoniker": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
+              "RelativeToolTip": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T21:50:37.747Z",
               "EditorCaption": ""
             }
           ]

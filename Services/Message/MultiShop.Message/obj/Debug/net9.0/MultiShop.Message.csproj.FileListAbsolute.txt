@@ -128,7 +128,6 @@ D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\obj\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\obj\Debug\net9.0\MultiShop.Message.pdb
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\obj\Debug\net9.0\MultiShop.Message.genruntimeconfig.cache
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\obj\Debug\net9.0\ref\MultiShop.Message.dll
-D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\AutoMapper.dll
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -141,3 +140,4 @@ D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\0Dotnet\MultiShopProject\Services\Message\MultiShop.Message\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -231,6 +231,27 @@
         }
       }
     },
+    "/api/CargoCustomers/GetCargoCustomerById": {
+      "get": {
+        "tags": [
+          "CargoCustomers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/CargoDetails": {
       "get": {
         "tags": [
@@ -500,6 +521,10 @@
           "city": {
             "type": "string",
             "nullable": true
+          },
+          "userCustomerId": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -590,6 +615,10 @@
             "nullable": true
           },
           "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "userCustomerId": {
             "type": "string",
             "nullable": true
           }

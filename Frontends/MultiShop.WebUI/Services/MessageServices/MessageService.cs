@@ -24,5 +24,12 @@ namespace MultiShop.WebUI.Services.MessageServices
             var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultSendboxMessageDto>>();
             return values;
         }
+
+        public async Task<int> GetTotalReceivedMessageCount(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync($"UserMessage/GetReceivedMessageCount?id={id}");
+            var value = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return value;
+        }
     }
 }

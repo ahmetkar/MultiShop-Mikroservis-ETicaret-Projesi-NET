@@ -46,6 +46,20 @@ namespace MultiShop.Message.Controllers
         }
 
 
+        [HttpGet("GetReceivedMessageCount")]
+        public async Task<IActionResult> GetTotalReceivedMessageCount(string id)
+        {
+            var values = await _userMessageService.GetTotalReceivedMessageCount(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetTotalMessageCount")]
+        public async Task<IActionResult> GetTotalMessageCount()
+        {
+            var values = await _userMessageService.GetTotalMessageCount();
+            return Ok(values);
+        }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteMessageAsync(int id)
         {

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MultiShop.Cargo.BussinessLayer.Abstract;
 using MultiShop.Cargo.DtoLayer.Dtos.CargoCustomer;
 using MultiShop.Cargo.EntityLayer.Concretes;
+using System.Formats.Asn1;
 
 namespace MultiShop.Cargo.WebApi.Controllers
 {
@@ -46,6 +47,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 Address = createCargoCustomerDto.Address,
                 City = createCargoCustomerDto.City,
                 District = createCargoCustomerDto.District,
+               UserCustomerId = createCargoCustomerDto.UserCustomerId
             };
 
             _cargoCustomerService.TInsert(cargoCustomer);
@@ -72,11 +74,16 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 Address = updateCargoCustomerDto.Address,
                 City = updateCargoCustomerDto.City,
                 District = updateCargoCustomerDto.District,
+                UserCustomerId = updateCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TUpdate(cargoCustomer);
             return Ok("Müşteri başarıyla güncellendi");
         }
 
-
+        [HttpGet("GetCargoCustomerById")]
+        public IActionResult GetCargoCustomerById(string id)
+        {
+            return Ok(_cargoCustomerService.TGetCargoCustomerById(id));
+        }
     }
 }
