@@ -1,12 +1,22 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using MultiShop.SignalRRealTimeApi.Services.SignalRCommentServices;
 
 namespace MultiShop.SignalRRealTimeApi.Hubs
 {
     public class SignalRHub : Hub
     {
-        public SignalRHub()
-        { 
+        private readonly ISignalRCommentService _signalRCommentService;
 
+        public SignalRHub(ISignalRCommentService signalRCommentService)
+        {
+            _signalRCommentService = signalRCommentService;
+        }
+
+        public async Task SendStatisticsCount()
+        {
+            var commentCountValue =await _signalRCommentService.GetTotalCommentCount();
+            await Clients.All.SendAsync("ReceiveCommentCount",commentCountValue);
+           
         }
     }
 }

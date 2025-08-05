@@ -6,7 +6,7 @@
 
 <body class="sidebar-mini">
     <div class="wrapper">
-
+     
         @await Component.InvokeAsync("_AdminLayoutHeaderComponentPartial")
 
       
@@ -16,8 +16,9 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            @await Component.InvokeAsync("_AdminLayoutTopSectionComponentPartial")
 
+            @await Component.InvokeAsync("_AdminLayoutTopSectionComponentPartial")
+            
             <!-- Main content -->
             @RenderBody()
             <!-- content -->
@@ -34,5 +35,33 @@
     <script src="~/ovioadmin/dist/js/jquery.min.js"></script>
     <script src="~/ovioadmin/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/ovioadmin/dist/js/ovio.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.slim.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(()=>{
+            var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7188/SignalRHub").build();
+            $("#connstatus").text(connection.state);
+
+            connection.start().then(()=>{
+                $("#connstatus").text(connection.state);
+                connection.invoke("SendStatisticsCount");
+            }).catch((err)=>{
+                    console.log(err);
+            });
+            connection.on("ReceiveCommentCount",(value)=>{
+                $(".commentcount").text(value);
+            });
+
+
+
+        });
+
+    </script>
 </body>
 </html>

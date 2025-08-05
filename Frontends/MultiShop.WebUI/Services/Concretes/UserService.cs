@@ -21,7 +21,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
         public async Task<string> GetUserId()
         {
-            return await _httpClient.GetFromJsonAsync<string>("/api/users/getuserid");
+            return await _httpClient.GetStringAsync("/api/users/getuserid");
         }
     }   
 }

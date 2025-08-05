@@ -53,6 +53,16 @@
   },
   {
     "ContainingType": "MultiShop.IdentityServer.Controllers.UsersController",
+    "Method": "GetUserId",
+    "RelativePath": "api/Users/GetUserId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.IdentityServer.Controllers.UsersController",
     "Method": "GetUserInfo",
     "RelativePath": "api/Users/GetUserInfo",
     "HttpMethod": "GET",

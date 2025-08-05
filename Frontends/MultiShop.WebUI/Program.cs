@@ -99,10 +99,6 @@ builder.Services.AddHttpClient<ICommentStasticService, CommentStasticService>(op
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
-
-
-
-
 builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Message.Path}");
@@ -148,8 +144,6 @@ builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Order.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-
 
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>

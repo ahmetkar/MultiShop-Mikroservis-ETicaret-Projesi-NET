@@ -2,11 +2,13 @@
 0-Filtreleme iþlemleri yapýlacak öncelikli(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
 0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek
 0-CommentService yazýlacak frontend için
-0-ELK stack veya serilog,elasticsearch entegre edilmeye çalýþýlacak
+0-Sepete ekleme yapmada hata var
 
 1-MyOrderList te hata var veriler gelmiyor
 2-Ödeme ekraný düzeltmeler
-3-Sepete ekleme yapmada hata var
-4-Comment service yazýlacak commet controller düzenlenecek
-5-Kayýt olma ve giriþ yapma normal kullanýcý içinde düzenlenecek
+3-Comment service yazýlacak commet controller düzenlenecek
+4-Kayýt olma ve giriþ yapma normal kullanýcý içinde düzenlenecek
+5-SignalR ile admin panelinde yorum bildirimlerininde alýnmasý saðlanacak
+6-ELK stack veya serilog,elasticsearch entegre edilecek
+7-Global error handler,exception hanler entegre edilecek.
 

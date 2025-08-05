@@ -17,6 +17,14 @@ namespace MultiShop.WebUI.Controllers
             _categoryService = categoryService;
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Deneme3()
+        {
+
+            return View();
+        }
+
         public async Task<IActionResult> Deneme2()
         {
             var values = await _categoryService.GetAllCategoryAsync();

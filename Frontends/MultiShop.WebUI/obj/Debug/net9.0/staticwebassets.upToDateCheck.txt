@@ -26,6 +26,7 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\app\cont
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\plugins\cubeportfolio\css\cubeportfolio.min.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\dist\weather\weather-icons.min.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\spica\css\style.css.map
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\microsoft\signalr\dist\browser\signalr.js
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\dist\css\style.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\spica\vendors\mdi\css\materialdesignicons.min.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\spica\pages\icons\mdi.html
@@ -175,6 +176,7 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\componen
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\tables\font-awesome\fonts\fontawesome-webfont.svg
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\plugins\countdown\jquery.min.js
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\plugins\cubeportfolio\jquery-latest.min.js
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\microsoft\signalr\dist\browser\signalr.js.map
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\spica\pages\samples\register.html
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\charts\bar.html
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
@@ -203,6 +205,7 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\spica\js\hoverable
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\css\regular.min.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\charts\et-line-font\fonts\et-line.svg
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\microsoft\signalr\dist\browser\signalr.min.js
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\forms\font-awesome\fonts\FontAwesome.otf
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\component\mediaobjects.html
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\forms\et-line-font\fonts\et-line.svg
@@ -241,6 +244,7 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\forms\la
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\charts\pie.html
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\component\font-awesome\css\font-awesome.min.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\multishop\css\bootstrap-grid.min.css
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\microsoft\signalr\dist\browser\signalr.min.js.map
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\maps\font-awesome\fonts\FontAwesome.otf
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\pages\et-line-font\et-line-font.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\plugins\countdown\vegas\jquery.vegas.min.js
@@ -405,6 +409,10 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\microsoft\signalr\dist\browser\signalr.js
+wwwroot\microsoft\signalr\dist\browser\signalr.js.map
+wwwroot\microsoft\signalr\dist\browser\signalr.min.js
+wwwroot\microsoft\signalr\dist\browser\signalr.min.js.map
 wwwroot\multishop\cart.html
 wwwroot\multishop\checkout.html
 wwwroot\multishop\contact.html

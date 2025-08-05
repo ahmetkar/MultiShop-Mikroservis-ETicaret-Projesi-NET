@@ -23,6 +23,13 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.WebHost.ConfigureKestrel((context, options) =>
+{
+    options.Limits.MaxResponseBufferSize = 512 * 1024; // 512KB
+    options.Limits.KeepAliveTimeout = TimeSpan.FromSeconds(15);
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Deneme3</title>
+
+
+</head>
+<body>
+
+
+    Bağlantı durumu : 
+    <strong id="connstatus">
+
+    </strong><br />
+
+
+</body>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.slim.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(()=>{
+        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7188/SignalRHub").build();
+        $("#connstatus").text(connection.state);
+
+        connection.start().then(()=>{
+            $("#connstatus").text(connection.state);
+        }).catch((err)=>{
+                console.log(err);
+        });
+
+    });
+
+</script>
+</html>
