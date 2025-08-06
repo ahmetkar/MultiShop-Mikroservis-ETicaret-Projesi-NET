@@ -3,60 +3,12 @@
   "WorkspaceRootPath": "D:\\0Dotnet\\MultiShopProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\views\\shared\\components\\_adminlayoutheadercomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\views\\shared\\components\\_adminlayoutheadercomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5A6B213E-8F79-49C1-8DCB-A2AD2C21FE8E}|Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj|d:\\0dotnet\\multishopproject\\services\\rabbitmqmessage\\multishop.rabbitmqmessageapi\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A6B213E-8F79-49C1-8DCB-A2AD2C21FE8E}|Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj|solutionrelative:services\\rabbitmqmessage\\multishop.rabbitmqmessageapi\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|d:\\0dotnet\\multishopproject\\services\\signalr\\multishop.signalrrealtimeapi\\services\\signalrcommentservices\\signalrcommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|solutionrelative:services\\signalr\\multishop.signalrrealtimeapi\\services\\signalrcommentservices\\signalrcommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\views\\adminlayout\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\views\\adminlayout\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\areas\\admin\\viewcomponents\\adminlayoutviewcomponents\\_adminlayoutheadercomponentpartial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\areas\\admin\\viewcomponents\\adminlayoutviewcomponents\\_adminlayoutheadercomponentpartial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|d:\\0dotnet\\multishopproject\\services\\signalr\\multishop.signalrrealtimeapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|solutionrelative:services\\signalr\\multishop.signalrrealtimeapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|d:\\0dotnet\\multishopproject\\services\\signalr\\multishop.signalrrealtimeapi\\hubs\\signalrhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|solutionrelative:services\\signalr\\multishop.signalrrealtimeapi\\hubs\\signalrhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDFD2346-76D7-4095-B675-8D82142F8EEC}|Services\\Comment\\MultiShop.Comment\\MultiShop.Comment.csproj|d:\\0dotnet\\multishopproject\\services\\comment\\multishop.comment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDFD2346-76D7-4095-B675-8D82142F8EEC}|Services\\Comment\\MultiShop.Comment\\MultiShop.Comment.csproj|solutionrelative:services\\comment\\multishop.comment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\services\\concretes\\clientcredentialtokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\concretes\\clientcredentialtokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FFF94FEC-2750-4687-A11D-70F3DF12B60D}|IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj|d:\\0dotnet\\multishopproject\\identityserver\\multishop.identityserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FFF94FEC-2750-4687-A11D-70F3DF12B60D}|IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj|solutionrelative:identityserver\\multishop.identityserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\services\\concretes\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\concretes\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|d:\\0dotnet\\multishopproject\\services\\signalr\\multishop.signalrrealtimeapi\\services\\signalrcommentservices\\isignalrcommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8578A20A-F66F-4FD1-82AA-3F13C1F958D9}|Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj|solutionrelative:services\\signalr\\multishop.signalrrealtimeapi\\services\\signalrcommentservices\\isignalrcommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\services\\statisticservices\\commentstatisticservices\\icommentstasticservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\statisticservices\\commentstatisticservices\\icommentstasticservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A6B213E-8F79-49C1-8DCB-A2AD2C21FE8E}|Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj|d:\\0dotnet\\multishopproject\\services\\rabbitmqmessage\\multishop.rabbitmqmessageapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A6B213E-8F79-49C1-8DCB-A2AD2C21FE8E}|Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj|solutionrelative:services\\rabbitmqmessage\\multishop.rabbitmqmessageapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -86,184 +38,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Program.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Program.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Program.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAnAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Program.cs",
+              "RelativeDocumentMoniker": "Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Program.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Program.cs",
+              "RelativeToolTip": "Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T18:12:39.753Z",
+              "WhenOpened": "2025-08-06T00:09:58.51Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\Shared\\Components\\_AdminLayoutHeaderComponentPartial\\Default.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-05T18:09:40.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Comment\\MultiShop.Comment\\Program.cs",
-              "RelativeDocumentMoniker": "Services\\Comment\\MultiShop.Comment\\Program.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Comment\\MultiShop.Comment\\Program.cs",
-              "RelativeToolTip": "Services\\Comment\\MultiShop.Comment\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Title": "MessageController.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Controllers\\MessageController.cs",
+              "RelativeDocumentMoniker": "Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Controllers\\MessageController.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Controllers\\MessageController.cs",
+              "RelativeToolTip": "Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\Controllers\\MessageController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T17:56:28.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ClientCredentialTokenService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\Concretes\\ClientCredentialTokenService.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\Concretes\\ClientCredentialTokenService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\Concretes\\ClientCredentialTokenService.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\Concretes\\ClientCredentialTokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAACqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T17:49:02.283Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Program.cs",
-              "RelativeDocumentMoniker": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Program.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Program.cs",
-              "RelativeToolTip": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T17:23:10.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\Concretes\\UserService.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\Concretes\\UserService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\Concretes\\UserService.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\Concretes\\UserService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAswBgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T17:02:38.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\IdentityServer\\MultiShop.IdentityServer\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "IdentityServer\\MultiShop.IdentityServer\\Controllers\\UsersController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\IdentityServer\\MultiShop.IdentityServer\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "IdentityServer\\MultiShop.IdentityServer\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T17:03:45.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\AdminLayout\\Index.cshtml",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\AdminLayout\\Index.cshtml",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\AdminLayout\\Index.cshtml",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\Views\\AdminLayout\\Index.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-05T16:59:02.643Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "TestController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Controllers\\TestController.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Controllers\\TestController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Controllers\\TestController.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Controllers\\TestController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T16:13:35.64Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SignalRCommentService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\SignalRCommentService.cs",
-              "RelativeDocumentMoniker": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\SignalRCommentService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\SignalRCommentService.cs",
-              "RelativeToolTip": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\SignalRCommentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T15:35:01.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ICommentStasticService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\StatisticServices\\CommentStatisticServices\\ICommentStasticService.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\StatisticServices\\CommentStatisticServices\\ICommentStasticService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\StatisticServices\\CommentStatisticServices\\ICommentStasticService.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\StatisticServices\\CommentStatisticServices\\ICommentStasticService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T15:37:13.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_AdminLayoutHeaderComponentPartial.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Areas\\Admin\\ViewComponents\\AdminLayoutViewComponents\\_AdminLayoutHeaderComponentPartial.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T15:35:34.321Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ISignalRCommentService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\ISignalRCommentService.cs",
-              "RelativeDocumentMoniker": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\ISignalRCommentService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\ISignalRCommentService.cs",
-              "RelativeToolTip": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Services\\SignalRCommentServices\\ISignalRCommentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T15:34:49.354Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SignalRHub.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
-              "RelativeDocumentMoniker": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
-              "RelativeToolTip": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\Hubs\\SignalRHub.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T15:33:43.313Z",
+              "WhenOpened": "2025-08-05T23:20:11.634Z",
               "EditorCaption": ""
             }
           ]

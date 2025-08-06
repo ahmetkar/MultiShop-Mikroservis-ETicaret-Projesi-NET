@@ -1,12 +1,12 @@
 
-0-Filtreleme iþlemleri yapýlacak öncelikli(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
-0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek
-0-CommentService yazýlacak frontend için
-0-Sepete ekleme yapmada hata var
+0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek,Sepete ekleme yapmada hata var
+0-Filtreleme iþlemleri yapýlacak(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
+0-CommentService yazýlacak frontend için, Comment sayýsý çekme iþlemleri ui içinde yapýlmalý
+
 
 1-MyOrderList te hata var veriler gelmiyor
 2-Ödeme ekraný düzeltmeler
-3-Comment service yazýlacak commet controller düzenlenecek
+3-Image mikroservisi image.webui örnek alýnarak yazýlacak(admin panelinden resim yükleme ve listeleme mümkün olacak)
 4-Kayýt olma ve giriþ yapma normal kullanýcý içinde düzenlenecek
 5-SignalR ile admin panelinde yorum bildirimlerininde alýnmasý saðlanacak
 6-ELK stack veya serilog,elasticsearch entegre edilecek

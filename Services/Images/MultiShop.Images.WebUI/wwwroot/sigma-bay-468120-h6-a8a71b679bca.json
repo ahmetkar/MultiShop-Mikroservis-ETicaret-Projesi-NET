@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sigma-bay-468120-h6",
+  "private_key_id": "a8a71b679bca94af5e8cce315d16e86795def300",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDDih7+AweyONog\nYhqNHhARA/SmonGSkqAREBq6W11EMNKL8GfBKJpVym7BLjwCxMjx+r4tUTv6ZnRx\ndW5IW6RacY84gnENWWMprcEcEgosd5RlGbSL+zEnvaOVT4An5sYPuiy1ZOPT23ws\n7Uvhv4xDVFD0uYBbQUkzb6KHK9B9wQJHkDx9u3tusKgI29BFYwQabU/KZK2DyPbP\n9XXGZ0KtgN9rDNw4Fywc9u+MNeldBnygFBo0meOyFZf0cwlKXs5aiZVURa6Z3QBe\nw6iUmoyZHOXFJiPDnSRiIGhS/QYCvyEXIEbWMJ5EKXMOgm31eQcQL/3fqiv51Ev6\nWjOjNO71AgMBAAECggEACGfRktdY51jGStbf9hz96wO7UPmlEPxSLfZkdiPwGG3s\nC+C9TqWK+aq5pBhATPL3zsWALPAgnraOXt1oOWtArDQ7FRGWZoQaXScY9Z0ltTYJ\n7QBArWiSeyp0Ju3DjPONcNoIV5I+SociCWErl+KyCg4ZazIZY5+k0+jPZcKEzdya\nb7CYY02hNhrJ7UqNIM3TX/hYtV4j0hOgT7XIORA8UPxvLnpHh6oVgESSo/+07IpN\n9J8+uS9HYzk28ycM/1iIDgnpVKgZe52G5QZca2QzwoLRtAGsO1NSZZ1sZsWq/J69\n5TVeLRnRROU+HtwBNKIuhRVz4iN2BbVj3GFJgzAsQQKBgQDzhTtZPLQqRAOY53wO\nyqo+gJbVg3vRMASfdB2bjwqO7pfi///b43RXXAAW0og0VsBJzylBSBr58zhlPrCh\nd7yy5QEyx3o45R6FiGV5QSqv1wxzaN3FvTqRff0VCN46kVN7ZwlbZxfmz8sp69Nb\nRJUKN5G4frsTswF3p5idYAmaKQKBgQDNj2xTQHtUdlEF0WapAMJ/No9a+IniThL/\n7dheC/5TdSC6lN0hTbE6Yzc1lEf1HsUwskac+6cZNPom3Q07ll/c2iXBzZ5ytw0g\nkjXHpaw0Zr3O0+y/kLr2G/LfLP/GeTlCGTPfUuQWVMWH+N9DxpLKR6oRp/Hzo/bt\nBkjP1Lxf7QKBgBCZLTFo7NLQrfoXFSKg97eo5h8Jhj/86OPBc18uAcc6RgoH7vWa\n7EwkDjGACh6fJx4gy6wScRxGUrq76ignVCpRZ6KBbDhCjbEGWfxIz9MKcmPPawZW\nXo6aKszrPNJ7I1iO7llXjo6B7VQfKdnXs9ztarZLlQ7Drb7tIn7fk+f5AoGAC2RX\nbIW2UAf+lYP1XIhePw6XA0Oi4JfTFbvosc2YWqezGKQHXUEhAUteU+nT0xHRe9Fl\neG255Pu6oUy+3v6GcYblcMgkb9cVMyjnMhlMYdsPydaU2Ej9E4aY/yVPR4CQW8lp\nxoahfVtVVyPDu83VdMBj/HaCQi5kEN64SkxP5EECgYAFCkW+jv/PksrYLV+IDxRX\nd3gFrqnPQ+1rba0NFX3qM0EHirRcBMRXmoWmifDFBshbQW0mFh2mQGJ/6SDVc0xP\no5+BAK9LIdAvnAjlnThj3dV4WUxbuFzsBdV2fcDj1e2XTHj8sGX//R05ugbbEtus\ncN2h21n7oi2kBdo1jvIqnw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "multishopproject@sigma-bay-468120-h6.iam.gserviceaccount.com",
+  "client_id": "100561891888509029618",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/multishopproject%40sigma-bay-468120-h6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
