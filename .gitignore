@@ -5,3 +5,4 @@
 *.vsidx
 /.vs/MultiShopProject/DesignTimeBuild/.dtbcache.v2
 /Frontends/MultiShop.WebUI/wwwroot/spica/node_modules
+/Services/RabbitMQMessage/MultiShop.RabbitMQMessageApi/appsettings.json
