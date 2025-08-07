@@ -1,20 +1,22 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "Lr+T8cgor4A=",
-=======
-  "dgSpecHash": "G5oEFNOryi8=",
->>>>>>> 0f8340580aaa225ba29a808fa7e161885441e0cf
   "success": true,
   "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\RapidApi\\MultiShop.RapidApi\\MultiShop.RapidApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.7\\microsoft.aspnetcore.openapi.9.0.7.nupkg.sha512",
-<<<<<<< HEAD
     "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
-=======
-    "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
->>>>>>> 0f8340580aaa225ba29a808fa7e161885441e0cf
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Önbellek dosyası D:\\0Dotnet\\MultiShopProject\\Services\\RapidApi\\MultiShop.RapidApi\\obj\\project.nuget.cache okunurken bir sorun oluştu : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\RapidApi\\MultiShop.RapidApi\\MultiShop.RapidApi.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\0Dotnet\\MultiShopProject\\Services\\RapidApi\\MultiShop.RapidApi\\MultiShop.RapidApi.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

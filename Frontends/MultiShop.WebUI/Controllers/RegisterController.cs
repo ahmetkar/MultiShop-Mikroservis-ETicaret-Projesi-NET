@@ -1,29 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.IdentityDtos.RegisterDtos;
 using MultiShop.WebUI.Services.Interfaces;
+using System.Net.Http;
 
 namespace MultiShop.WebUI.Controllers
 {
     public class RegisterController : Controller
     {
 
-        private readonly IHttpService _httpService;
-        public RegisterController(IHttpService httpService)
-        {
-            _httpService = httpService;
+        private readonly HttpClient _httpClient;
 
-            _httpService.setUrl("IdentityApi");
+        public RegisterController(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
         }
 
+       
         [HttpPost]
         public async Task<IActionResult> Index(CreateRegisterDto createRegisterDto)
         {
 
             if (createRegisterDto.Password == createRegisterDto.ConfirmPassword)
             {
-                var result = await _httpService.Create<CreateRegisterDto>("Registers", createRegisterDto);
+                var result = await _httpClient.PostAsJsonAsync("Registers", createRegisterDto);
 
-                if (result) { return RedirectToAction("Index", "Login"); }
+                if (result.IsSuccessStatusCode) { return RedirectToAction("Index", "Login"); }
             }
             return View();
 

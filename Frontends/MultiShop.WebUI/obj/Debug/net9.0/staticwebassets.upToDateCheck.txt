@@ -289,12 +289,14 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\tables\f
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\multishop\lib\animate\animate.min.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\dist\font-awesome\fonts\fontawesome-webfont.svg
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\spica\partials\_sidebar.html
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\css\cardstyle.css
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\wwwroot\ovioadmin\maps\font-awesome\css\font-awesome.min.css
 wwwroot\css\all.css
 wwwroot\css\all.min.css
 wwwroot\css\brands.css
 wwwroot\css\brands.min.css
+wwwroot\css\cardstyle.css
 wwwroot\css\fontawesome.css
 wwwroot\css\fontawesome.min.css
 wwwroot\css\regular.css

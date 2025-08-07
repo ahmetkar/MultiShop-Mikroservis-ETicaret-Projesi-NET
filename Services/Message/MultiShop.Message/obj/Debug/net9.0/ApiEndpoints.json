@@ -91,7 +91,7 @@
   },
   {
     "ContainingType": "MultiShop.Message.Controllers.UserMessageController",
-    "Method": "GetReceivedMessageCount",
+    "Method": "GetTotalReceivedMessageCount",
     "RelativePath": "api/UserMessage/GetReceivedMessageCount",
     "HttpMethod": "GET",
     "IsController": true,
@@ -103,6 +103,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Message.Controllers.UserMessageController",
+    "Method": "GetTotalMessageCount",
+    "RelativePath": "api/UserMessage/GetTotalMessageCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

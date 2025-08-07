@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos;
+using MultiShop.WebUI.Services.CommentServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Controllers
 {
     public class ProductListController : Controller
     {
-        private readonly IHttpService _httpService;
-        public ProductListController(IHttpService httpService)
+        private readonly ICommentService _commentService;
+        public ProductListController(ICommentService commentService)
         {
-            _httpService = httpService;
-            _httpService.setUrl("CommentApi");
+            _commentService = commentService;
         }
         public IActionResult Index(string id)
         {
@@ -45,10 +45,9 @@ namespace MultiShop.WebUI.Controllers
             createCommentDto.Rating = 1;
             createCommentDto.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             createCommentDto.Status = false;
-           
-            var create = await _httpService.Create<CreateCommentDto>("Comments", createCommentDto);
-            if(create) return RedirectToAction("ProductDetail", "ProductList", new { id = createCommentDto.ProductId });
-            return RedirectToAction("Index", "Default");
+
+            await _commentService.CreateCommentAsync(createCommentDto);
+            return RedirectToAction("ProductDetail", "ProductList", new { id = createCommentDto.ProductId });
         }
     }
 }

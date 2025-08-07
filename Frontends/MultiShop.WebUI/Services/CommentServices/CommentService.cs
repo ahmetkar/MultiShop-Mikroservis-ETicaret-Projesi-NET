@@ -39,7 +39,7 @@ namespace MultiShop.WebUI.Services.CommentServices
 
         public async Task<List<ResultCommentDto>> GetCommentsByProductId(string id)
         {
-            var resp = await _httpClient.GetAsync($"Comments/CommentsByProductId/{id}");
+            var resp = await _httpClient.GetAsync($"Comments/GetCommentsByProductId/{id}");
             var values = await resp.Content.ReadFromJsonAsync<List<ResultCommentDto>>();
             return values;
         }

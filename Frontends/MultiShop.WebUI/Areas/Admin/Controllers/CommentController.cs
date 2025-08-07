@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos;
+using MultiShop.WebUI.Services.CommentServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
@@ -11,14 +12,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class CommentController : Controller
     {
 
-        private readonly IHttpService _httpService;
-        public CommentController(IHttpService httpService)
-        {
-            _httpService = httpService;
-
-            _httpService.setUrl("CommentApi");
-        }
-
+        private readonly ICommentService _commentService;
+       
 
         public async Task<IActionResult> Index()
         {
@@ -28,7 +23,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Yorum Listesi";
 
 
-            var result = await _httpService.Get<ResultCommentDto>("Comments");
+            var result = await _commentService.GetAllCommentAsync();
             if (result != null) return View(result);
             return View();
         }
@@ -40,9 +35,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
 
 
-            var result = await _httpService.DeleteById("Comments", id);
-            if (result) { return RedirectToAction("Index", new { area = "Admin" }); }
-            return View();
+            await _commentService.DeleteCommentAsync(id);
+            return RedirectToAction("Index", new { area = "Admin" });
         }
 
         [Route("UpdateComment/{id}")]
@@ -54,7 +48,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Yorumler";
             ViewBag.v3 = "Yorum Güncelle";
 
-            var result = await _httpService.GetById<UpdateCommentDto>("Comments", id);
+            var result = await _commentService.GetByIdComment(id);
             if (result != null) return View(result);
             return View();
         }
@@ -63,10 +57,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateComment(UpdateCommentDto updateCommentDto)
         {
-            
-            var result = await _httpService.Update<UpdateCommentDto>("Comments", updateCommentDto);
-            if (result) { return RedirectToAction("Index", "Comment", new { area = "Admin" }); }
-            return View();
+
+            await _commentService.UpdateCommentAsync(updateCommentDto);
+            return RedirectToAction("Index", "Comment", new { area = "Admin" });
         }
     }
 }

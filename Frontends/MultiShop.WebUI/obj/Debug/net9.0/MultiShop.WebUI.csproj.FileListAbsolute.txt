@@ -534,3 +534,4 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\tr\MultiS
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\tr\MultiShop.WebUI.resources.dll
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.Resources.AppResource.en.resources
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.Resources.AppResource.tr.resources
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\zhn5dkqmkf-5frjclbz64.gz

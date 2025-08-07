@@ -240,6 +240,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Views/Payment/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -298,6 +302,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Views/Shared/Components/_OfferDiscountDefaultViewComponentPartial/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX09mZmVyRGlzY291bnREZWZhdWx0Vmlld0NvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Views/Shared/Components/_OrderSummaryComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX09yZGVyU3VtbWFyeUNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/0Dotnet/MultiShopProject/Frontends/MultiShop.WebUI/Views/Shared/Components/_ProductDetailDescriptionComponentPartial/Default.cshtml]

@@ -54,13 +54,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.7, )"
-<<<<<<< HEAD
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
-=======
->>>>>>> 0f8340580aaa225ba29a808fa7e161885441e0cf
             }
           },
           "imports": [

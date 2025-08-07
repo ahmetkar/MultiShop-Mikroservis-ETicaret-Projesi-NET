@@ -69,7 +69,7 @@ namespace MultiShop.Comment.Controllers
 
         }
 
-        [HttpGet("CommentsByProductId/{id}")]
+        [HttpGet("GetCommentsByProductId/{id}")]
         public IActionResult GetCommentsByProductId(string id)
         {
             var comments = _context.UserComments.Where(x => x.ProductId == id).ToList();

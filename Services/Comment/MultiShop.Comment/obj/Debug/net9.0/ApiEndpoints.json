@@ -75,8 +75,18 @@
   },
   {
     "ContainingType": "MultiShop.Comment.Controllers.CommentsController",
+    "Method": "GetActiveCommentCount",
+    "RelativePath": "api/Comments/GetActiveCommentCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Comment.Controllers.CommentsController",
     "Method": "GetCommentsByProductId",
-    "RelativePath": "api/Comments/CommentsByProductId/{id}",
+    "RelativePath": "api/Comments/GetCommentsByProductId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -87,16 +97,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MultiShop.Comment.Controllers.CommentsController",
-    "Method": "GetActiveCommentCount",
-    "RelativePath": "api/Comments/GetActiveCommentCount",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
