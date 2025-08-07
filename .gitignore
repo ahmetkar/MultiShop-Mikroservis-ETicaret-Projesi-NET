@@ -6,3 +6,5 @@
 /.vs/MultiShopProject/DesignTimeBuild/.dtbcache.v2
 /Frontends/MultiShop.WebUI/wwwroot/spica/node_modules
 /Services/RabbitMQMessage/MultiShop.RabbitMQMessageApi/appsettings.json
+/Services/RapidApi/MultiShop.RapidApi/appsettings.json
+/Services/RapidApi/MultiShop.RapidApi/appsettings.Development.json
