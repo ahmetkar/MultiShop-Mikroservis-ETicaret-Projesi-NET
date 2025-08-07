@@ -1,7 +1,70 @@
 # MultiShop E-TİCARET Sitesi Projesi
 
-Bu proje Murat Yücedağın Asp.Net Core MultiShop E-Ticaret kursundan faydalanılarak hazırlanmıştır. 
+Admin paneli ve e-ticaret sitesi arayüzü içeren ,frontend olarak .net core MVC backend olarak yaklaşık 12 mikroservis içeren web projesidir. Kategoriye göre ürünleri görüntüleme,ürün yorumlama,sepete ekleme,sipariş detayları girme ve ödeme için animasyonlu kart ekranı ,kupon uygulama,ana sayfa pörtfölyösü gibi özellikler içeriyor
 
-Projenin tamamlanan kısımları optimize edildikten sonra commit edilecektir. Projenin bu hali eksiktir.
+# Kullanılan Teknolojiler
+ • Asp.Net Core 9.0 Web API ve MVC
+ • Entity Framework Core
+ • Dapper Orm
+ • Ocelot Gateway
+ • Json Web Token / Identity Service
+ • SignalR
+ • Docker
+ • RabbitMQ
+ • RapidApi
+ • Onion Mimarisi
+ • N-tier Mimarisi
+ • Monolitik Mimari
+ • CQRS Design Pattern
+ • Generic Repository Design Pattern
+ • Mediator Design Pattern
+ • SOLID ve Clean Code Prensipleri
 
-Tam açıklama yakında eklenecek...
+# Kullanılan Veritabanı Teknolojileri
+   • MSSQL
+   • PostgreSql
+   • MongoDb
+   • Redis
+
+# Web Sitesi Ana Sayfa Ekran Görüntüleri
+
+![resim1](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203429.png)
+
+![resim2](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203442.png)
+
+![resim3](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203507.png)
+
+
+# Sepet Ekran Görüntüsü
+
+![resim4](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203939.png)
+
+![resim5](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20204113.png)
+
+# Sipariş Detayları Ekranı
+
+![resim6](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20205552.png)
+
+# Ödeme Ekranı 
+
+![resim7](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20210256.png)
+
+# Ürün Listesi Ekranı
+
+![resim8](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20210431.png)
+
+![resim81](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20213811.png)
+
+
+# Ürün Detayı Ekranı
+
+![resim8](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20213637.png)
+
+![resim9](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20213647.png)
+
+# Admin Paneli Ekranı
+
+![resim9](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20214411.png)
+
+
+
