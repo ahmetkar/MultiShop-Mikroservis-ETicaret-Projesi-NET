@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Content Remove="wwwroot\sigma-bay-468120-h6-a8a71b679bca.json" />
   </ItemGroup>
 
   <ItemGroup>
+=======
+>>>>>>> 0f8340580aaa225ba29a808fa7e161885441e0cf
     <PackageReference Include="Google.Cloud.Storage.V1" Version="4.13.0" />
   </ItemGroup>
 

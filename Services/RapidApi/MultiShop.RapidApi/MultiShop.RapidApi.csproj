@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.7" />
+<<<<<<< HEAD
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+=======
+>>>>>>> 0f8340580aaa225ba29a808fa7e161885441e0cf
   </ItemGroup>
 
 </Project>
