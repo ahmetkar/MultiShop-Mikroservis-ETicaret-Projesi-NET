@@ -1,15 +1,15 @@
 
-0-Sipariş verme aşamaları ve kargoya düşme işlemleri düzenlenecek,Sepete ekleme yapmada hata var
-0-Filtreleme işlemleri yapılacak(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
-0-Arama ve sayfalma kısımları eklenecek.
+0-SipariÅŸ verme aÅŸamalarÄ± ve kargoya dÃ¼ÅŸme iÅŸlemleri dÃ¼zenlenecek,Sepete eklemede hata var
+0-Filtreleme iÅŸlemleri yapÄ±lacak(Her bir kategori iÃ§in filtreler ve her filtre iÃ§in seÃ§enekler Ã§ekilecek)
+0-Arama ve sayfalama kÄ±sÄ±mlarÄ± eklenecek.
 
 
 
 1-MyOrderList te hata var veriler gelmiyor
-2-Ödeme ekranı düzeltmeler
-3-Image mikroservisi image.webui örnek alınarak yazılacak(admin panelinden resim yükleme ve listeleme mümkün olacak)
-4-Giriş yaptıktan sonraki yönlendirmeler ve kullanıcı layoutu düzenlenecek
-5-SignalR ile admin panelinde yorum bildirimlerininde alınması sağlanacak
+2-Admin panelindeki eklenmeyen sayfalar eklenecek.
+3-Image mikroservisi image.webui Ã¶rnek alÄ±narak yazÄ±lacak(admin panelinden resim yÃ¼kleme ve listeleme mÃ¼mkÃ¼n olacak)
+4-GiriÅŸ yaptÄ±ktan sonraki yÃ¶nlendirmeler ve kullanÄ±cÄ± layoutu dÃ¼zenlenecek
+5-Admin panelindeki bildirimler dÃ¼zenlenecek.
 6-ELK stack veya serilog,elasticsearch entegre edilecek
 7-Global error handler,exception hanler entegre edilecek.
 
