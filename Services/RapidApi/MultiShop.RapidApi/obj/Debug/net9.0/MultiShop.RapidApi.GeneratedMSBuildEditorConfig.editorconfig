@@ -19,3 +19,15 @@ build_property.MSBuildProjectDirectory = D:\0Dotnet\MultiShopProject\Services\Ra
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
+
+[D:/0Dotnet/MultiShopProject/Services/RapidApi/MultiShop.RapidApi/Views/RapidApi/Exchange.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFwaWRBcGlcRXhjaGFuZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Services/RapidApi/MultiShop.RapidApi/Views/RapidApi/ProductSearch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFwaWRBcGlcUHJvZHVjdFNlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/0Dotnet/MultiShopProject/Services/RapidApi/MultiShop.RapidApi/Views/RapidApi/WeatherDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFwaWRBcGlcV2VhdGhlckRldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

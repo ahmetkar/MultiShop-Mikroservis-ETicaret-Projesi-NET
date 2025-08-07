@@ -17,6 +17,14 @@
         },
         "runtime": {
           "MultiShop.WebUI.dll": {}
+        },
+        "resources": {
+          "en/MultiShop.WebUI.resources.dll": {
+            "locale": "en"
+          },
+          "tr/MultiShop.WebUI.resources.dll": {
+            "locale": "tr"
+          }
         }
       },
       "Dangl.IdentityServer4.Storage/4.2.1": {

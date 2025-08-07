@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MultiShop.RapidApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+375eeece9455b1826259e429c32d9ca58c4c2f02")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6f9f21793c2d46a2269ced174cc46b13c275858")]
 [assembly: System.Reflection.AssemblyProductAttribute("MultiShop.RapidApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MultiShop.RapidApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

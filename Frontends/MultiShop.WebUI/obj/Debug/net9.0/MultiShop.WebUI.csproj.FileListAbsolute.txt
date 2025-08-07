@@ -527,3 +527,10 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compresse
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\li1tmb22xy-346o57demz.gz
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\p0iho7ub2v-ucgz9wt2gz.gz
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\u8zuaenw00-c10od5p5py.gz
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\en\MultiShop.WebUI.resources.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.csproj.GenerateResource.cache
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\en\MultiShop.WebUI.resources.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\tr\MultiShop.WebUI.resources.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\tr\MultiShop.WebUI.resources.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.Resources.AppResource.en.resources
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.Resources.AppResource.tr.resources

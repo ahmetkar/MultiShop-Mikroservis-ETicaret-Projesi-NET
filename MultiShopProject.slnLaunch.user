@@ -17,18 +17,6 @@
       {
         "Path": "Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
         "Action": "Start"
-      },
-      {
-        "Path": "Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
-        "Action": "Start"
-      },
-      {
-        "Path": "Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj",
-        "Action": "Start"
-      },
-      {
-        "Path": "Services\\Comment\\MultiShop.Comment\\MultiShop.Comment.csproj",
-        "Action": "Start"
       }
     ]
   }

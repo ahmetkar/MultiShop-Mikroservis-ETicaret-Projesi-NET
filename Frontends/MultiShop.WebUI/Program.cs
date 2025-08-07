@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using MultiShop.WebUI.Handlers;
+using MultiShop.WebUI.Resources;
 using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
 using MultiShop.WebUI.Services.CargoServices.CargoCustomerServices;
@@ -27,6 +30,8 @@ using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.UserStatisticsServices;
 using MultiShop.WebUI.Services.UserIdentityServices;
 using MultiShop.WebUI.Settings;
+using System.Globalization;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -209,6 +214,38 @@ builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
 
 
 
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+
+builder.Services.AddScoped<LocalizationService>();
+
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization(
+        opt =>
+        {
+            opt.DataAnnotationLocalizerProvider = (type, factory) =>
+            {
+                var assembly = new AssemblyName(typeof(AppResource).GetTypeInfo().Assembly.FullName);
+                return factory.Create("AppResource", assembly.Name);
+            };
+        }
+ );
+
+builder.Services.Configure<RequestLocalizationOptions>(opt =>
+{
+    var cultures = new List<CultureInfo> { new CultureInfo("tr"), new CultureInfo("en") };
+    opt.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(new CultureInfo("tr"));
+    opt.SupportedCultures = cultures;
+    opt.SupportedUICultures = cultures;
+
+    opt.RequestCultureProviders = new List<IRequestCultureProvider>()
+    {
+        new QueryStringRequestCultureProvider(),
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    };
+});
 
 var app = builder.Build();
 
@@ -226,6 +263,12 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+var supportedCultures = new[] { "en","tr"};
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[1])
+    .AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
 
 app.MapControllerRoute(
     name: "areas",
