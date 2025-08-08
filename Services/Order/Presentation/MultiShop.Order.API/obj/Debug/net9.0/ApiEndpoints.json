@@ -133,7 +133,7 @@
   },
   {
     "ContainingType": "MultiShop.Order.API.Controllers.OrderDetailController",
-    "Method": "GetOrderDetailById",
+    "Method": "GetOrderDetailByOrderingId",
     "RelativePath": "api/OrderDetail/{id}",
     "HttpMethod": "GET",
     "IsController": true,

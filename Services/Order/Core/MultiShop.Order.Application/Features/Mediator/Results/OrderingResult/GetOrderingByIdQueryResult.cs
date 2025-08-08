@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using MultiShop.Order.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,8 @@ namespace MultiShop.Order.Application.Features.Mediator.Results.OrderingResult
         public int OrderingId { get; set; }
         public string UserId { get; set; }
         public decimal TotalPrice { get; set; }
+        public int ShippingAdressId { get; set; }
+        public int BillingAddressId { get; set; }
         public DateTime OrderDate { get; set; }
       
     }

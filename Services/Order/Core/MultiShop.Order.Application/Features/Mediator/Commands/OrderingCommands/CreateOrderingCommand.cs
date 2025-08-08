@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MultiShop.Order.Domain.Entities;
 
 namespace MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommands
 {
@@ -6,6 +7,8 @@ namespace MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommand
     {
         public string UserId { get; set; }
         public decimal TotalPrice { get; set; }
+        public int ShippingAdressId { get; set; }
+        public int BillingAddressId { get; set; }
         public DateTime OrderDate { get; set; }
     }
 }

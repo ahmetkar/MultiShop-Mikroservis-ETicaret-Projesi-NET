@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MultiShop.Order.API.Dtos;
 using MultiShop.Order.Application.Features.CQRS.Commands.AdressCommands;
 using MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers;
 using MultiShop.Order.Application.Features.CQRS.Queries.AdressQueries;
@@ -45,8 +46,8 @@ namespace MultiShop.Order.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAdress(CreateAdressCommand createAdressCommand)
         {
-            await _createAdressCommandHandler.Handle(createAdressCommand);
-            return Ok("Adres başarıyla oluşturuldu");
+            int id = await _createAdressCommandHandler.Handle(createAdressCommand);
+            return Ok(new CreateAdressResultDto {AdressId = id });
         }
 
         [HttpPut]

@@ -1,7 +1,44 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\0Dotnet\\MultiShopProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F6ABAF53-64B8-4E16-887B-0C43B44896BF}|Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj|d:\\0dotnet\\multishopproject\\services\\order\\infrastructure\\multishop.order.persistance\\context\\ordercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6ABAF53-64B8-4E16-887B-0C43B44896BF}|Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj|solutionrelative:services\\order\\infrastructure\\multishop.order.persistance\\context\\ordercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FDDDB1B-E8AD-490F-807F-676704048D29}|Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj|d:\\0dotnet\\multishopproject\\services\\order\\core\\multishop.order.domain\\entities\\ordering.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FDDDB1B-E8AD-490F-807F-676704048D29}|Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj|solutionrelative:services\\order\\core\\multishop.order.domain\\entities\\ordering.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|d:\\0dotnet\\multishopproject\\services\\order\\presentation\\multishop.order.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|solutionrelative:services\\order\\presentation\\multishop.order.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|d:\\0dotnet\\multishopproject\\services\\order\\presentation\\multishop.order.api\\controllers\\orderdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|solutionrelative:services\\order\\presentation\\multishop.order.api\\controllers\\orderdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|d:\\0dotnet\\multishopproject\\services\\order\\presentation\\multishop.order.api\\controllers\\orderingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|solutionrelative:services\\order\\presentation\\multishop.order.api\\controllers\\orderingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\services\\orderservices\\orderoderingservices\\orderoderingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\orderservices\\orderoderingservices\\orderoderingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\views\\shoppingcart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\shoppingcart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\controllers\\shoppingcartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\shoppingcartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishopproject\\frontends\\multishop.webui\\controllers\\discountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\discountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +59,123 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Ordering.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\Ordering.cs",
+              "RelativeDocumentMoniker": "Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\Ordering.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\Ordering.cs",
+              "RelativeToolTip": "Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\Ordering.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T15:52:50.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Presentation\\MultiShop.Order.API\\Program.cs",
+              "RelativeDocumentMoniker": "Services\\Order\\Presentation\\MultiShop.Order.API\\Program.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Presentation\\MultiShop.Order.API\\Program.cs",
+              "RelativeToolTip": "Services\\Order\\Presentation\\MultiShop.Order.API\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAACEAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T15:33:11.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderContext.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\Context\\OrderContext.cs",
+              "RelativeDocumentMoniker": "Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\Context\\OrderContext.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\Context\\OrderContext.cs",
+              "RelativeToolTip": "Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\Context\\OrderContext.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T15:31:06.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderDetailController.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderDetailController.cs",
+              "RelativeDocumentMoniker": "Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderDetailController.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderDetailController.cs",
+              "RelativeToolTip": "Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderDetailController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T15:18:31.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderOderingService.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\OrderServices\\OrderOderingServices\\OrderOderingService.cs",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\OrderServices\\OrderOderingServices\\OrderOderingService.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Services\\OrderServices\\OrderOderingServices\\OrderOderingService.cs",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\OrderServices\\OrderOderingServices\\OrderOderingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T14:31:17.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderingsController.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
+              "RelativeDocumentMoniker": "Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
+              "RelativeToolTip": "Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAB4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T14:30:05.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DiscountController.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Controllers\\DiscountController.cs",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Controllers\\DiscountController.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Controllers\\DiscountController.cs",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Controllers\\DiscountController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T14:16:02.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Views\\ShoppingCart\\Index.cshtml",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Views\\ShoppingCart\\Index.cshtml",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Views\\ShoppingCart\\Index.cshtml",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Views\\ShoppingCart\\Index.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T14:14:11.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ShoppingCartController.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAWwD0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T13:02:24.275Z",
+              "EditorCaption": ""
             }
           ]
         }

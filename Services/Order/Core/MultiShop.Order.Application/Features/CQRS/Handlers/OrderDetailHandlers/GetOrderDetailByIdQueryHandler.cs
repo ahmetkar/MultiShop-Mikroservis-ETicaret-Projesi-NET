@@ -12,27 +12,35 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers
 {
     public class GetOrderDetailByIdQueryHandler
     {
-        private readonly IRepository<OrderDetail> _repository;
+        private readonly IOrderDetailRepository _orderDetailRepository;
 
-        public GetOrderDetailByIdQueryHandler(IRepository<OrderDetail> repository)
+        public GetOrderDetailByIdQueryHandler(IOrderDetailRepository repository)
         {
-            _repository = repository;
+            _orderDetailRepository = repository;
         }
-        public async Task<GetOrderDetailByIdQueryResult> Handle(GetOrderDetailByIdQuery query)
+        public async Task<List<GetOrderDetailByIdQueryResult>> Handle(GetOrderDetailByIdQuery query)
         {
-            var x = await _repository.GetByIdAsync(query.Id);
-            return new GetOrderDetailByIdQueryResult
+            var detaillist = new List<GetOrderDetailByIdQueryResult>();
+            var details = _orderDetailRepository.GetOrderDetailsByOrderingId(query.Id);
+            foreach (var x in details)
             {
+                var n = new GetOrderDetailByIdQueryResult
+                {
 
-                OrderDetailId = x.OrderDetailId,
-                OrderingId = x.OrderingId,
-                ProductAmount = x.ProductAmount,
-                ProductId = x.ProductId,
-                ProductName = x.ProductName,
-                ProductPrice = x.ProductPrice,
-                ProductTotalPrice = x.ProductTotalPrice
+                    OrderDetailId = x.OrderDetailId,
+                    OrderingId = x.OrderingId,
+                    ProductAmount = x.ProductAmount,
+                    ProductId = x.ProductId,
+                    ProductName = x.ProductName,
+                    ProductPrice = x.ProductPrice,
+                    ProductTotalPrice = x.ProductTotalPrice
 
-            };
+                };
+
+                detaillist.Add(n);
+
+            }
+            return detaillist;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace MultiShop.Order.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetOrderDetailById(int id)
+        public async Task<IActionResult> GetOrderDetailByOrderingId(int id)
         {
             var value = await _getOrderDetailByIdQueryHandler.Handle(new GetOrderDetailByIdQuery(id));
             return Ok(value);

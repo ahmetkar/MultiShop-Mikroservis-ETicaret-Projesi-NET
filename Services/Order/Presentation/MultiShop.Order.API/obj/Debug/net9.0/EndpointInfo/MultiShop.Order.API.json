@@ -376,6 +376,26 @@
             "type": "string",
             "nullable": true
           },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
           "district": {
             "type": "string",
             "nullable": true
@@ -384,7 +404,19 @@
             "type": "string",
             "nullable": true
           },
-          "detail": {
+          "detail1": {
+            "type": "string",
+            "nullable": true
+          },
+          "detail2": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
             "type": "string",
             "nullable": true
           }
@@ -432,6 +464,14 @@
             "type": "number",
             "format": "double"
           },
+          "shippingAdressId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "billingAddressId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "orderDate": {
             "type": "string",
             "format": "date-time"
@@ -450,6 +490,26 @@
             "type": "string",
             "nullable": true
           },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
           "district": {
             "type": "string",
             "nullable": true
@@ -458,7 +518,19 @@
             "type": "string",
             "nullable": true
           },
-          "detail": {
+          "detail1": {
+            "type": "string",
+            "nullable": true
+          },
+          "detail2": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
             "type": "string",
             "nullable": true
           }
@@ -513,6 +585,14 @@
           "totalPrice": {
             "type": "number",
             "format": "double"
+          },
+          "shippingAdressId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "billingAddressId": {
+            "type": "integer",
+            "format": "int32"
           },
           "orderDate": {
             "type": "string",

@@ -44,3 +44,4 @@ D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\st
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\0Dotnet\MultiShopProject\Services\Basket\MultiShop.Basket\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

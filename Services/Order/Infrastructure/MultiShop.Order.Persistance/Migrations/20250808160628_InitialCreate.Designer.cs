@@ -12,8 +12,8 @@ using MultiShop.Order.Persistance.Context;
 namespace MultiShop.Order.Persistance.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20250429195104_mig1")]
-    partial class mig1
+    [Migration("20250808160628_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,19 @@ namespace MultiShop.Order.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Detail")
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Detail1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Detail2")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -45,7 +57,27 @@ namespace MultiShop.Order.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -97,8 +129,14 @@ namespace MultiShop.Order.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderingId"));
 
+                    b.Property<int>("BillingAddressId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ShippingAdressId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
@@ -108,6 +146,10 @@ namespace MultiShop.Order.Persistance.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderingId");
+
+                    b.HasIndex("BillingAddressId");
+
+                    b.HasIndex("ShippingAdressId");
 
                     b.ToTable("Orderings");
                 });
@@ -121,6 +163,25 @@ namespace MultiShop.Order.Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Ordering");
+                });
+
+            modelBuilder.Entity("MultiShop.Order.Domain.Entities.Ordering", b =>
+                {
+                    b.HasOne("MultiShop.Order.Domain.Entities.Adress", "BillingAddress")
+                        .WithMany()
+                        .HasForeignKey("BillingAddressId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("MultiShop.Order.Domain.Entities.Adress", "ShippingAdress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAdressId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("BillingAddress");
+
+                    b.Navigation("ShippingAdress");
                 });
 
             modelBuilder.Entity("MultiShop.Order.Domain.Entities.Ordering", b =>

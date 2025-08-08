@@ -21,13 +21,21 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
 
         public async Task<List<GetAdressQueryResult>> Handle()
         {
-            var values = await _repository.GetAllAsync();
-            return values.Select(x=>new GetAdressQueryResult
+            var valuesall = await _repository.GetAllAsync();
+            return valuesall.Select(values=>new GetAdressQueryResult
             {
-                AdressId = x.AdressId,
-                City = x.City,
-                Detail = x.Detail,
-                UserId = x.UserId
+                AdressId = values.AdressId,
+                City = values.City,
+                Detail1 = values.Detail1,
+                Detail2 = values.Detail2,
+                District = values.District,
+                UserId = values.UserId,
+                Phone = values.Phone,
+                Country = values.Country,
+                ZipCode = values.ZipCode,
+                Description = values.Description,
+                Name = values.Name,
+                Surname = values.Surname
             }).ToList();
             
         }

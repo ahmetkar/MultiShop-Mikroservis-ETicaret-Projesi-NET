@@ -1,4 +1,5 @@
-﻿using MultiShop.Order.Application.Features.CQRS.Queries.AdressQueries;
+﻿using MultiShop.Order.Application.Features.CQRS.Commands.AdressCommands;
+using MultiShop.Order.Application.Features.CQRS.Queries.AdressQueries;
 using MultiShop.Order.Application.Features.CQRS.Results.AdressResults;
 using MultiShop.Order.Application.Interfaces;
 using MultiShop.Order.Domain.Entities;
@@ -25,9 +26,16 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
             return new GetAdressByIdQueryResult { 
                 AdressId = values.AdressId,
                 City = values.City,
-                Detail = values.Detail,
+                Detail1 = values.Detail1,
+                Detail2 = values.Detail2,
                 District = values.District,
-                UserId = values.UserId
+                UserId = values.UserId,
+                Phone = values.Phone,
+                Country = values.Country,
+                ZipCode = values.ZipCode,
+                Description = values.Description,
+                Name = values.Name,
+                Surname = values.Surname
             };
         }
     }

@@ -31,3 +31,4 @@ D:\0Dotnet\MultiShopProject\Services\Images\MultiShop.Images\obj\Debug\net9.0\re
 D:\0Dotnet\MultiShopProject\Services\Images\MultiShop.Images\obj\Debug\net9.0\MultiShop.Images.pdb
 D:\0Dotnet\MultiShopProject\Services\Images\MultiShop.Images\obj\Debug\net9.0\MultiShop.Images.genruntimeconfig.cache
 D:\0Dotnet\MultiShopProject\Services\Images\MultiShop.Images\obj\Debug\net9.0\ref\MultiShop.Images.dll
+D:\0Dotnet\MultiShopProject\Services\Images\MultiShop.Images\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

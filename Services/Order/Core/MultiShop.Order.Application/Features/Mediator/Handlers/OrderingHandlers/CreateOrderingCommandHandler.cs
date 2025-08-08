@@ -20,7 +20,9 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
             {
                 OrderDate = request.OrderDate,
                 TotalPrice = request.TotalPrice,
-                UserId = request.UserId
+                UserId = request.UserId,
+                BillingAddressId = request.BillingAddressId,
+                ShippingAdressId = request.ShippingAdressId
             });
         }
     }

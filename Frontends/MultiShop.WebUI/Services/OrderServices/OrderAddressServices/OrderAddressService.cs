@@ -9,9 +9,17 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderAddressServices
         {
             _httpClient = httpClient;
         }
-        public async Task CreateOrderAddressAsync(CreateOrderAddressDto createOrderAddressDto)
+        public async Task<int> CreateOrderAddressAsync(CreateOrderAddressDto createOrderAddressDto)
         {
-            await _httpClient.PostAsJsonAsync<CreateOrderAddressDto>("addresses", createOrderAddressDto);
+            var response = await _httpClient.PostAsJsonAsync<CreateOrderAddressDto>("addresses", createOrderAddressDto);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadFromJsonAsync<CreateAdressResultDto>();
+                return json.AdressId;
+            }
+
+            return 0;
         }
     }
 }

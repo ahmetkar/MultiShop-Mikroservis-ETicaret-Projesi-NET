@@ -1,16 +1,23 @@
 
-0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek,Sepete ekleme yapmada hata var
+0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek,Sepete eklemede hata var
+  Eðer adress varsa iki adres bilgisi input hidden ile gönderilecek
+    Eðer adress yoksa veya yeni adres eklenmek isteniyorsa iki ayrý adres alanýndan adres bilgisi istenecek. 
+    Order/ýndex onlara göre yeniden dizayn edilmeli
 0-Filtreleme iþlemleri yapýlacak(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
-0-Arama ve sayfalma kýsýmlarý eklenecek.
+0-Arama ve sayfalama kýsýmlarý eklenecek.
 
+0-Favoriler sayfasý eklenecek(bu sayfadaki favoriler sepete eklenebilecek) ve sidebarda signalr ile sepet ve favorideki ürün sayýsý çekilecek
 
+1-Product Listesinde indirimlerin discount mikroservisine göre yansýtýlmasýda gerek
 
 1-MyOrderList te hata var veriler gelmiyor
-2-Ödeme ekraný düzeltmeler
+2-Admin panelindeki eklenmeyen sayfalar eklenecek.
 3-Image mikroservisi image.webui örnek alýnarak yazýlacak(admin panelinden resim yükleme ve listeleme mümkün olacak)
 4-Giriþ yaptýktan sonraki yönlendirmeler ve kullanýcý layoutu düzenlenecek
-5-SignalR ile admin panelinde yorum bildirimlerininde alýnmasý saðlanacak
+5-Admin panelindeki bildirimler düzenlenecek.
 6-ELK stack veya serilog,elasticsearch entegre edilecek
 7-Global error handler,exception hanler entegre edilecek.
 
 
+
+.vs gibi klasörleri gitten haric tut

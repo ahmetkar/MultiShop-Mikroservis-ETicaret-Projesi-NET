@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MultiShop.Order.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,9 +18,17 @@ namespace MultiShop.Order.Persistance.Migrations
                     AdressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     District = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Detail1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Detail2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,11 +43,23 @@ namespace MultiShop.Order.Persistance.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ShippingAdressId = table.Column<int>(type: "int", nullable: false),
+                    BillingAddressId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orderings", x => x.OrderingId);
+                    table.ForeignKey(
+                        name: "FK_Orderings_Adresses_BillingAddressId",
+                        column: x => x.BillingAddressId,
+                        principalTable: "Adresses",
+                        principalColumn: "AdressId");
+                    table.ForeignKey(
+                        name: "FK_Orderings_Adresses_ShippingAdressId",
+                        column: x => x.ShippingAdressId,
+                        principalTable: "Adresses",
+                        principalColumn: "AdressId");
                 });
 
             migrationBuilder.CreateTable(
@@ -70,19 +90,29 @@ namespace MultiShop.Order.Persistance.Migrations
                 name: "IX_OrderDetails_OrderingId",
                 table: "OrderDetails",
                 column: "OrderingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orderings_BillingAddressId",
+                table: "Orderings",
+                column: "BillingAddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orderings_ShippingAdressId",
+                table: "Orderings",
+                column: "ShippingAdressId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Adresses");
-
-            migrationBuilder.DropTable(
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
                 name: "Orderings");
+
+            migrationBuilder.DropTable(
+                name: "Adresses");
         }
     }
 }

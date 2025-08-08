@@ -146,5 +146,10 @@ namespace MultiShop.WebUI.Services.Concretes
 
             return true;
         }
+
+        public async Task SignOut()
+        {
+            await _httpContextAccessor.HttpContext.SignOutAsync();
+        }
     }
 }
