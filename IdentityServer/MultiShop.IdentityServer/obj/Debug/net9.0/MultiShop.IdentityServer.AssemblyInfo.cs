@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MultiShop.IdentityServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+375eeece9455b1826259e429c32d9ca58c4c2f02")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+502b860292ecfb79a007d1e1326e07964a5a3d66")]
 [assembly: System.Reflection.AssemblyProductAttribute("MultiShop.IdentityServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MultiShop.IdentityServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -59,6 +59,14 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Boþta kalma süresi
+    options.Cookie.HttpOnly = true; // JS eriþemez
+    options.Cookie.IsEssential = true; // GDPR uyumu
+});
+
+
 builder.Services.AddAccessTokenManagement();
 builder.Services.AddHttpContextAccessor();
 
@@ -116,11 +124,6 @@ builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
-builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
-{
-    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Basket.Path}");
-}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
 
 builder.Services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
 {
@@ -132,6 +135,12 @@ builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Cargo.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+
+
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Basket.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
 
@@ -149,6 +158,8 @@ builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Order.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
 
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
@@ -259,6 +270,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 app.UseAuthentication();

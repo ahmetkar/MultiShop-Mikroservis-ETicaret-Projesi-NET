@@ -29,7 +29,7 @@ builder.Services.AddScoped<RemoveAdressCommandHandler>();
 
 builder.Services.AddScoped<GetOrderDetailQueryHandler>();
 builder.Services.AddScoped<GetOrderDetailByIdQueryHandler>();
-builder.Services.AddScoped<CreateOrderDetailCommandHandler>();
+builder.Services.AddScoped<CreateOrderDetailRangeCommandHandler>();
 builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
 builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
 

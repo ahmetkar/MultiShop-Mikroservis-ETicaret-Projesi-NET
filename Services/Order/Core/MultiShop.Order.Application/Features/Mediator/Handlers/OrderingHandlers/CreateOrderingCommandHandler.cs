@@ -5,7 +5,7 @@ using MultiShop.Order.Domain.Entities;
 
 namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandlers
 {
-    public class CreateOrderingCommandHandler : IRequestHandler<CreateOrderingCommand>
+    public class CreateOrderingCommandHandler : IRequestHandler<CreateOrderingCommand,int>
     {
         private readonly IRepository<Ordering> _repository;
 
@@ -14,16 +14,19 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
             _repository = repository;
         }
 
-        public async Task Handle(CreateOrderingCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateOrderingCommand request, CancellationToken cancellationToken)
         {
-            await _repository.CreateAsync(new Ordering
+            var ordering = new Ordering
             {
                 OrderDate = request.OrderDate,
                 TotalPrice = request.TotalPrice,
                 UserId = request.UserId,
                 BillingAddressId = request.BillingAddressId,
                 ShippingAdressId = request.ShippingAdressId
-            });
+            };
+            await _repository.CreateAsync(ordering);
+
+            return ordering.OrderingId;
         }
     }
 }

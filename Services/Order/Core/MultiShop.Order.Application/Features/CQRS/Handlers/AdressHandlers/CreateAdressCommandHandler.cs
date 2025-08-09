@@ -27,12 +27,14 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
                 Detail2 = values.Detail2,
                 District = values.District,
                 UserId = values.UserId,
+                Email = values.Email,
                 Phone = values.Phone,
                 Country = values.Country,
                 ZipCode = values.ZipCode,
                 Description = values.Description,
                 Name = values.Name,
-                Surname = values.Surname
+                Surname = values.Surname,
+                IsBillingOrShipping = values.IsBillingOrShipping
 
             };
             await _repository.CreateAsync(adress);

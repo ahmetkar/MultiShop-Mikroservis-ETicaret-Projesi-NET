@@ -36,8 +36,8 @@ namespace MultiShop.Order.API.Controllers
             return Ok(values);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAdressById(int id)
+        [HttpGet("GetAdressesByUserId/{id}")]
+        public async Task<IActionResult> GetAdressesByUserId(string id)
         {
             var value = await _getAdressByIdQueryHandler.Handle(new GetAdressByIdQuery(id));
             return Ok(value);

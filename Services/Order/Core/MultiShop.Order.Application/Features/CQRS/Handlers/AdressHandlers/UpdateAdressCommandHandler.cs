@@ -37,6 +37,8 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
             values.Description = values.Description;
             values.Name = values.Name;
             values.Surname = values.Surname;
+            values.Email = values.Email;
+            values.IsBillingOrShipping = values.IsBillingOrShipping;
 
             await _repository.UpdateAsync(values);
         }

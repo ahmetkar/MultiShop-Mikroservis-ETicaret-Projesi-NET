@@ -1,0 +1,99 @@
+﻿
+@model AdressListViewModel
+<form asp-action="CreateOrder" asp-controller="Order">
+
+<div class="row">
+<div class="col-lg-8">
+
+        <div class="row">
+        
+
+        <div class="col-md-12 bg-light p-30 mb-5">
+        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Fatura Adresi</span></h5>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+             
+                  @if(Model.BillingAdressCount > 0){
+                  @foreach(var i in Model.resultOrderAddressDto){
+                      if(i.IsBillingOrShipping){
+                        
+                         <div class="row">
+                                            <div class="custom-control custom-radio custom-control-inline">
+                            
+                                            <div class="col-md-12"><input value="@i.AdressId" type="radio" class="custom-control-input" id="adress1" asp-for="BillingAdressId">
+                            
+                                                <label class="custom-control-label" for="adress1"> @i.Name @i.Surname  -@i.Description - @i.Detail1 - @i.Detail2</label>
+                            </div>
+                                            </div>
+                        </div><br /><br />
+                      }
+                        }
+                    }else
+                    {
+                        <h6>Fatura için adres eklememişsiniz.</h6>
+                    }
+
+                </div>
+                </div>
+            <br />
+        
+        </div>
+    
+               
+          <div class="col-md-12 bg-light p-30 mb-5">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Kargo Adresi</span></h5>
+           
+
+                    <div class="row">
+                    <div class="col-md-12 form-group">
+                 
+                    @if (Model.ShippingAdressCount > 0) { 
+                        @foreach (var i in Model.resultOrderAddressDto)
+                        {
+                            if (!i.IsBillingOrShipping)
+                            {
+                                        
+                                            <div class="row">
+                                            <div class="custom-control custom-radio custom-control-inline">
+
+                                                <div class="col-md-12"><input value="@i.AdressId" type="radio" class="custom-control-input" id="adress2" asp-for="ShippingAdressId">
+                                                
+                                                    <label class="custom-control-label" for="adress2"> @i.Name @i.Surname  -@i.Description - @i.Detail1 - @i.Detail2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <br />
+                            }
+                        }
+                    }else
+                    {
+                        <h6>Kargo için adres eklememişsiniz. Varsa fatura adresi kullanılacaktır.</h6>
+                    }
+                </div>
+                </div>
+                
+                <br />
+         
+            </div>
+
+        </div>
+          
+   
+  
+
+    </div>
+
+    <div class="col-lg-4">
+        @await Component.InvokeAsync("_OrderSummaryComponentPartial")
+        <div class="mb-5">
+            <div class="bg-light p-30">
+                <button type="submit" class="btn btn-block btn-primary font-weight-bold py-3" type="submit">Ödeme Adımına Geç</button>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+</form>

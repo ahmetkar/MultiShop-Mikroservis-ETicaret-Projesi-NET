@@ -535,3 +535,9 @@ D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\tr\MultiS
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.Resources.AppResource.en.resources
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.Resources.AppResource.tr.resources
 D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\zhn5dkqmkf-5frjclbz64.gz
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+D:\0Dotnet\MultiShopProject\Frontends\MultiShop.WebUI\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll

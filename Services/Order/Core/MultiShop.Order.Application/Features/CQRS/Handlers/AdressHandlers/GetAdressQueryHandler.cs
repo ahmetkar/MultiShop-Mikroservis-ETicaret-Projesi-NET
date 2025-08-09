@@ -35,7 +35,9 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
                 ZipCode = values.ZipCode,
                 Description = values.Description,
                 Name = values.Name,
-                Surname = values.Surname
+                Surname = values.Surname,
+                IsBillingOrShipping = values.IsBillingOrShipping,
+                Email = values.Email
             }).ToList();
             
         }

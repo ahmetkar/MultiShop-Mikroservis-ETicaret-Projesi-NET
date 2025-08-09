@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.WebUI.Services.BasketServices;
+using Microsoft.AspNetCore.Identity;
+using MultiShop.DtoLayer.BasketDtos;
 
 namespace MultiShop.WebUI.ViewComponents.ShoppingCartViewComponents
 {
@@ -14,8 +16,17 @@ namespace MultiShop.WebUI.ViewComponents.ShoppingCartViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var values = await _basketService.GetBasket();
-            return View(values);
+            var basketitems = new BasketTotalDto();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                basketitems = await _basketService.GetBasketFromDatabase();
+            }
+            else
+            {
+                basketitems = await _basketService.GetBasketFromCookies();
+            }
+            return View(basketitems);
         }
     }
 }

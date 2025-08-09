@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.DiscountServices;
+using Microsoft.AspNetCore.Identity;
+using MultiShop.DtoLayer.BasketDtos;
 
 namespace MultiShop.WebUI.Controllers
 {
@@ -31,7 +33,19 @@ namespace MultiShop.WebUI.Controllers
             var value = await _discountService.GetDiscountCouponCountRate(code);
 
             int KDVPercent = 10;
-            var basketitems = await _basketService.GetBasket();
+
+            var basketitems = new BasketTotalDto();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                basketitems = await _basketService.GetBasketFromDatabase();
+            }
+            else
+            {
+                basketitems = await _basketService.GetBasketFromCookies();
+            }
+       
+          
             double totalPriceWithTax = (double)basketitems.TotalPrice + ((double)basketitems.TotalPrice * KDVPercent) / 100;
             double totalprice = totalPriceWithTax - (totalPriceWithTax * value) / 100;
 

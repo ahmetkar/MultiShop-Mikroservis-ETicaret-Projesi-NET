@@ -36,8 +36,14 @@
 <body class="body-bg-color">
     <div class="wrapper">
         <div class="form-body">
+           
             <form action="" method="post" class="col-form" novalidate>
                 <div class="col-logo"><a href="../index.html"><img width="300px" height="60px" alt="" src="~/img/logos/MULTISHOPPNG.png"></a></div>
+                @if (Context.Request.Query.ContainsKey("reasonorder"))
+                {
+
+                    <h5>Sipariş işlemlerini yapabilmek için lütfen giriş yapınız.</h5>
+                }
                 <header>Giriş Yap</header>
                 <fieldset>
                     <section>

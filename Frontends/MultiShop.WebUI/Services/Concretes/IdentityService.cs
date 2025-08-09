@@ -39,7 +39,6 @@ namespace MultiShop.WebUI.Services.Concretes
             });
 
 
-
             var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
 
             RefreshTokenRequest refreshTokenRequest = new()

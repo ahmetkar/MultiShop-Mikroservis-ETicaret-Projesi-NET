@@ -25,6 +25,12 @@ namespace MultiShop.Order.Persistance.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task CreateRangeAsync(List<T> entities)
+        {
+            _context.Set<T>().AddRange(entities);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
@@ -39,6 +45,11 @@ namespace MultiShop.Order.Persistance.Repositories
         public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter)
         {
             return await _context.Set<T>().SingleOrDefaultAsync(filter);
+        }
+
+        public async Task<List<T>> GetAllByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+            return await _context.Set<T>().Where(filter).ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)

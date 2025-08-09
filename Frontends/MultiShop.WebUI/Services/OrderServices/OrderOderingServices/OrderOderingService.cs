@@ -1,9 +1,13 @@
-﻿using MultiShop.DtoLayer.OrderDtos.OrderAddressDtos;
+﻿using Microsoft.AspNetCore.Http;
+using MultiShop.DtoLayer.BasketDtos;
+using MultiShop.DtoLayer.OrderDtos.OrderAddressDtos;
+using MultiShop.DtoLayer.OrderDtos.OrderDetailDtos;
 using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos;
 using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using Newtonsoft.Json;
+
 
 namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
 {
@@ -11,15 +15,17 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
     {
         private readonly HttpClient _httpClient;
         private readonly IUserService _userService;
-       
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         private readonly IBasketService _basketService;
 
         public OrderOderingService(HttpClient httpClient,
-            IUserService userService,IBasketService basketService)
+            IUserService userService,IBasketService basketService, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
             _userService = userService;
             _basketService = basketService;
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<List<ResultOrderingByUserIdDto>> GetOrderingByUserId(string id)
         {
@@ -29,16 +35,18 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
             return values;
         }
 
-        public async Task CreateOrdering(int orderAdressId)
+        public async Task CreateOrdering(int billingAdressId,int shippingAdressId)
         {
             var values = await _userService.GetUserInfo();
 
-            var basket = await _basketService.GetBasket();
+            var basket = await _basketService.GetBasketFromDatabase();
+
+           
             //CREATE ORDERING 
             CreateOrderingDto createOrderingDto = new CreateOrderingDto()
             {
-                BillingAddressId = 0,
-                ShippingAdressId = 0,
+                BillingAddressId = billingAdressId,
+                ShippingAdressId = shippingAdressId,
                 OrderDate = DateTime.Now,
                 TotalPrice = basket.TotalPrice,
                 UserId = values.Id
@@ -48,10 +56,30 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
             {
                 //EĞER CreateOrdering BAŞARILI İSE
                 //CREATE ORDER DETAİL
-   
-                
-
-
+                var content = await response.Content.ReadFromJsonAsync<CreateOrderingResultDto>();
+                if (content != null)
+                {
+                    var responseId = content.OrderingId;
+                    var list = new List<CreateOrderDetailDto>();
+                    foreach (var item in basket.BasketItems)
+                    {
+                        var orderdetail = new CreateOrderDetailDto()
+                        {
+                            OrderingId = responseId,
+                            ProductAmount = item.Quantity,
+                            ProductId = item.ProductId,
+                            ProductName = item.ProductName,
+                            ProductPrice = item.Price,
+                            ProductTotalPrice = item.Price * item.Quantity
+                        };
+                        list.Add(orderdetail);
+                    }
+                    var response2 = await _httpClient.PostAsJsonAsync<List<CreateOrderDetailDto>>("OrderDetail", list);
+                    if (response2.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("orderings eklendi.");
+                    }
+                }
 
             }
           

@@ -14,15 +14,15 @@ namespace MultiShop.Order.API.Controllers
     {
         private readonly GetOrderDetailQueryHandler _getOrderDetailQueryHandler;
         private readonly GetOrderDetailByIdQueryHandler _getOrderDetailByIdQueryHandler;
-        private readonly CreateOrderDetailCommandHandler _createOrderDetailCommandHandler;
+        private readonly CreateOrderDetailRangeCommandHandler _createOrderDetailRangeCommandHandler;
         private readonly UpdateOrderDetailCommandHandler _updateOrderDetailCommandHandler;
         private readonly RemoveOrderDetailCommandHandler _removeOrderDetailCommandHandler;
 
-        public OrderDetailController(GetOrderDetailQueryHandler getOrderDetailQueryHandler, GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler,CreateOrderDetailCommandHandler createOrderDetailCommandHandler,
+        public OrderDetailController(GetOrderDetailQueryHandler getOrderDetailQueryHandler, GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler,CreateOrderDetailRangeCommandHandler createOrderDetailRangeCommandHandler,
             UpdateOrderDetailCommandHandler updateOrderDetailCommandHandler, RemoveOrderDetailCommandHandler deleteOrderDetailCommandHandler)
         {
             _getOrderDetailQueryHandler = getOrderDetailQueryHandler;
-            _createOrderDetailCommandHandler = createOrderDetailCommandHandler;
+            _createOrderDetailRangeCommandHandler = createOrderDetailRangeCommandHandler;
             _getOrderDetailByIdQueryHandler = getOrderDetailByIdQueryHandler;
             _updateOrderDetailCommandHandler = updateOrderDetailCommandHandler;
             _removeOrderDetailCommandHandler = deleteOrderDetailCommandHandler;
@@ -43,10 +43,10 @@ namespace MultiShop.Order.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrderDetail(CreateOrderDetailCommand createOrderDetailCommand)
+        public async Task<IActionResult> CreateOrderDetailRange(List<CreateOrderDetailCommand> createOrderDetailCommands)
         {
-            await _createOrderDetailCommandHandler.Handle(createOrderDetailCommand);
-            return Ok("Order detail başarıyla oluşturuldu");
+            await _createOrderDetailRangeCommandHandler.Handle(createOrderDetailCommands);
+            return Ok("Order detail listesi başarıyla eklendi.");
         }
 
         [HttpPut]

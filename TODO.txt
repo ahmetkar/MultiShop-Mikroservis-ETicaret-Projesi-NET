@@ -1,13 +1,17 @@
 
-0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek,Sepete eklemede hata var
-  Eðer adress varsa iki adres bilgisi input hidden ile gönderilecek
-    Eðer adress yoksa veya yeni adres eklenmek isteniyorsa iki ayrý adres alanýndan adres bilgisi istenecek. 
-    Order/ýndex onlara göre yeniden dizayn edilmeli
+0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek
+    Order adres listesindeki kaymayý düzelt
+    OrderSummaryComponentPartial düzenlenecek.
+
+    Payment direk payment servisine eklenecek.
+
+    
 0-Filtreleme iþlemleri yapýlacak(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
 0-Arama ve sayfalama kýsýmlarý eklenecek.
 
 0-Favoriler sayfasý eklenecek(bu sayfadaki favoriler sepete eklenebilecek) ve sidebarda signalr ile sepet ve favorideki ürün sayýsý çekilecek
 
+1-Payment-order-cargo arasýndaki baðlantýlar rabbitmq ile sonra kurulacak.
 1-Product Listesinde indirimlerin discount mikroservisine göre yansýtýlmasýda gerek
 
 1-MyOrderList te hata var veriler gelmiyor

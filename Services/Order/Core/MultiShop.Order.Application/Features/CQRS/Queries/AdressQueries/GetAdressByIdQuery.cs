@@ -8,11 +8,11 @@ namespace MultiShop.Order.Application.Features.CQRS.Queries.AdressQueries
 {
     public class GetAdressByIdQuery
     {
-        public GetAdressByIdQuery(int id)
+        public GetAdressByIdQuery(string id)
         {
             Id = id;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }

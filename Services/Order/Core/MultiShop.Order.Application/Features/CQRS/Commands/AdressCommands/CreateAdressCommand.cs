@@ -20,5 +20,6 @@ namespace MultiShop.Order.Application.Features.CQRS.Commands.AdressCommands
         public string Detail2 { get; set; }
         public string Description { get; set; }
         public string ZipCode { get; set; }
+        public bool IsBillingOrShipping { get; set; }
     }
 }

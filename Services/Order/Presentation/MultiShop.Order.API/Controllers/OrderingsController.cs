@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MultiShop.Order.API.Dtos;
 using MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
 
@@ -36,8 +37,8 @@ namespace MultiShop.Order.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrdering(CreateOrderingCommand command)
         {
-            await _mediator.Send(command);
-            return Ok("Sipariş başarıyla eklendi.");
+            int id = await _mediator.Send(command);
+            return Ok(new CreateOrderingResultDto() { OrderingId = id});
         }
 
         [HttpDelete]

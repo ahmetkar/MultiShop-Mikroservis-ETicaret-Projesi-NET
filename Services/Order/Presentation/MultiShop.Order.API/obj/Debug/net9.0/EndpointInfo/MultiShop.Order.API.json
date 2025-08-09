@@ -95,7 +95,7 @@
         }
       }
     },
-    "/api/Adresses/{id}": {
+    "/api/Adresses/GetAdressesByUserId/{id}": {
       "get": {
         "tags": [
           "Adresses"
@@ -106,8 +106,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -137,17 +136,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateOrderDetailCommand"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CreateOrderDetailCommand"
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateOrderDetailCommand"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CreateOrderDetailCommand"
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateOrderDetailCommand"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CreateOrderDetailCommand"
+                }
               }
             }
           }
@@ -419,6 +427,9 @@
           "zipCode": {
             "type": "string",
             "nullable": true
+          },
+          "isBillingOrShipping": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -533,6 +544,9 @@
           "zipCode": {
             "type": "string",
             "nullable": true
+          },
+          "isBillingOrShipping": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

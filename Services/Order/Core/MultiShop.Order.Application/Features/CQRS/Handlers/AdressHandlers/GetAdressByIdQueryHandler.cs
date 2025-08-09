@@ -20,23 +20,34 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
             _repository = repository;
         }
 
-        public async Task<GetAdressByIdQueryResult> Handle(GetAdressByIdQuery query)
+        public async Task<List<GetAdressByIdQueryResult>> Handle(GetAdressByIdQuery query)
         {
-            var values = await _repository.GetByIdAsync(query.Id);
-            return new GetAdressByIdQueryResult { 
-                AdressId = values.AdressId,
-                City = values.City,
-                Detail1 = values.Detail1,
-                Detail2 = values.Detail2,
-                District = values.District,
-                UserId = values.UserId,
-                Phone = values.Phone,
-                Country = values.Country,
-                ZipCode = values.ZipCode,
-                Description = values.Description,
-                Name = values.Name,
-                Surname = values.Surname
-            };
+            var values = await _repository.GetAllByFilterAsync(x=>x.UserId == query.Id);
+            
+            var list = new List<GetAdressByIdQueryResult>();
+            foreach(var i in values)
+            {
+               var item =  new GetAdressByIdQueryResult
+                {
+                    AdressId = i.AdressId,
+                    City = i.City,
+                    Detail1 = i.Detail1,
+                    Detail2 = i.Detail2,
+                    District = i.District,
+                    UserId = i.UserId,
+                    Phone = i.Phone,
+                    Country = i.Country,
+                    ZipCode = i.ZipCode,
+                    Description = i.Description,
+                    Name = i.Name,
+                    Surname = i.Surname,
+                    Email = i.Email,
+                    IsBillingOrShipping = i.IsBillingOrShipping
+                };
+                list.Add(item);
+            }
+
+            return list;
         }
     }
 }
