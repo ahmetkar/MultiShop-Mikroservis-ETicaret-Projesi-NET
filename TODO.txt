@@ -5,24 +5,23 @@
     Sepet-Order-Payment arasý yönlendirmeler
 
 
+0-Profilde verilen sipariþler ekraný (sadece bu þimdilik) (diðer sayfalarda eklenir yakýnda eklenecek notu ile)
 0-Filtreleme iþlemleri yapýlacak(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
 0-Arama ve sayfalama kýsýmlarý eklenecek.
 0-Favoriler sayfasý eklenecek(bu sayfadaki favoriler sepete eklenebilecek) ve sidebarda signalr ile sepet ve favorideki ürün sayýsý çekilecek
-0-Profilde verilen sipariþler ekraný (sadece bu þimdilik)
 
+
+1-MyOrderList te hata var veriler gelmiyor
 1-Payment-order-cargo arasýndaki baðlantýlar rabbitmq ile kurulacak.
 1-Profilde kargo görüntüleme
 1-Profilde bilgileri düzenleme ve talep gönderme
 1-Product Listesinde indirimlerin discount mikroservisine göre yansýtýlmasýda gerek
 
-1-MyOrderList te hata var veriler gelmiyor
+
+
 2-Admin panelindeki eklenmeyen sayfalar eklenecek.
 3-Image mikroservisi image.webui örnek alýnarak yazýlacak(admin panelinden resim yükleme ve listeleme mümkün olacak)
-4-Giriþ yaptýktan sonraki yönlendirmeler ve kullanýcý layoutu düzenlenecek
-5-Admin panelindeki bildirimler düzenlenecek.
-6-ELK stack veya serilog,elasticsearch entegre edilecek
-7-Global error handler,exception hanler entegre edilecek.
+4-Admin panelindeki bildirimler düzenlenecek.
+5-ELK stack veya serilog,elasticsearch entegre edilecek
+6-Global error handler,exception hanler entegre edilecek.
 
-
-
-.vs gibi klasörleri gitten haric tut
