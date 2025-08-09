@@ -23,7 +23,6 @@ namespace MultiShop.WebUI.Controllers
             int count = 0;
             var basket = await _basketService.GetBasketFromDatabase();
 
-          
 
             count = basket.BasketItems.Count;
 

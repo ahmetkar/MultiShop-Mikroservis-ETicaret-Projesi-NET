@@ -4,6 +4,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.AboutServices
 {
     public class AboutService : IAboutService
     {
+       
 
         private readonly HttpClient _httpClient;
 
