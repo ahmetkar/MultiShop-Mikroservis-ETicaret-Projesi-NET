@@ -12,7 +12,8 @@
 
 
 1-MyOrderList te hata var veriler gelmiyor
-1-Payment-order-cargo arasýndaki baðlantýlar rabbitmq ile kurulacak.
+1-Payment-order arasýndaki baðlantýlar rabbitmq ile kurulacak.
+1-Order-cargo veritabaný arasý baðlantýlar kafka ile kurulacak
 1-Profilde kargo görüntüleme
 1-Profilde bilgileri düzenleme ve talep gönderme
 1-Product Listesinde indirimlerin discount mikroservisine göre yansýtýlmasýda gerek
