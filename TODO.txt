@@ -23,6 +23,8 @@
 2-Admin panelindeki eklenmeyen sayfalar eklenecek.
 3-Image mikroservisi image.webui örnek alýnarak yazýlacak(admin panelinden resim yükleme ve listeleme mümkün olacak)
 4-Admin panelindeki bildirimler düzenlenecek.
-5-ELK stack veya serilog,elasticsearch entegre edilecek
-6-Global error handler,exception hanler entegre edilecek.
+5-Global error handler,exception hanler entegre edilecek.
+6-ELK(elastic,logstash,kibana) stack entegre edilecek. Loglar toplanýp,depolanýp,görselleþtirilecek.
+6-OpenTelemery ile alýnan veriler prometheus+grafana ya gönderilip depolanýp kullanýlýp görselleþtrilecek
+
 
