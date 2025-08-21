@@ -2,6 +2,21 @@
 
 Admin paneli ve e-ticaret sitesi arayüzü içeren ,frontend olarak .net core MVC backend olarak yaklaşık 12 mikroservis içeren web projesidir. Kategoriye göre ürünleri görüntüleme,ürün yorumlama,sepete ekleme,sipariş detayları girme ve ödeme için animasyonlu kart ekranı ,kupon uygulama,ana sayfa pörtfölyösü gibi özellikler içeriyor
 
+# İçerdiği Mikroservisler
+
+Basket
+Cargo
+Catalog
+Comment
+Discount
+Images
+Message
+Order
+Payment
+RabbitMQMessage
+RapidApi
+SignalR
+
 # Kullanılan Teknolojiler
  • Asp.Net Core 9.0 Web API ve MVC
  • Entity Framework Core
