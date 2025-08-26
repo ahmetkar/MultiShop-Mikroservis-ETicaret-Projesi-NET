@@ -352,7 +352,29 @@
         }
       }
     },
-    "/api/Orderings/GetOrderingByUserId/{id}": {
+    "/api/Orderings/GetOrderingsByUserId/{id}": {
+      "get": {
+        "tags": [
+          "Orderings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Orderings/GetActiveOrderingByUserId/{id}": {
       "get": {
         "tags": [
           "Orderings"

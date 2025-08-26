@@ -108,11 +108,31 @@ namespace MultiShop.WebUI.Services.BasketServices
             return new BasketTotalDto();
         }
 
+        public BasketTotalDto CalculateKDVAndTotal(BasketTotalDto basketTotalDto) {
+
+            double totalkdvprice = 0;
+            double totalpricewithoutkdv = 0;
+            foreach (var i in basketTotalDto.BasketItems)
+            {
+                totalkdvprice += i.KDVPrice * i.Quantity;
+                totalpricewithoutkdv += (double)i.Price * i.Quantity;
+
+            }
+            basketTotalDto.TotalPriceWithoutKDV = totalpricewithoutkdv;
+            basketTotalDto.TotalPrice = totalpricewithoutkdv + totalkdvprice;
+            basketTotalDto.KDVPrice = totalkdvprice;
+
+            return basketTotalDto;
+
+        }
+
         public async Task SaveBasketToCookies(BasketTotalDto basket)
         {
             var context = _httpContextAccessor.HttpContext;
             if (context != null)
             {
+                basket = CalculateKDVAndTotal(basket);
+
                 var json = JsonConvert.SerializeObject(basket);
                 context.Response.Cookies.Append("basket", json, new CookieOptions
                 {
@@ -124,6 +144,8 @@ namespace MultiShop.WebUI.Services.BasketServices
 
         public async Task SaveBasketToDatabase(BasketTotalDto basketTotalDto)
         {
+            basketTotalDto = CalculateKDVAndTotal(basketTotalDto);
+
             await _httpClient.PostAsJsonAsync("baskets", basketTotalDto);
 
         }
@@ -191,7 +213,6 @@ namespace MultiShop.WebUI.Services.BasketServices
         }
 
 
-       
 
 
         public async Task<BasketTotalDto> AddBasketItem(BasketTotalDto values,string id)
@@ -204,6 +225,8 @@ namespace MultiShop.WebUI.Services.BasketServices
                 ProductId = product.ProductId,
                 ProductName = product.ProductName,
                 Price = product.ProductPrice,
+                KDVPrice = (double)product.KDVPrice,
+                KDVPercent = (double)product.KDVPercent,
                 Quantity = 1,
                 ProductImageUrl = product.ProductImageUrl
             };

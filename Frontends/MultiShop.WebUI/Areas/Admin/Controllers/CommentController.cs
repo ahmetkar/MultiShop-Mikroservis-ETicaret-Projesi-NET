@@ -13,7 +13,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     {
 
         private readonly ICommentService _commentService;
-       
+
+        public CommentController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
 
         public async Task<IActionResult> Index()
         {

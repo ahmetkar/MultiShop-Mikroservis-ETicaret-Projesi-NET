@@ -29,11 +29,21 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
         }
         public async Task<List<ResultOrderingByUserIdDto>> GetOrderingByUserId(string id)
         {
-            var responseMessage = await _httpClient.GetAsync($"orderings/GetOrderingByUserId/{id}");
+            var responseMessage = await _httpClient.GetAsync($"orderings/GetOrderingsByUserId/{id}");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultOrderingByUserIdDto>>(jsonData);
             return values;
         }
+
+        public async Task<ResultOrderingByUserIdDto?> GetActiveOrderingByUserId(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync($"orderings/GetActiveOrderingByUserId/{id}");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<ResultOrderingByUserIdDto>(jsonData);
+            if (values != null) return values;
+            return null;
+        }
+       
 
         public async Task CreateOrdering(int billingAdressId,int shippingAdressId)
         {
@@ -41,6 +51,8 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
 
             var basket = await _basketService.GetBasketFromDatabase();
 
+            decimal cargoPrice = 15; // kargo fiyatını al
+            decimal totalPrice = (decimal)basket.TotalPrice + cargoPrice;
            
             //CREATE ORDERING 
             CreateOrderingDto createOrderingDto = new CreateOrderingDto()
@@ -48,7 +60,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
                 BillingAddressId = billingAdressId,
                 ShippingAdressId = shippingAdressId,
                 OrderDate = DateTime.Now,
-                TotalPrice = basket.TotalPrice,
+                TotalPrice = totalPrice,
                 UserId = values.Id
             };
             var response = await _httpClient.PostAsJsonAsync<CreateOrderingDto>("Orderings", createOrderingDto);

@@ -76,6 +76,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateProduct")]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
+            decimal kdvpercent = createProductDto.KDVPercent;
+            createProductDto.KDVPrice = (createProductDto.ProductPrice * kdvpercent)/100;
             await _productService.CreateProductAsync(createProductDto);
             return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
@@ -116,6 +118,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
+            decimal kdvpercent = updateProductDto.KDVPercent;
+            updateProductDto.KDVPrice = (updateProductDto.ProductPrice * kdvpercent)/100;
             await _productService.UpdateProductAsync(updateProductDto);
             return RedirectToAction("Index", "Product", new { area = "Admin" });
         }

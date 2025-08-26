@@ -11,6 +11,7 @@ namespace MultiShop.Basket.Services
         public BasketService(RedisService redisService)
         {
             _redisService = redisService;
+       
         }
         public async Task DeleteBasket(string userId)
         {
@@ -26,6 +27,8 @@ namespace MultiShop.Basket.Services
 
         public async Task SaveBasket(BasketTotalDto basketTotalDto)
         {
+            
+            
             await _redisService.GetDb().StringSetAsync(basketTotalDto.UserId, JsonSerializer.Serialize(basketTotalDto));
         }
     }

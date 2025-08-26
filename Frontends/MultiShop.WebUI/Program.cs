@@ -25,6 +25,7 @@ using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderOderingServices;
+using MultiShop.WebUI.Services.PaymentServices;
 using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticsServices;
 using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.UserStatisticsServices;
@@ -35,6 +36,8 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddDataProtection();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
     AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
@@ -221,6 +224,11 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
 builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IPaymentService, PaymentService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Payment.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 

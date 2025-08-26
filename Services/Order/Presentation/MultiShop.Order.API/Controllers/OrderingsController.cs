@@ -55,11 +55,19 @@ namespace MultiShop.Order.API.Controllers
             return Ok("Sipariş başarıyla güncellendi.");
         }
 
-        [HttpGet("GetOrderingByUserId/{id}")]
-        public async Task<IActionResult> GetOrderingByUserId(string id)
+        [HttpGet("GetOrderingsByUserId/{id}")]
+        public async Task<IActionResult> GetOrderingsByUserId(string id)
         {
             var values = await _mediator.Send(new GetOrderingByUserIdQuery(id));
             return Ok(values);
+        }
+
+        [HttpGet("GetActiveOrderingByUserId/{id}")]
+        public async Task<IActionResult> GetActiveOrderingByUserId(string id)
+        {
+            var values = await _mediator.Send(new GetOrderingByUserIdQuery(id));
+            var activeOrder = values.FirstOrDefault(x=>!x.IsOrderCompleted && !x.IsOrderDelivered);
+            return Ok(activeOrder);
         }
 
 

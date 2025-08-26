@@ -19,6 +19,7 @@
                                 <th>#</th>
                                 <th>Ürün Adı</th>
                                 <th>Ürün Fiyatı</th>
+                                <th>Ürün KDV Oranı ve KDV'li Fiyatı'</th>
                                 <th>Ürün Kategorisi</th>
                                 <th>Ürün Görselleri</th>
                                 <th>Ürün Açıklamaları</th>
@@ -34,6 +35,7 @@
                                         <th scope="row">@count</th>
                                         <td>@item.ProductName</td>
                                         <td>@item.ProductPrice</td>
+                                        <td>%@item.KDVPercent ile @(item.ProductPrice+item.KDVPrice) </td>
                                         <td>@item.Category.CategoryName</td>
                                     <td> <a class="btn btn-warning" href="/Admin/ProductImage/UpdateProductImage/@item.ProductId">Ürün Görsellerini Güncelle</a></td>
                                     <td> <a class="btn btn-warning" href="/Admin/ProductDetail/UpdateProductDetail/@item.ProductId">Ürün Detayları Güncelle</a></td>

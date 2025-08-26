@@ -132,6 +132,12 @@ namespace MultiShop.Order.Persistance.Migrations
                     b.Property<int>("BillingAddressId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsOrderCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsOrderDelivered")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 

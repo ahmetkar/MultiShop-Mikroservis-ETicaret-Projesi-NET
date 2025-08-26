@@ -12,7 +12,9 @@ namespace MultiShop.DtoLayer.BasketDtos
         public string DiscountCode { get; set; }
         public int? DiscountRate { get; set; }
         public List<BasketItemDto> BasketItems { get; set; } = new List<BasketItemDto> { };
-        public decimal TotalPrice { get => BasketItems.Sum(x => x.Price * x.Quantity); }
+        public double TotalPrice { get; set; }
+        public double KDVPrice { get; set; }
+        public double TotalPriceWithoutKDV { get; set; }
 
     }
 }

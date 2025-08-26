@@ -23,8 +23,7 @@ namespace MultiShop.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var values = await _userService.GetUserInfo();
-            return View(values);
+            return RedirectToAction("Index","Default");
         }
 
         [HttpGet]
@@ -41,7 +40,7 @@ namespace MultiShop.WebUI.Controllers
             return View();
         }
 
-    
+   
 
         [HttpPost]
         public async Task<IActionResult> Login(SignInDto signInDto)

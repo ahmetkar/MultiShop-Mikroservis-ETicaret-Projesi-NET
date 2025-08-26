@@ -166,3 +166,4 @@ D:\0Dotnet\MultiShopProject\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\
 D:\0Dotnet\MultiShopProject\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\MultiShop.Payment.pdb
 D:\0Dotnet\MultiShopProject\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\MultiShop.Payment.genruntimeconfig.cache
 D:\0Dotnet\MultiShopProject\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\ref\MultiShop.Payment.dll
+D:\0Dotnet\MultiShopProject\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -1526,6 +1526,14 @@
             "type": "number",
             "format": "double"
           },
+          "kdvPercent": {
+            "type": "number",
+            "format": "double"
+          },
+          "kdvPrice": {
+            "type": "number",
+            "format": "double"
+          },
           "productImageUrl": {
             "type": "string",
             "nullable": true
@@ -1750,6 +1758,14 @@
             "nullable": true
           },
           "productPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "kdvPercent": {
+            "type": "number",
+            "format": "double"
+          },
+          "kdvPrice": {
             "type": "number",
             "format": "double"
           },

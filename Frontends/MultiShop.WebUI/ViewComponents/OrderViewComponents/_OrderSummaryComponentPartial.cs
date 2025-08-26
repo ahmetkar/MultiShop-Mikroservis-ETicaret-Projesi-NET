@@ -15,9 +15,8 @@ namespace MultiShop.WebUI.ViewComponents.OrderViewComponents
         {
             var basketTotal = await _basketService.GetBasketFromDatabase();
 
-            var basketItems = basketTotal.BasketItems;
-
-            return View(basketItems);
+           
+            return View(basketTotal);
         }
     }
 }

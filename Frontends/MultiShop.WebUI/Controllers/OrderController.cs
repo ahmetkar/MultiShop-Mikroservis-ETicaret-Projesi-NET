@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using MultiShop.DtoLayer.BasketDtos;
@@ -22,15 +23,17 @@ namespace MultiShop.WebUI.Controllers
         private readonly IOrderAddressService _orderAddressService;
         private readonly IUserService _userService;
         private readonly IBasketService _basketService;
+        private readonly IDataProtector _protector;
 
-    
 
-        public OrderController(IBasketService basketService,IUserService userService,IOrderOderingService orderOderingService, IOrderAddressService orderAddressService)
+
+        public OrderController(IBasketService basketService,IUserService userService,IOrderOderingService orderOderingService, IOrderAddressService orderAddressService,IDataProtectionProvider provider)
         {
             _orderOderingService = orderOderingService;
             _orderAddressService = orderAddressService;
             _userService = userService;
             _basketService = basketService;
+            _protector = provider.CreateProtector("ActiveOrderingId_Protector");
         }
 
 
@@ -41,6 +44,16 @@ namespace MultiShop.WebUI.Controllers
             ViewBag.directory1 = "MultiShop";
             ViewBag.directory2 = "Siparişler";
             ViewBag.directory3 = "Sipariş İşlemleri";
+
+            string myId = await _userService.GetUserId();
+
+            var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(myId);
+
+            if(activeOrdering !=null) {
+                var encryptedId = _protector.Protect(activeOrdering.OrderingId.ToString());
+                return RedirectToAction("Index","Payment", new {ActiveOrderingId = encryptedId}); 
+            }
+
             int count = 0;
             var basket = await _basketService.GetBasketFromDatabase();
 
@@ -53,6 +66,9 @@ namespace MultiShop.WebUI.Controllers
             var adressCount = await _orderAddressService.GetUserAdressCount();
 
             ViewBag.AdressCount = adressCount;
+
+            ViewBag.CargoPrice = 15; // kargo fiyatını al
+            
 
             return View();
             }

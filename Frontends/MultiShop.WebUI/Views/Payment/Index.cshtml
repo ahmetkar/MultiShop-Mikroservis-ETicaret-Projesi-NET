@@ -1,4 +1,5 @@
-﻿
+﻿@using MultiShop.WebUI.Models;
+@model CreatePaymentViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
@@ -15,7 +16,15 @@
 <body>
     <div class="container">
        
+        @if(Model.OrderingId != 0)
+        {
+            @if (Model.PaymentTotal > 0)
+            {
+                <h6>@Model.OrderingId</h6>
+                <h6>@Model.PaymentTotal ₺ tutarındaki ödemeniz için bilgilerinizi girin. </h6>
+            }
 
+        }
         <div class="card-container">
             <div class="front">
                 <div class="image">
@@ -50,19 +59,23 @@
         </div>
 
       
-        <form action="">
+        <form id="paymentForm" asp-action="SendPayment" asp-controller="Payment">
+            <input type="hidden" asp-for="OrderingId" />
+            <input type="hidden" asp-for="PaymentTotal" />
+            <input type="hidden" value="visa" asp-for="CardType" />
+        
             <div class="inputBox">
                 <span>Kart Numarası</span>
-                <input type="text" maxlength="16" class="card-number-input">
+                <input asp-for="LastFourNumber" id="cardNumber" type="text" maxlength="16" class="card-number-input">
             </div>
             <div class="inputBox">
                 <span>Kart Sahibi</span>
-                <input type="text" class="card-holder-input">
+                <input asp-for="OwnerNameAndSurname" type="text" class="card-holder-input">
             </div>
             <div class="flexbox">
                 <div class="inputBox">
                     <span>Ay Bilgisi</span>
-                    <select name="" id="" class="month-input">
+                    <select asp-for="LastDateMonth" id="" class="month-input">
                         <option value="month" selected disabled>Ay Seçiniz</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
@@ -80,7 +93,7 @@
                 </div>
                 <div class="inputBox">
                     <span>Yıl Bilgisi</span>
-                    <select name="" id="" class="year-input">
+                    <select asp-for="LastDateYear"  id="" class="year-input">
                         <option value="year" selected disabled>Yıl Seçiniz</option>
                         <option value="2021">2021</option>
                         <option value="2022">2022</option>
@@ -96,13 +109,32 @@
                 </div>
                 <div class="inputBox">
                     <span>Cvv</span>
-                    <input type="text" maxlength="4" class="cvv-input">
+                    <input id="cvv" type="text" maxlength="4" class="cvv-input">
                 </div>
             </div>
             <input type="submit" value="Ödemeyi Tamamla" class="submit-btn">
         </form>
+
+        <form id="cancelForm" asp-action="CancelPayment" asp-controller="Payment">
+            <input type="hidden" asp-for="OrderingId" />
+            <input type="submit" value="Ödemeyi İptal Et" class="submit-btn">
+        </form>
     </div>
+
     <script>
+
+        document.getElementById("paymentForm").addEventListener("submit", function() {
+
+            //Burada ödeme entegrasyon işlemi yapılacak
+
+            //Ödeme onayı alındıktan sonra post işlemi ile bilgiler gönderilecek.
+            let criticInput = document.getElementById("cardNumber");
+            let cvv = document.getElementById("cvv");
+
+            if (criticInput.value.length > 4) {
+                criticInput.value = criticInput.value.slice(-4);
+            }
+        });
 
         document.querySelector('.card-number-input').oninput = () => {
             document.querySelector('.card-number-box').innerText = document.querySelector('.card-number-input').value;

@@ -24,7 +24,7 @@ namespace MultiShop.WebUI.Services.CommentServices
 
         public async Task<List<ResultCommentDto>> GetAllCommentAsync()
         {
-            var resp = await _httpClient.GetAsync("Comments/CommentList");
+            var resp = await _httpClient.GetAsync("Comments");
             var values = await resp.Content.ReadFromJsonAsync<List<ResultCommentDto>>();
             return values;
         }

@@ -20,6 +20,7 @@
                                 <th>#</th>
                                 <th>Ürün Adı</th>
                                 <th>Ürün Fiyatı</th>
+                                <th>Ürün KDV Oranı ve KDV'li Fiyatı'</th>
                                 <th> </th>
                                 <th> </th>
                             </tr>
@@ -32,6 +33,7 @@
                                     <th scope="row">@count</th>
                                     <td>@item.ProductName</td>
                                     <td>@item.ProductPrice</td>
+                                    <td>%@item.KDVPercent ile @(item.ProductPrice + item.KDVPrice) </td>
                                     <td> <a class="btn btn-danger" href="/Admin/Product/DeleteProduct/@item.ProductId">Sil</a></td>
                                     <td> <a class="btn btn-success" href="/Admin/Product/UpdateProduct/@item.ProductId">Güncelle</a></td>
                                 </tr>
