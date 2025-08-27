@@ -12,7 +12,6 @@ namespace MultiShop.WebUI.Services.PaymentServices
     public class PaymentService : IPaymentService
     {
         
-
         private readonly HttpClient _httpClient;
 
         public PaymentService(HttpClient httpClient)

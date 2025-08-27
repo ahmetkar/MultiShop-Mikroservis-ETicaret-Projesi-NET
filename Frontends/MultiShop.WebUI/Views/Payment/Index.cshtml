@@ -61,7 +61,6 @@
       
         <form id="paymentForm" asp-action="SendPayment" asp-controller="Payment">
             <input type="hidden" asp-for="OrderingId" />
-            <input type="hidden" asp-for="PaymentTotal" />
             <input type="hidden" value="visa" asp-for="CardType" />
         
             <div class="inputBox">
@@ -115,9 +114,9 @@
             <input type="submit" value="Ödemeyi Tamamla" class="submit-btn">
         </form>
 
-        <form id="cancelForm" asp-action="CancelPayment" asp-controller="Payment">
+        <form id="cancelForm" asp-action="CancelOrder" asp-controller="Payment">
             <input type="hidden" asp-for="OrderingId" />
-            <input type="submit" value="Ödemeyi İptal Et" class="submit-btn">
+            <input type="submit" value="Siparişi İptal Et" class="submit-btn">
         </form>
     </div>
 

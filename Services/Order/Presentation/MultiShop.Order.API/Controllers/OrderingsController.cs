@@ -20,14 +20,14 @@ namespace MultiShop.Order.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpGet("OrderingList")]
         public async Task<IActionResult> OrderingList()
         {
             var values = await _mediator.Send(new GetOrderingQuery());
             return Ok(values);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetOrderingById/{id}")]
         public async Task<IActionResult> GetOrderingById(int id)
         {
             var values = await _mediator.Send(new GetOrderingByIdQuery(id));
@@ -41,7 +41,7 @@ namespace MultiShop.Order.API.Controllers
             return Ok(new CreateOrderingResultDto() { OrderingId = id});
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveOrdering(int id)
         {
             await _mediator.Send(new RemoveOrderingCommand(id));

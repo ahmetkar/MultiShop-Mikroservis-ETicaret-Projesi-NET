@@ -35,6 +35,14 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
             return values;
         }
 
+        public async Task<GetOrderingByIdResultDto> GetOrderingById(int id)
+        {
+            var responseMessage = await _httpClient.GetAsync($"orderings/GetOrderingById/{id}");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<GetOrderingByIdResultDto>(jsonData);
+            return values;
+        }
+
         public async Task<ResultOrderingByUserIdDto?> GetActiveOrderingByUserId(string id)
         {
             var responseMessage = await _httpClient.GetAsync($"orderings/GetActiveOrderingByUserId/{id}");
@@ -43,7 +51,39 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
             if (values != null) return values;
             return null;
         }
-       
+
+        public async Task<bool> DeleteOrdering(int orderingId)
+        {
+            var response = await _httpClient.DeleteAsync($"Orderings/{orderingId}");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return FALSE;
+        }
+
+        public async Task<bool> SetOrderingStatus(int orderingId,bool newStatus)
+        {
+            var ordering = await this.GetOrderingById(orderingId);
+
+            UpdateOrderingDto updateOrderingDto = new UpdateOrderingDto()
+            {
+                OrderingId = orderingId,
+                OrderDate = ordering.OrderDate,
+                BillingAddressId = ordering.BillingAddressId,
+                ShippingAdressId = ordering.ShippingAdressId,
+                TotalPrice = ordering.TotalPrice,
+                UserId = ordering.UserId,
+                IsOrderCompleted = newStatus,
+                IsOrderDelivered = false
+            };
+            var response = await _httpClient.PutAsJsonAsync("Orderings", updateOrderingDto);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public async Task CreateOrdering(int billingAdressId,int shippingAdressId)
         {

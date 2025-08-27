@@ -10,6 +10,8 @@ namespace MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommand
         public decimal TotalPrice { get; set; }
         public int ShippingAdressId { get; set; }
         public int BillingAddressId { get; set; }
+        public bool IsOrderCompleted { get; set; }
+        public bool IsOrderDelivered { get; set; }
         public DateTime OrderDate { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 
-0-Sipariþ verme aþamalarý ve kargoya düþme iþlemleri düzenlenecek
-    Payment ekleme ve iptal iþlemleri yapýlacak.
+0-Payment Success ekraný yapýlacak
 0-Sayfalama
 0-Filtreleme iþlemleri yapýlacak(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
 0-Arama  kýsmý eklenecek.

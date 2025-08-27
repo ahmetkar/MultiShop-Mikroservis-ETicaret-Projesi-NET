@@ -20,6 +20,8 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
             values.TotalPrice = request.TotalPrice;
             values.ShippingAdressId = request.ShippingAdressId;
             values.BillingAddressId = request.BillingAddressId;
+            values.IsOrderCompleted = request.IsOrderCompleted;
+            values.IsOrderDelivered = request.IsOrderDelivered;
             await _repository.UpdateAsync(values);
         }
     }

@@ -22,7 +22,7 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
                 TotalPrice = request.TotalPrice,
                 UserId = request.UserId,
                 BillingAddressId = request.BillingAddressId,
-                ShippingAdressId = request.ShippingAdressId
+                ShippingAdressId = request.ShippingAdressId,
             };
             await _repository.CreateAsync(ordering);
 
