@@ -38,8 +38,8 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             CargoDetail CargoDetails = new CargoDetail
             {
-                SenderCustomer = createCargoDetailsDto.SenderCustomer,
-                ReceiverCustomer = createCargoDetailsDto.ReceiverCustomer,
+               
+                CustomerId = createCargoDetailsDto.CustomerId,
                 Barcode = createCargoDetailsDto.Barcode,
                 CargoCompanyId = createCargoDetailsDto.CargoCompanyId,
             };
@@ -61,8 +61,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
             CargoDetail CargoDetails = new CargoDetail
             {
                 CargoDetailId = updateCargoDetailsDto.CargoDetailId,
-                SenderCustomer = updateCargoDetailsDto.SenderCustomer,
-                ReceiverCustomer = updateCargoDetailsDto.ReceiverCustomer,
+                CustomerId = updateCargoDetailsDto.CustomerId,
                 Barcode = updateCargoDetailsDto.Barcode,
                 CargoCompanyId = updateCargoDetailsDto.CargoCompanyId,
             };

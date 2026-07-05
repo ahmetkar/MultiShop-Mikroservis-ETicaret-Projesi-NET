@@ -8,9 +8,8 @@ namespace MultiShop.Cargo.DtoLayer.Dtos.CargoDetail
 {
     public class CreateCargoDetailDto
     {
-        public string SenderCustomer { get; set; }
-        public string ReceiverCustomer { get; set; }
-        public int Barcode { get; set; }
+        public int CustomerId { get; set; }
+        public string Barcode { get; set; }
         public int CargoCompanyId { get; set; }
     }
 }

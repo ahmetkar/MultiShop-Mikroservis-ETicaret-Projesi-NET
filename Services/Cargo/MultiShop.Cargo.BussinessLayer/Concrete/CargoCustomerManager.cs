@@ -33,7 +33,7 @@ namespace MultiShop.Cargo.BussinessLayer.Concrete
             return _cargoCustomerDal.GetById(id);
         }
 
-        public CargoCustomer TGetCargoCustomerById(string id)
+        public CargoCustomer TGetCargoCustomerById(int id)
         {
             return _cargoCustomerDal.GetCargoCustomerById(id);
         }

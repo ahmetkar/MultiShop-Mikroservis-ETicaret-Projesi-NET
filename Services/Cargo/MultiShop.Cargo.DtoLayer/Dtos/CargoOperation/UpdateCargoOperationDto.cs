@@ -9,7 +9,7 @@ namespace MultiShop.Cargo.DtoLayer.Dtos.CargoOperation
     public class UpdateCargoOperationDto
     {
         public int CargoOperationId { get; set; }
-        public string Barcode { get; set; }
+        public int CargoDetailId { get; set; }
         public string Description { get; set; }
         public DateTime OperationDate { get; set; }
     }

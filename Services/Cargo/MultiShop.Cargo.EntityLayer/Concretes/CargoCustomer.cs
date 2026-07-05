@@ -17,5 +17,8 @@ namespace MultiShop.Cargo.EntityLayer.Concretes
         public string District { get; set; }
         public string City { get; set; }
         public string? UserCustomerId { get; set; }
+
+        public List<CargoDetail> CargoDetails { get; set; }
     }
 }
+    

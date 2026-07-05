@@ -38,7 +38,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             CargoOperation CargoOperation = new CargoOperation
             {
-               Barcode = createCargoOperationDto.Barcode,
+               CargoDetailId = createCargoOperationDto.CargoDetailId,
                Description = createCargoOperationDto.Description,
                 OperationDate = createCargoOperationDto.OperationDate,
             };
@@ -60,7 +60,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
             CargoOperation CargoOperation = new CargoOperation
             {
                 CargoOperationId = updateCargoOperationDto.CargoOperationId,
-                Barcode = updateCargoOperationDto.Barcode,
+                CargoDetailId = updateCargoOperationDto.CargoDetailId,
                 Description = updateCargoOperationDto.Description,
                 OperationDate = updateCargoOperationDto.OperationDate,
             };

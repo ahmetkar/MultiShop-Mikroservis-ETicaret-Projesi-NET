@@ -102,12 +102,9 @@ namespace MultiShop.WebUI.Controllers
 
             bool added = await _paymentService.AddPayment(createPayment);
 
-            if (added)
-            {
+            
 
-            }
-
-            return RedirectToAction("PaymentResult", "Payment",new {PaymentResult = added});
+            return RedirectToAction("PaymentResult", "Payment", new { PaymentResult = added });
 
         }
 
