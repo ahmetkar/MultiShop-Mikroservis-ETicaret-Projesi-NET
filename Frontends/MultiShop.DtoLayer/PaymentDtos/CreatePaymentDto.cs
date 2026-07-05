@@ -10,6 +10,7 @@ namespace MultiShop.DtoLayer.PaymentDtos
     {
         public int OrderingId { get; set; }
         public int PaymentTotal { get; set; }
+        
         public string UserId { get; set; }
         public string PaymentType { get; set; }
         public string OwnerName { get; set; }

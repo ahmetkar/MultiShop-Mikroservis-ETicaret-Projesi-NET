@@ -1,8 +1,7 @@
-﻿@model List<ResultAboutDto>
+﻿@model ResultAboutDto
 
 @{
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
-    int count = 0;
 }
 
 
@@ -11,38 +10,25 @@
 
         <div class="col-md-12">
             <div class="chart-box">
-                <h4>Hakkımızda Alanları Listesi</h4>
-                <p>En son eklenen geçerli olur.</p>
-                <div class="bs-example" data-example-id="bordered-table">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Açıklama</th>
-                                <th>Email</th>
-                                <th>Adres</th>
-                                <th>Telefon</th>
-                                <th> </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model) {
-                                count++;
-                                <tr>
-                                    <th scope="row">@count</th>
-                                    <td>@item.Description</td>
-                                    <td>@item.Email</td>
-                                    <td>@item.Address</td>
-                                    <td>@item.Phone</td>
-                                    <td> <a class="btn btn-danger" href="/Admin/About/DeleteAbout/@item.AboutId">Sil</a></td>
-                                    <td> <a class="btn btn-success" href="/Admin/About/UpdateAbout/@item.AboutId">Güncelle</a></td>
-                                </tr>
-                            }
-                            
-                        </tbody>
-                    </table>    
-                    <a class="btn btn-success" href="/Admin/About/CreateAbout">Hakkımızda Alanı Ekle</a>
-                </div>
+                <h4>
+                    Hakkımızda Alanı Güncelleme<h4>
+
+                        <div class="bs-example" data-example-id="bordered-table">
+                            <form method="post" asp-action="UpdateAbout" asp-controller="About">
+                                <input type="hidden" asp-for="AboutId" />
+                                <label>Açıklama : </label>
+                                <input type="text" asp-for="Description" class="form-control" placeholder="Açıklama">
+                                <label>Adres : </label>
+                                <input type="text" asp-for="Address" class="form-control" placeholder="Adres girin">
+                                <label>Email : </label>
+                                <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+                                <label>Telefon nu : </label>
+                                <input type="text" asp-for="Phone" class="form-control" placeholder="Telefon nu">
+
+                                <button class="btn btn-primary" type="submit">Güncelle</button>
+                            </form>
+
+                        </div>
             </div>
         </div>
     </div>

@@ -1,41 +1,19 @@
 [
   {
     "ContainingType": "MultiShop.Catalog.Controllers.AboutsController",
-    "Method": "CreateAbout",
+    "Method": "GetAbout",
     "RelativePath": "api/Abouts",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createAboutDto",
-        "Type": "MultiShop.Catalog.DTOs.AboutDTOs.CreateAboutDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MultiShop.Catalog.Controllers.AboutsController",
-    "Method": "DeleteAbout",
-    "RelativePath": "api/Abouts",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
     "ContainingType": "MultiShop.Catalog.Controllers.AboutsController",
     "Method": "UpdateAbout",
     "RelativePath": "api/Abouts",
-    "HttpMethod": "PUT",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -45,42 +23,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MultiShop.Catalog.Controllers.AboutsController",
-    "Method": "GetAboutById",
-    "RelativePath": "api/Abouts/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MultiShop.Catalog.Controllers.AboutsController",
-    "Method": "AboutList",
-    "RelativePath": "api/Abouts/AboutList",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MultiShop.Catalog.Controllers.AboutsController",
-    "Method": "GetLastAbout",
-    "RelativePath": "api/Abouts/GetLastAbout",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {

@@ -88,8 +88,7 @@ namespace MultiShop.Payment.Services
                 LastFourNumber = createPaymentDto.LastFourNumber
             };
 
-            _paymentContext.CardInfos.Add(cardInfos);
-            _paymentContext.SaveChanges();
+            
 
             _paymentContext.PaymentInfos.Add(new PaymentInfo()
             {
@@ -97,7 +96,7 @@ namespace MultiShop.Payment.Services
                 OrderingId = createPaymentDto.OrderingId,
                 PaymentTotal = createPaymentDto.PaymentTotal,
                 PaymentType = createPaymentDto.PaymentType,
-                CardInfoId = cardInfos.CardInfoId
+                CardInfo = cardInfos
             });
             var change = _paymentContext.SaveChanges();
             if (change >= 1) return true;

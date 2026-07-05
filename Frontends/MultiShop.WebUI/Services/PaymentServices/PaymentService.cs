@@ -11,18 +11,36 @@ namespace MultiShop.WebUI.Services.PaymentServices
 
     public class PaymentService : IPaymentService
     {
-        
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly HttpClient _httpClient;
-
-        public PaymentService(HttpClient httpClient)
+        public PaymentService(
+       IHttpClientFactory httpClientFactory,
+       IHttpContextAccessor httpContextAccessor, HttpClient httpClient)
         {
+            _httpClientFactory = httpClientFactory;
+            _httpContextAccessor = httpContextAccessor;
             _httpClient = httpClient;
         }
 
+        private HttpClient GetPaymentClient()
+        {
+            var isAuthenticated =
+                _httpContextAccessor.HttpContext?.User?.Identity?.IsAuthenticated == true;
+
+            if (isAuthenticated)
+            {
+                return _httpClientFactory.CreateClient("PaymentUserClient");
+            }
+
+            return _httpClientFactory.CreateClient("PaymentClientCredentialClient");
+        }
 
         public async Task<bool> AddPayment(CreatePaymentDto createPaymentDto)
         {
-           var result =  await _httpClient.PostAsJsonAsync<CreatePaymentDto>("Payments", createPaymentDto);
+           var client = GetPaymentClient();
+            
+           var result =  await client.PostAsJsonAsync<CreatePaymentDto>("Payments", createPaymentDto);
             if (result.IsSuccessStatusCode)
             {
                 var res = await result.Content.ReadFromJsonAsync<PaymentResultModel>();
@@ -30,9 +48,16 @@ namespace MultiShop.WebUI.Services.PaymentServices
                 if (res.success)
                 {
                     return true;
+                }else
+                {
+                    return false;
                 }
+            }else
+                {
+                throw new Exception($"Payment API Error: {result.StatusCode} - {result.Content}");
+               
             }
-            return false;
+               
         }
 
         public async Task<bool> CancelPaymentByOrderingId(int id)

@@ -162,7 +162,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
                     // Refresh token alabilmek için offline_access gerekir.
                     // IdentityServer tarafında client AllowOfflineAccess = true olmalı.
-                    Scope = "openid profile email offline_access IdentityServerApi BasketFullPermission OcelotFullPermission CatalogFullPermission DiscountFullPermission OrderFullPermission PaymentFullPermission"
+                    Scope = "openid profile email offline_access IdentityServerApi BasketFullPermission OcelotFullPermission CatalogFullPermission DiscountFullPermission OrderFullPermission PaymentReadPermission PaymentCreatePermission PaymentDeletePermission"
                 };
 
                 var token = await _httpClient.RequestPasswordTokenAsync(passwordTokenRequest);

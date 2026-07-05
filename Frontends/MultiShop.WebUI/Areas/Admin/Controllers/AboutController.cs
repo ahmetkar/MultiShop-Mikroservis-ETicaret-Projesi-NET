@@ -27,59 +27,31 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = pagename;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
 
             ViewBagList("Hakkımızda Alanı Listesi");
 
-            var result = await _aboutService.GetAllAboutAsync();
+            var result = await _aboutService.GetAbout();
             if (result != null) return View(result);
             return View();
         }
 
 
-        [HttpGet]
-        [Route("CreateAbout")]
-        public IActionResult CreateAbout()
-        {
-            ViewBagList("Hakkımızda Alanı Ekle");
-
-            return View();
-        }
-
+        [Route("UpdateAbout")]
         [HttpPost]
-        [Route("CreateAbout")]
-        public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
+        public async Task<IActionResult> UpdateAbout(ResultAboutDto res)
         {
-
-            await _aboutService.CreateAboutAsync(createAboutDto);
-
-            return RedirectToAction("Index","About", new { area = "Admin" });
-        }
-
-
-        [Route("DeleteAbout/{id}")]
-        public async Task<IActionResult> DeleteAbout(string id)
-        {
-            await _aboutService.DeleteAboutAsync(id);
-            return RedirectToAction("Index", new { area = "Admin" });
-        }
-
-        [Route("UpdateAbout/{id}")]
-        [HttpGet]
-        public async Task<IActionResult> UpdateAbout(string id)
-        {
-            ViewBagList("Hakkımızda Alanı Güncelle");
-
-            var result = await _aboutService.GetByIdAbout(id);
-             return View(result);
-        }
-
-        [Route("UpdateAbout/{id}")]
-        [HttpPost]
-        public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
-        {
-            await _aboutService.UpdateAboutAsync(updateAboutDto);
+            UpdateAboutDto updateAboutDto = new UpdateAboutDto
+             {
+                AboutId = res.AboutId,
+                Address = res.Address,
+                Description = res.Description,
+                Email = res.Email,
+                Phone = res.Phone,
+            };
+            await _aboutService.UpdateAboutAsync(updateAboutDto);   
             return RedirectToAction("Index", "About", new { area = "Admin" });
         }
     }

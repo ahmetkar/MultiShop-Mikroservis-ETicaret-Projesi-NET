@@ -30,13 +30,13 @@ namespace MultiShop.WebUI.Controllers
 
         }
 
-        public async Task<IActionResult> Index(string code,string discountrate,string totalpricewithcoupon)
+        public async Task<IActionResult> Index(string code, string discountrate, string totalpricewithcoupon)
         {
             ViewBag.Directory1 = "Ana Sayfa";
-            ViewBag.Directory2 = "Ürünler"; 
+            ViewBag.Directory2 = "Ürünler";
             ViewBag.Directory3 = "Sepetim";
 
-            
+
 
             ViewBag.TotalPriceWithTaxAndCoupon = totalpricewithcoupon;
             ViewBag.code = code;
@@ -49,7 +49,7 @@ namespace MultiShop.WebUI.Controllers
                 var userId = User.FindFirst("sub")?.Value
                   ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
                   ?? User.FindFirst("nameidentifier")?.Value;
-                
+
                 var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(userId);
 
                 if (activeOrdering != null)
@@ -58,12 +58,12 @@ namespace MultiShop.WebUI.Controllers
                     return RedirectToAction("Index", "Payment", new { ActiveOrderingId = encryptedId });
                 }
 
-              int? isAdded = HttpContext.Session.GetInt32("IsCookiesAdded");
-             if (isAdded != 1)
-             {
-                isAdded = await _basketService.AddCookieDataToDatabase();
-             }
-               
+                int? isAdded = HttpContext.Session.GetInt32("IsCookiesAdded");
+                if (isAdded != 1)
+                {
+                    isAdded = await _basketService.AddCookieDataToDatabase();
+                }
+
 
                 basketitems = await _basketService.GetBasketFromDatabase();
             }
@@ -72,7 +72,7 @@ namespace MultiShop.WebUI.Controllers
                 basketitems = await _basketService.GetBasketFromCookies();
             }
 
-                int count = 0;
+            int count = 0;
             count = basketitems.BasketItems.Count;
 
             if (count > 0)
@@ -94,7 +94,7 @@ namespace MultiShop.WebUI.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-           
+
                 await _basketService.AddBasketItemToDatabase(ProductId);
             }
             else
@@ -115,7 +115,7 @@ namespace MultiShop.WebUI.Controllers
             {
                 await _basketService.AddBasketItemToCookies(id);
             }
-                
+
             return RedirectToAction("Index");
         }
 
@@ -129,7 +129,7 @@ namespace MultiShop.WebUI.Controllers
             {
                 await _basketService.RemoveBasketItemFromCookies(id);
             }
-            
+
             return RedirectToAction("Index");
         }
 
@@ -137,14 +137,14 @@ namespace MultiShop.WebUI.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                
+
                 await _basketService.DecrementBasketItemFromDatabase(id);
             }
             else
             {
                 await _basketService.DecrementBasketItemFromCookies(id);
             }
-            
+
             return RedirectToAction("Index");
         }
     }

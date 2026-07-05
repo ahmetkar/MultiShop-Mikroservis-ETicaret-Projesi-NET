@@ -70,11 +70,9 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<Brand, ResultBrandDto>().ReverseMap();
             CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
 
-
-            CreateMap<About, CreateAboutDto>().ReverseMap();
             CreateMap<About, UpdateAboutDto>().ReverseMap();
             CreateMap<About, ResultAboutDto>().ReverseMap();
-            CreateMap<About, GetByIdAboutDto>().ReverseMap();
+
 
         }
     }

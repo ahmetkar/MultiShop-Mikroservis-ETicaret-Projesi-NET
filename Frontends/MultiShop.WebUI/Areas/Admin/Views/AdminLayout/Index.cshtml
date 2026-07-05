@@ -5,7 +5,7 @@
 @await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
 
 <body class="sidebar-mini">
-    <div class="wrapper">
+   
      
         @await Component.InvokeAsync("_AdminLayoutHeaderComponentPartial")
 
@@ -25,11 +25,12 @@
         </div>
         <!-- content-wrapper -->
         <!-- Main Footer -->
+
         <footer class="main-footer dark-bg">
             <div class="pull-right hidden-xs"> Version 1.0</div>
             Copyright &copy; @DateTime.Now.Year MultiShop All rights reserved.
         </footer>
-    </div>
+   
     <!-- wrapper -->
     <!-- jQuery -->
     <script src="~/ovioadmin/dist/js/jquery.min.js"></script>
@@ -63,5 +64,7 @@
         });
 
     </script>
+    
 </body>
+
 </html>

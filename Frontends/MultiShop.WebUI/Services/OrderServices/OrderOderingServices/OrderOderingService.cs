@@ -85,7 +85,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
             return false;
         }
 
-        public async Task CreateOrdering(int billingAdressId,int shippingAdressId)
+        public async Task<int?> CreateOrdering(int billingAdressId,int shippingAdressId)
         {
             var values = await _userService.GetUserInfo();
 
@@ -130,12 +130,26 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
                     if (response2.IsSuccessStatusCode)
                     {
                         Console.WriteLine("orderings eklendi.");
+                        string myId = await _userService.GetUserId();
+                        var activeOrdering = await GetActiveOrderingByUserId(myId);
+                        if (activeOrdering != null)
+                        {
+                            return activeOrdering.OrderingId;
+                        }else
+                        {
+                            return null;
+                        }
+                    }else
+                    {
+                        return null;
                     }
+                    
                 }
 
+                return null;
+               
             }
-          
-
+            return null;
 
         }
 

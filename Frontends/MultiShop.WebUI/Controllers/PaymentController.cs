@@ -40,40 +40,36 @@ namespace MultiShop.WebUI.Controllers
 
             try
             {
+
                 var decrypted = _protector.Unprotect(ActiveOrderingId);
                 int activeOrderingId = int.Parse(decrypted);
 
                 if (activeOrderingId != 0)
                 {
-                    string myId = await _userService.GetUserId();
-                    var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(myId);
+                    UserDetailViewModel userinfo = await _userService.GetUserInfo();
+                    var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(userinfo.Id);
                     if (activeOrdering != null)
                     {
                         if (activeOrdering.OrderingId == activeOrderingId)
                         {
                             paymentViewModel.OrderingId = activeOrdering.OrderingId;
+                            paymentViewModel.PaymentTotal = Convert.ToInt32(activeOrdering.TotalPrice);
+                            paymentViewModel.UserName = userinfo.Name + " " + userinfo.Surname;
+                            
 
                         }
                     }
                 }
+
+                
             }
-            catch
+            catch(Exception er)
             {
+                Console.WriteLine(er.Message);
                 return RedirectToAction("Index", "Default");
             }
 
-
-
-            int count = 0;
-            var basket = await _basketService.GetBasketFromDatabase();
-
-
-            count = basket.BasketItems.Count;
-
-
-            if (count == 0) return RedirectToAction("Index", "Default");
-
-
+  
 
             return View(paymentViewModel);
         }
@@ -106,9 +102,12 @@ namespace MultiShop.WebUI.Controllers
 
             bool added = await _paymentService.AddPayment(createPayment);
 
-            ViewBag.PaymentResult = added;
+            if (added)
+            {
 
-            return RedirectToAction("PaymentResult", "Payment");
+            }
+
+            return RedirectToAction("PaymentResult", "Payment",new {PaymentResult = added});
 
         }
 
@@ -131,8 +130,9 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [HttpGet]
-        public  IActionResult PaymentResult()
+        public  IActionResult PaymentResult(bool PaymentResult)
         {
+            ViewBag.result = PaymentResult;
             return View();
         }
     }

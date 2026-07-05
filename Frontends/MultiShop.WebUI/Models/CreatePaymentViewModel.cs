@@ -7,6 +7,8 @@ namespace MultiShop.WebUI.Models
          
             public int OrderingId { get; set; } = 0;
             public string OwnerNameAndSurname { get; set; }
+            public string UserName { get; set; }
+        
             public string CardType { get; set; }
             public string LastDateYear { get; set; }
             public string LastDateMonth { get; set; }

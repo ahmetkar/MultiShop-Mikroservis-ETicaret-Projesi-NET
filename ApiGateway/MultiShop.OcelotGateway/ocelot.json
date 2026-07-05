@@ -144,7 +144,7 @@
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "PaymentFullPermission" ]
+        "AllowedScopes": [ "PaymentReadPermission", "PaymentCreatePermission", "PaymentUpdatePermission", "PaymentDeletePermission" ]
       }
     },
     //Images

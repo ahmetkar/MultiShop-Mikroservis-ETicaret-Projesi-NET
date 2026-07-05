@@ -1,7 +1,12 @@
-﻿namespace MultiShop.Payment.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MultiShop.Payment.DAL.Entities
 {
     public class CardInfo
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string CardInfoId { get; set; }
         public string OwnerName { get; set; }
         public string OwnerSurname { get; set; }

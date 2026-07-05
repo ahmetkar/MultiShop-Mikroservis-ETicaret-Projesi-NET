@@ -21,41 +21,30 @@ namespace MultiShop.Catalog.Services.AboutServices
 
         }
 
-        public async Task CreateCatagoryAsync(CreateAboutDto createAboutDto)
+        public async Task<ResultAboutDto> GetAbout()
         {
-            var value = _mapper.Map<About>(createAboutDto);
-            await _aboutCollection.InsertOneAsync(value);
+            Console.WriteLine(_aboutCollection.CollectionNamespace.FullName);
+
+            var values = await _aboutCollection.Find(x=>true)
+                .SortByDescending(x=>x.AboutId).FirstOrDefaultAsync();
+            return _mapper.Map<ResultAboutDto>(values);
         }
 
-        public async Task DeleteAboutAsync(string id)
-        {
-            await _aboutCollection.DeleteOneAsync(x => x.AboutId == id);
-        }
-
-        public async Task<ResultAboutDto> GetLastAboutAsync()
-        {
-            var values = await _aboutCollection.Find(x => true).ToListAsync();
-            var lastAbout = values.LastOrDefault();
-
-            return _mapper.Map<ResultAboutDto>(lastAbout);
-        }
-
-        public async Task<List<ResultAboutDto>> GetAllAboutAsync()
-        {
-            var values = await _aboutCollection.Find(x => true).ToListAsync();
-            return _mapper.Map<List<ResultAboutDto>>(values);
-        }
-
-        public async Task<GetByIdAboutDto> GetByIdAbout(string id)
-        {
-            var values = await _aboutCollection.Find<About>(x => x.AboutId == id).FirstOrDefaultAsync();
-            return _mapper.Map<GetByIdAboutDto>(values);
-        }
-
-        public async Task UpdateAboutAsync(UpdateAboutDto updateAboutDto)
+        public async Task<bool> UpdateAboutAsync(UpdateAboutDto updateAboutDto)
         {
             var values = _mapper.Map<About>(updateAboutDto);
-            await _aboutCollection.FindOneAndReplaceAsync(x => x.AboutId == updateAboutDto.AboutId, values);
+            var res = await _aboutCollection.ReplaceOneAsync(x=>x.AboutId == updateAboutDto.AboutId,values,new ReplaceOptions
+            {
+                IsUpsert = true
+            });
+            if(res.UpsertedId != updateAboutDto.AboutId)
+            {
+
+                return false;
+            }else
+            {
+                return true;   
+            }
         }
     }
 }

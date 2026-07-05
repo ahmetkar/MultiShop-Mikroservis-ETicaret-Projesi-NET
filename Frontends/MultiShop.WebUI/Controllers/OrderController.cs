@@ -104,17 +104,34 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder(AdressListViewModel adressListViewModel)
         {
-            int shippingAdressCount = await _orderAddressService.GetUserShippingAdressCount();
+            try
+            {
+                int shippingAdressCount = await _orderAddressService.GetUserShippingAdressCount();
 
-            if (shippingAdressCount > 0)
-            {
-                await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.ShippingAdressId);
-            }else
-            {
-                await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.BillingAdressId);
+                int? orderingId = 0;
+                if (shippingAdressCount > 0)
+                {
+                    orderingId = await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.ShippingAdressId);
+                }
+                else
+                {
+                    orderingId = await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.BillingAdressId);
+                }
+
+                if (orderingId!= null && orderingId != 0)
+                {
+                    var encryptedId = _protector.Protect(orderingId.ToString());
+                    return RedirectToAction("Index", "Payment",new {ActiveOrderingId = encryptedId});
+                }else
+                {
+                    return RedirectToAction("Index", "ShoppingCart");
+                }
+
             }
-
-                return RedirectToAction("Index", "Payment");
+            catch (Exception er)
+            {
+                return Content("Hata: " + er.Message);
+            }
         }
 
 

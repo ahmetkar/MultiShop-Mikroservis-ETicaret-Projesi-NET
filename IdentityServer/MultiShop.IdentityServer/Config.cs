@@ -45,9 +45,15 @@ namespace MultiShop.IdentityServer
                 Scopes = {"CommentFullPermission"}
             },
              new ApiResource("ResourcePayment")
-            {
-                Scopes = {"PaymentFullPermission"}
-            },
+                {
+                    Scopes =
+                    {
+                        "PaymentReadPermission",
+                        "PaymentCreatePermission",
+                        "PaymentUpdatePermission",
+                        "PaymentDeletePermission"
+                    }
+                },
              new ApiResource("ResourceImages")
             {
                 Scopes = {"ImagesFullPermission"}
@@ -78,7 +84,10 @@ namespace MultiShop.IdentityServer
                 new ApiScope("BasketFullPermission","Full auhority for basket operations"),
                 new ApiScope("OcelotFullPermission","Full auhority for ocelot operations"),
                 new ApiScope("CommentFullPermission","Full auhority for comment operations"),
-                new ApiScope("PaymentFullPermission","Full auhority for payment operations"),
+                new ApiScope("PaymentReadPermission", "Can read payment records"),
+                new ApiScope("PaymentCreatePermission", "Can create payment records"),
+                new ApiScope("PaymentUpdatePermission", "Can update payment records"),
+                new ApiScope("PaymentDeletePermission", "Can delete payment records"),
                 new ApiScope("ImagesFullPermission","Full auhority for image operations"),
                 new ApiScope("MessageFullPermission","Full auhority for message operations"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
@@ -93,7 +102,7 @@ namespace MultiShop.IdentityServer
                     ClientName="MultiShopVisitorUser",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = {new Secret("multishopsecret".Sha256())},
-                    AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission","CommentFullPermission","ImagesFullPermission", IdentityServerConstants.LocalApi.ScopeName },
+                    AllowedScopes = { "PaymentReadPermission", "PaymentCreatePermission", "PaymentDeletePermission", "CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission","CommentFullPermission", "PaymentFullPermission", IdentityServerConstants.LocalApi.ScopeName },
                     AllowAccessTokensViaBrowser = true
                 },
                 //Manager
@@ -105,7 +114,7 @@ namespace MultiShop.IdentityServer
                     ClientSecrets = {new Secret("multishopsecret".Sha256())},
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = {"CatalogFullPermission", "CatalogReadPermission", "BasketFullPermission","OcelotFullPermission", "PaymentFullPermission","CommentFullPermission", "ImagesFullPermission","DiscountFullPermission",
+                    AllowedScopes = {"PaymentReadPermission", "PaymentCreatePermission", "PaymentDeletePermission","CatalogFullPermission", "CatalogReadPermission", "BasketFullPermission","OcelotFullPermission", "PaymentFullPermission","CommentFullPermission", "ImagesFullPermission","DiscountFullPermission",
                         "MessageFullPermission","CargoFullPermission","OrderFullPermission"
                     ,
 
@@ -127,6 +136,7 @@ namespace MultiShop.IdentityServer
                         "DiscountFullPermission", "OrderFullPermission",
                         "CargoFullPermission","BasketFullPermission","OcelotFullPermission","CommentFullPermission","PaymentFullPermission",
                         "ImagesFullPermission","MessageFullPermission","CargoFullPermission",
+                        "PaymentReadPermission", "PaymentCreatePermission", "PaymentDeletePermission","PaymentUpdatePermission",
                         IdentityServerConstants.LocalApi.ScopeName,
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.OpenId,

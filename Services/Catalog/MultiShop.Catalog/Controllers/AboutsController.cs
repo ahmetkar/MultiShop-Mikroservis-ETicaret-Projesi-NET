@@ -19,40 +19,20 @@ namespace MultiShop.Catalog.Controllers
             _aboutService = AboutService;
         }
 
-        [HttpGet("AboutList")]
-        public async Task<IActionResult> AboutList()
-        {
-            var values = await _aboutService.GetAllAboutAsync();
-            return Ok(values);
-        }
+        
 
-        [HttpGet("GetLastAbout")]
-        public async Task<IActionResult> GetLastAbout() {
-            var value = await _aboutService.GetLastAboutAsync();
+        [HttpGet]
+        public async Task<IActionResult> GetAbout() {
+            var value = await _aboutService.GetAbout();
+            if (value == null)
+            {
+                return NotFound();
+            }
             return Ok(value);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAboutById(string id)
-        {
-            var values = await _aboutService.GetByIdAbout(id);
-            return Ok(values);
-        }
+        
         [HttpPost]
-        public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
-        {
-            await _aboutService.CreateCatagoryAsync(createAboutDto);
-            return Ok("Hakkımızda Alanı başarıyla eklendi");
-        }
-        [HttpDelete]
-        public async Task<IActionResult> DeleteAbout(string id)
-        {
-            await _aboutService.DeleteAboutAsync(id);
-
-            return Ok("Hakkımızda Alanı başarıyla silindi");
-        }
-
-        [HttpPut]
         public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
         {
             await _aboutService.UpdateAboutAsync(updateAboutDto);

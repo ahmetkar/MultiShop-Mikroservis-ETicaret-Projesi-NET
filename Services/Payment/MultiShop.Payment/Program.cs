@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MultiShop.Payment.DAL.Context;
+using MultiShop.Payment.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
     opt.Authority = builder.Configuration["IdentityServerURL"];
@@ -18,6 +22,41 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Audience = "ResourcePayment";
 });
 
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("PaymentReadPolicy", policy =>
+    {
+        policy.RequireAssertion(context =>
+          context.User.Claims.Any(c =>
+              c.Type == "scope" &&
+              c.Value.Split(' ').Contains("PaymentReadPermission")));
+    });
+
+    options.AddPolicy("PaymentCreatePolicy", policy =>
+    {
+        policy.RequireAssertion(context =>
+          context.User.Claims.Any(c =>
+              c.Type == "scope" &&
+              c.Value.Split(' ').Contains("PaymentCreatePermission")));
+    });
+
+    options.AddPolicy("PaymentUpdatePolicy", policy =>
+    {
+        policy.RequireAssertion(context =>
+        context.User.Claims.Any(c =>
+            c.Type == "scope" &&
+            c.Value.Split(' ').Contains("PaymentUpdatePermission")));
+    });
+
+    options.AddPolicy("PaymentDeletePolicy", policy =>
+    {
+        policy.RequireAssertion(context =>
+        context.User.Claims.Any(c =>
+            c.Type == "scope" &&
+            c.Value.Split(' ').Contains("PaymentDeletePermission")));
+    });
+});
 
 builder.Services.AddDbContext<PaymentContext>();
 

@@ -20,7 +20,8 @@
         {
             @if (Model.PaymentTotal > 0)
             {
-                <h6>@Model.OrderingId</h6>
+                <h6>Sayın , @Model.UserName Ödeme yapmak üzeresiniz .. </h6>
+                <h6>#@Model.OrderingId kodlu siparişiniz için,</h6>
                 <h6>@Model.PaymentTotal ₺ tutarındaki ödemeniz için bilgilerinizi girin. </h6>
             }
 

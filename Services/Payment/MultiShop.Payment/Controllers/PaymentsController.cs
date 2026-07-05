@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Payment.DTOs;
 using MultiShop.Payment.Services;
@@ -7,6 +8,7 @@ namespace MultiShop.Payment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PaymentsController : ControllerBase
     {
         private readonly IPaymentService _paymentService;
@@ -17,6 +19,7 @@ namespace MultiShop.Payment.Controllers
         }
 
         [HttpGet("GetPaymentByOrderingId/{id}")]
+        [Authorize(Policy = "PaymentReadPolicy")]
         public async Task<IActionResult> GetPaymentByOrderingId(int id)
         {
             var values = await _paymentService.GetPaymentByOrderingId(id);
@@ -24,6 +27,7 @@ namespace MultiShop.Payment.Controllers
         }
 
         [HttpGet("GetPaymentsByUserId/{id}")]
+        [Authorize(Policy = "PaymentReadPolicy")]
         public async Task<IActionResult> GetPaymentsByUserId(string id)
         {
             var values = await _paymentService.GetAllPaymentByUserId(id);
@@ -32,6 +36,7 @@ namespace MultiShop.Payment.Controllers
 
 
         [HttpPost]
+        [Authorize(Policy = "PaymentCreatePolicy")]
         public async Task<IActionResult> AddPayment(CreatePaymentDto createPaymentDto)
         {
             var add = await _paymentService.AddPayment(createPaymentDto);
@@ -39,6 +44,7 @@ namespace MultiShop.Payment.Controllers
         }
 
         [HttpDelete("CancelPaymentByOrderingId/{id}")]
+        [Authorize(Policy = "PaymentDeletePolicy")]
         public async Task<IActionResult> CancelPaymentByOrderingId(int id)
         {
             var delete = await _paymentService.CancelPaymentByOrderingId(id);

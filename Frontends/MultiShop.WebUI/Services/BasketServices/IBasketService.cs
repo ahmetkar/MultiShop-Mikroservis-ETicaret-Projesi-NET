@@ -3,7 +3,7 @@
 namespace MultiShop.WebUI.Services.BasketServices
 {
     public interface IBasketService
-    {   
+    {
         Task<BasketTotalDto> AddBasketItem(BasketTotalDto values, string id);
         Task<bool> RemoveBasketItem(BasketTotalDto values, string productId, Func<BasketTotalDto, Task> SaveBasket);
         Task<bool> DecrementBasketItem(BasketTotalDto values, string productId, Func<BasketTotalDto, Task> SaveBasket);

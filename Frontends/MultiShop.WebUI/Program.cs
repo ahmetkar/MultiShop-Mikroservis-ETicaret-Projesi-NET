@@ -157,6 +157,18 @@ builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Order.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+builder.Services.AddHttpClient<IPaymentService, PaymentService>("PaymentUserClient",opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Payment.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+
+builder.Services.AddHttpClient<IPaymentService, PaymentService>("PaymentClientCridentialClient",opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Payment.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
 
 
 
@@ -219,11 +231,6 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
 builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Catalog.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<IPaymentService, PaymentService>(opt =>
-{
-    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Payment.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 
