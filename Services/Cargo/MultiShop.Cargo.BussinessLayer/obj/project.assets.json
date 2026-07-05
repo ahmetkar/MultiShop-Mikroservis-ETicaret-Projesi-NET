@@ -2790,11 +2790,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\MultiShop.Cargo.BussinessLayer.csproj",
+      "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\MultiShop.Cargo.BussinessLayer.csproj",
       "projectName": "MultiShop.Cargo.BussinessLayer",
-      "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\MultiShop.Cargo.BussinessLayer.csproj",
+      "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\MultiShop.Cargo.BussinessLayer.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\obj\\",
+      "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2816,8 +2816,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\0Dotnet\\MultiShopProject\\Services\\Cargo\\MultiShop.Cargo.DataAccessLayer\\MultiShop.Cargo.DataAccessLayer.csproj": {
-              "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Cargo\\MultiShop.Cargo.DataAccessLayer\\MultiShop.Cargo.DataAccessLayer.csproj"
+            "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.DataAccessLayer\\MultiShop.Cargo.DataAccessLayer.csproj": {
+              "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.DataAccessLayer\\MultiShop.Cargo.DataAccessLayer.csproj"
             }
           }
         }

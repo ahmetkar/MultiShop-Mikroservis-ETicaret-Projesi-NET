@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nRl86Pv9BLQ=",
+  "dgSpecHash": "KZzhqC6VW0o=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

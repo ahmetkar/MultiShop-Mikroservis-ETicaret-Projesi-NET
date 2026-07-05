@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0EeKjRshiPA=",
+  "dgSpecHash": "7Iwy2a9EoaQ=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\MultiShop.Cargo.BussinessLayer.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.BussinessLayer\\MultiShop.Cargo.BussinessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

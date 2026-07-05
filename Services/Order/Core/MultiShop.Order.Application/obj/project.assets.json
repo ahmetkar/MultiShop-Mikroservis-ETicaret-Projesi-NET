@@ -283,11 +283,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
+      "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
       "projectName": "MultiShop.Order.Application",
-      "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
+      "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Application\\obj\\",
+      "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -309,8 +309,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
-              "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
+            "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
+              "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
             }
           }
         }

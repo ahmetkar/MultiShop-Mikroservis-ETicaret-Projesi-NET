@@ -9,12 +9,16 @@
   <ItemGroup>
     <Compile Remove="Areas\Admin\Data\**" />
     <Compile Remove="Areas\Admin\Models\**" />
+    <Compile Remove="SignalRHubs\**" />
     <Content Remove="Areas\Admin\Data\**" />
     <Content Remove="Areas\Admin\Models\**" />
+    <Content Remove="SignalRHubs\**" />
     <EmbeddedResource Remove="Areas\Admin\Data\**" />
     <EmbeddedResource Remove="Areas\Admin\Models\**" />
+    <EmbeddedResource Remove="SignalRHubs\**" />
     <None Remove="Areas\Admin\Data\**" />
     <None Remove="Areas\Admin\Models\**" />
+    <None Remove="SignalRHubs\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SignalRHubs\" />
     <Folder Include="wwwroot\img\NewFolder1\" />
     <Folder Include="wwwroot\img\NewFolder2\" />
     <Folder Include="wwwroot\img\NewFolder\" />

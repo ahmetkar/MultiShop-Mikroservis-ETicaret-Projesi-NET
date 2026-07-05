@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using MultiShop.DtoLayer.BasketDtos;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using Newtonsoft.Json;
 using NuGet.Protocol;
 using System;
 using System.Linq;
+using System.Net;
 
 namespace MultiShop.WebUI.Services.BasketServices
 {
@@ -100,6 +102,10 @@ namespace MultiShop.WebUI.Services.BasketServices
         public async Task<BasketTotalDto?> GetBasketFromDatabase()
         {
             var responseMessage = await _httpClient.GetAsync("baskets");
+           if(responseMessage.StatusCode == HttpStatusCode.NoContent)
+            {
+                return new BasketTotalDto();
+            }
             if (responseMessage.IsSuccessStatusCode)
             {
                 var values = await responseMessage.Content.ReadFromJsonAsync<BasketTotalDto>();
@@ -222,6 +228,7 @@ namespace MultiShop.WebUI.Services.BasketServices
 
             var item = new BasketItemDto
             {
+               
                 ProductId = product.ProductId,
                 ProductName = product.ProductName,
                 Price = product.ProductPrice,

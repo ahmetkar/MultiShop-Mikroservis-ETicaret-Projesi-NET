@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0Dotnet\\MultiShopProject\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj": {}
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj": {}
   },
   "projects": {
-    "D:\\0Dotnet\\MultiShopProject\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj": {
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj",
+        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj",
         "projectName": "MultiShop.Basket",
-        "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj",
+        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Basket\\MultiShop.Basket\\obj\\",
+        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Basket\\MultiShop.Basket\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

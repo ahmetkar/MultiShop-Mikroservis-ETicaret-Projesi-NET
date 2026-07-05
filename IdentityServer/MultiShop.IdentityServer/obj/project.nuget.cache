@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q5fQsezTPlA=",
+  "dgSpecHash": "v1xiCvkWkFg=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

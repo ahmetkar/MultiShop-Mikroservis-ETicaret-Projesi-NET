@@ -239,7 +239,7 @@
         }
       }
     },
-    "/api/Orderings": {
+    "/api/Orderings/OrderingList": {
       "get": {
         "tags": [
           "Orderings"
@@ -249,7 +249,32 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Orderings/GetOrderingById/{id}": {
+      "get": {
+        "tags": [
+          "Orderings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Orderings": {
       "post": {
         "tags": [
           "Orderings"
@@ -273,26 +298,6 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Orderings"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -330,7 +335,7 @@
       }
     },
     "/api/Orderings/{id}": {
-      "get": {
+      "delete": {
         "tags": [
           "Orderings"
         ],
@@ -629,6 +634,12 @@
           "billingAddressId": {
             "type": "integer",
             "format": "int32"
+          },
+          "isOrderCompleted": {
+            "type": "boolean"
+          },
+          "isOrderDelivered": {
+            "type": "boolean"
           },
           "orderDate": {
             "type": "string",

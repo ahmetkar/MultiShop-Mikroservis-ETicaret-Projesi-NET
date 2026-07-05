@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YYqm+oTP7qQ=",
+  "dgSpecHash": "zENvShSWmqA=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\mediatr\\12.5.0\\mediatr.12.5.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

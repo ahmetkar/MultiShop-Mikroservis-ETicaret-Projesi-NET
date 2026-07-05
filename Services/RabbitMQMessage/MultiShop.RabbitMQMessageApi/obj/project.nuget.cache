@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yCtIlAII044=",
+  "dgSpecHash": "bKYaDh3ThEM=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.7\\microsoft.aspnetcore.openapi.9.0.7.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.openapi\\1.6.23\\microsoft.openapi.1.6.23.nupkg.sha512",

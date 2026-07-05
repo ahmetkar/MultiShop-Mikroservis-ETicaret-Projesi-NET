@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj": {}
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj": {}
   },
   "projects": {
-    "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj": {
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
+        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
         "projectName": "MultiShop.Message",
-        "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
+        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Message\\MultiShop.Message\\obj\\",
+        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

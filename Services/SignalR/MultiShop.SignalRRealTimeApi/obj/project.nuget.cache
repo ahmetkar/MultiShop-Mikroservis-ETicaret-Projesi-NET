@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oYNDjUIdgao=",
+  "dgSpecHash": "PQjlgTpAuHc=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\SignalR\\MultiShop.SignalRRealTimeApi\\MultiShop.SignalRRealTimeApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\duende.identitymodel\\7.1.0\\duende.identitymodel.7.1.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\identitymodel\\6.0.0\\identitymodel.6.0.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gWRLp51yKs0=",
+  "dgSpecHash": "b9t1rlhX9u4=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

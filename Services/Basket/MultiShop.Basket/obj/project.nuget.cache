@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PqnNmE9prmc=",
+  "dgSpecHash": "Et1vXWMSa4c=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Basket\\MultiShop.Basket\\MultiShop.Basket.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.4\\microsoft.aspnetcore.authentication.jwtbearer.9.0.4.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.1\\microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",

@@ -11,6 +11,8 @@ namespace MultiShop.WebUI.Models
             public string LastDateYear { get; set; }
             public string LastDateMonth { get; set; }
             public string LastFourNumber { get; set; }
+            
+            public int PaymentTotal { get; set; }
       
             
     }

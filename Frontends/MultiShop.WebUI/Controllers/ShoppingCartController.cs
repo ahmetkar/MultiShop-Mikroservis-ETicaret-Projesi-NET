@@ -6,6 +6,7 @@ using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.OrderServices.OrderOderingServices;
+using System.Security.Claims;
 
 namespace MultiShop.WebUI.Controllers
 {
@@ -45,9 +46,11 @@ namespace MultiShop.WebUI.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                string myId = await _userService.GetUserId();
-
-                var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(myId);
+                var userId = User.FindFirst("sub")?.Value
+                  ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                  ?? User.FindFirst("nameidentifier")?.Value;
+                
+                var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(userId);
 
                 if (activeOrdering != null)
                 {
@@ -55,7 +58,7 @@ namespace MultiShop.WebUI.Controllers
                     return RedirectToAction("Index", "Payment", new { ActiveOrderingId = encryptedId });
                 }
 
-                int? isAdded = HttpContext.Session.GetInt32("IsCookiesAdded");
+              int? isAdded = HttpContext.Session.GetInt32("IsCookiesAdded");
              if (isAdded != 1)
              {
                 isAdded = await _basketService.AddCookieDataToDatabase();
@@ -85,6 +88,22 @@ namespace MultiShop.WebUI.Controllers
             return View(count);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddBasketToItem(string ProductId)
+        {
+
+            if (User.Identity.IsAuthenticated)
+            {
+           
+                await _basketService.AddBasketItemToDatabase(ProductId);
+            }
+            else
+            {
+                await _basketService.AddBasketItemToCookies(ProductId);
+            }
+
+            return RedirectToAction("Index");
+        }
 
         public async Task<IActionResult> AddBasketItem(string id)
         {

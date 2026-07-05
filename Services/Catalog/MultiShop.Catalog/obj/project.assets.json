@@ -1288,11 +1288,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Services\\Catalog\\MultiShop.Catalog\\MultiShop.Catalog.csproj",
+      "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Catalog\\MultiShop.Catalog\\MultiShop.Catalog.csproj",
       "projectName": "MultiShop.Catalog",
-      "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Catalog\\MultiShop.Catalog\\MultiShop.Catalog.csproj",
+      "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Catalog\\MultiShop.Catalog\\MultiShop.Catalog.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "D:\\0Dotnet\\MultiShopProject\\Services\\Catalog\\MultiShop.Catalog\\obj\\",
+      "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Catalog\\MultiShop.Catalog\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1387,5 +1387,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "'AutoMapper' 14.0.0 paketinde önem derecesi yüksek olan bilinen bir https://github.com/advisories/GHSA-rvv3-g6hj-g44x güvenlik açığı var",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

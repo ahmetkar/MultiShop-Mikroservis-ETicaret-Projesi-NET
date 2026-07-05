@@ -6765,11 +6765,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
+      "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
       "projectName": "MultiShop.WebUI",
-      "projectPath": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
+      "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\obj\\",
+      "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6791,8 +6791,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj": {
-              "projectPath": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj"
+            "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj": {
+              "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj"
             }
           }
         }

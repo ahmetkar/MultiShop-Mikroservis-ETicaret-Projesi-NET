@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj",
+      "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj",
       "projectName": "MultiShop.DtoLayer",
-      "projectPath": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj",
+      "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.DtoLayer\\MultiShop.DtoLayer.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.DtoLayer\\obj\\",
+      "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.DtoLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

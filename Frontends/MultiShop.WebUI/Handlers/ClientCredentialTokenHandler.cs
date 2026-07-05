@@ -20,8 +20,19 @@ namespace MultiShop.WebUI.Handlers
             var response = await base.SendAsync(request, cancellationToken);
             if(response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                //hata
+                throw new Exception("Yetkilendirme yapılamadı.");
 
+            }
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                var errorBody = await response.Content.ReadAsStringAsync(cancellationToken);
+
+                throw new Exception($@"
+                        Bad Request döndü.
+                        Method: {request.Method}
+                        Url: {request.RequestUri}
+                        Response Body: {errorBody}
+                        ");
             }
             return response;
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Alm+6OwFlJ4=",
+  "dgSpecHash": "Nrza1OyuNJ4=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShopProject\\Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
+  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\dangl.identityserver4.storage\\4.2.1\\dangl.identityserver4.storage.4.2.1.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\duende.accesstokenmanagement\\3.2.0\\duende.accesstokenmanagement.3.2.0.nupkg.sha512",

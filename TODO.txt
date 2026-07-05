@@ -1,29 +1,21 @@
 
 0-Payment Success ekraný yapýlacak
-0-Sayfalama
-0-Filtreleme iþlemleri yapýlacak(Her bir kategori için filtreler ve her filtre için seçenekler çekilecek)
-0-Arama  kýsmý eklenecek.
-
-
-1-Profilde verilen sipariþler ekraný (sadece bu þimdilik) (diðer sayfalarda eklenir yakýnda eklenecek notu ile)
-1-Payment-order arasýndaki baðlantýlar rabbitmq ile kurulacak.
-1-Order-cargo veritabaný arasý baðlantýlar kafka ile kurulacak
-1-Profilde kargo görüntüleme
-1-MyOrderList te hata var veriler gelmiyor
 1-Stripe,paytr,iyizco herhangi birinin entegrasyonu ile client tarafýndan ödeme yapýldýktan sonra payment eklenmesini saðla
+1-Profilde verilen sipariþler ekraný (sadece bu þimdilik) (diðer sayfalarda eklenir yakýnda eklenecek notu ile)
+1-Profilde kargo görüntüleme
+1-Payment-order arasýndaki baðlantýlar kafka ile kurulacak.
+1-Order-cargo veritabaný arasý baðlantýlar kafka ile kurulacak
+
+1-MyOrderList te hata var veriler gelmiyor
 
 
-2-Profilde bilgileri düzenleme ve talep gönderme
+2-Arama  kýsmý eklenecek.
 2-Product Listesinde indirimlerin discount mikroservisine göre yansýtýlmasýda gerek
 2-Kargo fiyatý Cargo mikroservisinden çekilmeli
-2-Favoriler sayfasý eklenecek(bu sayfadaki favoriler sepete eklenebilecek) ve sidebarda signalr ile sepet ve favorideki ürün sayýsý çekilecek
-2-Admin panelindeki eklenmeyen sayfalar eklenecek.
 
-3-Image mikroservisi image.webui örnek alýnarak yazýlacak(admin panelinden resim yükleme ve listeleme mümkün olacak)
-3-Admin panelindeki bildirimler düzenlenecek.
 
-5-Global error handler,exception hanler entegre edilecek.
-6-ELK(elastic,logstash,kibana) stack entegre edilecek. Loglar toplanýp,depolanýp,görselleþtirilecek.
-6-OpenTelemery ile alýnan veriler prometheus+grafana ya gönderilip depolanýp kullanýlýp görselleþtrilecek
+3-Global error handler,exception hanler entegre edilecek.
+3-ELK(elastic,logstash,kibana) stack entegre edilecek. Loglar toplanýp,depolanýp,görselleþtirilecek.
+3-OpenTelemery ile alýnan veriler prometheus+grafana ya gönderilip depolanýp kullanýlýp görselleþtrilecek
 
 

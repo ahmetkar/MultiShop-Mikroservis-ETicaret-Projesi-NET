@@ -7720,11 +7720,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj",
+      "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj",
       "projectName": "MultiShop.IdentityServer",
-      "projectPath": "D:\\0Dotnet\\MultiShopProject\\IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj",
+      "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\IdentityServer\\MultiShop.IdentityServer\\MultiShop.IdentityServer.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "D:\\0Dotnet\\MultiShopProject\\IdentityServer\\MultiShop.IdentityServer\\obj\\",
+      "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\IdentityServer\\MultiShop.IdentityServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

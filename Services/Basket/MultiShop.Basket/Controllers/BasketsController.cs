@@ -25,7 +25,13 @@ namespace MultiShop.Basket.Controllers
         {
             
             var values = await _basketService.GetBasket(_loginService.GetUserId);
-            return Ok(values);
+            if (values != null)
+            {
+                return Ok(values);
+            }else
+            {
+                return NoContent();
+            }
         }
 
         [HttpPost]

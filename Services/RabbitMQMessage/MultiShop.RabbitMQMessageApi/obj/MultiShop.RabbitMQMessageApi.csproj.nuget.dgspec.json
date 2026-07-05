@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj": {}
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj": {}
   },
   "projects": {
-    "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj": {
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj",
+        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj",
         "projectName": "MultiShop.RabbitMQMessageApi",
-        "projectPath": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj",
+        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\MultiShop.RabbitMQMessageApi.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShopProject\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\obj\\",
+        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\RabbitMQMessage\\MultiShop.RabbitMQMessageApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

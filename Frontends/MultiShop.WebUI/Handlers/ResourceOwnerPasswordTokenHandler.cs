@@ -27,17 +27,41 @@ namespace MultiShop.WebUI.Handlers
             var response = await base.SendAsync(request,cancellationToken);
             if(response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                var tokenResponse = await _identityService.GetRefreshToken();
+                var tokenResponseNewAccessToken = await _identityService.GetRefreshToken();
 
-                if (tokenResponse)
+                if (!string.IsNullOrWhiteSpace(tokenResponseNewAccessToken))
                 {
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponseNewAccessToken);
                     response = await base.SendAsync(request, cancellationToken);
                     if (response.StatusCode == HttpStatusCode.Unauthorized) {
-                        throw new Exception("Refresh tokenden sonra yeniden yetkilendirme yapilamadi.");
+                        var errorBody = await response.Content.ReadAsStringAsync(cancellationToken);
+
+                        throw new Exception($@"
+                                    Refresh tokenden sonra yeniden yetkilendirme yapılamadı.
+
+                                    Method: {request.Method}
+                                    Url: {request.RequestUri}
+                                    Response Body: {errorBody}
+                                    ");
+                   
+                }else
+                    {
+                        throw new Exception("Refresh sonrası yeni access token alınamadı.");
                     }
                 }
             }
+
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                var errorBody = await response.Content.ReadAsStringAsync(cancellationToken);
+
+                throw new Exception($@"
+                        Bad Request döndü.
+                        Method: {request.Method}
+                        Url: {request.RequestUri}
+                        Response Body: {errorBody}
+                        ");
+                                    }
 
             return response;
             

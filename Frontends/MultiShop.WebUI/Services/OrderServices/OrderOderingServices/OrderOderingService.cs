@@ -59,7 +59,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
             {
                 return true;
             }
-            return FALSE;
+            return false;
         }
 
         public async Task<bool> SetOrderingStatus(int orderingId,bool newStatus)

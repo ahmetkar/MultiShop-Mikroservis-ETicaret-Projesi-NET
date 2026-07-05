@@ -103,13 +103,17 @@ namespace MultiShop.IdentityServer
                     ClientName="MultiShopManagerUser",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     ClientSecrets = {new Secret("multishopsecret".Sha256())},
+
+                    AllowOfflineAccess = true,
                     AllowedScopes = {"CatalogFullPermission", "CatalogReadPermission", "BasketFullPermission","OcelotFullPermission", "PaymentFullPermission","CommentFullPermission", "ImagesFullPermission","DiscountFullPermission",
                         "MessageFullPermission","CargoFullPermission","OrderFullPermission"
                     ,
+
                     IdentityServerConstants.LocalApi.ScopeName,
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                          IdentityServerConstants.StandardScopes.OfflineAccess
                     }
                 },
                 new Client
@@ -118,6 +122,7 @@ namespace MultiShop.IdentityServer
                     ClientName = "MultiShopAdminUser",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     ClientSecrets = {new Secret("multishopsecret".Sha256())},
+                    AllowOfflineAccess = true,
                     AllowedScopes = { "CatalogFullPermission", "CatalogReadPermission", 
                         "DiscountFullPermission", "OrderFullPermission",
                         "CargoFullPermission","BasketFullPermission","OcelotFullPermission","CommentFullPermission","PaymentFullPermission",
@@ -125,7 +130,9 @@ namespace MultiShop.IdentityServer
                         IdentityServerConstants.LocalApi.ScopeName,
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile},    
+                        IdentityServerConstants.StandardScopes.Profile,
+                          IdentityServerConstants.StandardScopes.OfflineAccess
+                    },    
                     AccessTokenLifetime = 600
                     
                 }
