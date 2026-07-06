@@ -166,6 +166,29 @@ namespace MultiShop.Order.Persistance.Migrations
                     b.ToTable("Orderings");
                 });
 
+            modelBuilder.Entity("MultiShop.Order.Domain.Entities.ProcessedEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("HandlerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ProcessedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProcessedEvents");
+                });
+
             modelBuilder.Entity("MultiShop.Order.Domain.Entities.OrderDetail", b =>
                 {
                     b.HasOne("MultiShop.Order.Domain.Entities.Ordering", "Ordering")

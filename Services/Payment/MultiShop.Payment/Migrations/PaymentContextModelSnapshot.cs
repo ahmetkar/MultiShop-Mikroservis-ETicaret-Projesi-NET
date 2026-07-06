@@ -128,12 +128,36 @@ namespace MultiShop.Payment.Migrations
                     b.Property<int>("PaymentTotal")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PaymentOrderSnapshotId");
 
                     b.ToTable("PaymentOrderSnapshots");
+                });
+
+            modelBuilder.Entity("MultiShop.Payment.DAL.Entities.ProcessedEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("HandlerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ProcessedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProcessedEvents");
                 });
 
             modelBuilder.Entity("MultiShop.Payment.DAL.Entities.PaymentInfo", b =>

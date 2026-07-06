@@ -22,5 +22,7 @@ namespace MultiShop.Cargo.DataAccessLayer.Concrete
         public DbSet<CargoCustomer> CargoCustomers { get; set; }
         public DbSet<CargoOperation> CargoOperations { get; set; }
 
+        public DbSet<ProcessedEvent> ProcessedEvents { get; set; }
+
     }
 }

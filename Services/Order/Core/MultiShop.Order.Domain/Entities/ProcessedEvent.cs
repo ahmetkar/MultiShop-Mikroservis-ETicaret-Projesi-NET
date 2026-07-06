@@ -8,6 +8,8 @@ namespace MultiShop.Order.Domain.Entities
 {
     public class ProcessedEvent
     {
+
+        public int Id { get; set; }
         public Guid EventId { get; set; }
 
         public string HandlerName { get; set; } = string.Empty;

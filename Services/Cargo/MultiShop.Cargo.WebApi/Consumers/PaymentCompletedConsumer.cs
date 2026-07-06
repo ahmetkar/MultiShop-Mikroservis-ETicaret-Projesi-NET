@@ -11,6 +11,7 @@
     using Microsoft.EntityFrameworkCore;
     using MultiShop.Cargo.BussinessLayer.Abstract;
     using EntityLayer.Concretes;
+    using MultiShop.Cargo.DataAccessLayer.Concrete;
 
     public class PaymentCompletedConsumer : BackgroundService
     {
@@ -58,6 +59,17 @@
                         using var scope = _serviceProvider.CreateScope();
 
                         var kafkaProducer = scope.ServiceProvider.GetRequiredService<IKafkaProducer>();
+                        var dbContext =scope.ServiceProvider.GetRequiredService<CargoContext>();
+
+                        var alreadyProcessed = await dbContext.ProcessedEvents
+                               .AnyAsync(x => x.EventId == message.EventId, stoppingToken);
+
+                        if (alreadyProcessed)
+                        {
+                            consumer.Commit(result);
+                            continue;
+                        }
+
 
                         try
                         {
@@ -100,6 +112,17 @@
 
                                         };
                                         await kafkaProducer.PublishAsync(KafkaTopics.CargoCreated, cargoCreatedEvent, resOp.CargoOperationId.ToString(), stoppingToken);
+
+                                        await dbContext.ProcessedEvents.AddAsync(new ProcessedEvent
+                                        {
+                                            EventId = message.EventId,
+                                            HandlerName = nameof(PaymentCompletedConsumer),
+                                            ProcessedAt = DateTime.UtcNow
+                                        }, stoppingToken);
+
+                                        await dbContext.SaveChangesAsync(stoppingToken);
+
+                                        consumer.Commit(result);
 
                                     }
                                 }
