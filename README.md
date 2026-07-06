@@ -37,7 +37,17 @@ Comment
 Discount
 Order
 Payment
+IdentityService
 
+# Veritabanları Bilgileri
+- Basket için Docker üzerinde çalışan Redis veritabanı
+- Payment için Docker üzerinde çalışan MSSQL veritabanı
+- Identity için Docker üzerinde çalışan MSSQL veritabanı
+- Cargo için Docker üzerinde çalışan MSSQL veritabanı
+- Order için Docker üzerinde çalışan MSSQL veritabanı
+- Comment için Docker üzerinde çalışan MSSQL veritabanı
+- Catalog için mongodb veritabanı
+- Discount için  Docker üzerinde çalışan MSSQL veritabanı
 
 # Kullanılan Teknolojiler
  • Asp.Net Core 9.0 Web API ve MVC
@@ -45,10 +55,9 @@ Payment
  • Dapper Orm
  • Ocelot Gateway
  • Json Web Token / Identity Service
- • SignalR
+ • Kafka
  • Docker
- • RabbitMQ
- • RapidApi
+ • Sag apattern
  • Onion Mimarisi
  • N-tier Mimarisi
  • Monolitik Mimari
@@ -59,7 +68,6 @@ Payment
 
 # Kullanılan Veritabanı Teknolojileri
    • MSSQL
-   • PostgreSql
    • MongoDb
    • Redis
 
