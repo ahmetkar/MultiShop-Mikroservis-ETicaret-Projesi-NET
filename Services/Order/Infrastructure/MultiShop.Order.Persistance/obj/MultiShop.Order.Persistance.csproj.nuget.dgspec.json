@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\Multishop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {}
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {}
   },
   "projects": {
     "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj": {
@@ -150,14 +150,14 @@
         }
       }
     },
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\Multishop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {
+    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\Multishop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
+        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
         "projectName": "MultiShop.Order.Persistance",
-        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\Multishop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
+        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\Multishop.Order.Persistance\\obj\\",
+        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

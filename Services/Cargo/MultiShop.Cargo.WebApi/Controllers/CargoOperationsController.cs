@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using MultiShop.Cargo.BussinessLayer.Abstract;
 using MultiShop.Cargo.DtoLayer.Dtos.CargoOperation;
 using MultiShop.Cargo.EntityLayer.Concretes;
+using MultiShop.SharedLayer.Events;
+using MultiShop.SharedLayer.Kafka;
 
 namespace MultiShop.Cargo.WebApi.Controllers
 {
@@ -13,10 +15,12 @@ namespace MultiShop.Cargo.WebApi.Controllers
     public class CargoOperationsController : ControllerBase
     {
         private readonly ICargoOperationService _CargoOperationsService;
+        private readonly IKafkaProducer _kafkaProducer;
 
-        public CargoOperationsController(ICargoOperationService CargoOperationsService)
+        public CargoOperationsController(ICargoOperationService CargoOperationsService,IKafkaProducer kafkaProducer)
         {
             _CargoOperationsService = CargoOperationsService;
+            _kafkaProducer = kafkaProducer;
         }
 
         [HttpGet]
@@ -66,6 +70,45 @@ namespace MultiShop.Cargo.WebApi.Controllers
             };
             _CargoOperationsService.TUpdate(CargoOperation);
             return Ok("Kargo operasyonu başarıyla güncellendi");
+        }
+
+        [HttpPut("SetDelivered")]
+        public IActionResult SetDeliveredCargoOperation(UpdateCargoOperationDto updateCargoOperationDto,CancellationToken cancellationToken)
+        {
+            try
+            {
+                CargoOperation CargoOperation = new CargoOperation
+                {
+                    CargoOperationId = updateCargoOperationDto.CargoOperationId,
+                    CargoDetailId = updateCargoOperationDto.CargoDetailId,
+                    Description = updateCargoOperationDto.Description,
+                    OperationDate = updateCargoOperationDto.OperationDate,
+                    IsCompleted = true,
+                };
+                _CargoOperationsService.TUpdate(CargoOperation);
+
+                var cargoDelivered = new CargoOperationDelivered
+                {
+                    CargoDetailId = CargoOperation.CargoDetailId,
+                    CargoOperationId = CargoOperation.CargoOperationId,
+                    OperationDate = CargoOperation.OperationDate,
+                    OrderingId = CargoOperation.OrderingId,
+
+                };
+
+                _kafkaProducer.PublishAsync(KafkaTopics.CargoDelivered,cargoDelivered,CargoOperation.CargoOperationId.ToString(),cancellationToken);
+
+
+
+                return Ok(new { success=true,message = "Kargo başarıyla oluşturuldu" });
+
+            }
+            catch (Exception ex) {
+                return Ok(new { success = false, message = ex.Message });
+            }
+
+
+            
         }
     }
 }

@@ -59,6 +59,17 @@
                         using var scope = _serviceProvider.CreateScope();
                         var dbContext = scope.ServiceProvider.GetRequiredService<PaymentContext>();
 
+
+
+                        var alreadyProcessed = await dbContext.ProcessedEvents
+                                 .AnyAsync(x => x.EventId == message.EventId, stoppingToken);
+
+                        if (alreadyProcessed)
+                        {
+                            consumer.Commit(result);
+                            continue;
+                        }
+
                         var exists = await dbContext.PaymentOrderSnapshots.AnyAsync(x=>x.OrderingId
                          ==message.OrderingId,stoppingToken);
 
@@ -75,6 +86,15 @@
                             };
 
                             await dbContext.PaymentOrderSnapshots.AddAsync(snapshot,stoppingToken);
+
+
+                            await dbContext.ProcessedEvents.AddAsync(new ProcessedEvent
+                            {
+                                EventId = message.EventId,
+                                HandlerName = nameof(OrderCreatedConsumer),
+                                ProcessedAt = DateTime.UtcNow
+                            }, stoppingToken);
+
                             await dbContext.SaveChangesAsync(stoppingToken);
 
                             consumer.Commit(result);

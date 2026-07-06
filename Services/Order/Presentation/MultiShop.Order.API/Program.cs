@@ -55,6 +55,8 @@ builder.Services.AddHostedService<PaymentFailedConsumer>();
 builder.Services.AddHostedService<PaymentRefundedConsumer>();
 builder.Services.AddHostedService<CargoCreatedConsumer>();
 builder.Services.AddHostedService<CargoFailedConsumer>();
+builder.Services.AddHostedService<CargoDeliveredConsumer>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

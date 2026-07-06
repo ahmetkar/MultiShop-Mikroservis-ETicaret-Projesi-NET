@@ -11,14 +11,14 @@
     using Microsoft.EntityFrameworkCore;
     using MultiShop.Order.Domain.Entities;
 
-    public class CargoCreatedConsumer : BackgroundService
+    public class CargoDeliveredConsumer : BackgroundService
     {
 
         private readonly IServiceProvider _serviceProvider;
         private readonly IConfiguration _configuration;
-        private readonly ILogger<CargoCreatedConsumer> _logger;
+        private readonly ILogger<CargoDeliveredConsumer> _logger;
 
-        public CargoCreatedConsumer(IServiceProvider serviceProvider, IConfiguration configuration, ILogger<CargoCreatedConsumer> logger)
+        public CargoDeliveredConsumer(IServiceProvider serviceProvider, IConfiguration configuration, ILogger<CargoDeliveredConsumer> logger)
         {
             _configuration = configuration;
             _serviceProvider = serviceProvider;
@@ -32,21 +32,21 @@
                 var config = new ConsumerConfig
                 {
                     BootstrapServers = _configuration["Kafka:BootstrapServers"],
-                    GroupId = "order-service-group-cargo-created",
+                    GroupId = "order-service-group-cargo-delivered",
                     AutoOffsetReset = AutoOffsetReset.Earliest,
                     EnableAutoCommit = false,
 
                 };
 
                 using var consumer = new ConsumerBuilder<string, string>(config).Build();
-                consumer.Subscribe(KafkaTopics.CargoCreated);
+                consumer.Subscribe(KafkaTopics.CargoDelivered);
 
                 while (!stoppingToken.IsCancellationRequested)
                 {
                     try
                     {
                         var result = consumer.Consume(stoppingToken);
-                        var message = JsonSerializer.Deserialize<CargoOperationCreated>(result.Message.Value);
+                        var message = JsonSerializer.Deserialize<CargoOperationDelivered>(result.Message.Value);
 
                         if (message is null)
                         {
@@ -54,41 +54,38 @@
                             continue;
                         }
 
+
                         using var scope = _serviceProvider.CreateScope();
                         var dbContext = scope.ServiceProvider.GetRequiredService<OrderContext>();
 
                         var alreadyProcessed = await dbContext.ProcessedEvents
-                           .AnyAsync(x => x.EventId == message.EventId, stoppingToken);
+                          .AnyAsync(x => x.EventId == message.EventId, stoppingToken);
 
-                        if (!alreadyProcessed)
-                        {
-
-                            var order = await dbContext.Orderings.FirstOrDefaultAsync(x => x.OrderingId == message.OrderingId, stoppingToken);
-
-                            if (order is not null)
-                            {
-                                order.Status = OrderStatus.CargoCreated;
-
-                                await dbContext.ProcessedEvents.AddAsync(new ProcessedEvent
-                                {
-                                    EventId = message.EventId,
-                                    HandlerName = nameof(CargoCreatedConsumer),
-                                    ProcessedAt = DateTime.UtcNow
-                                }, stoppingToken);
-
-
-                                await dbContext.SaveChangesAsync(stoppingToken);
-                            }
-
-                            consumer.Commit(result);
-                        }
-                        else
+                        if (alreadyProcessed)
                         {
                             consumer.Commit(result);
                             continue;
                         }
 
+                        var order = await dbContext.Orderings.FirstOrDefaultAsync(x => x.OrderingId == message.OrderingId, stoppingToken);
 
+                        if (order is not null)
+                        {
+                            order.Status = OrderStatus.Completed;
+
+                            await dbContext.ProcessedEvents.AddAsync(new ProcessedEvent
+                            {
+                                EventId = message.EventId,
+                                HandlerName = nameof(CargoDeliveredConsumer),
+                                ProcessedAt = DateTime.UtcNow
+                            }, stoppingToken);
+
+                            await dbContext.SaveChangesAsync(stoppingToken);
+
+                            consumer.Commit(result);
+                        }
+
+                        
 
                     }
                     catch (OperationCanceledException)
@@ -97,7 +94,7 @@
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(ex, "CargoCreated consumer hata aldı.");
+                        _logger.LogError(ex, "CargoDelivered consumer hata aldı.");
                     }
 
                 }

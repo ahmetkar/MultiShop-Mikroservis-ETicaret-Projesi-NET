@@ -57,8 +57,19 @@
                         }
 
                         using var scope = _serviceProvider.CreateScope();
+                        var dbContext = scope.ServiceProvider.GetRequiredService<PaymentContext>();
                         var paymentService = scope.ServiceProvider.GetRequiredService<IPaymentService>();
                         var kafkaProducer = scope.ServiceProvider.GetRequiredService<IKafkaProducer>();
+
+
+                        var alreadyProcessed = await dbContext.ProcessedEvents
+                                 .AnyAsync(x => x.EventId == message.EventId, stoppingToken);
+
+                        if (alreadyProcessed)
+                        {
+                            consumer.Commit(result);
+                            continue;
+                        }
 
 
                         var refundedPayment = await paymentService.RefundPayment(new DTOs.RefundPaymentDto
@@ -78,9 +89,21 @@
                             };
 
                             await kafkaProducer.PublishAsync(KafkaTopics.PaymentRefunded,paymentRefundendEvent,message.OrderingId.ToString(),stoppingToken);
+
+
+                            await dbContext.ProcessedEvents.AddAsync(new ProcessedEvent
+                            {
+                                EventId = message.EventId,
+                                HandlerName = nameof(CargoFailedConsumer),
+                                ProcessedAt = DateTime.UtcNow
+                            }, stoppingToken);
+
+                            await dbContext.SaveChangesAsync(stoppingToken);
+
+                            consumer.Commit(result);
                         }                        
 
-                        consumer.Commit(result);
+                       
 
                     }
                     catch (OperationCanceledException)

@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FC2BCC83-BE78-4AF7-8374-B21746AFE2DE}|Services\\Payment\\MultiShop.Payment\\MultiShop.Payment.csproj|d:\\0dotnet\\multishop\\multishop\\services\\payment\\multishop.payment\\consumers\\ordercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC2BCC83-BE78-4AF7-8374-B21746AFE2DE}|Services\\Payment\\MultiShop.Payment\\MultiShop.Payment.csproj|solutionrelative:services\\payment\\multishop.payment\\consumers\\ordercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\consumers\\paymentcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\consumers\\paymentcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\multishop.cargo.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\multishop.cargo.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OrderCreatedConsumer.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
-              "RelativeDocumentMoniker": "Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
-              "RelativeToolTip": "Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAbAAAAAAAAAA==",
+              "Title": "PaymentCompletedConsumer.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
+              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
+              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAiwEUAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-05T22:30:19.138Z",
+              "WhenOpened": "2026-07-05T23:47:14.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MultiShop.Cargo.WebApi",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
+              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
+              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
+              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-05T23:46:39.672Z",
               "EditorCaption": ""
             },
             {

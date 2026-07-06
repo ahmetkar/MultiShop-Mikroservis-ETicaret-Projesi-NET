@@ -2,7 +2,7 @@
 {
     public class OrderCreatedEvent : IntegrationEvent
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int OrderingId { get; set; }
 
         public int PaymentTotal { get; set; }

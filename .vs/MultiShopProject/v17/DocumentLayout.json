@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\consumers\\paymentcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\consumers\\paymentcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\multishop.cargo.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\multishop.cargo.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,34 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PaymentCompletedConsumer.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAiwEUAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-05T23:47:14.481Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MultiShop.Cargo.WebApi",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
-              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
-              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-05T23:46:39.672Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"

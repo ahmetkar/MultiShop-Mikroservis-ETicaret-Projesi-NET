@@ -34,5 +34,7 @@ namespace MultiShop.Order.Persistance.Context
         public DbSet<Adress> Adresses { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Ordering> Orderings { get; set; }
+
+        public DbSet<ProcessedEvent> ProcessedEvents { get; set; }
     }
 }

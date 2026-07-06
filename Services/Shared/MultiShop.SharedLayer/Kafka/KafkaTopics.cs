@@ -11,6 +11,7 @@
 
         public const string CargoCreated = "cargo-created";
         public const string CargoFailed = "cargo-failed";
+        public const string CargoDelivered = "cargo-delivered";
 
         public const string Completed = "completed";
     }

@@ -51,7 +51,7 @@ namespace MultiShop.Order.API.Controllers
                 {
                     UserId = res.UserId,
                     OrderingId = res.OrderingId,
-                    TotalPrice = res.TotalPrice,
+                    PaymentTotal = Convert.ToInt32(res.TotalPrice),
                     ShippingAdressId = res.ShippingAdressId,
                     BillingAddressId = res.BillingAddressId,
                     OrderDate = res.OrderDate,

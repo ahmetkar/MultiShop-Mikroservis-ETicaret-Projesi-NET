@@ -18,6 +18,7 @@ namespace MultiShop.Payment.DAL.Context
         public DbSet<PaymentInfo> PaymentInfos { get; set; }
         public DbSet<CardInfo> CardInfos { get; set; }
 
+        public DbSet<ProcessedEvent> ProcessedEvents { get; set; }
         public DbSet<PaymentOrderSnapshot> PaymentOrderSnapshots { get; set; }
 
     }

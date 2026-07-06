@@ -57,12 +57,33 @@
                         using var scope = _serviceProvider.CreateScope();
                         var dbContext = scope.ServiceProvider.GetRequiredService<OrderContext>();
 
+
+                        var alreadyProcessed = await dbContext.ProcessedEvents
+                          .AnyAsync(x => x.EventId == message.EventId, stoppingToken);
+
+                        if (alreadyProcessed)
+                        {
+                            consumer.Commit(result);
+                            continue;
+                        }
+
                         var order = await dbContext.Orderings.FirstOrDefaultAsync(x => x.OrderingId == message.OrderingId, stoppingToken);
 
                         if (order is not null)
                         {
                             order.Status = OrderStatus.PaymentFailed;
+
+
+                            await dbContext.ProcessedEvents.AddAsync(new ProcessedEvent
+                            {
+                                EventId = message.EventId,
+                                HandlerName = nameof(PaymentFailedConsumer),
+                                ProcessedAt = DateTime.UtcNow
+                            }, stoppingToken);
+
                             await dbContext.SaveChangesAsync(stoppingToken);
+
+                            consumer.Commit(result);
                         }
 
                     }
