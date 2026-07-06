@@ -19,22 +19,25 @@ namespace MultiShop.Order.Persistance.Repositories
             _context = context;
         }
 
-        public async Task CreateAsync(T entity)
+        public async Task<int> CreateAsync(T entity)
         {
             _context.Set<T>().Add(entity);
-            await _context.SaveChangesAsync();
+            var add = await _context.SaveChangesAsync();
+            return add;
         }
 
-        public async Task CreateRangeAsync(List<T> entities)
+        public async Task<int> CreateRangeAsync(List<T> entities)
         {
             _context.Set<T>().AddRange(entities);
-            await _context.SaveChangesAsync();
+            var add = await _context.SaveChangesAsync();
+            return add;
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task<int> DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync();
+            var del = await _context.SaveChangesAsync();
+            return del;
         }
 
         public async Task<List<T>> GetAllAsync()
@@ -57,10 +60,11 @@ namespace MultiShop.Order.Persistance.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<int> UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync();
+            var up = await _context.SaveChangesAsync();
+            return up;
         }
     }
 }

@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.API.Dtos;
 using MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
+using MultiShop.SharedLayer.Kafka;
+using MultiShop.SharedLayer.Events;
+using MultiShop.Order.Application.Features.Mediator.Results.OrderingResult;
 
 namespace MultiShop.Order.API.Controllers
 {
@@ -14,10 +17,12 @@ namespace MultiShop.Order.API.Controllers
     public class OrderingsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IKafkaProducer _kafkaProducer;
 
-        public OrderingsController(IMediator mediator)
+        public OrderingsController(IMediator mediator,IKafkaProducer kafkaProducer)
         {
             _mediator = mediator;
+            _kafkaProducer = kafkaProducer;
         }
 
         [HttpGet("OrderingList")]
@@ -35,10 +40,44 @@ namespace MultiShop.Order.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrdering(CreateOrderingCommand command)
+        public async Task<IActionResult> CreateOrdering(CreateOrderingCommand command,CancellationToken cancellationToken = default)
         {
-            int id = await _mediator.Send(command);
-            return Ok(new CreateOrderingResultDto() { OrderingId = id});
+            var correlationId = Guid.NewGuid();
+            CreateOrderingResult res = await _mediator.Send(command);
+
+            if(res is not null)
+            {
+                var orderCreatedEvent = new OrderCreatedEvent
+                {
+                    UserId = res.UserId,
+                    OrderingId = res.OrderingId,
+                    TotalPrice = res.TotalPrice,
+                    ShippingAdressId = res.ShippingAdressId,
+                    BillingAddressId = res.BillingAddressId,
+                    OrderDate = res.OrderDate,
+                    CorrrelationId = correlationId,
+                    CreatedDate = DateTime.UtcNow
+                };
+
+                await _kafkaProducer.PublishAsync(KafkaTopics.OrderCreated, orderCreatedEvent, res.OrderingId.ToString(),cancellationToken);
+                
+                return Ok(new CreateOrderingResultDto() { OrderingId = res.OrderingId });
+            }
+            else
+            {
+                var orderNotCreatedEvent = new OrderNotCreatedEvent
+                {
+                    UserId = command.UserId,
+                    OrderDate = command.OrderDate,
+                    CorrrelationId = correlationId,
+                    CreatedDate = DateTime.UtcNow
+                };
+                await _kafkaProducer.PublishAsync(KafkaTopics.OrderNotCreated, orderNotCreatedEvent, command.UserId.ToString(), cancellationToken);
+
+                return Ok(new CreateOrderingResultDto() { });
+            }
+
+                
         }
 
         [HttpDelete("{id}")]

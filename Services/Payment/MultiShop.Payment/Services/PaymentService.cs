@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MultiShop.Payment.DAL.Context;
 using MultiShop.Payment.DAL.Entities;
@@ -72,10 +73,46 @@ namespace MultiShop.Payment.Services
         }
 
 
-   
-        public async Task<bool> AddPayment(CreatePaymentDto createPaymentDto)
+
+
+        public async Task<(bool,string)> RefundPayment(RefundPaymentDto refundPaymentDto, CancellationToken cancellationToken)
+        {
+            var payment = await _paymentContext.PaymentInfos.FirstOrDefaultAsync(x => x.OrderingId == refundPaymentDto.OrderingId, cancellationToken);
+
+            if (payment is null)
+            {
+                return (false,"Ödeme iadesi başarısız");
+            }
+
+            if (payment.IsRefunded)
+            {
+                return (true,"Ödeme zaten geri yapılmış");
+            }
+
+            payment.IsRefunded = true;
+
+            await _paymentContext.SaveChangesAsync(cancellationToken);
+
+            return (true,"Ödeme iadesi başarıyla işleme alındı.");
+
+        }
+
+        public async Task<ResultCreatePaymentDto> AddPayment(CreatePaymentDto createPaymentDto,CancellationToken cancellationToken = default)
         {
 
+            var orderSnapshot = await _paymentContext.PaymentOrderSnapshots.FirstOrDefaultAsync(x=>x.OrderingId == createPaymentDto.OrderingId,cancellationToken);
+            
+            if(orderSnapshot is null)
+            {
+                return new ResultCreatePaymentDto ();
+            }
+
+            if (orderSnapshot.IsSuccessful)
+            {
+                //sonra eklencek
+                return new ResultCreatePaymentDto();
+            }
+            
             CardInfo cardInfos = new CardInfo()
             {
                 CardType = createPaymentDto.CardType,
@@ -88,19 +125,33 @@ namespace MultiShop.Payment.Services
                 LastFourNumber = createPaymentDto.LastFourNumber
             };
 
-            
 
-            _paymentContext.PaymentInfos.Add(new PaymentInfo()
+            var paymentInfo = new PaymentInfo()
             {
                 UserId = createPaymentDto.UserId,
                 OrderingId = createPaymentDto.OrderingId,
                 PaymentTotal = createPaymentDto.PaymentTotal,
                 PaymentType = createPaymentDto.PaymentType,
+                IsSuccessful = true,
                 CardInfo = cardInfos
-            });
-            var change = _paymentContext.SaveChanges();
-            if (change >= 1) return true;
-            return false;
+            };
+            await _paymentContext.PaymentInfos.AddAsync(paymentInfo,cancellationToken);
+
+            orderSnapshot.IsSuccessful = true;
+            var change = await _paymentContext.SaveChangesAsync(cancellationToken);
+            if (change >= 1)
+            {
+                return new ResultCreatePaymentDto()
+                {
+                    OrderingId = paymentInfo.OrderingId,
+                    PaymentTotal = paymentInfo.PaymentTotal,
+                    CardInfoId = paymentInfo.CardInfoId,
+                    UserId = paymentInfo.UserId,
+                    PaymentId = paymentInfo.Id
+                };
+
+            }
+            return new ResultCreatePaymentDto();
         }
 
         public async Task<bool> CancelPaymentByOrderingId(int id)

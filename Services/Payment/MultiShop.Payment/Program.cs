@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using MultiShop.Payment.Consumers;
 using MultiShop.Payment.DAL.Context;
 using MultiShop.Payment.Services;
+using MultiShop.SharedLayer.Kafka;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +17,10 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IKafkaProducer, KafkaProducer>();
+
+builder.Services.AddHostedService<OrderCreatedConsumer>();
+builder.Services.AddHostedService<CargoFailedConsumer>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
@@ -58,7 +65,10 @@ builder.Services.AddAuthorization(options =>
     });
 });
 
-builder.Services.AddDbContext<PaymentContext>();
+builder.Services.AddDbContext<PaymentContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 
 var app = builder.Build();

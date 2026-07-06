@@ -16,6 +16,9 @@ namespace MultiShop.Cargo.EntityLayer.Concretes
         public int CargoDetailId { get; set; }
         public CargoDetail CargoDetail { get; set; }
 
+
+        public int OrderingId { get; set; }
+
         public bool IsCompleted { get; set; } = false;
     }
 }

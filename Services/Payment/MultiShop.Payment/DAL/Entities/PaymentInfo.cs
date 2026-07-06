@@ -13,7 +13,10 @@ namespace MultiShop.Payment.DAL.Entities
         public int OrderingId { get; set; }
         public int PaymentTotal { get; set; }
         public string PaymentType { get; set; }
-        public string CardInfoId { get; set; }
+
+        public bool IsSuccessful { get; set; }
+        public bool IsRefunded { get; set; }
+        public int CardInfoId { get; set; }
         public CardInfo CardInfo { get; set; }
     }
 }

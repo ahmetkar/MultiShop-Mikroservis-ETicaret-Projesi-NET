@@ -11,12 +11,12 @@ namespace MultiShop.Order.Application.Interfaces
     {
         Task<List<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task CreateAsync(T entity);
-        Task UpdateAsync(T entity);  
-        Task DeleteAsync(T Entity);
+        Task<int> CreateAsync(T entity);
+        Task<int> UpdateAsync(T entity);  
+        Task<int> DeleteAsync(T Entity);
         Task<T> GetByFilterAsync(Expression<Func<T,bool>> filter);
         Task<List<T>> GetAllByFilterAsync(Expression<Func<T, bool>> filter);
-        Task CreateRangeAsync(List<T> entities);
+        Task<int> CreateRangeAsync(List<T> entities);
 
     }
 }

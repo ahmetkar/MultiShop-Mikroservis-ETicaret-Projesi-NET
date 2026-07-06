@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using MultiShop.Order.API.Consumers;
 using MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers;
 using MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using MultiShop.Order.Application.Interfaces;
 using MultiShop.Order.Application.Services;
 using MultiShop.Order.Persistance.Context;
 using MultiShop.Order.Persistance.Repositories;
+using MultiShop.SharedLayer.Kafka;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
@@ -13,7 +16,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Audience = "ResourceOrder";
     opt.RequireHttpsMetadata = false;
 });
-builder.Services.AddDbContext<OrderContext>();
+
+
+
+builder.Services.AddControllers();
+
+
+builder.Services.AddDbContext<OrderContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IOrderingRepository), typeof(OrderingRepository));
@@ -33,7 +47,15 @@ builder.Services.AddScoped<CreateOrderDetailRangeCommandHandler>();
 builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
 builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
 
-builder.Services.AddControllers();
+
+builder.Services.AddScoped<IKafkaProducer, KafkaProducer>();
+
+builder.Services.AddHostedService<PaymentCompletedConsumer>();
+builder.Services.AddHostedService<PaymentFailedConsumer>();
+builder.Services.AddHostedService<PaymentRefundedConsumer>();
+builder.Services.AddHostedService<CargoCreatedConsumer>();
+builder.Services.AddHostedService<CargoFailedConsumer>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

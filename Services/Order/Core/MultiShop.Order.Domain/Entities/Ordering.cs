@@ -14,6 +14,9 @@ namespace MultiShop.Order.Domain.Entities
         public DateTime OrderDate { get; set; }
         public bool IsOrderCompleted { get; set; } = false;
         public bool IsOrderDelivered { get; set; } = false;
+
+        public OrderStatus Status { get; set; }
+        public Guid CorellationId { get; set; }
         public int ShippingAdressId { get; set; }
         public Adress ShippingAdress { get; set; }  
         public int BillingAddressId { get; set; }

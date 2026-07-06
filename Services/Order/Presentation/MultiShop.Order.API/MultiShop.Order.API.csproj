@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.15.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
@@ -24,9 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Services\Order\Core\MultiShop.Order.Domain\MultiShop.Order.Domain.csproj" />
-    <ProjectReference Include="..\..\..\..\Services\Order\Infrastructure\MultiShop.Order.Persistance\MultiShop.Order.Persistance.csproj" />
-    <ProjectReference Include="..\..\..\..\Services\Order\Core\MultiShop.Order.Application\MultiShop.Order.Application.csproj" />
+    <ProjectReference Include="..\..\Core\MultiShop.Order.Domain\MultiShop.Order.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\MultiShop.Order.Persistance\MultiShop.Order.Persistance.csproj" />
+    <ProjectReference Include="..\..\Core\MultiShop.Order.Application\MultiShop.Order.Application.csproj" />
+	 <ProjectReference Include="..\..\..\Shared\MultiShop.SharedLayer\MultiShop.SharedLayer.csproj" />
   </ItemGroup>
 
 </Project>

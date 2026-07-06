@@ -1,6 +1,0 @@
-@MultiShop.RapidApi_HostAddress = http://localhost:5276
-
-GET {{MultiShop.RapidApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\views\\payment\\paymentresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\payment\\paymentresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FC2BCC83-BE78-4AF7-8374-B21746AFE2DE}|Services\\Payment\\MultiShop.Payment\\MultiShop.Payment.csproj|d:\\0dotnet\\multishop\\multishop\\services\\payment\\multishop.payment\\consumers\\ordercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC2BCC83-BE78-4AF7-8374-B21746AFE2DE}|Services\\Payment\\MultiShop.Payment\\MultiShop.Payment.csproj|solutionrelative:services\\payment\\multishop.payment\\consumers\\ordercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +14,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderCreatedConsumer.cs",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
+              "RelativeDocumentMoniker": "Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
+              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
+              "RelativeToolTip": "Services\\Payment\\MultiShop.Payment\\Consumers\\OrderCreatedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T22:30:19.138Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -39,45 +44,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PaymentController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAAAIIAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-05T14:51:04.877Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PaymentResult.cshtml",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-05T15:54:38.804Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-05T13:56:27.353Z",
-              "EditorCaption": ""
             }
           ]
         }

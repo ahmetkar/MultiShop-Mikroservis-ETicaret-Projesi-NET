@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "O0WLbdIcJtRtH7Uw5SeOdt2Kw8oaMTePgytWWiI89Sg=",
-  "Source": "MultiShop.Comment",
-  "BasePath": "_content/MultiShop.Comment",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"O0WLbdIcJtRtH7Uw5SeOdt2Kw8oaMTePgytWWiI89Sg=","Source":"MultiShop.Comment","BasePath":"_content/MultiShop.Comment","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

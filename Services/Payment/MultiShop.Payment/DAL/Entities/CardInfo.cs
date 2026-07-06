@@ -7,7 +7,7 @@ namespace MultiShop.Payment.DAL.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string CardInfoId { get; set; }
+        public int CardInfoId { get; set; }
         public string OwnerName { get; set; }
         public string OwnerSurname { get; set; }
         public string CardType { get; set; }

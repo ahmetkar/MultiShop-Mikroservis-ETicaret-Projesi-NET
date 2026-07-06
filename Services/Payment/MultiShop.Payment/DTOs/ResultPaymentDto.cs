@@ -3,7 +3,7 @@
     public class ResultPaymentDto
     {
         public int Id { get; set; }
-        public string CardInfoId { get; set; }
+        public int CardInfoId { get; set; }
         public int OrderingId { get; set; }
         public int PaymentTotal { get; set; }
         public string UserId { get; set; }

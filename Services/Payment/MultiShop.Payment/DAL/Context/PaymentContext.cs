@@ -8,19 +8,17 @@ namespace MultiShop.Payment.DAL.Context
     {
         private readonly IConfiguration _configuration;
         private string _connectionString;
-        public PaymentContext(IConfiguration configuration)
+        public PaymentContext(DbContextOptions<PaymentContext> options) : base(options)
         {
-            _configuration = configuration;
-            _connectionString = _configuration.GetConnectionString("DefaultConnection");
+          
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(_connectionString);
-        }
+       
+        
 
         public DbSet<PaymentInfo> PaymentInfos { get; set; }
         public DbSet<CardInfo> CardInfos { get; set; }
+
+        public DbSet<PaymentOrderSnapshot> PaymentOrderSnapshots { get; set; }
 
     }
 }

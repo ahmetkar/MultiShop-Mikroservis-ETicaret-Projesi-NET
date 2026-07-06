@@ -33,9 +33,10 @@ namespace MultiShop.Cargo.BussinessLayer.Concrete
             return _cargoCompany.GetById(id);
         }
 
-        public void TInsert(CargoCompany entity)
+        public CargoCompany TInsert(CargoCompany entity)
         {
-            _cargoCompany.Insert(entity);
+            var en = _cargoCompany.Insert(entity);
+            return en;
         }
 
         public void TUpdate(CargoCompany entity)

@@ -36,10 +36,11 @@ namespace MultiShop.Cargo.DataAccessLayer.Repositories
             return value;
         }
 
-        public void Insert(T entity)
+        public T Insert(T entity)
         {
             _context.Set<T>().Add(entity);
             _context.SaveChanges();
+            return entity;
         }
 
         public void Update(T entity)

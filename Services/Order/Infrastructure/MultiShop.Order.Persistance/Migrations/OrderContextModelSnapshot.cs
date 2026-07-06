@@ -132,6 +132,9 @@ namespace MultiShop.Order.Persistance.Migrations
                     b.Property<int>("BillingAddressId")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("CorellationId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("IsOrderCompleted")
                         .HasColumnType("bit");
 
@@ -142,6 +145,9 @@ namespace MultiShop.Order.Persistance.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ShippingAdressId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalPrice")

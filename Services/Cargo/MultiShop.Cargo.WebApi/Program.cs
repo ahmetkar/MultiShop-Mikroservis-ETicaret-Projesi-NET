@@ -4,6 +4,8 @@ using MultiShop.Cargo.BussinessLayer.Concrete;
 using MultiShop.Cargo.DataAccessLayer.Abstract;
 using MultiShop.Cargo.DataAccessLayer.Concrete;
 using MultiShop.Cargo.DataAccessLayer.EntityFramework;
+using MultiShop.Cargo.WebApi.Consumers;
+using MultiShop.SharedLayer.Kafka;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,10 @@ builder.Services.AddScoped<ICargoDetailService, CargoDetailManager>();
 builder.Services.AddScoped<ICargoOperationService, CargoOperationManager>();
 builder.Services.AddScoped<ICargoCompanyService, CargoCompanyManager>();
 builder.Services.AddScoped<ICargoCustomerService, CargoCustomerManager>();
+
+builder.Services.AddScoped<IKafkaProducer, KafkaProducer>();
+
+builder.Services.AddHostedService<PaymentCompletedConsumer>();
 
 
 builder.Services.AddControllers();

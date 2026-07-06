@@ -40,13 +40,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             CargoCustomer cargoCustomer = new CargoCustomer
             {
-                Name = createCargoCustomerDto.Name,
-                Surname = createCargoCustomerDto.Surname,
-                PhoneNumber = createCargoCustomerDto.PhoneNumber,
-                Email = createCargoCustomerDto.Email,
-                Address = createCargoCustomerDto.Address,
-                City = createCargoCustomerDto.City,
-                District = createCargoCustomerDto.District,
+              
                UserCustomerId = createCargoCustomerDto.UserCustomerId
             };
 
@@ -67,13 +61,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
             CargoCustomer cargoCustomer = new CargoCustomer
             {
                 CargoCustomerId = updateCargoCustomerDto.CargoCustomerId,
-                Name = updateCargoCustomerDto.Name,
-                Surname = updateCargoCustomerDto.Surname,
-                PhoneNumber = updateCargoCustomerDto.PhoneNumber,
-                Email = updateCargoCustomerDto.Email,
-                Address = updateCargoCustomerDto.Address,
-                City = updateCargoCustomerDto.City,
-                District = updateCargoCustomerDto.District,
+           
                 UserCustomerId = updateCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TUpdate(cargoCustomer);
