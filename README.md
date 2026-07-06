@@ -2,6 +2,32 @@
 
 Admin paneli ve e-ticaret sitesi arayüzü içeren ,frontend olarak .net core MVC backend olarak yaklaşık 12 mikroservis içeren web projesidir. Kategoriye göre ürünleri görüntüleme,ürün yorumlama,sepete ekleme,sipariş detayları girme ve ödeme için animasyonlu kart ekranı ,kupon uygulama,ana sayfa pörtfölyösü gibi özellikler içeriyor
 
+Bu proje Murat Yücedağın Multishop E-ticaret eğitim serisinden faydalanılarak yazılmış ve benim tarafımdan düzeltmeler,eklemeler yapılmıştır.
+
+# Benim Eklediklerim
+
+- Cargo mikroservisi eklendi
+- Sepet yapısı güncellendi baştan yazıldı,giriş yapmayan ve yapanlar için cookieyle ekleme ve redise ekleme istisnaları eklendi.
+- Payment frontend ve backend düzeltmeleri yapıldı.
+- Order servisi yeniden düzenlendi.
+- Kafka ile Order-Payment-Cargo arası asenkron kuyruk mesajlaşma yapısı choereography saga pattern ile kuruldu
+
+
+# Kafka ile Mikroservis Arası Mesajlaşma Yapısı
+
+- Kullanıcı sepete ürün ekler devam eder adres seçip Order oluşturur. Order oluşunca OrderCreated eventi kafkaya yayınlanır.Ve Payment servisi OrderCreatedi dinler
+ve veritabanında PaymentOrderSnapshot kaydı oluşturur .
+ - Kullanıcı devam eder ödeme yapar Payment oluşturur.Payment oluşturulurken PaymentOrderSnapshot tablosundaki bilgiler kontrol edilir. Ve payment oluşturulup payment işlemi taklit edilip PaymentCompleted veya PaymentFailed Eventi yayınlanır.
+ - Order PaymentCompleted veya PaymentFailed eventini dinler ve ona göre Ordering tablosundaki Status durumunu değiştirir
+ - Cargo PaymentCompleted eventini dinler ve gerçekleşince kargo müşterisi,kargo detayı ve kargo operasyonu oluşturma işlemini tamamlar.CargoCreated veya CargoFailed olayını yayınlar
+ - Order bu olayları dinler ve ona göre tablosundaki Status durumunu değiştirir.
+ - Cargo teslim edildi olarak işaretlenirse CargoDelivered olayı Cargo servisi tarafından yayınlanır.
+ - Order bu CargoDelivered olayını dinler ve Ordering tablosundaki Status durumunu Completed olarak değiştirir.
+
+ Her mikroservis alakalı olduğu olayı dinlediği berirli bir orkestratör olmadığı için buna choereography saga pattern deniyor. Ve patterni bu uygullamaya bu şekilde uyarladım.
+
+
+
 # İçerdiği Mikroservisler
 
 Basket
@@ -9,13 +35,9 @@ Cargo
 Catalog
 Comment
 Discount
-Images
-Message
 Order
 Payment
-RabbitMQMessage
-RapidApi
-SignalR
+
 
 # Kullanılan Teknolojiler
  • Asp.Net Core 9.0 Web API ve MVC
