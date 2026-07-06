@@ -1,10 +1,12 @@
-# MultiShop E-TİCARET Sitesi Projesi
+
+
+### MultiShop E-TİCARET Sitesi Projesi
 
 Admin paneli ve e-ticaret sitesi arayüzü içeren ,frontend olarak .net core MVC backend olarak yaklaşık 12 mikroservis içeren web projesidir. Kategoriye göre ürünleri görüntüleme,ürün yorumlama,sepete ekleme,sipariş detayları girme ve ödeme için animasyonlu kart ekranı ,kupon uygulama,ana sayfa pörtfölyösü gibi özellikler içeriyor
 
 Bu proje Murat Yücedağın Multishop E-ticaret eğitim serisinden faydalanılarak yazılmış ve benim tarafımdan düzeltmeler,eklemeler yapılmıştır.
 
-# Benim Eklediklerim
+### Benim Eklediklerim
 
 - Cargo mikroservisi eklendi
 - Sepet yapısı güncellendi baştan yazıldı,giriş yapmayan ve yapanlar için cookieyle ekleme ve redise ekleme istisnaları eklendi.
@@ -70,6 +72,7 @@ IdentityService
    • MSSQL
    • MongoDb
    • Redis
+
 
 # Web Sitesi Ana Sayfa Ekran Görüntüleri
 
