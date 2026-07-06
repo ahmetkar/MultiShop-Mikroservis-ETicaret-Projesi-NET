@@ -57,7 +57,7 @@ IdentityService
  • Json Web Token / Identity Service
  • Kafka
  • Docker
- • Sag apattern
+ • Saga apattern
  • Onion Mimarisi
  • N-tier Mimarisi
  • Monolitik Mimari
