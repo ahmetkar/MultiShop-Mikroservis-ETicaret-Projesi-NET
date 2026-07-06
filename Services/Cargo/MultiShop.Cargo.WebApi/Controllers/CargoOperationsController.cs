@@ -83,6 +83,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
                     CargoDetailId = updateCargoOperationDto.CargoDetailId,
                     Description = updateCargoOperationDto.Description,
                     OperationDate = updateCargoOperationDto.OperationDate,
+                    OrderingId = updateCargoOperationDto.OrderingId,
                     IsCompleted = true,
                 };
                 _CargoOperationsService.TUpdate(CargoOperation);

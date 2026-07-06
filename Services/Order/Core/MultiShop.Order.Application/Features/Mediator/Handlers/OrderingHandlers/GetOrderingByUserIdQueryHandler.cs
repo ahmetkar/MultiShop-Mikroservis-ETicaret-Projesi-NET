@@ -20,8 +20,7 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
                 OrderDate = x.OrderDate,
                 OrderingId = x.OrderingId,
                 TotalPrice = x.TotalPrice,
-                IsOrderCompleted = x.IsOrderCompleted,
-                IsOrderDelivered = x.IsOrderDelivered,
+                Status = x.Status,
                 UserId = x.UserId,
                 ShippingAdressId = x.ShippingAdressId,
                 BillingAddressId = x.BillingAddressId

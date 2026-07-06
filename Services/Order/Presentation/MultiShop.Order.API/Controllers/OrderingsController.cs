@@ -44,8 +44,8 @@ namespace MultiShop.Order.API.Controllers
         {
             var correlationId = Guid.NewGuid();
             CreateOrderingResult res = await _mediator.Send(command);
-
-            if(res is not null)
+            //res !=null
+            if(res.OrderingId!=0)
             {
                 var orderCreatedEvent = new OrderCreatedEvent
                 {
@@ -70,11 +70,11 @@ namespace MultiShop.Order.API.Controllers
                     UserId = command.UserId,
                     OrderDate = command.OrderDate,
                     CorrrelationId = correlationId,
-                    CreatedDate = DateTime.UtcNow
+                    CreatedDate = DateTime.UtcNow,
                 };
                 await _kafkaProducer.PublishAsync(KafkaTopics.OrderNotCreated, orderNotCreatedEvent, command.UserId.ToString(), cancellationToken);
 
-                return Ok(new CreateOrderingResultDto() { });
+                return Ok(null);
             }
 
                 
@@ -105,8 +105,14 @@ namespace MultiShop.Order.API.Controllers
         public async Task<IActionResult> GetActiveOrderingByUserId(string id)
         {
             var values = await _mediator.Send(new GetOrderingByUserIdQuery(id));
-            var activeOrder = values.FirstOrDefault(x=>!x.IsOrderCompleted && !x.IsOrderDelivered);
-            return Ok(activeOrder);
+            
+            if (values == null) return Ok(null);
+
+            var orderStatus = values.LastOrDefault(x => x.Status != Domain.Entities.OrderStatus.Cancelled && x.Status != Domain.Entities.OrderStatus.Completed);
+
+            if (orderStatus == null) return Ok(null);
+
+            return Ok(orderStatus);
         }
 
 

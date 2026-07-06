@@ -74,8 +74,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
                 ShippingAdressId = ordering.ShippingAdressId,
                 TotalPrice = ordering.TotalPrice,
                 UserId = ordering.UserId,
-                IsOrderCompleted = newStatus,
-                IsOrderDelivered = false
+                Status = ordering.Status
             };
             var response = await _httpClient.PutAsJsonAsync("Orderings", updateOrderingDto);
             if (response.IsSuccessStatusCode)
@@ -85,7 +84,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
             return false;
         }
 
-        public async Task<int?> CreateOrdering(int billingAdressId,int shippingAdressId)
+        public async Task<CreateOrderingResultDto?> CreateOrdering(int billingAdressId,int shippingAdressId)
         {
             var values = await _userService.GetUserInfo();
 
@@ -111,31 +110,30 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
                 var content = await response.Content.ReadFromJsonAsync<CreateOrderingResultDto>();
                 if (content != null)
                 {
-                    var responseId = content.OrderingId;
-                    var list = new List<CreateOrderDetailDto>();
-                    foreach (var item in basket.BasketItems)
-                    {
-                        var orderdetail = new CreateOrderDetailDto()
+                    if (content.OrderingId != 0) {
+                        var responseId = content.OrderingId;
+
+                        var list = new List<CreateOrderDetailDto>();
+                        foreach (var item in basket.BasketItems)
                         {
-                            OrderingId = responseId,
-                            ProductAmount = item.Quantity,
-                            ProductId = item.ProductId,
-                            ProductName = item.ProductName,
-                            ProductPrice = item.Price,
-                            ProductTotalPrice = item.Price * item.Quantity
-                        };
-                        list.Add(orderdetail);
-                    }
-                    var response2 = await _httpClient.PostAsJsonAsync<List<CreateOrderDetailDto>>("OrderDetail", list);
-                    if (response2.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine("orderings eklendi.");
-                        string myId = await _userService.GetUserId();
-                        var activeOrdering = await GetActiveOrderingByUserId(myId);
-                        if (activeOrdering != null)
+                            var orderdetail = new CreateOrderDetailDto()
+                            {
+                                OrderingId = responseId,
+                                ProductAmount = item.Quantity,
+                                ProductId = item.ProductId,
+                                ProductName = item.ProductName,
+                                ProductPrice = item.Price,
+                                ProductTotalPrice = item.Price * item.Quantity
+                            };
+                            list.Add(orderdetail);
+                        }
+                        var response2 = await _httpClient.PostAsJsonAsync<List<CreateOrderDetailDto>>("OrderDetail", list);
+                        if (response2.IsSuccessStatusCode)
                         {
-                            return activeOrdering.OrderingId;
-                        }else
+
+                            return new CreateOrderingResultDto { OrderingId = responseId };
+                        }
+                        else
                         {
                             return null;
                         }
@@ -144,9 +142,12 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
                         return null;
                     }
                     
+                    
+                }else
+                {
+                    return null;
                 }
 
-                return null;
                
             }
             return null;

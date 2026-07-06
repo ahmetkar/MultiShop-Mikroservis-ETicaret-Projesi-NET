@@ -429,3 +429,4 @@ D:\0Dotnet\MultiShop\MultiShop\Services\Payment\MultiShop.Payment\obj\Debug\net9
 D:\0Dotnet\MultiShop\MultiShop\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\compressed\jctnodkh0w-xtxxf3hu2r.gz
 D:\0Dotnet\MultiShop\MultiShop\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\compressed\a6yhaclxtq-61n19gt1b8.gz
 D:\0Dotnet\MultiShop\MultiShop\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\compressed\dcq32jfa51-c2tiyv64ts.gz
+D:\0Dotnet\MultiShop\MultiShop\Services\Payment\MultiShop.Payment\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

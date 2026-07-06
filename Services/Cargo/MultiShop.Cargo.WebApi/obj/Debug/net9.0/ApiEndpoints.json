@@ -310,5 +310,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MultiShop.Cargo.WebApi.Controllers.CargoOperationsController",
+    "Method": "SetDeliveredCargoOperation",
+    "RelativePath": "api/CargoOperations/SetDelivered",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateCargoOperationDto",
+        "Type": "MultiShop.Cargo.DtoLayer.Dtos.CargoOperation.UpdateCargoOperationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

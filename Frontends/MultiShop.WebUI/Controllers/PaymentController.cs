@@ -84,6 +84,8 @@ namespace MultiShop.WebUI.Controllers
 
             var orderinginfo = await _orderOderingService.GetOrderingById(createPaymentViewModel.OrderingId);
 
+            int cargocompanyId = 3;
+
             CreatePaymentDto createPayment = new CreatePaymentDto
             {
                 LastFourNumber = createPaymentViewModel.LastFourNumber,
@@ -97,7 +99,8 @@ namespace MultiShop.WebUI.Controllers
                 CardBankName = "BankA",
                 CardBrand = "BrandA",
                 PaymentTotal = (int)orderinginfo.TotalPrice,
-                UserId = orderinginfo.UserId
+                UserId = orderinginfo.UserId,
+                CargoCompanyId = cargocompanyId
             };
 
             bool added = await _paymentService.AddPayment(createPayment);

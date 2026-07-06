@@ -135,7 +135,9 @@
                             {
                                 OrderingId = message.OrderingId,
                                 UserId = message.UserId,
-                                PaymentId = message.PaymentId
+                                PaymentId = message.PaymentId,
+                                Reason = ex.Message
+
                             };
 
                             await kafkaProducer.PublishAsync(KafkaTopics.CargoFailed,cargoFailedEvent,message.OrderingId.ToString(),stoppingToken);

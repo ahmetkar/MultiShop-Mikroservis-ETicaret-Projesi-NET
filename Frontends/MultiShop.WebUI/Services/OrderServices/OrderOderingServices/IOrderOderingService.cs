@@ -9,7 +9,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
         Task<bool> SetOrderingStatus(int orderingId, bool newStatus);
         Task<ResultOrderingByUserIdDto?> GetActiveOrderingByUserId(string id);
         Task<GetOrderingByIdResultDto> GetOrderingById(int id);
-        Task<int?> CreateOrdering(int billingAdressId, int shippingAdressId);
+        Task<CreateOrderingResultDto?> CreateOrdering(int billingAdressId, int shippingAdressId);
         Task<bool> DeleteOrdering(int orderingId);
     }
 }

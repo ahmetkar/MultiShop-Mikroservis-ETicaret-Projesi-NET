@@ -56,3 +56,4 @@ D:\0Dotnet\MultiShop\MultiShop\Services\Shared\MultiShop.SharedLayer\obj\Debug\n
 D:\0Dotnet\MultiShop\MultiShop\Services\Shared\MultiShop.SharedLayer\obj\Debug\net8.0\MultiShop.SharedLayer.pdb
 D:\0Dotnet\MultiShop\MultiShop\Services\Shared\MultiShop.SharedLayer\obj\Debug\net8.0\MultiShop.SharedLayer.genruntimeconfig.cache
 D:\0Dotnet\MultiShop\MultiShop\Services\Shared\MultiShop.SharedLayer\obj\Debug\net8.0\ref\MultiShop.SharedLayer.dll
+D:\0Dotnet\MultiShop\MultiShop\Services\Shared\MultiShop.SharedLayer\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -10,6 +10,8 @@
         public int PaymentId { get; set; }
 
         public string UserId { get; set; }
+        
+        public string Reason { get; set; }
 
         public DateTime OperationDate { get; set; }
 

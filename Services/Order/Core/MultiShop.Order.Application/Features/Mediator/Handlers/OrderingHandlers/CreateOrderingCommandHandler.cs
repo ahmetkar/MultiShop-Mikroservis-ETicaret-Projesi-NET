@@ -6,7 +6,7 @@ using MultiShop.Order.Domain.Entities;
 
 namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandlers
 {
-    public class CreateOrderingCommandHandler : IRequestHandler<CreateOrderingCommand,CreateOrderingResult>
+    public class CreateOrderingCommandHandler : IRequestHandler<CreateOrderingCommand,CreateOrderingResult?>
     {
         private readonly IRepository<Ordering> _repository;
 
@@ -15,7 +15,7 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
             _repository = repository;
         }
 
-        public async Task<CreateOrderingResult> Handle(CreateOrderingCommand request, CancellationToken cancellationToken)
+        public async Task<CreateOrderingResult?> Handle(CreateOrderingCommand request, CancellationToken cancellationToken)
         {
             var ordering = new Ordering
             {
@@ -30,6 +30,7 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
             {
                 return new CreateOrderingResult
                 {
+                    OrderingId = ordering.OrderingId,
                     UserId = ordering.UserId,
                     TotalPrice = ordering.TotalPrice,
                     OrderDate = ordering.OrderDate,
@@ -38,7 +39,7 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
                 };
             }else
             {
-                return new CreateOrderingResult();
+                return null;
             }
         }
     }

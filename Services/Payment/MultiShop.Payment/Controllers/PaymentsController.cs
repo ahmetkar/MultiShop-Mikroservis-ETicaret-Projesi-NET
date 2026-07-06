@@ -55,7 +55,6 @@ namespace MultiShop.Payment.Controllers
 
             }
 
-
             try
             {
                 var add = await _paymentService.AddPayment(createPaymentDto, cancellationToken);
@@ -69,7 +68,9 @@ namespace MultiShop.Payment.Controllers
                         UserId = add.UserId,
                         PaymentId = add.PaymentId,
                         CardInfoId = add.CardInfoId,
-                        CorrrelationId = orderSnapshot.CorrelationId
+                        CorrrelationId = orderSnapshot.CorrelationId,
+                        CargoCompanyId = createPaymentDto.CargoCompanyId
+                        
                     };
 
                     await _kafkaProducer.PublishAsync(KafkaTopics.PaymentCompleted, paymentCompletedEvent, add.OrderingId.ToString(), cancellationToken);

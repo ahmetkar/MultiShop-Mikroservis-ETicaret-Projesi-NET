@@ -517,6 +517,21 @@
         },
         "additionalProperties": false
       },
+      "OrderStatus": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "UpdateAdressCommand": {
         "type": "object",
         "properties": {
@@ -635,11 +650,8 @@
             "type": "integer",
             "format": "int32"
           },
-          "isOrderCompleted": {
-            "type": "boolean"
-          },
-          "isOrderDelivered": {
-            "type": "boolean"
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
           },
           "orderDate": {
             "type": "string",

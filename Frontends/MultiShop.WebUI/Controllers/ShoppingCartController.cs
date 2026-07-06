@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.BasketDtos;
+using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos;
 using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.Interfaces;
@@ -54,9 +55,16 @@ namespace MultiShop.WebUI.Controllers
 
                 if (activeOrdering != null)
                 {
-                    var encryptedId = _protector.Protect(activeOrdering.OrderingId.ToString());
-                    return RedirectToAction("Index", "Payment", new { ActiveOrderingId = encryptedId });
+                    if (activeOrdering.Status != OrderStatus.PaymentCompleted && activeOrdering.Status != OrderStatus.CargoFailed &&
+                        activeOrdering.Status != OrderStatus.CargoCreated && activeOrdering.Status != OrderStatus.OrderNotCreated
+                        )
+                    {
+                       
+                        var encryptedId = _protector.Protect(activeOrdering.OrderingId.ToString());
+                        return RedirectToAction("Index", "Payment", new { ActiveOrderingId = encryptedId });
+                    }
                 }
+                
 
                 int? isAdded = HttpContext.Session.GetInt32("IsCookiesAdded");
                 if (isAdded != 1)

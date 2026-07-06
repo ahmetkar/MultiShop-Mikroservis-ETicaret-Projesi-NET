@@ -477,6 +477,37 @@
           }
         }
       }
+    },
+    "/api/CargoOperations/SetDelivered": {
+      "put": {
+        "tags": [
+          "CargoOperations"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCargoOperationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCargoOperationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCargoOperationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -494,34 +525,6 @@
       "CreateCargoCustomerDto": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "surname": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          },
-          "district": {
-            "type": "string",
-            "nullable": true
-          },
-          "city": {
-            "type": "string",
-            "nullable": true
-          },
           "userCustomerId": {
             "type": "string",
             "nullable": true
@@ -532,17 +535,13 @@
       "CreateCargoDetailDto": {
         "type": "object",
         "properties": {
-          "senderCustomer": {
-            "type": "string",
-            "nullable": true
-          },
-          "receiverCustomer": {
-            "type": "string",
-            "nullable": true
-          },
-          "barcode": {
+          "customerId": {
             "type": "integer",
             "format": "int32"
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
           },
           "cargoCompanyId": {
             "type": "integer",
@@ -554,9 +553,9 @@
       "CreateCargoOperationDto": {
         "type": "object",
         "properties": {
-          "barcode": {
-            "type": "string",
-            "nullable": true
+          "cargoDetailId": {
+            "type": "integer",
+            "format": "int32"
           },
           "description": {
             "type": "string",
@@ -590,34 +589,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "surname": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          },
-          "district": {
-            "type": "string",
-            "nullable": true
-          },
-          "city": {
-            "type": "string",
-            "nullable": true
-          },
           "userCustomerId": {
             "type": "string",
             "nullable": true
@@ -632,17 +603,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "senderCustomer": {
-            "type": "string",
-            "nullable": true
-          },
-          "receiverCustomer": {
-            "type": "string",
-            "nullable": true
-          },
-          "barcode": {
+          "customerId": {
             "type": "integer",
             "format": "int32"
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
           },
           "cargoCompanyId": {
             "type": "integer",
@@ -658,13 +625,17 @@
             "type": "integer",
             "format": "int32"
           },
-          "barcode": {
-            "type": "string",
-            "nullable": true
+          "cargoDetailId": {
+            "type": "integer",
+            "format": "int32"
           },
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "orderingId": {
+            "type": "integer",
+            "format": "int32"
           },
           "operationDate": {
             "type": "string",

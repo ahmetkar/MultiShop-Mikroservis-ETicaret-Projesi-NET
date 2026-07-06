@@ -50,8 +50,13 @@ namespace MultiShop.WebUI.Controllers
             var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(myId);
 
             if(activeOrdering !=null) {
-                var encryptedId = _protector.Protect(activeOrdering.OrderingId.ToString());
-                return RedirectToAction("Index","Payment", new {ActiveOrderingId = encryptedId}); 
+                if (activeOrdering.Status != OrderStatus.PaymentCompleted && activeOrdering.Status!=OrderStatus.CargoFailed && 
+                    activeOrdering.Status != OrderStatus.CargoCreated && activeOrdering.Status !=OrderStatus.OrderNotCreated
+                    )
+                {
+                    var encryptedId = _protector.Protect(activeOrdering.OrderingId.ToString());
+                    return RedirectToAction("Index", "Payment", new { ActiveOrderingId = encryptedId });
+                }
             }
 
             int count = 0;
@@ -108,20 +113,26 @@ namespace MultiShop.WebUI.Controllers
             {
                 int shippingAdressCount = await _orderAddressService.GetUserShippingAdressCount();
 
-                int? orderingId = 0;
+                var resOrdering = new CreateOrderingResultDto() { };
                 if (shippingAdressCount > 0)
                 {
-                    orderingId = await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.ShippingAdressId);
+                    resOrdering = await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.ShippingAdressId);
                 }
                 else
                 {
-                    orderingId = await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.BillingAdressId);
+                    resOrdering = await _orderOderingService.CreateOrdering(adressListViewModel.BillingAdressId, adressListViewModel.BillingAdressId);
                 }
 
-                if (orderingId!= null && orderingId != 0)
+                if (resOrdering!= null)
                 {
-                    var encryptedId = _protector.Protect(orderingId.ToString());
-                    return RedirectToAction("Index", "Payment",new {ActiveOrderingId = encryptedId});
+                    if (resOrdering.OrderingId > 0)
+                    {
+                        var encryptedId = _protector.Protect(resOrdering.OrderingId.ToString());
+                        return RedirectToAction("Index", "Payment", new { ActiveOrderingId = encryptedId });
+                    }else
+                    {
+                        return RedirectToAction("Index", "ShoppingCart");
+                    }
                 }else
                 {
                     return RedirectToAction("Index", "ShoppingCart");
