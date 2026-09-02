@@ -12,7 +12,9 @@ namespace MultiShop.WebUI.Services.BasketServices
         Task<BasketTotalDto> GetBasketFromCookies();
         Task<BasketTotalDto?> GetBasketFromDatabase();
         Task SaveBasketToCookies(BasketTotalDto basket);
+        Task SaveBasketToCookies(BasketTotalDto basketTotalDto, string discountCode, int discountRate);
         Task SaveBasketToDatabase(BasketTotalDto basketTotalDto);
+        Task SaveBasketToDatabase(BasketTotalDto basketTotalDto, string discountCode, int discountRate);
         Task AddBasketItemToCookies(string id);
         Task AddBasketItemToDatabase(string id);
         Task RemoveBasketItemFromCookies(string productId);

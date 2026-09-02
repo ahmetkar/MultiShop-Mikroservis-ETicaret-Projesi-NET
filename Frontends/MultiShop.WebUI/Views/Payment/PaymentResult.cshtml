@@ -1,6 +1,71 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
+
+    // Controller'dan ViewBag.IsSuccess gönderilebilir
+    bool isSuccess = ViewBag.result ? true : false;
+
+    string title = isSuccess ? "Ödeme Başarılı" : "Ödeme Başarısız";
+    string message = isSuccess
+        ? "Siparişiniz başarıyla oluşturuldu. Ödeme işleminiz tamamlandı."
+        : "Ödeme işlemi tamamlanamadı. Lütfen bilgilerinizi kontrol edip tekrar deneyin.";
+
+    string iconClass = isSuccess ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-danger";
+    string cardBorder = isSuccess ? "border-success" : "border-danger";
+    string buttonClass = isSuccess ? "btn-success" : "btn-danger";
 }
 
-<h3>Ödeme işlemi sonucu : @ViewBag.result</h3>
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-2 @cardBorder rounded-4">
+                <div class="card-body text-center p-5">
+
+                    <div class="mb-4">
+                        <i class="bi @iconClass" style="font-size: 5rem;"></i>
+                    </div>
+
+                    <h2 class="fw-bold mb-3">@title</h2>
+
+                    <p class="text-muted fs-5 mb-4">
+                        @message
+                    </p>
+
+                    @if (isSuccess)
+                    {
+                        <div class="alert alert-success rounded-3">
+                            Sipariş detaylarınızı hesabınızdan görüntüleyebilirsiniz.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger rounded-3">
+                            Kart bilgileriniz, bakiye durumu veya ödeme sağlayıcısı kaynaklı bir sorun oluşmuş olabilir.
+                        </div>
+                    }
+
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-4">
+                        @if (isSuccess)
+                        {
+                            <a href="/Profile/Index" class="btn @buttonClass px-4">
+                                Siparişlerime Git
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Payment/Index" class="btn @buttonClass px-4">
+                                Tekrar Dene
+                            </a>
+                        }
+
+                        <a href="/Default/Index" class="btn btn-outline-secondary px-4">
+                            Ana Sayfaya Dön
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

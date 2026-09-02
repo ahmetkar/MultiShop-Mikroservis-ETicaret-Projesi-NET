@@ -16,10 +16,33 @@
             <h6>Alışveriş Tutarı (Kdv siz)</h6>
             <h6>@Model.TotalPriceWithoutKDV ₺</h6>
         </div>
-        <div class="d-flex justify-content-between mb-3">
-            <h6>Alışveriş Tutarı (Kdv dahil)</h6>
-            <h6>@Model.TotalPrice ₺</h6>
+        @if (Model.TotalPriceWithoutDiscount != 0)
+        {
+            <div class="d-flex justify-content-between mb-3">
+                <h6>Alışveriş Tutarı (Kdv dahil) - İndirimsiz</h6>
+            <h6>@Model.TotalPriceWithoutDiscount ₺</h6>
         </div>
+
+            <div class="d-flex justify-content-between mb-3">
+                <h6>İndirim Oranı : </h6>
+                <h6>@Model.DiscountRate</h6>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <h6>İndirim Kodu : </h6>
+                <h6>@Model.DiscountCode</h6>
+            </div>
+
+            <div class="d-flex justify-content-between mb-3">
+                <h6>Alışveriş Tutarı (Kdv dahil) - İndirimli</h6>
+                <h6>@Model.TotalPrice ₺</h6>
+            </div>
+        }
+
+        <div class="d-flex justify-content-between mb-3">
+            <h6>KDV tutarı : </h6>
+            <h6>@Model.KDVPrice ₺</h6>
+        </div>
+
         <div class="d-flex justify-content-between">
             <h6 class="font-weight-medium">Kargo Ücreti</h6>
             <h6 class="font-weight-medium">@ViewBag.CargoPrice ₺</h6>

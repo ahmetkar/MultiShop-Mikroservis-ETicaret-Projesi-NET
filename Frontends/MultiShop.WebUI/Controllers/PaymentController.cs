@@ -36,6 +36,11 @@ namespace MultiShop.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string ActiveOrderingId)
         {
+            ViewBag.directory1 = "MultiShop";
+            ViewBag.directory2 = "Sipariş İşlemleri";
+            ViewBag.directory3 = "Ödeme İşlemi";
+
+
             CreatePaymentViewModel paymentViewModel = new CreatePaymentViewModel();
 
             try

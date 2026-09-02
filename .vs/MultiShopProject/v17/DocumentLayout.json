@@ -3,68 +3,16 @@
   "WorkspaceRootPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\controllers\\cargooperationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\controllers\\cargooperationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|d:\\0dotnet\\multishop\\multishop\\services\\order\\presentation\\multishop.order.api\\consumers\\cargodeliveredconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|solutionrelative:services\\order\\presentation\\multishop.order.api\\consumers\\cargodeliveredconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FDDDB1B-E8AD-490F-807F-676704048D29}|Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj|d:\\0dotnet\\multishop\\multishop\\services\\order\\core\\multishop.order.domain\\entities\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FDDDB1B-E8AD-490F-807F-676704048D29}|Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj|solutionrelative:services\\order\\core\\multishop.order.domain\\entities\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FDDDB1B-E8AD-490F-807F-676704048D29}|Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj|d:\\0dotnet\\multishop\\multishop\\services\\order\\core\\multishop.order.domain\\entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FDDDB1B-E8AD-490F-807F-676704048D29}|Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj|solutionrelative:services\\order\\core\\multishop.order.domain\\entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\services\\concretes\\identityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\concretes\\identityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\handlers\\resourceownerpasswordtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\handlers\\resourceownerpasswordtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\services\\paymentservices\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\services\\paymentservices\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\views\\payment\\paymentresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\payment\\paymentresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|d:\\0dotnet\\multishop\\multishop\\services\\cargo\\multishop.cargo.webapi\\consumers\\paymentcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF512999-CFB0-4EED-B013-1AE1A2D62242}|Services\\Cargo\\MultiShop.Cargo.WebApi\\MultiShop.Cargo.WebApi.csproj|solutionrelative:services\\cargo\\multishop.cargo.webapi\\consumers\\paymentcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC2BCC83-BE78-4AF7-8374-B21746AFE2DE}|Services\\Payment\\MultiShop.Payment\\MultiShop.Payment.csproj|d:\\0dotnet\\multishop\\multishop\\services\\payment\\multishop.payment\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC2BCC83-BE78-4AF7-8374-B21746AFE2DE}|Services\\Payment\\MultiShop.Payment\\MultiShop.Payment.csproj|solutionrelative:services\\payment\\multishop.payment\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|d:\\0dotnet\\multishop\\multishop\\services\\order\\presentation\\multishop.order.api\\controllers\\orderingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C2EC060-B5F9-4732-83FB-4A3D56F38283}|Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj|solutionrelative:services\\order\\presentation\\multishop.order.api\\controllers\\orderingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|d:\\0dotnet\\multishop\\multishop\\frontends\\multishop.webui\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{40CC9D62-C30C-40DE-9B17-9DAFC17F93DE}|Frontends\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,210 +42,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderStatus.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderStatus.cs",
-              "RelativeDocumentMoniker": "Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderStatus.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderStatus.cs",
-              "RelativeToolTip": "Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:35:19.469Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderDetail.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderDetail.cs",
-              "RelativeDocumentMoniker": "Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderDetail.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderDetail.cs",
-              "RelativeToolTip": "Services\\Order\\Core\\MultiShop.Order.Domain\\Entities\\OrderDetail.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:35:16.249Z",
+              "DocumentIndex": 0,
+              "Title": "PaymentResult.cshtml",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
+              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Views\\Payment\\PaymentResult.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-06T22:55:59.607Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CargoDeliveredConsumer.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\Consumers\\CargoDeliveredConsumer.cs",
-              "RelativeDocumentMoniker": "Services\\Order\\Presentation\\MultiShop.Order.API\\Consumers\\CargoDeliveredConsumer.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\Consumers\\CargoDeliveredConsumer.cs",
-              "RelativeToolTip": "Services\\Order\\Presentation\\MultiShop.Order.API\\Consumers\\CargoDeliveredConsumer.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAiwEMAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:34:41.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\appsettings.json",
-              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\appsettings.json",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\appsettings.json",
-              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-06T20:19:16.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CargoOperationsController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Controllers\\CargoOperationsController.cs",
-              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Controllers\\CargoOperationsController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Controllers\\CargoOperationsController.cs*",
-              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Controllers\\CargoOperationsController.cs*",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAQwFUAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:03:31.875Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IdentityService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Services\\Concretes\\IdentityService.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\Concretes\\IdentityService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Services\\Concretes\\IdentityService.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\Concretes\\IdentityService.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAowKQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:13:29.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ResourceOwnerPasswordTokenHandler.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Handlers\\ResourceOwnerPasswordTokenHandler.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Handlers\\ResourceOwnerPasswordTokenHandler.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Handlers\\ResourceOwnerPasswordTokenHandler.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Handlers\\ResourceOwnerPasswordTokenHandler.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAiwB0AAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:06:20.491Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\appsettings.json",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\appsettings.json",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\appsettings.json",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-06T20:04:57.632Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Program.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Program.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Program.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Program.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:04:47.917Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Program.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Program.cs",
-              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Program.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T19:53:20.314Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PaymentService.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Services\\PaymentServices\\PaymentService.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Services\\PaymentServices\\PaymentService.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Services\\PaymentServices\\PaymentService.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Services\\PaymentServices\\PaymentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T20:04:44.884Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "PaymentController.cs",
               "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
               "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
               "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
               "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAowGYAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAuwHIAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T19:59:33.529Z",
+              "WhenOpened": "2026-07-06T22:41:21.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PaymentsController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Payment\\MultiShop.Payment\\Controllers\\PaymentsController.cs",
-              "RelativeDocumentMoniker": "Services\\Payment\\MultiShop.Payment\\Controllers\\PaymentsController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Payment\\MultiShop.Payment\\Controllers\\PaymentsController.cs",
-              "RelativeToolTip": "Services\\Payment\\MultiShop.Payment\\Controllers\\PaymentsController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAWwDkAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T19:56:15.433Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PaymentCompletedConsumer.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "RelativeDocumentMoniker": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "RelativeToolTip": "Services\\Cargo\\MultiShop.Cargo.WebApi\\Consumers\\PaymentCompletedConsumer.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAFkAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T19:49:32.971Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "OrderingsController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
-              "RelativeDocumentMoniker": "Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
-              "RelativeToolTip": "Services\\Order\\Presentation\\MultiShop.Order.API\\Controllers\\OrderingsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T19:01:47.668Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Controllers\\OrderController.cs",
-              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAgwDMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T18:37:38.349Z",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "RelativeDocumentMoniker": "Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "ToolTip": "D:\\0Dotnet\\MultiShop\\MultiShop\\Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "RelativeToolTip": "Frontends\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-06T22:34:55.83Z",
               "EditorCaption": ""
             }
           ]

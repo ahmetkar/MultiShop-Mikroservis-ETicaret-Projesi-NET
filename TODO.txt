@@ -1,13 +1,12 @@
 
-0-Payment Success ekraný yapýlacak
-1-Payment-order arasýndaki baðlantýlar kafka ile kurulacak.
-1-Order-cargo veritabaný arasý baðlantýlar kafka ile kurulacak
-1-iyizco herhangi birinin entegrasyonu ile client tarafýndan ödeme yapýldýktan sonra payment eklenmesini saðla
-1-Profilde verilen sipariþler ekraný (sadece bu þimdilik) (diðer sayfalarda eklenir yakýnda eklenecek notu ile)
-1-Profilde kargo görüntüleme
+1-Profilde ve admin panelinde verilen sipariþler ekraný (sadece bu þimdilik) (diðer sayfalarda eklenir yakýnda eklenecek notu ile)
+1-Profilde kargo görüntüleme,ADMÝN panelinde kargo görüntüleme ve onaylama
 1-MyOrderList te hata var veriler gelmiyor
 
 
+
+
+2-iyizco herhangi birinin entegrasyonu ile client tarafýndan ödeme yapýldýktan sonra payment eklenmesini saðla
 2-Arama  kýsmý eklenecek.
 2-Product Listesinde indirimlerin discount mikroservisine göre yansýtýlmasýda gerek
 2-Kargo fiyatý Cargo mikroservisinden çekilmeli

@@ -11,6 +11,8 @@
         @await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
 
 
+
+
         @*@await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial") *@ 
         
         <div class="col-lg-4">
@@ -24,7 +26,7 @@
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Toplam Ürün Fiyatı</h6>
-                            <h6>@ViewBag.TotalPrice ₺</h6>
+                            <h6>@ViewBag.TotalPriceWithoutKDV ₺</h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">KDV</h6>
@@ -36,20 +38,29 @@
                                 <h6 class="font-weight-medium">İndirim Oranı</h6>
                                 <h6 class="font-weight-medium">% @ViewBag.DiscountRate</h6>
                             </div>
+
+                            <div class="d-flex justify-content-between">
+                                <h6 class="font-weight-medium">İndirim Kodu</h6>
+                                <h6 class="font-weight-medium">@ViewBag.DiscountCode</h6>
+                            </div>
                         }
                     </div>
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Toplam</h5>
 
-                            @if (ViewBag.TotalPriceWithTaxAndCoupon != null)
+                            @if (ViewBag != null)
                             {
-                                <h5 style="text-decoration:line-through;">@ViewBag.TotalPriceWithTax ₺</h5>
-                                <h5>@ViewBag.TotalPriceWithTaxAndCoupon ₺</h5>
+                               
+                                @if(ViewBag.DiscountRate != null)
+                                {
+                                    <h5 style="text-decoration:line-through;">@ViewBag.TotalPriceWithoutDiscount ₺</h5>
+                                }
+                                <h5>@ViewBag.TotalPrice ₺</h5>
                             }
                             else
                             {
-                                <h5>@ViewBag.TotalPriceWithTax ₺</h5>
+                                <h5>@ViewBag.TotalPrice ₺</h5>
                             }
                         </div>
                        

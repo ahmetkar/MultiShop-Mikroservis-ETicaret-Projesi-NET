@@ -32,25 +32,34 @@ namespace MultiShop.WebUI.Controllers
         
             var value = await _discountService.GetDiscountCouponCountRate(code);
 
-            int KDVPercent = 10;
 
             var basketitems = new BasketTotalDto();
 
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity!=null && User.Identity.IsAuthenticated)
             {
                 basketitems = await _basketService.GetBasketFromDatabase();
+
+
+                if (basketitems != null)
+                {
+
+                    await _basketService.SaveBasketToDatabase(basketitems, code, value);
+
+                }
             }
             else
             {
                 basketitems = await _basketService.GetBasketFromCookies();
+                if (basketitems != null)
+                {
+                    await _basketService.SaveBasketToCookies(basketitems, code, value);
+                }
             }
-       
-          
-            double totalPriceWithTax = (double)basketitems.TotalPrice + ((double)basketitems.TotalPrice * KDVPercent) / 100;
-            double totalprice = totalPriceWithTax - (totalPriceWithTax * value) / 100;
 
+            
 
-            return RedirectToAction("Index","ShoppingCart",new {code = code,discountrate = value,totalpricewithcoupon = totalprice});
+            
+            return RedirectToAction("Index", "ShoppingCart");
         }
 
 

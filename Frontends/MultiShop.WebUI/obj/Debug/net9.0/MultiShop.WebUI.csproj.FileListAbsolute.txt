@@ -783,7 +783,6 @@ D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compre
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\vfgqpb75ys-asslg8p8x5.gz
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\n5sefyana4-90n5zh25z8.gz
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\i6joijbto1-9uph5ajkar.gz
-D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\zhn5dkqmkf-5frjclbz64.gz
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\9vwb3pdtlq-2cm4zhyn7l.gz
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\jr7wj4pe8d-wb4wtcicy8.gz
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\n50dp1qyq2-cxxcqduwk6.gz
@@ -1084,3 +1083,4 @@ D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\refint
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.pdb
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\MultiShop.WebUI.genruntimeconfig.cache
 D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\ref\MultiShop.WebUI.dll
+D:\0Dotnet\MultiShop\MultiShop\Frontends\MultiShop.WebUI\obj\Debug\net9.0\compressed\zhn5dkqmkf-wpek4d0ctu.gz

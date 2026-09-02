@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using MultiShop.DtoLayer.BasketDtos;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.ContentModel;
 using NuGet.Protocol;
 using System;
 using System.Linq;
@@ -115,6 +117,7 @@ namespace MultiShop.WebUI.Services.BasketServices
             return new BasketTotalDto();
         }
 
+        
         public BasketTotalDto CalculateKDVAndTotal(BasketTotalDto basketTotalDto)
         {
 
@@ -129,6 +132,7 @@ namespace MultiShop.WebUI.Services.BasketServices
             basketTotalDto.TotalPriceWithoutKDV = totalpricewithoutkdv;
             basketTotalDto.TotalPrice = totalpricewithoutkdv + totalkdvprice;
             basketTotalDto.KDVPrice = totalkdvprice;
+            
 
             return basketTotalDto;
 
@@ -150,13 +154,69 @@ namespace MultiShop.WebUI.Services.BasketServices
             }
         }
 
+        public async Task SaveBasketToCookies(BasketTotalDto basketTotalDto, string discountCode, int discountRate)
+        {
+            if ( discountCode != "" && discountRate != 0)
+            {
+
+                double oldprice = basketTotalDto.TotalPrice;
+                basketTotalDto.TotalPriceWithoutDiscount = oldprice;
+
+
+                double newprice = basketTotalDto.TotalPrice - (basketTotalDto.TotalPrice * discountRate) / 100;
+
+              
+                basketTotalDto.TotalPrice = newprice;
+                basketTotalDto.DiscountCode = discountCode;
+                basketTotalDto.DiscountRate = discountRate;
+
+                var context = _httpContextAccessor.HttpContext;
+
+                var basketTotal = basketTotalDto;
+                if (context != null)
+                {
+
+                    var json = JsonConvert.SerializeObject(basketTotal);
+                    context.Response.Cookies.Append("basket", json, new CookieOptions
+                    {
+                        Expires = DateTimeOffset.UtcNow.AddDays(1),
+                        HttpOnly = false
+                    });
+                }
+            }
+
+        }
+
         public async Task SaveBasketToDatabase(BasketTotalDto basketTotalDto)
         {
             basketTotalDto = CalculateKDVAndTotal(basketTotalDto);
-
             await _httpClient.PostAsJsonAsync("baskets", basketTotalDto);
 
         }
+        public async Task SaveBasketToDatabase(BasketTotalDto basketTotalDto, string discountCode, int discountRate)
+        {
+            if(discountCode!="" && discountRate!=0)
+            {
+
+                double oldprice = basketTotalDto.TotalPrice;
+                basketTotalDto.TotalPriceWithoutDiscount = oldprice;
+
+                double newprice = basketTotalDto.TotalPrice - (basketTotalDto.TotalPrice * discountRate) / 100;
+
+               
+                basketTotalDto.TotalPrice = newprice;
+                basketTotalDto.DiscountCode = discountCode;
+                basketTotalDto.DiscountRate = discountRate;
+
+                var basketTotal = basketTotalDto;
+
+                await _httpClient.PostAsJsonAsync("baskets", basketTotal);
+            }
+
+        }
+
+        
+
 
         public async Task AddBasketItemToCookies(string id)
         {
@@ -190,11 +250,19 @@ namespace MultiShop.WebUI.Services.BasketServices
         public async Task DeleteBasketFromCookies()
         {
 
+            var context = _httpContextAccessor.HttpContext;
+
+            if (context != null)
+            {
+
+                context.Response.Cookies.Delete("basket");
+            }
+
         }
 
         public async Task DeleteBasketFromDatabase()
         {
-
+            await _httpClient.DeleteAsync("baskets");
         }
 
 
