@@ -73,10 +73,6 @@ namespace MultiShop.Comment.Controllers
         public IActionResult GetCommentsByProductId(string id)
         {
             var comments = _context.UserComments.Where(x => x.ProductId == id).ToList();
-            if (comments.Count == 0)
-            {
-                return NotFound("Bu ürüne ait yorum bulunamadı.");
-            }
             var values = _mapper.Map<List<ResultCommentDto>>(comments);
             return Ok(values);
         }

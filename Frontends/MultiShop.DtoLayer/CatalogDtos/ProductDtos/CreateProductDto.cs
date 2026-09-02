@@ -8,6 +8,7 @@ namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
 {
     public class CreateProductDto
     {
+        public string? ProductId { get; set; }
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
         public decimal KDVPercent { get; set; }
@@ -15,5 +16,6 @@ namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
         public string ProductImageUrl { get; set; }
         public string ProductDescription { get; set; }
         public string CategoryID { get; set; }
+        public List<string> FilterIds { get; set; } = new List<string>();
     }
 }

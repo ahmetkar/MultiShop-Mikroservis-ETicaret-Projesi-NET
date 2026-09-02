@@ -104,17 +104,15 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBasketToItem(string ProductId)
+        public async Task<IActionResult> AddBasketToItem(string ProductId, int Quantity = 1, string? selectedFilter = null)
         {
-
             if (User.Identity.IsAuthenticated)
             {
-
-                await _basketService.AddBasketItemToDatabase(ProductId);
+                await _basketService.AddBasketItemToDatabase(ProductId, Quantity, selectedFilter);
             }
             else
             {
-                await _basketService.AddBasketItemToCookies(ProductId);
+                await _basketService.AddBasketItemToCookies(ProductId, Quantity, selectedFilter);
             }
 
             return RedirectToAction("Index");

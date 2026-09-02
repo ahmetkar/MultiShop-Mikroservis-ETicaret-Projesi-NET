@@ -1,0 +1,102 @@
+@model List<ResultFilterDto>
+@{
+    ViewData["Title"] = "Filtre Listesi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var groupedFilters = Model.GroupBy(x => x.FilterTitle).ToList();
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>Filtre Yönetimi</h4>
+            <p>Ürünler ve kategoriler için tanımlanmış filtre gruplarını ve seçeneklerini aşağıdan yönetebilirsiniz.</p>
+            
+            <a href="/Admin/Filter/CreateFilter" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Yeni Filtre Ekle</a>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" style="margin-top: 15px; margin-bottom: 20px;">
+                <li role="presentation" class="active">
+                    <a href="#tab_all" aria-controls="tab_all" role="tab" data-toggle="tab">Tüm Filtreler (@Model.Count)</a>
+                </li>
+                @foreach (var group in groupedFilters)
+                {
+                    var tabId = "tab_" + Math.Abs(group.Key.GetHashCode());
+                    <li role="presentation">
+                        <a href="#@tabId" aria-controls="@tabId" role="tab" data-toggle="tab">@group.Key (@group.Count())</a>
+                    </li>
+                }
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- ALL FILTERS TAB -->
+                <div role="tabpanel" class="tab-pane active" id="tab_all">
+                    <div class="bs-example" data-example-id="bordered-table">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Filtre Grubu / Başlığı</th>
+                                    <th>Filtre Değeri</th>
+                                    <th>Sil</th>
+                                    <th>Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int i = 0; }
+                                @foreach (var item in Model)
+                                {
+                                    i++;
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td><span class="badge badge-info" style="font-size:13px; background-color:#17a2b8; color:#fff; padding:5px 10px;">@item.FilterTitle</span></td>
+                                        <td><strong>@item.FilterName</strong></td>
+                                        <td><a href="/Admin/Filter/DeleteFilter/@item.FilterId" class="btn btn-danger btn-sm" onclick="return confirm('Bu filtreyi silmek istediğinize emin misiniz?');"><i class="fa fa-trash"></i> Sil</a></td>
+                                        <td><a href="/Admin/Filter/UpdateFilter/@item.FilterId" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Güncelle</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- GROUPED TABS -->
+                @foreach (var group in groupedFilters)
+                {
+                    var tabId = "tab_" + Math.Abs(group.Key.GetHashCode());
+                    <div role="tabpanel" class="tab-pane" id="@tabId">
+                        <div class="bs-example" data-example-id="bordered-table">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Filtre Grubu</th>
+                                        <th>Filtre Değeri</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int gi = 0; }
+                                    @foreach (var item in group)
+                                    {
+                                        gi++;
+                                        <tr>
+                                            <th scope="row">@gi</th>
+                                            <td><span class="badge badge-primary" style="font-size:13px; background-color:#007bff; color:#fff; padding:5px 10px;">@item.FilterTitle</span></td>
+                                            <td><strong>@item.FilterName</strong></td>
+                                            <td><a href="/Admin/Filter/DeleteFilter/@item.FilterId" class="btn btn-danger btn-sm" onclick="return confirm('Bu filtreyi silmek istediğinize emin misiniz?');"><i class="fa fa-trash"></i> Sil</a></td>
+                                            <td><a href="/Admin/Filter/UpdateFilter/@item.FilterId" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

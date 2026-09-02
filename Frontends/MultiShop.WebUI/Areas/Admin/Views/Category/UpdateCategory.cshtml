@@ -1,28 +1,107 @@
 ﻿@model UpdateCategoryDto
-
 @{
+    ViewData["Title"] = "Kategori Güncelle";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var allFilters = ViewBag.AllFilters as List<ResultFilterDto> ?? new List<ResultFilterDto>();
+    var filterGroups = allFilters.GroupBy(x => x.FilterTitle).ToList();
+    var selectedIds = Model.SelectedFilterIds ?? new List<string>();
 }
 
 <section class="content container-fluid">
     <div class="row">
-
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="chart-box">
-                <h4> Kategori Güncelleme <h4>
+                <h4>Kategori Güncelle</h4>
+                <form method="post">
+                    <input type="hidden" asp-for="CategoryID" />
+                    <div class="form-group">
+                        <label>Kategori Adı : </label>
+                        <input type="text" asp-for="CategoryName" class="form-control" required placeholder="Kategori Adı">
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori Görseli : </label>
+                        <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Kategori Görsel Url">
+                    </div>
 
-                        <div class="bs-example" data-example-id="bordered-table">
-                            <form method="post">
-                                <input type="hidden" asp-for="CategoryID" class="form-control" readonly>
-                                <label>Kategori Adı : </label>
-                                <input type="text" asp-for="CategoryName" class="form-control" placeholder="Kategori Adı">
-                                <label>Kategori Görseli : </label>
-                                <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Kategori Görsel Url">
+                    <hr style="margin: 20px 0;" />
+                    <h5><i class="fa fa-filter"></i> Kategoriye Filtre Ata</h5>
+                    <p class="text-muted">Önce filtre başlığını seçiniz, ardından kategoriye atanacak seçenekleri işaretleyiniz.</p>
 
-                                <button class="btn btn-primary" type="submit">Kategori Güncelle</button>
-                            </form>
-                        </div>
+                    <div class="form-group">
+                        <label><strong>Filtre Grubu Seçiniz:</strong></label>
+                        <select id="filterGroupSelect" class="form-control" style="max-width:350px;">
+                            <option value="">--- Bir Filtre Grubu Seçiniz ---</option>
+                            @foreach (var group in filterGroups)
+                            {
+                                <option value="@("fg_" + Math.Abs(group.Key.GetHashCode()))">@group.Key (@group.Count() seçenek)</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div id="filterGroupsContainer" style="margin-top: 15px;">
+                        @foreach (var group in filterGroups)
+                        {
+                            var gId = "fg_" + Math.Abs(group.Key.GetHashCode());
+                            <div class="filter-group-panel" id="@gId" style="display:none; padding:15px; background:#f8f9fa; border:1px solid #e9ecef; border-radius:5px; margin-bottom:15px;">
+                                <h6 style="color:#007bff; margin-bottom:10px;"><strong>@group.Key Seçenekleri:</strong></h6>
+                                <div class="row">
+                                    @foreach (var filter in group)
+                                    {
+                                        var isChecked = selectedIds.Contains(filter.FilterId);
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+                                            <label>
+                                                <input type="checkbox" name="selectedFilterIds" value="@filter.FilterId" class="filter-chk" data-title="@group.Key" data-name="@filter.FilterName" @(isChecked ? "checked" : "") />
+                                                @filter.FilterName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div id="selectedFiltersSummary" style="margin-top:15px; margin-bottom:20px; display:none;">
+                        <label><strong>Kategori İçin Seçili Filtreler:</strong></label>
+                        <div id="selectedBadgeList"></div>
+                    </div>
+
+                    <br />
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-pencil"></i> Kategori Güncelle</button>
+                    <a href="/Admin/Category/Index" class="btn btn-secondary">İptal</a>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var groupSelect = document.getElementById('filterGroupSelect');
+        var groupPanels = document.querySelectorAll('.filter-group-panel');
+        var chks = document.querySelectorAll('.filter-chk');
+        var summaryDiv = document.getElementById('selectedFiltersSummary');
+        var badgeList = document.getElementById('selectedBadgeList');
+
+        groupSelect.addEventListener('change', function() {
+            var val = this.value;
+            groupPanels.forEach(function(panel) { panel.style.display = (panel.id === val) ? 'block' : 'none'; });
+        });
+
+        function updateSummary() {
+            badgeList.innerHTML = '';
+            var selected = document.querySelectorAll('.filter-chk:checked');
+            if (selected.length > 0) {
+                summaryDiv.style.display = 'block';
+                selected.forEach(function(item) {
+                    var span = document.createElement('span');
+                    span.className = 'badge badge-info';
+                    span.style.cssText = 'font-size:12px; margin-right:5px; margin-bottom:5px; background:#17a2b8; color:#fff; padding:5px 8px; display:inline-block;';
+                    span.innerText = item.getAttribute('data-title') + ': ' + item.getAttribute('data-name');
+                    badgeList.appendChild(span);
+                });
+            } else { summaryDiv.style.display = 'none'; }
+        }
+        chks.forEach(function(chk) { chk.addEventListener('change', updateSummary); });
+        updateSummary();
+    });
+</script>

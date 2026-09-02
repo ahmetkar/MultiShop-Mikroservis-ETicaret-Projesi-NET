@@ -76,5 +76,37 @@ namespace MultiShop.Discount.Controllers
             var values = await _discountService.GetDiscountCouponCount();
             return Ok(values);
         }
+
+        [HttpGet("GetDiscountByProductId/{productId}")]
+        public async Task<IActionResult> GetDiscountByProductId(string productId)
+        {
+            var value = await _discountService.GetDiscountByProductIdAsync(productId);
+            return Ok(value);
+        }
+
+        [HttpGet("GetActiveProductDiscounts")]
+        public async Task<IActionResult> GetActiveProductDiscounts()
+        {
+            var values = await _discountService.GetActiveProductDiscountsAsync();
+            return Ok(values);
+        }
+
+        [HttpPost("SetProductDiscount")]
+        public async Task<IActionResult> SetProductDiscount([FromBody] CreateDiscountCouponDto dto)
+        {
+            if (string.IsNullOrEmpty(dto.ProductId))
+            {
+                return BadRequest("ProductId gereklidir.");
+            }
+            await _discountService.SetProductDiscountAsync(dto.ProductId, dto.Rate, dto.ValidDate, dto.IsActive);
+            return Ok("Ürün indirimi başarıyla güncellendi.");
+        }
+
+        [HttpDelete("DeleteDiscountByProductId/{productId}")]
+        public async Task<IActionResult> DeleteDiscountByProductId(string productId)
+        {
+            await _discountService.DeleteDiscountByProductIdAsync(productId);
+            return Ok("Ürün indirimi silindi.");
+        }
     }
 }

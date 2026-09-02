@@ -1,47 +1,61 @@
-﻿@model List<ResultProductDto>
+﻿@model List<ResultProductWithCategory>
+@{
+    var discountDict = ViewBag.DiscountDict as Dictionary<string, int> ?? new Dictionary<string, int>();
+}
 
 <!-- Products Start -->
 <div class="container-fluid pt-5 pb-3">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Öne Çıkan Ürünler</span></h2>
     <div class="row px-xl-5">
 
         @foreach (var item in Model)
         {
-             decimal discount = 30;
-             decimal oldprice = item.ProductPrice + item.ProductPrice *(discount/100);
+            var hasDiscount = discountDict.ContainsKey(item.ProductId);
+            var discountRate = hasDiscount ? discountDict[item.ProductId] : 0;
+            decimal finalPrice = item.ProductPrice;
+            if (hasDiscount && discountRate > 0)
+            {
+                finalPrice = item.ProductPrice - (item.ProductPrice * discountRate / 100);
+            }
 
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
+                <div class="product-item bg-light mb-4 position-relative">
+                    @if (hasDiscount && discountRate > 0)
+                    {
+                        <div class="position-absolute" style="top: 10px; right: 10px; z-index: 2;">
+                            <span class="badge badge-danger" style="font-size: 13px; padding: 6px 10px; border-radius: 4px; background-color: #dc3545;">-%@discountRate İndirim</span>
+                        </div>
+                    }
 
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="">
+                        <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="@item.ProductName" style="height: 250px; object-fit: cover;">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="/ShoppingCart/AddBasketItem/@item.ProductId"><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-             
+                            <form method="post" asp-action="AddBasketToItem" asp-controller="ShoppingCart" style="display:inline;">
+                                <input type="hidden" name="ProductId" value="@item.ProductId" />
+                                <button type="submit" class="btn btn-outline-dark btn-square" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i></button>
+                            </form>
+                            <a class="btn btn-outline-dark btn-square" href="/ProductList/ProductDetail/@item.ProductId" title="İncele"><i class="fa fa-search"></i></a>
                         </div>
                     </div>
 
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="/ProductList/ProductDetail/@item.ProductId">@item.ProductName</a>
+                        <a class="h6 text-decoration-none text-truncate d-block px-2" href="/ProductList/ProductDetail/@item.ProductId" title="@item.ProductName">@item.ProductName</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>@item.ProductPrice ₺</h5><h6 class="text-muted ml-2"><del>@oldprice ₺
-                            </del></h6>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>5</small>
+                            @if (hasDiscount && discountRate > 0)
+                            {
+                                <h5 class="text-danger mb-0 font-weight-bold">₺@finalPrice.ToString("N2")</h5>
+                                <h6 class="text-muted ml-2 mb-0"><del>₺@item.ProductPrice.ToString("N2")</del></h6>
+                            }
+                            else
+                            {
+                                <h5 class="mb-0">₺@item.ProductPrice.ToString("N2")</h5>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
         }
 
-
-        </div>
     </div>
-    <!-- Products End -->
+</div>
+<!-- Products End -->

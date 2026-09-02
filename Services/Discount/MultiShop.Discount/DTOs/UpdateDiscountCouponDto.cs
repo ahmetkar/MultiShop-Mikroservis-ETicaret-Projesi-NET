@@ -7,5 +7,6 @@
         public int Rate { get; set; }
         public bool IsActive { get; set; }
         public DateTime ValidDate { get; set; }
+        public string? ProductId { get; set; }
     }
 }

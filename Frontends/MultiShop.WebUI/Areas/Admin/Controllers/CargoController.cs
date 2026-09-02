@@ -20,14 +20,22 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CargoCompanyList")]
         public async Task<IActionResult> CargoCompanyList()
         {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kargo Şirketleri";
+            ViewBag.v3 = "Kargo Şirket Listesi";
+            ViewBag.v0 = "Kargo İşlemleri";
             var values = await _cargoCompanyService.GetAllCargoCompanyAsync();
-            return View(values) ;
+            return View(values);
         }
 
         [HttpGet]
         [Route("CreateCargoCompany")]
         public async Task<IActionResult> CreateCargoCompany()
         {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kargo Şirketleri";
+            ViewBag.v3 = "Yeni Kargo Şirketi Ekle";
+            ViewBag.v0 = "Kargo İşlemleri";
             return View();
         }
 
@@ -37,26 +45,25 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             await _cargoCompanyService.CreateCargoCompanyAsync(createCargoCompanyDto);
             return RedirectToAction("CargoCompanyList","Cargo",new {Area = "Admin"});
-
         }
 
-        [HttpPost]
         [Route("DeleteCargoCompany/{id}")]
         public async Task<IActionResult> DeleteCargoCompany(int id)
         {
             await _cargoCompanyService.DeleteCargoCompanyAsync(id);
             return RedirectToAction("CargoCompanyList", "Cargo", new { Area = "Admin" });
-
         }
-
 
         [HttpGet]
         [Route("UpdateCargoCompany/{id}")]
         public async Task<IActionResult> UpdateCargoCompany(int id)
         {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kargo Şirketleri";
+            ViewBag.v3 = "Kargo Şirketi Güncelle";
+            ViewBag.v0 = "Kargo İşlemleri";
             var values = await _cargoCompanyService.GetByIdCargoCompany(id);
             return View(values);
-
         }
 
         [HttpPost]

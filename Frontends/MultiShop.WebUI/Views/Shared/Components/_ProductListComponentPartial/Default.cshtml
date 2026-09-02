@@ -1,30 +1,61 @@
 ﻿@model List<ResultProductWithCategory>
+@{
+    var discountDict = ViewBag.DiscountDict as Dictionary<string, int> ?? new Dictionary<string, int>();
+}
 
-@foreach(var i in Model) {
-<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-    <div class="product-item bg-light mb-4">
-        <div class="product-img position-relative overflow-hidden">
-            <img class="img-fluid w-100" src="@i.ProductImageUrl" alt="">
-            <div class="product-action">
-                    <a class="btn btn-outline-dark btn-square" href="/ShoppingCart/AddBasketItem/@i.ProductId"><i class="fa fa-shopping-cart"></i></a>
-                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-
-            </div>
-        </div>
-        <div class="text-center py-4">
-            <a class="h6 text-decoration-none text-truncate" href="">@i.ProductName</a>
-            <div class="d-flex align-items-center justify-content-center mt-2">
-                <h5>@i.ProductPrice ₺</h5><h6 class="text-muted ml-2"><del>₺123.00</del></h6>
-            </div>
-            <div class="d-flex align-items-center justify-content-center mb-1">
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small>(99)</small>
-            </div>
+@if (Model == null || Model.Count == 0)
+{
+    <div class="col-12">
+        <div class="alert alert-info text-center p-4">
+            <h5><i class="fa fa-info-circle mr-2"></i> Bu kategoride veya seçilen filtre kriterlerine uygun ürün bulunamadı.</h5>
         </div>
     </div>
-</div>
+}
+else
+{
+    @foreach(var i in Model) {
+        var hasDiscount = discountDict.ContainsKey(i.ProductId);
+        var discountRate = hasDiscount ? discountDict[i.ProductId] : 0;
+        decimal finalPrice = i.ProductPrice;
+        if (hasDiscount && discountRate > 0)
+        {
+            finalPrice = i.ProductPrice - (i.ProductPrice * discountRate / 100);
+        }
+
+        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4 position-relative">
+                @if (hasDiscount && discountRate > 0)
+                {
+                    <div class="position-absolute" style="top: 10px; right: 10px; z-index: 2;">
+                        <span class="badge badge-danger" style="font-size: 13px; padding: 6px 10px; border-radius: 4px; background-color: #dc3545;">-%@discountRate İndirim</span>
+                    </div>
+                }
+
+                <div class="product-img position-relative overflow-hidden">
+                    <img class="img-fluid w-100" src="@i.ProductImageUrl" alt="@i.ProductName" style="height: 250px; object-fit: cover;">
+                    <div class="product-action">
+                        <form method="post" asp-action="AddBasketToItem" asp-controller="ShoppingCart" style="display:inline;">
+                            <input type="hidden" name="ProductId" value="@i.ProductId" />
+                            <button type="submit" class="btn btn-outline-dark btn-square" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i></button>
+                        </form>
+                        <a class="btn btn-outline-dark btn-square" href="/ProductList/ProductDetail/@i.ProductId" title="İncele"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <a class="h6 text-decoration-none text-truncate d-block px-2" href="/ProductList/ProductDetail/@i.ProductId" title="@i.ProductName">@i.ProductName</a>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                        @if (hasDiscount && discountRate > 0)
+                        {
+                            <h5 class="text-danger mb-0 font-weight-bold">₺@finalPrice.ToString("N2")</h5>
+                            <h6 class="text-muted ml-2 mb-0"><del>₺@i.ProductPrice.ToString("N2")</del></h6>
+                        }
+                        else
+                        {
+                            <h5 class="mb-0">₺@i.ProductPrice.ToString("N2")</h5>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }

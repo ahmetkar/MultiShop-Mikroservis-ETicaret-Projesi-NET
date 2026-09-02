@@ -1,7 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ürün Listesi";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
+    var filterIds = ViewBag.FilterIds as List<string> ?? new List<string>();
+    int currentPage = ViewBag.CurrentPage as int? ?? 1;
 }
 
 <!-- Shop Start -->
@@ -9,27 +11,17 @@
     <div class="row px-xl-5">
         <!-- Shop Sidebar Start -->
         <div class="col-lg-3 col-md-4">
-         @*   <!-- Price Start -->
-            @await Component.InvokeAsync("_ProductListPriceFilterComponentPartial")
-            <!-- Price End -->
-
-            <!-- Color Start -->
-            @await Component.InvokeAsync("_ProductListColorFilterComponentPartial")
-            <!-- Color End -->
-            <!-- Size Start -->
-            @await Component.InvokeAsync("_ProductListSizeFilterComponentPartial")
-            <!-- Size End -->*@ 
-             @await Component.InvokeAsync("_ProductsFilterListComponentPartial", new { categoryid = ViewBag.i })
+             @await Component.InvokeAsync("_ProductsFilterListComponentPartial", new { categoryid = ViewBag.i, selectedFilterIds = filterIds })
         </div>
         <!-- Shop Sidebar End -->
         <!-- Shop Product Start -->
         <div class="col-lg-9 col-md-8">
             <div class="row pb-3">
-                @await Component.InvokeAsync("_ProductListGetProductCountComponentPartial")
+                @await Component.InvokeAsync("_ProductListGetProductCountComponentPartial", new { categoryid = ViewBag.i, filterIds = filterIds })
 
-                @await Component.InvokeAsync("_ProductListComponentPartial",new {categoryid=ViewBag.i})
+                @await Component.InvokeAsync("_ProductListComponentPartial", new { categoryid = ViewBag.i, filterIds = filterIds, page = currentPage })
 
-                @await Component.InvokeAsync("_ProductListPaginationComponentPartial")
+                @await Component.InvokeAsync("_ProductListPaginationComponentPartial", new { categoryid = ViewBag.i, filterIds = filterIds, currentPage = currentPage })
 
             </div>
         </div>

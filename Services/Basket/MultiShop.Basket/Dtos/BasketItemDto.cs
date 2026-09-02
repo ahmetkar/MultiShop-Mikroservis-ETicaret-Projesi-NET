@@ -9,5 +9,6 @@
         public double KDVPercent { get; set; }
         public double KDVPrice { get; set; }
         public string ProductImageUrl { get; set; }
+        public string? SelectedFilter { get; set; }
     }
 }

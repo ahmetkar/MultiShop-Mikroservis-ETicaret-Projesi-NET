@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj": {}
+    "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj": {}
   },
   "projects": {
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj": {
+    "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
+        "projectUniqueName": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
         "projectName": "MultiShop.Order.Application",
-        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
+        "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\obj\\",
+        "outputPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -31,10 +31,11 @@
         },
         "frameworks": {
           "net9.0": {
+            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
-                "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
+              "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
+                "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
               }
             }
           }
@@ -49,10 +50,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "MediatR": {
@@ -75,23 +77,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
+    "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj",
+        "projectUniqueName": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj",
         "projectName": "MultiShop.Order.Domain",
-        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj",
+        "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\obj\\",
+        "outputPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -111,6 +127,7 @@
         },
         "frameworks": {
           "net9.0": {
+            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {}
           }
@@ -125,10 +142,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "imports": [
             "net461",
@@ -141,23 +159,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {
+    "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
+        "projectUniqueName": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
         "projectName": "MultiShop.Order.Persistance",
-        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
+        "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\obj\\",
+        "outputPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -177,13 +209,14 @@
         },
         "frameworks": {
           "net9.0": {
+            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj": {
-                "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj"
+              "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj": {
+                "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj"
               },
-              "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
-                "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
+              "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
+                "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
               }
             }
           }
@@ -198,10 +231,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
@@ -236,23 +270,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj": {
+    "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
+        "projectUniqueName": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
         "projectName": "MultiShop.Order.API",
-        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
+        "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\MultiShop.Order.API.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\obj\\",
+        "outputPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Presentation\\MultiShop.Order.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -272,19 +320,20 @@
         },
         "frameworks": {
           "net9.0": {
+            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj": {
-                "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj"
+              "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj": {
+                "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Application\\MultiShop.Order.Application.csproj"
               },
-              "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
-                "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
+              "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj": {
+                "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Core\\MultiShop.Order.Domain\\MultiShop.Order.Domain.csproj"
               },
-              "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {
-                "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj"
+              "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj": {
+                "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Order\\Infrastructure\\MultiShop.Order.Persistance\\MultiShop.Order.Persistance.csproj"
               },
-              "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj": {
-                "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj"
+              "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj": {
+                "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj"
               }
             }
           }
@@ -299,10 +348,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "Confluent.Kafka": {
@@ -357,6 +407,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.19, 9.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -365,18 +433,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj": {
+    "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj",
+        "projectUniqueName": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj",
         "projectName": "MultiShop.SharedLayer",
-        "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj",
+        "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\MultiShop.SharedLayer.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\obj\\",
+        "outputPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Shared\\MultiShop.SharedLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -396,6 +464,7 @@
         },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -410,10 +479,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Confluent.Kafka": {
@@ -432,6 +502,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.30, 8.0.30]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.30, 8.0.30]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.30, 8.0.30]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.30, 8.0.30]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -440,7 +528,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

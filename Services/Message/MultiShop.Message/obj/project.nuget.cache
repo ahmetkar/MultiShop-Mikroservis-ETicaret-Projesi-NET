@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6zdVJt3mp74=",
+  "dgSpecHash": "h/Y6oSNrYcE=",
   "success": true,
-  "projectFilePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
+  "projectFilePath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -59,16 +59,20 @@
     "C:\\Users\\ahmet\\.nuget\\packages\\system.reflection.metadata\\7.0.0\\system.reflection.metadata.7.0.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\system.text.json\\9.0.7\\system.text.json.9.0.7.nupkg.sha512",
-    "C:\\Users\\ahmet\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
+    "C:\\Users\\ahmet\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
+    "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.19\\microsoft.netcore.app.ref.9.0.19.nupkg.sha512",
+    "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.19\\microsoft.windowsdesktop.app.ref.9.0.19.nupkg.sha512",
+    "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.19\\microsoft.aspnetcore.app.ref.9.0.19.nupkg.sha512",
+    "C:\\Users\\ahmet\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.19\\microsoft.netcore.app.host.win-x64.9.0.19.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "'AutoMapper' 14.0.0 paketinde önem derecesi yüksek olan bilinen bir https://github.com/advisories/GHSA-rvv3-g6hj-g44x güvenlik açığı var",
-      "projectPath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
+      "message": "Package 'AutoMapper' 14.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
       "warningLevel": 1,
-      "filePath": "D:\\0Dotnet\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
+      "filePath": "C:\\netprojects\\MultiShop\\MultiShop\\Services\\Message\\MultiShop.Message\\MultiShop.Message.csproj",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net9.0"

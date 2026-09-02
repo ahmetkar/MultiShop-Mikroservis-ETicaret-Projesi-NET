@@ -1,44 +1,135 @@
 ﻿@model UpdateProductDto
-
 @{
+    ViewData["Title"] = "Ürün Güncelle";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var allFilters = ViewBag.AllFilters as List<ResultFilterDto> ?? new List<ResultFilterDto>();
+    var filterGroups = allFilters.GroupBy(x => x.FilterTitle).ToList();
+    var selectedIds = Model.FilterIds ?? new List<string>();
+    var discountRate = ViewBag.DiscountRate as int? ?? 0;
+    var discountValidDate = ViewBag.DiscountValidDate as string ?? DateTime.Now.AddDays(30).ToString("yyyy-MM-ddTHH:mm");
+    var isDiscountActive = ViewBag.IsDiscountActive as bool? ?? false;
 }
-
 
 <section class="content container-fluid">
     <div class="row">
-
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="chart-box">
-                <h4>
-                    Ürün Güncelleme<h4>
-
-                        <div class="bs-example" data-example-id="bordered-table">
-                            <form method="post">
-                                <input type="hidden" asp-for="ProductId" readonly />
-                                <label>Ürün Adı : </label>
-                                <input type="text" asp-for="ProductName" class="form-control" placeholder="Ürün Adı">
-                                <br />
-                                <label>Ürün Fiyatı : </label>
-                                <input type="text" asp-for="ProductPrice" class="form-control" placeholder="Ürün fiyatı">
-                                <br />
-                                <label>Ürüne Uygulanacak KDV Oranı : </label>
-                                <input type="text" asp-for="KDVPercent" class="form-control" placeholder="Ürün KDV Oranı">
-                                <br />
-                                <label>Ürün Görseli : </label>
-                                <input type="text" asp-for="ProductImageUrl" class="form-control" placeholder="Ürün görsel url ">
-                                <br />
-                                <label>Ürün Açıklaması : </label>
-                                <textarea asp-for="ProductDescription" class="form-control" placeholder="Ürün açıklaması " rows="5"></textarea>
-                                <br />
-                                <label>Ürün Kategorisi : </label>
-                                @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" });
-                                <br />
-                                <button class="btn btn-primary" type="submit">Ürün Güncelle</button>
-                            </form>
-
+                <h4>Ürün Güncelle</h4>
+                <form method="post">
+                    <input type="hidden" asp-for="ProductId" />
+                    <div class="form-group">
+                        <label>Ürün Adı : </label>
+                        <input type="text" asp-for="ProductName" class="form-control" required placeholder="Ürün Adı">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Ürün Fiyatı (₺) : </label>
+                            <input type="number" step="0.01" asp-for="ProductPrice" class="form-control" required placeholder="Ürün Fiyatı">
                         </div>
+                        <div class="col-md-6 form-group">
+                            <label>KDV Oranı (%) : </label>
+                            <input type="number" step="0.01" asp-for="KDVPercent" class="form-control" value="20" placeholder="KDV Oranı">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Görseli : </label>
+                        <input type="text" asp-for="ProductImageUrl" class="form-control" placeholder="Ürün görsel url">
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Açıklaması : </label>
+                        <textarea asp-for="ProductDescription" class="form-control" placeholder="Ürün açıklaması" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Kategorisi : </label>
+                        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+                    </div>
+                    <hr style="margin: 15px 0;" />
+                    <h5><i class="fa fa-filter"></i> Ürün Filtre Özellikleri</h5>
+                    <div class="form-group">
+                        <label>Filtre Grubu Seçiniz:</label>
+                        <select id="prodFilterGroupSelect" class="form-control" style="max-width:300px;">
+                            <option value="">--- Bir Filtre Grubu Seçiniz ---</option>
+                            @foreach (var group in filterGroups)
+                            {
+                                <option value="@("pfg_" + Math.Abs(group.Key.GetHashCode()))">@group.Key (@group.Count() seçenek)</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div id="prodFilterGroupsContainer">
+                        @foreach (var group in filterGroups)
+                        {
+                            var gId = "pfg_" + Math.Abs(group.Key.GetHashCode());
+                            <div class="prod-filter-group-panel" id="@gId" style="display:none; padding:10px; background:#f8f9fa; border:1px solid #e9ecef; border-radius:5px; margin-bottom:10px;">
+                                <div class="row">
+                                    @foreach (var filter in group)
+                                    {
+                                        var isChecked = selectedIds.Contains(filter.FilterId);
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+                                            <label>
+                                                <input type="checkbox" name="selectedFilterIds" value="@filter.FilterId" class="prod-filter-chk" data-title="@group.Key" data-name="@filter.FilterName" @(isChecked ? "checked" : "") />
+                                                @filter.FilterName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div id="prodSelectedFiltersSummary" style="display:none; margin:10px 0;"><label>Seçili Filtreler:</label><div id="prodSelectedBadgeList"></div></div>
+
+                    <hr style="margin: 15px 0;" />
+                    <h5><i class="fa fa-percent"></i> Ürüne Özel İndirim Tanımla (İsteğe Bağlı)</h5>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label>İndirim Oranı (%) :</label>
+                            <input type="number" name="discountRate" class="form-control" min="0" max="100" value="@discountRate" placeholder="Örn: 20" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Son Geçerlilik :</label>
+                            <input type="datetime-local" name="discountValidDate" class="form-control" value="@discountValidDate" />
+                        </div>
+                        <div class="col-md-4 form-group" style="padding-top:25px;">
+                            <label><input type="checkbox" name="isDiscountActive" value="true" @(isDiscountActive ? "checked" : "") /> İndirim Aktif</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-pencil"></i> Ürün Güncelle</button>
+                    <a href="/Admin/Product/Index" class="btn btn-secondary">İptal</a>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var groupSelect = document.getElementById('prodFilterGroupSelect');
+        var groupPanels = document.querySelectorAll('.prod-filter-group-panel');
+        var chks = document.querySelectorAll('.prod-filter-chk');
+        var summaryDiv = document.getElementById('prodSelectedFiltersSummary');
+        var badgeList = document.getElementById('prodSelectedBadgeList');
+
+        groupSelect.addEventListener('change', function() {
+            var val = this.value;
+            groupPanels.forEach(function(p) { p.style.display = (p.id === val) ? 'block' : 'none'; });
+        });
+
+        function updateSummary() {
+            badgeList.innerHTML = '';
+            var selected = document.querySelectorAll('.prod-filter-chk:checked');
+            if (selected.length > 0) {
+                summaryDiv.style.display = 'block';
+                selected.forEach(function(item) {
+                    var span = document.createElement('span');
+                    span.className = 'badge badge-primary';
+                    span.style.cssText = 'font-size:12px; margin-right:5px; margin-bottom:5px; background:#007bff; color:#fff; padding:4px 8px; display:inline-block;';
+                    span.innerText = item.getAttribute('data-title') + ': ' + item.getAttribute('data-name');
+                    badgeList.appendChild(span);
+                });
+            } else { summaryDiv.style.display = 'none'; }
+        }
+        chks.forEach(function(chk) { chk.addEventListener('change', updateSummary); });
+        updateSummary();
+    });
+</script>

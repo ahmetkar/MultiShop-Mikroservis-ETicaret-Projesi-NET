@@ -11,5 +11,6 @@
         public string ProductImageUrl { get; set; }
         public string ProductDescription { get; set; }
         public string CategoryID { get; set; }
+        public List<string> FilterIds { get; set; } = new List<string>();
     }
 }

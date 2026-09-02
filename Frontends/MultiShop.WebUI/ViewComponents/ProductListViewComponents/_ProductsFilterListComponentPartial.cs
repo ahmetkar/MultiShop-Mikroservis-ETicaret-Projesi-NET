@@ -1,13 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.DtoLayer.CatalogDtos.ProductFilterDtos;
+using MultiShop.WebUI.Services.CatalogServices.FilterServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductFilterServices;
 
 namespace MultiShop.WebUI.ViewComponents.ProductListViewComponents
 {
-    //Her bir kategori için birden fazla filtre listesi çek ve ui'da göster.
     public class _ProductsFilterListComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke(string categoryid)
+        private readonly IProductFilterService _productFilterService;
+        private readonly IFilterService _filterService;
+
+        public _ProductsFilterListComponentPartial(IProductFilterService productFilterService, IFilterService filterService)
         {
-            return View();
+            _productFilterService = productFilterService;
+            _filterService = filterService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync(string categoryid, List<string>? selectedFilterIds)
+        {
+            var productFilters = await _productFilterService.GetProductFiltersByCategoryIdAsync(categoryid);
+            ViewBag.CategoryId = categoryid;
+            ViewBag.SelectedFilterIds = selectedFilterIds ?? new List<string>();
+
+            return View(productFilters);
         }
     }
 }

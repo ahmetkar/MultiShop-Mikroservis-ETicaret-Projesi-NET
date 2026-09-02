@@ -5,9 +5,5 @@
 *.vsidx
 /.vs/MultiShopProject/DesignTimeBuild/.dtbcache.v2
 /Frontends/MultiShop.WebUI/wwwroot/spica/node_modules
-/Services/RabbitMQMessage/MultiShop.RabbitMQMessageApi/appsettings.json
-<<<<<<< HEAD
-/Services/RapidApi/MultiShop.RapidApi/appsettings.json
-/Services/RapidApi/MultiShop.RapidApi/appsettings.Development.json
-=======
->>>>>>> 0f8340580aaa225ba29a808fa7e161885441e0cf
+**/bin/**
+**/obj/**

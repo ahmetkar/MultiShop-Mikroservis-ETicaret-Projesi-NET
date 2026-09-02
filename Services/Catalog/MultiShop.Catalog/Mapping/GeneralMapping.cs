@@ -11,6 +11,8 @@ using MultiShop.Catalog.DTOs.OfferDiscountDTOs;
 using MultiShop.Catalog.DTOs.BrandDTOs;
 using MultiShop.Catalog.DTOs.AboutDTOs;
 using MultiShop.Catalog.DTOs.ContactDTOs;
+using MultiShop.Catalog.DTOs.FilterDTOs;
+using MultiShop.Catalog.DTOs.ProductFilterDTOs;
 
 namespace MultiShop.Catalog.Mapping
 {
@@ -64,7 +66,6 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<Feature, ResultFeatureDto>().ReverseMap();
             CreateMap<Feature, GetByIdFeatureDto>().ReverseMap();
 
-
             CreateMap<Brand, CreateBrandDto>().ReverseMap();
             CreateMap<Brand, UpdateBrandDto>().ReverseMap();
             CreateMap<Brand, ResultBrandDto>().ReverseMap();
@@ -73,7 +74,15 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<About, UpdateAboutDto>().ReverseMap();
             CreateMap<About, ResultAboutDto>().ReverseMap();
 
+            CreateMap<Filter, CreateFilterDto>().ReverseMap();
+            CreateMap<Filter, UpdateFilterDto>().ReverseMap();
+            CreateMap<Filter, ResultFilterDto>().ReverseMap();
+            CreateMap<Filter, GetByIdFilterDto>().ReverseMap();
 
+            CreateMap<ProductFilter, CreateProductFilterDto>().ReverseMap();
+            CreateMap<ProductFilter, UpdateProductFilterDto>().ReverseMap();
+            CreateMap<ProductFilter, ResultProductFilterDto>().ReverseMap();
+            CreateMap<ProductFilter, GetByIdProductFilterDto>().ReverseMap();
         }
     }
 }

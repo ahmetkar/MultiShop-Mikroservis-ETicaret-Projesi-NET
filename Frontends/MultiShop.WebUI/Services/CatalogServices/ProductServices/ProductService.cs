@@ -64,6 +64,74 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductServices
             return values;
         }
 
+        public async Task<List<ResultProductWithCategory>> GetProductsByCategoryAndFiltersAsync(string categoryId, List<string>? filterIds, int page = 1, int pageSize = 9)
+        {
+            var url = $"products/GetProductsByCategoryAndFilters?categoryId={categoryId}&page={page}&pageSize={pageSize}";
+            if (filterIds != null && filterIds.Count > 0)
+            {
+                foreach (var fId in filterIds)
+                {
+                    url += $"&filterIds={fId}";
+                }
+            }
+            var resp = await _httpClient.GetAsync(url);
+            if (resp.IsSuccessStatusCode)
+            {
+                return await resp.Content.ReadFromJsonAsync<List<ResultProductWithCategory>>() ?? new List<ResultProductWithCategory>();
+            }
+            return new List<ResultProductWithCategory>();
+        }
+
+        public async Task<long> GetProductCountByCategoryAndFiltersAsync(string categoryId, List<string>? filterIds)
+        {
+            var url = $"products/GetProductCountByCategoryAndFilters?categoryId={categoryId}";
+            if (filterIds != null && filterIds.Count > 0)
+            {
+                foreach (var fId in filterIds)
+                {
+                    url += $"&filterIds={fId}";
+                }
+            }
+            var resp = await _httpClient.GetAsync(url);
+            if (resp.IsSuccessStatusCode)
+            {
+                return await resp.Content.ReadFromJsonAsync<long>();
+            }
+            return 0;
+        }
+
+        public async Task<List<ResultProductWithCategory>> GetLast20ProductsAsync()
+        {
+            var resp = await _httpClient.GetAsync("products/GetLast20Products");
+            if (resp.IsSuccessStatusCode)
+            {
+                return await resp.Content.ReadFromJsonAsync<List<ResultProductWithCategory>>() ?? new List<ResultProductWithCategory>();
+            }
+            return new List<ResultProductWithCategory>();
+        }
+
+        public async Task<List<ResultProductWithCategory>> SearchProductsAsync(string query, int page = 1, int pageSize = 9)
+        {
+            var url = $"products/SearchProducts?query={Uri.EscapeDataString(query ?? "")}&page={page}&pageSize={pageSize}";
+            var resp = await _httpClient.GetAsync(url);
+            if (resp.IsSuccessStatusCode)
+            {
+                return await resp.Content.ReadFromJsonAsync<List<ResultProductWithCategory>>() ?? new List<ResultProductWithCategory>();
+            }
+            return new List<ResultProductWithCategory>();
+        }
+
+        public async Task<long> GetSearchProductCountAsync(string query)
+        {
+            var url = $"products/GetSearchProductCount?query={Uri.EscapeDataString(query ?? "")}";
+            var resp = await _httpClient.GetAsync(url);
+            if (resp.IsSuccessStatusCode)
+            {
+                return await resp.Content.ReadFromJsonAsync<long>();
+            }
+            return 0;
+        }
+
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
         {
             await _httpClient.PutAsJsonAsync<UpdateProductDto>("products", updateProductDto);

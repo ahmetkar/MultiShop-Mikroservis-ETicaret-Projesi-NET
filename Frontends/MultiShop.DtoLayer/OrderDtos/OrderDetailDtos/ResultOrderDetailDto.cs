@@ -15,5 +15,6 @@ namespace MultiShop.DtoLayer.OrderDtos.OrderDetailDtos
         public int ProductAmount { get; set; }
         public decimal ProductTotalPrice { get; set; }
         public int OrderingId { get; set; }
+        public string? ProductFilters { get; set; }
     }
 }

@@ -123,7 +123,8 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
                                 ProductId = item.ProductId,
                                 ProductName = item.ProductName,
                                 ProductPrice = item.Price,
-                                ProductTotalPrice = item.Price * item.Quantity
+                                ProductTotalPrice = item.Price * item.Quantity,
+                                ProductFilters = item.SelectedFilter
                             };
                             list.Add(orderdetail);
                         }

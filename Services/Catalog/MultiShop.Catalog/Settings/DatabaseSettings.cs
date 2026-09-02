@@ -15,5 +15,7 @@
         public string ConnectionStrings { get; set; }
         public string DatabaseName { get; set; }
         public string FeatureSliderCollectionName { get; set; }
+        public string FilterCollectionName { get; set; }
+        public string ProductFilterCollectionName { get; set; }
     }
 }

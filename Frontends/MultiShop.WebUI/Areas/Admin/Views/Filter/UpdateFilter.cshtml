@@ -1,0 +1,26 @@
+@model UpdateFilterDto
+@{
+    ViewData["Title"] = "Filtre Güncelle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="chart-box">
+            <h4>Filtre Güncelle</h4>
+            <form method="post">
+                <input type="hidden" asp-for="FilterId" />
+                <div class="form-group">
+                    <label>Filtre Grubu / Başlığı</label>
+                    <input type="text" asp-for="FilterTitle" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Filtre Değeri</label>
+                    <input type="text" asp-for="FilterName" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-warning"><i class="fa fa-pencil"></i> Güncelle</button>
+                <a href="/Admin/Filter/Index" class="btn btn-secondary">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>

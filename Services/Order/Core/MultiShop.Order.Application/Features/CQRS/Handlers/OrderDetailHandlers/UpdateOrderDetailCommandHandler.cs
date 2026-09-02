@@ -27,6 +27,7 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers
             values.ProductAmount    = command.ProductAmount;
             values.OrderingId = command.OrderingId;
             values.OrderDetailId = command.OrderDetailId;
+            values.ProductFilters = command.ProductFilters;
             await _repository.UpdateAsync(values);
         }
     }

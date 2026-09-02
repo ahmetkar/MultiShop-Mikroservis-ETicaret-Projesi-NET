@@ -1,0 +1,40 @@
+@model CreateDiscountCouponDto
+@{
+    ViewData["Title"] = "Yeni Kupon / İndirim Ekle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var productList = ViewBag.ProductList as List<SelectListItem> ?? new List<SelectListItem>();
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="chart-box">
+            <h4>Yeni Kupon / İndirim Ekle</h4>
+            <form method="post">
+                <div class="form-group">
+                    <label>Kupon Kodu</label>
+                    <input type="text" asp-for="Code" class="form-control" required placeholder="Örn: YAZ2026, SUPER20" style="text-transform:uppercase;" />
+                </div>
+                <div class="form-group">
+                    <label>İndirim Oranı (%)</label>
+                    <input type="number" asp-for="Rate" class="form-control" min="1" max="100" required placeholder="Örn: 20" />
+                </div>
+                <div class="form-group">
+                    <label>Kapsam / Ürün Seçimi</label>
+                    <select asp-for="ProductId" asp-items="productList" class="form-control">
+                    </select>
+                    <small class="form-text text-muted">Belirli bir ürünü seçerseniz indirim yalnızca o ürüne uygulanır. Tüm ürünler seçilirse genel sepet kuponu olur.</small>
+                </div>
+                <div class="form-group">
+                    <label>Son Geçerlilik Tarihi</label>
+                    <input type="datetime-local" asp-for="ValidDate" class="form-control" value="@DateTime.Now.AddDays(30).ToString("yyyy-MM-ddTHH:mm")" required />
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" asp-for="IsActive" class="form-check-input" id="isActiveCheck" checked />
+                    <label class="form-check-label" for="isActiveCheck">Kupon Aktif Olsun</label>
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Kaydet</button>
+                <a href="/Admin/Coupon/Index" class="btn btn-secondary">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+@model List<ResultProductWithCategory>
+@{
+    ViewData["Title"] = "Arama Sonuçları";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+    var query = ViewBag.Query as string ?? "";
+    var totalCount = ViewBag.TotalCount as long? ?? 0;
+    var currentPage = ViewBag.CurrentPage as int? ?? 1;
+    var totalPages = ViewBag.TotalPages as int? ?? 1;
+    var discountDict = ViewBag.DiscountDict as Dictionary<string, int> ?? new Dictionary<string, int>();
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="/">Ana Sayfa</a>
+                <span class="breadcrumb-item active">Arama: "@query"</span>
+            </nav>
+            <div class="bg-light p-3 mb-4 d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="fa fa-search text-primary mr-2"></i> "@query" arama sonuçları</h4>
+                <span class="badge badge-primary p-2">Toplam @totalCount ürün</span>
+            </div>
+
+            @if (Model == null || Model.Count == 0)
+            {
+                <div class="alert alert-warning text-center p-5 my-4">
+                    <h4><i class="fa fa-exclamation-triangle"></i> Ürün bulunamadı.</h4>
+                    <a href="/" class="btn btn-primary mt-3">Alışverişe Başla</a>
+                </div>
+            }
+            else
+            {
+                <div class="row pb-3">
+                    @foreach (var item in Model)
+                    {
+                        var hasDisc = discountDict.ContainsKey(item.ProductId);
+                        var discRate = hasDisc ? discountDict[item.ProductId] : 0;
+                        decimal finalPrice = (hasDisc && discRate > 0) ? (item.ProductPrice - (item.ProductPrice * discRate / 100)) : item.ProductPrice;
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4 position-relative">
+                                @if (hasDisc && discRate > 0)
+                                {
+                                    <div class="position-absolute" style="top:10px; right:10px; z-index:2;">
+                                        <span class="badge badge-danger" style="padding:5px 8px;">-%@discRate</span>
+                                    </div>
+                                }
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="@item.ProductName" style="height:250px; object-fit:cover;">
+                                    <div class="product-action">
+                                        <form method="post" asp-action="AddBasketToItem" asp-controller="ShoppingCart" style="display:inline;">
+                                            <input type="hidden" name="ProductId" value="@item.ProductId" />
+                                            <button type="submit" class="btn btn-outline-dark btn-square"><i class="fa fa-shopping-cart"></i></button>
+                                        </form>
+                                        <a class="btn btn-outline-dark btn-square" href="/ProductList/ProductDetail/@item.ProductId"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate d-block px-2" href="/ProductList/ProductDetail/@item.ProductId">@item.ProductName</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        @if (hasDisc && discRate > 0)
+                                        {
+                                            <h5 class="text-danger mb-0 font-weight-bold">₺@finalPrice.ToString("N2")</h5>
+                                            <h6 class="text-muted ml-2 mb-0"><del>₺@item.ProductPrice.ToString("N2")</del></h6>
+                                        }
+                                        else
+                                        {
+                                            <h5 class="mb-0">₺@item.ProductPrice.ToString("N2")</h5>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                @if (totalPages > 1)
+                {
+                    <div class="col-12">
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item @(currentPage <= 1 ? "disabled" : "")">
+                                    <a class="page-link" href="/ProductList/Search?query=@Uri.EscapeDataString(query)&page=@(currentPage - 1)">Önceki</a>
+                                </li>
+                                @for (int p = 1; p <= totalPages; p++)
+                                {
+                                    <li class="page-item @(p == currentPage ? "active" : "")">
+                                        <a class="page-link" href="/ProductList/Search?query=@Uri.EscapeDataString(query)&page=@p">@p</a>
+                                    </li>
+                                }
+                                <li class="page-item @(currentPage >= totalPages ? "disabled" : "")">
+                                    <a class="page-link" href="/ProductList/Search?query=@Uri.EscapeDataString(query)&page=@(currentPage + 1)">Sonraki</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

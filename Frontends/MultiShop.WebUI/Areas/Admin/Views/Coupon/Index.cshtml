@@ -1,0 +1,74 @@
+@model List<ResultDiscountCouponDto>
+@{
+    ViewData["Title"] = "Kuponlar & İndirimler";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var products = ViewBag.Products as List<ResultProductDto> ?? new List<ResultProductDto>();
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>Kupon ve İndirim Yönetimi</h4>
+            <p>Tüm ürünlerde geçerli genel indirim kuponlarını veya belirli ürünlere atanmış özel indirimleri buradan yönetebilirsiniz.</p>
+            
+            <a href="/Admin/Coupon/CreateCoupon" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Yeni Kupon / İndirim Ekle</a>
+
+            <div class="bs-example" data-example-id="bordered-table">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kupon Kodu</th>
+                            <th>İndirim Oranı</th>
+                            <th>Kapsam (Ürün / Genel)</th>
+                            <th>Son Geçerlilik Tarihi</th>
+                            <th>Durum</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            var matchedProduct = !string.IsNullOrEmpty(item.ProductId) ? products.FirstOrDefault(p => p.ProductId == item.ProductId) : null;
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td><code>@item.Code</code></td>
+                                <td><span class="badge badge-success" style="font-size:13px; background-color:#28a745; color:#fff; padding:5px 10px;">%@item.Rate İndirim</span></td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.ProductId))
+                                    {
+                                        <span class="badge badge-warning" style="background-color:#ffc107; color:#212529; padding:5px 10px;">
+                                            <i class="fa fa-tag"></i> @(matchedProduct != null ? matchedProduct.ProductName : "Ürüne Özel (" + item.ProductId + ")")
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-info" style="background-color:#17a2b8; color:#fff; padding:5px 10px;">
+                                            <i class="fa fa-globe"></i> Tüm Ürünler (Genel)
+                                        </span>
+                                    }
+                                </td>
+                                <td>@item.ValidDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td>
+                                    @if (item.IsActive && item.ValidDate >= DateTime.Now)
+                                    {
+                                        <span class="badge badge-success" style="background-color:#28a745; color:#fff;">Aktif</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger" style="background-color:#dc3545; color:#fff;">Pasif / Süresi Dolmuş</span>
+                                    }
+                                </td>
+                                <td><a href="/Admin/Coupon/DeleteCoupon/@item.CouponId" class="btn btn-danger btn-sm" onclick="return confirm('Bu kuponu silmek istediğinize emin misiniz?');"><i class="fa fa-trash"></i> Sil</a></td>
+                                <td><a href="/Admin/Coupon/UpdateCoupon/@item.CouponId" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
