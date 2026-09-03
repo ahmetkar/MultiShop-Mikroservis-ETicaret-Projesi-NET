@@ -7,5 +7,6 @@
         public string Subtitle { get; set; }
         public string ImageUrl { get; set; }
         public string ButtonTitle { get; set; }
+        public List<string> ProductIds { get; set; } = new List<string>();
     }
 }

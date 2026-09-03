@@ -1,4 +1,5 @@
 ﻿using MultiShop.DtoLayer.CargoDtos.CargoCompanyDtos;
+using System.Net.Http.Json;
 
 namespace MultiShop.WebUI.Services.CargoServices.CargoCompanyServices
 {
@@ -14,7 +15,6 @@ namespace MultiShop.WebUI.Services.CargoServices.CargoCompanyServices
         public async Task CreateCargoCompanyAsync(CreateCargoCompanyDto createCargoCompanyDto)
         {
             await _httpClient.PostAsJsonAsync<CreateCargoCompanyDto>("CargoCompanies", createCargoCompanyDto);
-
         }
 
         public async Task DeleteCargoCompanyAsync(int id)
@@ -25,17 +25,24 @@ namespace MultiShop.WebUI.Services.CargoServices.CargoCompanyServices
         public async Task<List<ResultCargoCompanyDto>> GetAllCargoCompanyAsync()
         {
             var resp = await _httpClient.GetAsync("CargoCompanies");
-            var values = await resp.Content.ReadFromJsonAsync<List<ResultCargoCompanyDto>>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<List<ResultCargoCompanyDto>>();
+                return values ?? new List<ResultCargoCompanyDto>();
+            }
+            return new List<ResultCargoCompanyDto>();
         }
 
         public async Task<UpdateCargoCompanyDto> GetByIdCargoCompany(int id)
         {
             var resp = await _httpClient.GetAsync("CargoCompanies/" + id);
-            var values = await resp.Content.ReadFromJsonAsync<UpdateCargoCompanyDto>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<UpdateCargoCompanyDto>();
+                return values ?? new UpdateCargoCompanyDto();
+            }
+            return new UpdateCargoCompanyDto();
         }
-
 
         public async Task UpdateCargoCompanyAsync(UpdateCargoCompanyDto updateCargoCompanyDto)
         {

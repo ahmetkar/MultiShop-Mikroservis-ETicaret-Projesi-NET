@@ -1,4 +1,4 @@
-﻿@model List<ResultOfferDiscountDto  >
+﻿@model List<ResultOfferDiscountDto>
 
 <!-- Offer Start -->
 <div class="container-fluid pt-5 pb-3">
@@ -6,33 +6,17 @@
 
         @foreach(var item in Model){
             <div class="col-md-6">
-                <div class="product-offer mb-30" style="height: 300px;">
-                    <img class="img-fluid" src="@item.ImageUrl" alt="">
+                <div class="product-offer mb-30 position-relative" style="height: 300px;">
+                    <img class="img-fluid" src="@item.ImageUrl" alt="@item.Title" style="object-fit: cover; width: 100%; height: 100%;">
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase">@item.Title</h6>
                         <h3 class="text-white mb-3">@item.Subtitle</h3>
-                        <a href="" class="btn btn-primary">@item.ButtonTitle</a>
+                        <a href="/ProductList/Campaign?type=offer&id=@item.OfferDiscountId" class="btn btn-primary font-weight-bold">@(!string.IsNullOrEmpty(item.ButtonTitle) ? item.ButtonTitle : "İncele")</a>
                     </div>
                 </div>
             </div>
-
         }
 
-       @*
-            <div class="col-md-6">
-            <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="~/img/offer2.jpeg" alt="">
-                <div class="offer-text">
-                    <h6 class="text-white text-uppercase">20% İndirim</h6>
-                    <h3 class="text-white mb-3">Çocuk Ürünleri</h3>
-                    <a href="" class="btn btn-primary">Alışverişe başla</a>
-                </div>
-            </div>
-        </div>
     </div>
-       *@
-       
-
-
 </div>
 <!-- Offer End -->

@@ -100,5 +100,12 @@ namespace MultiShop.Catalog.Controllers
             var count = await _ProductService.GetSearchProductCountAsync(query);
             return Ok(count);
         }
+
+        [HttpPost("GetProductsByIds")]
+        public async Task<IActionResult> GetProductsByIds([FromBody] List<string> productIds)
+        {
+            var values = await _ProductService.GetProductsByIdsAsync(productIds);
+            return Ok(values);
+        }
     }
 }

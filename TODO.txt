@@ -1,19 +1,14 @@
 
-1-Profilde ve admin panelinde verilen sipariþler ekraný (sadece bu þimdilik) (diðer sayfalarda eklenir yakýnda eklenecek notu ile)
-1-Profilde kargo görüntüleme,ADMÝN panelinde kargo görüntüleme ve onaylama
-1-MyOrderList te hata var veriler gelmiyor
+1-Profilde ve admin panelinde verilen sipariï¿½ler ekranï¿½
+1-Profilde kargo gï¿½rï¿½ntï¿½leme,ADMï¿½N panelinde kargo gï¿½rï¿½ntï¿½leme ve onaylama
 
+2-iyizco herhangi birinin entegrasyonu ile client tarafï¿½ndan ï¿½deme yapï¿½ldï¿½ktan sonra payment eklenmesini saï¿½la
+2-Kargo fiyatÄ± Cargo mikroservisinden ï¿½ekilmeli
+2-Kargo ÅŸirketi seÃ§imi,veritabanÄ±na eklenmesi ve consumerda eklenirken veritabanÄ±ndan bunun Ã§ekimi
 
-
-
-2-iyizco herhangi birinin entegrasyonu ile client tarafýndan ödeme yapýldýktan sonra payment eklenmesini saðla
-2-Arama  kýsmý eklenecek.
-2-Product Listesinde indirimlerin discount mikroservisine göre yansýtýlmasýda gerek
-2-Kargo fiyatý Cargo mikroservisinden çekilmeli
-
+2-Redis caching
 
 3-Global error handler,exception hanler entegre edilecek.
-3-ELK(elastic,logstash,kibana) stack entegre edilecek. Loglar toplanýp,depolanýp,görselleþtirilecek.
-3-OpenTelemery ile alýnan veriler prometheus+grafana ya gönderilip depolanýp kullanýlýp görselleþtrilecek
+3-OpenTelemery ile alï¿½nan veriler prometheus+grafana ya gï¿½nderilip depolanï¿½p kullanï¿½lï¿½p gï¿½rselleï¿½trilecek
 
 

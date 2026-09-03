@@ -16,6 +16,7 @@ namespace MultiShop.Catalog.Services.ProductServices
         Task<List<ResultProductsWithCategoryDto>> GetLast20ProductsAsync();
         Task<List<ResultProductsWithCategoryDto>> SearchProductsAsync(string query, int page = 1, int pageSize = 9);
         Task<long> GetSearchProductCountAsync(string query);
+        Task<List<ResultProductsWithCategoryDto>> GetProductsByIdsAsync(List<string> productIds);
     }
 }
 

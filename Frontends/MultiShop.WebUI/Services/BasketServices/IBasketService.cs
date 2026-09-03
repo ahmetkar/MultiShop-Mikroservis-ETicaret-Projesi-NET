@@ -6,8 +6,8 @@ namespace MultiShop.WebUI.Services.BasketServices
     {
         Task<BasketTotalDto> AddBasketItem(BasketTotalDto values, string id);
         Task<BasketTotalDto> AddBasketItem(BasketTotalDto values, string id, int quantity = 1, string? selectedFilter = null);
-        Task<bool> RemoveBasketItem(BasketTotalDto values, string productId, Func<BasketTotalDto, Task> SaveBasket);
-        Task<bool> DecrementBasketItem(BasketTotalDto values, string productId, Func<BasketTotalDto, Task> SaveBasket);
+        Task<bool> RemoveBasketItem(BasketTotalDto values, string productId, string? selectedFilter, Func<BasketTotalDto, Task> SaveBasket);
+        Task<bool> DecrementBasketItem(BasketTotalDto values, string productId, string? selectedFilter, Func<BasketTotalDto, Task> SaveBasket);
         Task DeleteBasket(string userId);
         Task<int> AddCookieDataToDatabase();
         Task<BasketTotalDto> GetBasketFromCookies();
@@ -20,11 +20,11 @@ namespace MultiShop.WebUI.Services.BasketServices
         Task AddBasketItemToCookies(string id, int quantity = 1, string? selectedFilter = null);
         Task AddBasketItemToDatabase(string id);
         Task AddBasketItemToDatabase(string id, int quantity = 1, string? selectedFilter = null);
-        Task RemoveBasketItemFromCookies(string productId);
+        Task RemoveBasketItemFromCookies(string productId, string? selectedFilter = null);
         Task DeleteBasketFromCookies();
         Task DeleteBasketFromDatabase();
-        Task RemoveBasketItemFromDatabase(string productId);
-        Task DecrementBasketItemFromCookies(string productId);
-        Task DecrementBasketItemFromDatabase(string productId);
+        Task RemoveBasketItemFromDatabase(string productId, string? selectedFilter = null);
+        Task DecrementBasketItemFromCookies(string productId, string? selectedFilter = null);
+        Task DecrementBasketItemFromDatabase(string productId, string? selectedFilter = null);
     }
 }

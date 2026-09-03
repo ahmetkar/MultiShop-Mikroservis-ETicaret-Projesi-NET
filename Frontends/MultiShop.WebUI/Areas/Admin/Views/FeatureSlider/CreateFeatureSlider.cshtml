@@ -1,32 +1,54 @@
 ﻿@model CreateFeatureSliderDto
-
 @{
+    ViewData["Title"] = "Öne Çıkan Görsel Ekle";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var products = ViewBag.Products as List<ResultProductDto> ?? new List<ResultProductDto>();
 }
-
 
 <section class="content container-fluid">
     <div class="row">
-
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="chart-box">
-                <h4>Görsel Ekleme<h4>
-              
-                <div class="bs-example" data-example-id="bordered-table">
+                <h4>Yeni Öne Çıkan Görsel (Slider) Ekle</h4>
+                <div class="bs-example">
                     <form method="post">
-                        <label>Görsel Başlığı : </label>
-                                <input type="text" asp-for="Title" class="form-control" placeholder="Görsel Başlığı">
-                        <br />
-                         <label>Görsel Açıklaması : </label>
-                         <input type="text" asp-for="Description" class="form-control" placeholder="Görsel Açıklaması">
-                         <br />
-                          <label>Görsel Urlsi : </label>
-                          <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Görsel Resim Url ">
-                          <br />
+                        <div class="form-group">
+                            <label>Görsel Başlığı : </label>
+                            <input type="text" asp-for="Title" class="form-control" required placeholder="Görsel Başlığı">
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel Açıklaması : </label>
+                            <input type="text" asp-for="Description" class="form-control" placeholder="Görsel Açıklaması">
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel Url : </label>
+                            <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Görsel Resim Url">
+                        </div>
 
-                      <button class="btn btn-primary" type="submit">Görsel Ekle</button>
+                        <hr style="margin: 20px 0;" />
+                        <h5><i class="fa fa-shopping-bag"></i> Bu Görsel ile İlişkilendirilecek Ürünleri Seçin</h5>
+                        <p class="text-muted">Kullanıcılar ana sayfada bu slider görseline veya butonuna tıkladığında seçtiğiniz bu ürünler listelenecektir.</p>
+
+                        <div style="max-height: 250px; overflow-y: auto; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 5px; padding: 15px;">
+                            <div class="row">
+                                @foreach (var p in products)
+                                {
+                                    <div class="col-md-4 col-sm-6 mb-2">
+                                        <div class="checkbox" style="margin: 4px 0;">
+                                            <label style="font-weight: 500;">
+                                                <input type="checkbox" name="selectedProductIds" value="@p.ProductId">
+                                                @p.ProductName (@p.ProductPrice ₺)
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <br />
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Görsel Ekle</button>
+                        <a href="/Admin/FeatureSlider/Index" class="btn btn-secondary">İptal</a>
                     </form>
-                    
                 </div>
             </div>
         </div>

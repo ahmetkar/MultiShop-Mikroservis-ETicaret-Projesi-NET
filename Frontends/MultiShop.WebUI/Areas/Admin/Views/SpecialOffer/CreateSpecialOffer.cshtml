@@ -1,29 +1,54 @@
 ﻿@model CreateSpecialOfferDto
-
 @{
+    ViewData["Title"] = "Özel Teklif Ekle";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var products = ViewBag.Products as List<ResultProductDto> ?? new List<ResultProductDto>();
 }
-
 
 <section class="content container-fluid">
     <div class="row">
-
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="chart-box">
-                <h4>Özel Teklif Ekleme<h4>
-              
-                <div class="bs-example" data-example-id="bordered-table">
+                <h4>Yeni Özel Teklif Ekle</h4>
+                <div class="bs-example">
                     <form method="post">
-                        <label>Özel Teklif Başlığı : </label>
-                                <input type="text" asp-for="Title" class="form-control" placeholder="Teklif Başlığı">
-                        <label>Özel Teklif Alt Başlığı : </label>
-                                <input type="text" asp-for="Subtitle" class="form-control" placeholder="Teklif Alt Başlığı">
-                        <label>Resim url : </label>
-                                <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Resim Url">
+                        <div class="form-group">
+                            <label>Özel Teklif Başlığı : </label>
+                            <input type="text" asp-for="Title" class="form-control" required placeholder="Teklif Başlığı">
+                        </div>
+                        <div class="form-group">
+                            <label>Özel Teklif Alt Başlığı : </label>
+                            <input type="text" asp-for="Subtitle" class="form-control" placeholder="Teklif Alt Başlığı">
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel Url : </label>
+                            <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Görsel Url">
+                        </div>
 
-                      <button class="btn btn-primary" type="submit">Özel Teklif Ekle</button>
-                    </form> 
-                    
+                        <hr style="margin: 20px 0;" />
+                        <h5><i class="fa fa-shopping-bag"></i> Bu Özel Teklif ile İlişkilendirilecek Ürünleri Seçin</h5>
+                        <p class="text-muted">Kullanıcılar ana sayfada bu özel teklif görseline veya butonuna tıkladığında seçtiğiniz bu ürünler listelenecektir.</p>
+
+                        <div style="max-height: 250px; overflow-y: auto; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 5px; padding: 15px;">
+                            <div class="row">
+                                @foreach (var p in products)
+                                {
+                                    <div class="col-md-4 col-sm-6 mb-2">
+                                        <div class="checkbox" style="margin: 4px 0;">
+                                            <label style="font-weight: 500;">
+                                                <input type="checkbox" name="selectedProductIds" value="@p.ProductId">
+                                                @p.ProductName (@p.ProductPrice ₺)
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <br />
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Özel Teklif Ekle</button>
+                        <a href="/Admin/SpecialOffer/Index" class="btn btn-secondary">İptal</a>
+                    </form>
                 </div>
             </div>
         </div>

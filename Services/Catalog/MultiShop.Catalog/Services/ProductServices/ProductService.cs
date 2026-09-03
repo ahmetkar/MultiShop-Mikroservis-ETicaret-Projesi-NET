@@ -166,6 +166,25 @@ namespace MultiShop.Catalog.Services.ProductServices
             return await _productCollection.CountDocumentsAsync(filter);
         }
 
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsByIdsAsync(List<string> productIds)
+        {
+            if (productIds == null || productIds.Count == 0)
+            {
+                return new List<ResultProductsWithCategoryDto>();
+            }
+
+            var filter = Builders<Product>.Filter.In(x => x.ProductId, productIds);
+            var values = await _productCollection.Find(filter).ToListAsync();
+
+            foreach (var item in values)
+            {
+                var category = await _categoryCollection.Find(x => x.CategoryID == item.CategoryID).FirstOrDefaultAsync();
+                item.Category = category;
+            }
+
+            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
+        }
+
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
         {
             var values = _mapper.Map<Product>(updateProductDto);

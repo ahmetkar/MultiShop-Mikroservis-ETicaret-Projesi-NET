@@ -102,7 +102,7 @@ namespace MultiShop.IdentityServer
                     ClientName="MultiShopVisitorUser",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = {new Secret("multishopsecret".Sha256())},
-                    AllowedScopes = { "PaymentReadPermission", "PaymentCreatePermission", "PaymentDeletePermission", "CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission","CommentFullPermission", "PaymentFullPermission", IdentityServerConstants.LocalApi.ScopeName },
+                    AllowedScopes = { "PaymentReadPermission", "PaymentCreatePermission", "PaymentDeletePermission", "CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission","CommentFullPermission", "PaymentFullPermission", "DiscountFullPermission", "CargoFullPermission", IdentityServerConstants.LocalApi.ScopeName },
                     AllowAccessTokensViaBrowser = true
                 },
                 //Manager

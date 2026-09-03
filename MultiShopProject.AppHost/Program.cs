@@ -2,7 +2,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var identityServer = builder.AddProject<Projects.MultiShop_IdentityServer>("identityserver").WithHttpEndpoint(
         port: 5001,
-        name: "SelfHost")
+        name: "http")
     .WithEndpoint("SelfHost", endpoint =>
     {
         endpoint.IsProxied = false;

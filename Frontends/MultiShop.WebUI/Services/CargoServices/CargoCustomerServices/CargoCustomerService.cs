@@ -1,4 +1,5 @@
 ﻿using MultiShop.DtoLayer.CargoDtos.CargoCustotmerDtos;
+using System.Net.Http.Json;
 
 namespace MultiShop.WebUI.Services.CargoServices.CargoCustomerServices
 {
@@ -9,13 +10,17 @@ namespace MultiShop.WebUI.Services.CargoServices.CargoCustomerServices
         public CargoCustomerService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-        }
+        }   
 
-        public async Task<GetCargoCustomerByIdDto> GetByIdCargoCustomerInfoAsync(string id)
+        public async Task<GetCargoCustomerByIdDto?> GetByIdCargoCustomerInfoAsync(string id)
         {
             var resp = await _httpClient.GetAsync("CargoCustomers/GetCargoCustomerById?id=" + id);
-            var values = await resp.Content.ReadFromJsonAsync<GetCargoCustomerByIdDto>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<GetCargoCustomerByIdDto>();
+                return values;
+            }
+            return null;
         }
     }
 }

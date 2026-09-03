@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
 using MultiShop.DtoLayer.BasketDtos;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NuGet.ContentModel;
-using NuGet.Protocol;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace MultiShop.WebUI.Services.BasketServices
 {
@@ -23,7 +23,6 @@ namespace MultiShop.WebUI.Services.BasketServices
             _httpClient = httpClient;
             _productService = productService;
             _httpContextAccessor = httpContextAccessor;
-
         }
 
         public async Task<int> AddCookieDataToDatabase()
@@ -32,60 +31,45 @@ namespace MultiShop.WebUI.Services.BasketServices
             if (context != null && context.Request.Cookies.ContainsKey("basket"))
             {
                 var basketcookie = context.Request.Cookies["basket"];
-                var basketTotalFromCookie = JsonConvert.DeserializeObject<BasketTotalDto>(basketcookie);
-
-                var basketTotalFromDatabase = await GetBasketFromDatabase();
-
-                if (basketTotalFromDatabase.BasketItems.Count > 0)
+                if (!string.IsNullOrEmpty(basketcookie))
                 {
-
-                    for (int i = 0; i < basketTotalFromCookie.BasketItems.Count; i++)
+                    var basketTotalFromCookie = JsonConvert.DeserializeObject<BasketTotalDto>(basketcookie);
+                    if (basketTotalFromCookie != null && basketTotalFromCookie.BasketItems.Count > 0)
                     {
-                        var item = basketTotalFromCookie.BasketItems[i];
-                        if (basketTotalFromDatabase.BasketItems.Any(x => x.ProductId == item.ProductId))
+                        var basketTotalFromDatabase = await GetBasketFromDatabase() ?? new BasketTotalDto();
+
+                        foreach (var item in basketTotalFromCookie.BasketItems)
                         {
-                            var getItem = basketTotalFromDatabase.BasketItems.FirstOrDefault(x => x.ProductId == item.ProductId);
-                            int index = basketTotalFromDatabase.BasketItems.IndexOf(getItem);
-                            basketTotalFromDatabase.BasketItems[index].Quantity += getItem.Quantity;
-                            basketTotalFromCookie.BasketItems.Remove(item);
+                            var existingInDb = basketTotalFromDatabase.BasketItems.FirstOrDefault(x =>
+                                x.ProductId == item.ProductId && (x.SelectedFilter ?? "").Trim() == (item.SelectedFilter ?? "").Trim());
+
+                            if (existingInDb != null)
+                            {
+                                existingInDb.Quantity += item.Quantity;
+                            }
+                            else
+                            {
+                                basketTotalFromDatabase.BasketItems.Add(item);
+                            }
                         }
+
+                        if (basketTotalFromCookie.DiscountCode != null)
+                        {
+                            basketTotalFromDatabase.DiscountCode = basketTotalFromCookie.DiscountCode;
+                        }
+                        if (basketTotalFromCookie.DiscountRate != null)
+                        {
+                            basketTotalFromDatabase.DiscountRate = basketTotalFromCookie.DiscountRate;
+                        }
+
+                        await SaveBasketToDatabase(basketTotalFromDatabase);
+                        _httpContextAccessor.HttpContext?.Session.SetInt32("IsCookiesAdded", 1);
+                        await SaveBasketToCookies(new BasketTotalDto());
+                        return 1;
                     }
-
-                    var items = basketTotalFromDatabase.BasketItems.Concat(basketTotalFromCookie.BasketItems);
-                    basketTotalFromDatabase.BasketItems = items.ToList();
-
-
-
-
-
-
-                    if (basketTotalFromCookie.DiscountCode != null)
-                    {
-                        basketTotalFromDatabase.DiscountCode = basketTotalFromCookie.DiscountCode;
-                    }
-                    if (basketTotalFromCookie.DiscountRate != null)
-                    {
-                        basketTotalFromDatabase.DiscountRate = basketTotalFromCookie.DiscountRate;
-                    }
-
-                    await SaveBasketToDatabase(basketTotalFromDatabase);
-                    _httpContextAccessor.HttpContext.Session.SetInt32("IsCookiesAdded", 1);
-                    await SaveBasketToCookies(new BasketTotalDto());
-                    return 1;
                 }
-                else
-                {
-                    await SaveBasketToDatabase(basketTotalFromCookie);
-                    _httpContextAccessor.HttpContext.Session.SetInt32("IsCookiesAdded", 1);
-                    await SaveBasketToCookies(new BasketTotalDto());
-                    return 1;
-                }
-
-
-
             }
             return 0;
-
         }
 
         public async Task<BasketTotalDto> GetBasketFromCookies()
@@ -93,13 +77,14 @@ namespace MultiShop.WebUI.Services.BasketServices
             var context = _httpContextAccessor.HttpContext;
             if (context != null && context.Request.Cookies.ContainsKey("basket"))
             {
-
                 var basket = context.Request.Cookies["basket"];
-                var basketTotal = JsonConvert.DeserializeObject<BasketTotalDto>(basket);
-                return basketTotal;
+                if (!string.IsNullOrEmpty(basket))
+                {
+                    var basketTotal = JsonConvert.DeserializeObject<BasketTotalDto>(basket);
+                    return basketTotal ?? new BasketTotalDto();
+                }
             }
             return new BasketTotalDto();
-
         }
 
         public async Task<BasketTotalDto?> GetBasketFromDatabase()
@@ -112,30 +97,24 @@ namespace MultiShop.WebUI.Services.BasketServices
             if (responseMessage.IsSuccessStatusCode)
             {
                 var values = await responseMessage.Content.ReadFromJsonAsync<BasketTotalDto>();
-                return values;
+                return values ?? new BasketTotalDto();
             }
             return new BasketTotalDto();
         }
 
-        
         public BasketTotalDto CalculateKDVAndTotal(BasketTotalDto basketTotalDto)
         {
-
             double totalkdvprice = 0;
             double totalpricewithoutkdv = 0;
             foreach (var i in basketTotalDto.BasketItems)
             {
                 totalkdvprice += i.KDVPrice * i.Quantity;
                 totalpricewithoutkdv += (double)i.Price * i.Quantity;
-
             }
             basketTotalDto.TotalPriceWithoutKDV = totalpricewithoutkdv;
             basketTotalDto.TotalPrice = totalpricewithoutkdv + totalkdvprice;
             basketTotalDto.KDVPrice = totalkdvprice;
-            
-
             return basketTotalDto;
-
         }
 
         public async Task SaveBasketToCookies(BasketTotalDto basket)
@@ -144,7 +123,6 @@ namespace MultiShop.WebUI.Services.BasketServices
             if (context != null)
             {
                 basket = CalculateKDVAndTotal(basket);
-
                 var json = JsonConvert.SerializeObject(basket);
                 context.Response.Cookies.Append("basket", json, new CookieOptions
                 {
@@ -156,27 +134,19 @@ namespace MultiShop.WebUI.Services.BasketServices
 
         public async Task SaveBasketToCookies(BasketTotalDto basketTotalDto, string discountCode, int discountRate)
         {
-            if ( discountCode != "" && discountRate != 0)
+            if (discountCode != "" && discountRate != 0)
             {
-
                 double oldprice = basketTotalDto.TotalPrice;
                 basketTotalDto.TotalPriceWithoutDiscount = oldprice;
-
-
                 double newprice = basketTotalDto.TotalPrice - (basketTotalDto.TotalPrice * discountRate) / 100;
-
-              
                 basketTotalDto.TotalPrice = newprice;
                 basketTotalDto.DiscountCode = discountCode;
                 basketTotalDto.DiscountRate = discountRate;
 
                 var context = _httpContextAccessor.HttpContext;
-
-                var basketTotal = basketTotalDto;
                 if (context != null)
                 {
-
-                    var json = JsonConvert.SerializeObject(basketTotal);
+                    var json = JsonConvert.SerializeObject(basketTotalDto);
                     context.Response.Cookies.Append("basket", json, new CookieOptions
                     {
                         Expires = DateTimeOffset.UtcNow.AddDays(1),
@@ -184,39 +154,28 @@ namespace MultiShop.WebUI.Services.BasketServices
                     });
                 }
             }
-
         }
 
         public async Task SaveBasketToDatabase(BasketTotalDto basketTotalDto)
         {
             basketTotalDto = CalculateKDVAndTotal(basketTotalDto);
             await _httpClient.PostAsJsonAsync("baskets", basketTotalDto);
-
         }
+
         public async Task SaveBasketToDatabase(BasketTotalDto basketTotalDto, string discountCode, int discountRate)
         {
-            if(discountCode!="" && discountRate!=0)
+            if (discountCode != "" && discountRate != 0)
             {
-
                 double oldprice = basketTotalDto.TotalPrice;
                 basketTotalDto.TotalPriceWithoutDiscount = oldprice;
-
                 double newprice = basketTotalDto.TotalPrice - (basketTotalDto.TotalPrice * discountRate) / 100;
-
-               
                 basketTotalDto.TotalPrice = newprice;
                 basketTotalDto.DiscountCode = discountCode;
                 basketTotalDto.DiscountRate = discountRate;
 
-                var basketTotal = basketTotalDto;
-
-                await _httpClient.PostAsJsonAsync("baskets", basketTotal);
+                await _httpClient.PostAsJsonAsync("baskets", basketTotalDto);
             }
-
         }
-
-        
-
 
         public async Task AddBasketItemToCookies(string id)
         {
@@ -237,33 +196,24 @@ namespace MultiShop.WebUI.Services.BasketServices
 
         public async Task AddBasketItemToDatabase(string id, int quantity = 1, string? selectedFilter = null)
         {
-            var basket = await GetBasketFromDatabase();
+            var basket = await GetBasketFromDatabase() ?? new BasketTotalDto();
             var newBasket = await AddBasketItem(basket, id, quantity, selectedFilter);
             await SaveBasketToDatabase(newBasket);
         }
 
-
-
-
-        public async Task RemoveBasketItemFromCookies(string productId)
+        public async Task RemoveBasketItemFromCookies(string productId, string? selectedFilter = null)
         {
             var basket = await GetBasketFromCookies();
-            await RemoveBasketItem(basket, productId, SaveBasketToCookies);
+            await RemoveBasketItem(basket, productId, selectedFilter, SaveBasketToCookies);
         }
-
-
 
         public async Task DeleteBasketFromCookies()
         {
-
             var context = _httpContextAccessor.HttpContext;
-
             if (context != null)
             {
-
                 context.Response.Cookies.Delete("basket");
             }
-
         }
 
         public async Task DeleteBasketFromDatabase()
@@ -271,31 +221,23 @@ namespace MultiShop.WebUI.Services.BasketServices
             await _httpClient.DeleteAsync("baskets");
         }
 
-
-
-        public async Task RemoveBasketItemFromDatabase(string productId)
+        public async Task RemoveBasketItemFromDatabase(string productId, string? selectedFilter = null)
         {
-            var basket = await GetBasketFromDatabase();
-            await RemoveBasketItem(basket, productId, SaveBasketToDatabase);
+            var basket = await GetBasketFromDatabase() ?? new BasketTotalDto();
+            await RemoveBasketItem(basket, productId, selectedFilter, SaveBasketToDatabase);
         }
 
-
-        public async Task DecrementBasketItemFromCookies(string productId)
+        public async Task DecrementBasketItemFromCookies(string productId, string? selectedFilter = null)
         {
             var basket = await GetBasketFromCookies();
-            await DecrementBasketItem(basket, productId, SaveBasketToCookies);
-
+            await DecrementBasketItem(basket, productId, selectedFilter, SaveBasketToCookies);
         }
 
-        public async Task DecrementBasketItemFromDatabase(string productId)
+        public async Task DecrementBasketItemFromDatabase(string productId, string? selectedFilter = null)
         {
-            var basket = await GetBasketFromDatabase();
-            await DecrementBasketItem(basket, productId, SaveBasketToDatabase);
-
+            var basket = await GetBasketFromDatabase() ?? new BasketTotalDto();
+            await DecrementBasketItem(basket, productId, selectedFilter, SaveBasketToDatabase);
         }
-
-
-
 
         public async Task<BasketTotalDto> AddBasketItem(BasketTotalDto values, string id)
         {
@@ -304,40 +246,35 @@ namespace MultiShop.WebUI.Services.BasketServices
 
         public async Task<BasketTotalDto> AddBasketItem(BasketTotalDto values, string id, int quantity = 1, string? selectedFilter = null)
         {
-            var product = await _productService.GetByIdProduct(id);
+            if (values == null) values = new BasketTotalDto();
 
-            var itemKey = string.IsNullOrEmpty(selectedFilter) ? id : $"{id}_{selectedFilter}";
-            var itemName = string.IsNullOrEmpty(selectedFilter) ? product.ProductName : $"{product.ProductName} ({selectedFilter})";
+            var normalizedFilter = string.IsNullOrWhiteSpace(selectedFilter) ? null : selectedFilter.Trim();
 
-            var item = new BasketItemDto
+            var existingItem = values.BasketItems.FirstOrDefault(x =>
+                x.ProductId == id && (string.IsNullOrWhiteSpace(x.SelectedFilter) ? null : x.SelectedFilter.Trim()) == normalizedFilter);
+
+            if (existingItem != null)
             {
-                ProductId = itemKey,
-                ProductName = itemName,
-                Price = product.ProductPrice,
-                KDVPrice = (double)product.KDVPrice,
-                KDVPercent = (double)product.KDVPercent,
-                Quantity = quantity > 0 ? quantity : 1,
-                ProductImageUrl = product.ProductImageUrl,
-                SelectedFilter = selectedFilter
-            };
-
-            if (values != null)
-            {
-                if (values.BasketItems.Count(x => x.ProductId == itemKey) == 0)
-                {
-                    values.BasketItems.Add(item);
-                }
-                else
-                {
-                    var addedItem = values.BasketItems.FirstOrDefault(x => x.ProductId == itemKey);
-                    int index = values.BasketItems.IndexOf(addedItem);
-                    values.BasketItems[index].Quantity += (quantity > 0 ? quantity : 1);
-                }
+                existingItem.Quantity += (quantity > 0 ? quantity : 1);
             }
             else
             {
-                values = new BasketTotalDto();
-                values.BasketItems.Add(item);
+                var product = await _productService.GetByIdProduct(id);
+                if (product != null)
+                {
+                    var item = new BasketItemDto
+                    {
+                        ProductId = id,
+                        ProductName = product.ProductName,
+                        Price = product.ProductPrice,
+                        KDVPrice = (double)product.KDVPrice,
+                        KDVPercent = (double)product.KDVPercent,
+                        Quantity = quantity > 0 ? quantity : 1,
+                        ProductImageUrl = product.ProductImageUrl,
+                        SelectedFilter = normalizedFilter
+                    };
+                    values.BasketItems.Add(item);
+                }
             }
 
             return values;
@@ -348,55 +285,47 @@ namespace MultiShop.WebUI.Services.BasketServices
             throw new NotImplementedException();
         }
 
-
-
-
-        public async Task<bool> RemoveBasketItem(BasketTotalDto values, string productId, Func<BasketTotalDto, Task> SaveBasket)
+        public async Task<bool> RemoveBasketItem(BasketTotalDto values, string productId, string? selectedFilter, Func<BasketTotalDto, Task> SaveBasket)
         {
-
             if (values != null)
             {
-                var deletedItem = values.BasketItems.FirstOrDefault(x => x.ProductId == productId);
-                if (deletedItem != null)
+                var normalizedFilter = string.IsNullOrWhiteSpace(selectedFilter) ? null : selectedFilter.Trim();
+                var item = values.BasketItems.FirstOrDefault(x =>
+                    x.ProductId == productId && (string.IsNullOrWhiteSpace(x.SelectedFilter) ? null : x.SelectedFilter.Trim()) == normalizedFilter);
+
+                if (item != null)
                 {
-                    if (values.BasketItems.Count(x => x.ProductId == productId) > 0)
+                    values.BasketItems.Remove(item);
+                    await SaveBasket(values);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public async Task<bool> DecrementBasketItem(BasketTotalDto values, string productId, string? selectedFilter, Func<BasketTotalDto, Task> SaveBasket)
+        {
+            if (values != null)
+            {
+                var normalizedFilter = string.IsNullOrWhiteSpace(selectedFilter) ? null : selectedFilter.Trim();
+                var item = values.BasketItems.FirstOrDefault(x =>
+                    x.ProductId == productId && (string.IsNullOrWhiteSpace(x.SelectedFilter) ? null : x.SelectedFilter.Trim()) == normalizedFilter);
+
+                if (item != null)
+                {
+                    if (item.Quantity > 1)
                     {
-                        var result = values.BasketItems.Remove(deletedItem);
-                        await SaveBasket(values);
-                        return true;
+                        item.Quantity -= 1;
                     }
-
-                }
-            }
-            return false;
-        }
-
-        public async Task<bool> DecrementBasketItem(BasketTotalDto values, string productId, Func<BasketTotalDto, Task> SaveBasket)
-        {
-
-            if (values != null)
-            {
-                var item = values.BasketItems.FirstOrDefault(x => x.ProductId == productId);
-                int index = values.BasketItems.IndexOf(item);
-                if (values.BasketItems[index].Quantity > 1)
-                {
-                    values.BasketItems[index].Quantity -= 1;
-                    await SaveBasket(values);
-                    return true;
-                }
-                else
-                {
-                    var result = values.BasketItems.Remove(item);
+                    else
+                    {
+                        values.BasketItems.Remove(item);
+                    }
                     await SaveBasket(values);
                     return true;
                 }
             }
-
             return false;
         }
-
-
-
-
     }
 }

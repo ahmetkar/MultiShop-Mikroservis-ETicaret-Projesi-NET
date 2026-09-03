@@ -1,0 +1,108 @@
+@model List<ResultProductWithCategory>
+@{
+    ViewData["Title"] = ViewBag.BannerTitle ?? "Kampanya Ürünleri";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+    var bannerTitle = ViewBag.BannerTitle as string ?? "Özel Kampanya";
+    var bannerSubtitle = ViewBag.BannerSubtitle as string ?? "";
+    var bannerImage = ViewBag.BannerImage as string ?? "";
+    var discountDict = ViewBag.DiscountDict as Dictionary<string, int> ?? new Dictionary<string, int>();
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="/">Ana Sayfa</a>
+                <span class="breadcrumb-item active">@bannerTitle</span>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(bannerImage) || !string.IsNullOrEmpty(bannerTitle))
+{
+    <div class="container-fluid mb-4">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <div class="position-relative bg-dark text-white p-4 text-center" style="border-radius:6px; overflow:hidden; min-height:140px;">
+                    @if (!string.IsNullOrEmpty(bannerImage))
+                    {
+                        <img src="@bannerImage" alt="@bannerTitle" class="position-absolute w-100 h-100" style="top:0; left:0; object-fit:cover; opacity:0.35;">
+                    }
+                    <div class="position-relative" style="z-index:2;">
+                        <h3 class="text-white text-uppercase font-weight-bold mb-1">@bannerTitle</h3>
+                        @if (!string.IsNullOrEmpty(bannerSubtitle))
+                        {
+                            <p class="lead mb-0 text-white-50" style="font-size:16px;">@bannerSubtitle</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <div class="bg-light p-3 mb-4 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-dark"><i class="fa fa-tags text-primary mr-2"></i> Kampanya Kapsamındaki Ürünler</h5>
+                <span class="badge badge-primary p-2">Toplam @(Model?.Count ?? 0) Ürün</span>
+            </div>
+
+            @if (Model == null || Model.Count == 0)
+            {
+                <div class="alert alert-info text-center p-5 my-4">
+                    <h4>Bu kampanyaya henüz ürün tanımlanmamıştır.</h4>
+                    <a href="/" class="btn btn-primary mt-3">Alışverişe Devam Et</a>
+                </div>
+            }
+            else
+            {
+                <div class="row pb-3">
+                    @foreach (var item in Model)
+                    {
+                        var hasDisc = discountDict.ContainsKey(item.ProductId);
+                        var discRate = hasDisc ? discountDict[item.ProductId] : 0;
+                        decimal finalPrice = (hasDisc && discRate > 0) ? (item.ProductPrice - (item.ProductPrice * discRate / 100)) : item.ProductPrice;
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4 position-relative">
+                                @if (hasDisc && discRate > 0)
+                                {
+                                    <div class="position-absolute" style="top:10px; right:10px; z-index:2;">
+                                        <span class="badge badge-danger" style="padding:5px 8px;">-%@discRate</span>
+                                    </div>
+                                }
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="@item.ProductName" style="height:250px; object-fit:cover;">
+                                    <div class="product-action">
+                                        <form method="post" asp-action="AddBasketToItem" asp-controller="ShoppingCart" style="display:inline;">
+                                            <input type="hidden" name="ProductId" value="@item.ProductId" />
+                                            <button type="submit" class="btn btn-outline-dark btn-square"><i class="fa fa-shopping-cart"></i></button>
+                                        </form>
+                                        <a class="btn btn-outline-dark btn-square" href="/ProductList/ProductDetail/@item.ProductId"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate d-block px-2" href="/ProductList/ProductDetail/@item.ProductId">@item.ProductName</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        @if (hasDisc && discRate > 0)
+                                        {
+                                            <h5 class="text-danger mb-0 font-weight-bold">₺@finalPrice.ToString("N2")</h5>
+                                            <h6 class="text-muted ml-2 mb-0"><del>₺@item.ProductPrice.ToString("N2")</del></h6>
+                                        }
+                                        else
+                                        {
+                                            <h5 class="mb-0 font-weight-bold">₺@item.ProductPrice.ToString("N2")</h5>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

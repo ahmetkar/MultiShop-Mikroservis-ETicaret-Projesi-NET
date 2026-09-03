@@ -1,34 +1,62 @@
 ﻿@model UpdateOfferDiscountDto
-
 @{
+    ViewData["Title"] = "İndirim Teklifi Güncelle";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var products = ViewBag.Products as List<ResultProductDto> ?? new List<ResultProductDto>();
+    var selectedIds = Model.ProductIds ?? new List<string>();
 }
-
 
 <section class="content container-fluid">
     <div class="row">
-
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="chart-box">
-                <h4>
-                    Özel İndirim Teklifi Güncelleme<h4>
-
-                        <div class="bs-example" data-example-id="bordered-table">
-                            <form method="post">
-                                <input type="hidden" asp-for="OfferDiscountId" />
-                                <label>Özel Teklif Başlığı : </label>
-                                <input type="text" asp-for="Title" class="form-control" placeholder="Teklif Başlığı">
-                                <label>Özel Teklif Alt Başlığı : </label>
-                                <input type="text" asp-for="Subtitle" class="form-control" placeholder="Teklif Alt Başlığı">
-                                <label>Buton Yazısı : </label>
-                                <input type="text" asp-for="ButtonTitle" class="form-control" placeholder="Button yazısı">
-                                <label>Resim url : </label>
-                                <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Resim Url">
-
-                                <button class="btn btn-primary" type="submit">Özel İndirim Teklifi Güncelle</button>
-                            </form>
-
+                <h4>Özel İndirim Teklifi Güncelle</h4>
+                <div class="bs-example">
+                    <form method="post">
+                        <input type="hidden" asp-for="OfferDiscountId" />
+                        <div class="form-group">
+                            <label>Özel Teklif Başlığı : </label>
+                            <input type="text" asp-for="Title" class="form-control" required placeholder="Teklif Başlığı">
                         </div>
+                        <div class="form-group">
+                            <label>Özel Teklif Alt Başlığı : </label>
+                            <input type="text" asp-for="Subtitle" class="form-control" placeholder="Teklif Alt Başlığı">
+                        </div>
+                        <div class="form-group">
+                            <label>Buton Yazısı : </label>
+                            <input type="text" asp-for="ButtonTitle" class="form-control" placeholder="Button yazısı">
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel Url : </label>
+                            <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Resim Url">
+                        </div>
+
+                        <hr style="margin: 20px 0;" />
+                        <h5><i class="fa fa-shopping-bag"></i> Bu İndirim Teklifi ile İlişkilendirilen Ürünler</h5>
+                        <p class="text-muted">Kullanıcılar ana sayfada bu teklif görseline veya butonuna tıkladığında seçtiğiniz bu ürünler listelenecektir.</p>
+
+                        <div style="max-height: 250px; overflow-y: auto; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 5px; padding: 15px;">
+                            <div class="row">
+                                @foreach (var p in products)
+                                {
+                                    var isChecked = selectedIds.Contains(p.ProductId);
+                                    <div class="col-md-4 col-sm-6 mb-2">
+                                        <div class="checkbox" style="margin: 4px 0;">
+                                            <label style="font-weight: 500;">
+                                                <input type="checkbox" name="selectedProductIds" value="@p.ProductId" @(isChecked ? "checked" : "")>
+                                                @p.ProductName (@p.ProductPrice ₺)
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <br />
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-pencil"></i> Güncelle</button>
+                        <a href="/Admin/OfferDiscount/Index" class="btn btn-secondary">İptal</a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

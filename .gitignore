@@ -1,9 +1,17 @@
-﻿################################################################################
-# Bu .gitignore dosyası Microsoft(R) Visual Studio tarafından otomatik olarak oluşturulmuştur.
-################################################################################
-
+﻿
 *.vsidx
 /.vs/MultiShopProject/DesignTimeBuild/.dtbcache.v2
 /Frontends/MultiShop.WebUI/wwwroot/spica/node_modules
-**/bin/**
-**/obj/**
+
+**/bin/
+**/obj/
+
+.vs/
+*.user
+*.suo
+
+.idea/
+
+
+*.dll
+*.pdb

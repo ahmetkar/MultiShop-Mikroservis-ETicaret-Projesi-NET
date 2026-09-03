@@ -136,44 +136,43 @@ namespace MultiShop.WebUI.Controllers
         }
 
 
-        public async Task<IActionResult> AddBasketItem(string id)
+        public async Task<IActionResult> AddBasketItem(string id, string? selectedFilter = null)
         {
             if (User.Identity.IsAuthenticated)
             {
-                await _basketService.AddBasketItemToDatabase(id);
+                await _basketService.AddBasketItemToDatabase(id, 1, selectedFilter);
             }
             else
             {
-                await _basketService.AddBasketItemToCookies(id);
+                await _basketService.AddBasketItemToCookies(id, 1, selectedFilter);
             }
 
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> RemoveBasketItem(string id)
+        public async Task<IActionResult> RemoveBasketItem(string id, string? selectedFilter = null)
         {
             if (User.Identity.IsAuthenticated)
             {
-                await _basketService.RemoveBasketItemFromDatabase(id);
+                await _basketService.RemoveBasketItemFromDatabase(id, selectedFilter);
             }
             else
             {
-                await _basketService.RemoveBasketItemFromCookies(id);
+                await _basketService.RemoveBasketItemFromCookies(id, selectedFilter);
             }
 
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> DecrementBasketItem(string id)
+        public async Task<IActionResult> DecrementBasketItem(string id, string? selectedFilter = null)
         {
             if (User.Identity.IsAuthenticated)
             {
-
-                await _basketService.DecrementBasketItemFromDatabase(id);
+                await _basketService.DecrementBasketItemFromDatabase(id, selectedFilter);
             }
             else
             {
-                await _basketService.DecrementBasketItemFromCookies(id);
+                await _basketService.DecrementBasketItemFromCookies(id, selectedFilter);
             }
 
             return RedirectToAction("Index");
