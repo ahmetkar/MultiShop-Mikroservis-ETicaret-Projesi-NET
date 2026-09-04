@@ -84,6 +84,9 @@ IdentityService
    • MongoDb
    • Redis
 
+# Resimler
+
+Alttaki resimler eskidir. Yeni resimler yakın zamanda eklenecek.
 
 # Web Sitesi Ana Sayfa Ekran Görüntüleri
 
