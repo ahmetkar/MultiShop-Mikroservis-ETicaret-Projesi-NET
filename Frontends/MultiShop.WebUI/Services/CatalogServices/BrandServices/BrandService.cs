@@ -25,16 +25,23 @@ namespace MultiShop.WebUI.Services.CatalogServices.BrandServices
         public async Task<List<ResultBrandDto>> GetAllBrandAsync()
         {
             var resp = await _httpClient.GetAsync("brands");
-            var values = await resp.Content.ReadFromJsonAsync<List<ResultBrandDto>>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<List<ResultBrandDto>>();
+                return values ?? new List<ResultBrandDto>();
+            }
+            return new List<ResultBrandDto>();
         }
 
         public async Task<UpdateBrandDto> GetByIdBrand(string id)
         {
             var resp = await _httpClient.GetAsync("brands/" + id);
-            var values = await resp.Content.ReadFromJsonAsync<UpdateBrandDto>();
-            return values;
-
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<UpdateBrandDto>();
+                return values!;
+            }
+            return new UpdateBrandDto();
         }
 
         public async Task UpdateBrandAsync(UpdateBrandDto updateBrandDto)

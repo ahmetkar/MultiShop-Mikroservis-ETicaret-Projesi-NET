@@ -107,9 +107,30 @@ namespace MultiShop.Cargo.WebApi.Controllers
             catch (Exception ex) {
                 return Ok(new { success = false, message = ex.Message });
             }
-
-
             
+        }
+
+        [HttpGet("ConfirmDelivery/{id}")]
+        [HttpPost("ConfirmDelivery/{id}")]
+        public IActionResult ConfirmDelivery(int id)
+        {
+            try
+            {
+                var operation = _CargoOperationsService.TGetById(id);
+                if (operation != null)
+                {
+                    operation.IsCompleted = true;
+                    operation.Description = "Kargo teslim edildi.";
+                    operation.OperationDate = DateTime.Now;
+                    _CargoOperationsService.TUpdate(operation);
+                    return Ok(new { success = true, message = "Kargo teslim edildi olarak onaylandı." });
+                }
+                return NotFound("Kargo operasyonu bulunamadı.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, message = ex.Message });
+            }
         }
     }
 }

@@ -17,5 +17,6 @@ namespace MultiShop.Order.Domain.Entities
         CargoFailed = 7,
         Cancelled = 8,
         Completed = 9,
+        CargoApproved = 10
   }
 }

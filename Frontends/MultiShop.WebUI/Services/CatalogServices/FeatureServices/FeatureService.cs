@@ -25,16 +25,23 @@ namespace MultiShop.WebUI.Services.CatalogServices.FeatureServices
         public async Task<List<ResultFeatureDto>> GetAllFeatureAsync()
         {
             var resp = await _httpClient.GetAsync("features");
-            var values = await resp.Content.ReadFromJsonAsync<List<ResultFeatureDto>>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<List<ResultFeatureDto>>();
+                return values ?? new List<ResultFeatureDto>();
+            }
+            return new List<ResultFeatureDto>();
         }
 
         public async Task<UpdateFeatureDto> GetByIdFeature(string id)
         {
             var resp = await _httpClient.GetAsync("features/" + id);
-            var values = await resp.Content.ReadFromJsonAsync<UpdateFeatureDto>();
-            return values;
-
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<UpdateFeatureDto>();
+                return values!;
+            }
+            return new UpdateFeatureDto();
         }
 
         public async Task UpdateFeatureAsync(UpdateFeatureDto updateFeatureDto)

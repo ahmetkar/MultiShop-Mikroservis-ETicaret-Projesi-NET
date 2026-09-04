@@ -1,0 +1,254 @@
+@model UserDetailViewModel
+@{
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+    var userOrders = ViewBag.UserOrders as List<ResultOrderingByUserIdDto> ?? new List<ResultOrderingByUserIdDto>();
+    var addresses = ViewBag.Addresses as List<ResultOrderAddressDto> ?? new List<ResultOrderAddressDto>();
+    var activeTab = ViewBag.ActiveTab as string ?? "orders";
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="/">Ana Sayfa</a>
+                <span class="breadcrumb-item active">Profilim & Siparişlerim</span>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-3 mb-4">
+            <div class="bg-light p-4 text-center rounded border">
+                <img src="~/img/user.png" class="rounded-circle mb-3" style="width:80px;height:80px;">
+                <h5 class="font-weight-bold mb-1">@Model?.Name @Model?.Surname</h5>
+                <p class="text-muted small mb-3">@Model?.Email</p>
+                <hr />
+                <div class="nav flex-column nav-pills text-left" role="tablist">
+                    <a class="nav-link @(activeTab == "orders" ? "active bg-primary text-dark font-weight-bold" : "text-dark")" data-toggle="pill" href="#v-orders">
+                        <i class="fa fa-shopping-bag mr-2"></i> Siparişlerim <span class="badge badge-dark float-right mt-1">@userOrders.Count</span>
+                    </a>
+                    <a class="nav-link @(activeTab == "addresses" ? "active bg-primary text-dark font-weight-bold" : "text-dark")" data-toggle="pill" href="#v-addresses">
+                        <i class="fa fa-map-marker-alt mr-2"></i> Adreslerim <span class="badge badge-dark float-right mt-1">@addresses.Count</span>
+                    </a>
+                    <a class="nav-link @(activeTab == "settings" ? "active bg-primary text-dark font-weight-bold" : "text-dark")" data-toggle="pill" href="#v-settings">
+                        <i class="fa fa-user-cog mr-2"></i> Kullanıcı Ayarları
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show">
+                    <i class="fa fa-check-circle mr-1"></i> @TempData["SuccessMessage"]
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            }
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <i class="fa fa-exclamation-triangle mr-1"></i> @TempData["ErrorMessage"]
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            }
+
+            <div class="tab-content">
+                <div class="tab-pane fade @(activeTab == "orders" ? "show active" : "")" id="v-orders">
+                    @await Html.PartialAsync("_OrdersTabPartial")
+                </div>
+
+                <div class="tab-pane fade @(activeTab == "addresses" ? "show active" : "")" id="v-addresses">
+                    <div class="bg-light p-4 rounded border mb-30">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="font-weight-bold text-dark m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i> Kayıtlı Adreslerim</h4>
+                            <button type="button" class="btn btn-primary font-weight-bold btn-sm px-3" data-toggle="modal" data-target="#newAddressModal">
+                                <i class="fa fa-plus mr-1"></i> Yeni Adres Ekle
+                            </button>
+                        </div>
+
+                        @if (addresses.Count == 0)
+                        {
+                            <div class="text-center py-5 bg-white rounded border">
+                                <i class="fa fa-map-marker-alt fa-3x text-muted mb-3"></i>
+                                <h5 class="text-dark font-weight-bold">Kayıtlı adresiniz bulunmamaktadır.</h5>
+                                <button type="button" class="btn btn-primary font-weight-bold px-4 py-2 mt-2" data-toggle="modal" data-target="#newAddressModal">
+                                    <i class="fa fa-plus mr-1"></i> İlk Adresimi Ekle
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row">
+                                @foreach (var addr in addresses)
+                                {
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card border p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <span class="badge @(addr.IsBillingOrShipping ? "badge-info" : "badge-primary") px-2 py-1">
+                                                        @(addr.IsBillingOrShipping ? "Fatura" : "Teslimat")
+                                                    </span>
+                                                    <span class="font-weight-bold text-dark">@addr.City / @addr.District</span>
+                                                </div>
+                                                <h6 class="font-weight-bold text-dark mb-1">@addr.Name @addr.Surname</h6>
+                                                <p class="mb-1 text-muted small"><i class="fa fa-phone mr-1"></i> @addr.Phone</p>
+                                                <p class="mb-2 text-muted small"><i class="fa fa-map-pin mr-1"></i> @addr.Detail1 @addr.Detail2</p>
+                                            </div>
+                                            <div class="border-top pt-2 mt-2 d-flex justify-content-end">
+                                                <button type="button" class="btn btn-outline-primary btn-sm mr-2 px-2 py-1" data-toggle="modal" data-target="#editAddressModal-@addr.AdressId">
+                                                    <i class="fa fa-edit mr-1"></i> Düzenle
+                                                </button>
+                                                <a href="/UserProfile/DeleteAddress/@addr.AdressId" class="btn btn-outline-danger btn-sm px-2 py-1" onclick="return confirm('Bu adresi silmek istediğinizden emin misiniz?');">
+                                                    <i class="fa fa-trash mr-1"></i> Sil
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="tab-pane fade @(activeTab == "settings" ? "show active" : "")" id="v-settings">
+                    @await Html.PartialAsync("_SettingsTabPartial", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Address Modal -->
+<div class="modal fade" id="newAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form method="post" action="/UserProfile/CreateAddress">
+                <div class="modal-header bg-primary text-dark font-weight-bold">
+                    <h5 class="modal-title font-weight-bold"><i class="fa fa-plus-circle mr-2"></i> Yeni Adres Ekle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Ad <span class="text-danger">*</span></label>
+                            <input type="text" name="Name" class="form-control" value="@Model?.Name" required />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Soyad <span class="text-danger">*</span></label>
+                            <input type="text" name="Surname" class="form-control" value="@Model?.Surname" required />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">E-Posta <span class="text-danger">*</span></label>
+                            <input type="email" name="Email" class="form-control" value="@Model?.Email" required />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Telefon <span class="text-danger">*</span></label>
+                            <input type="text" name="Phone" class="form-control" placeholder="05XX XXX XX XX" required />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Şehir <span class="text-danger">*</span></label>
+                            <input type="text" name="City" class="form-control" placeholder="Örn: İstanbul" required />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">İlçe <span class="text-danger">*</span></label>
+                            <input type="text" name="District" class="form-control" placeholder="Örn: Kadıköy" required />
+                        </div>
+                        <div class="col-12 form-group">
+                            <label class="font-weight-bold">Adres Detayı <span class="text-danger">*</span></label>
+                            <textarea name="Detail1" class="form-control" rows="2" placeholder="Mahalle, Cadde, Sokak, Bina No, Daire No" required></textarea>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Posta Kodu</label>
+                            <input type="text" name="ZipCode" class="form-control" placeholder="34000" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Adres Türü</label>
+                            <select name="IsBillingOrShipping" class="form-control">
+                                <option value="false" selected>Teslimat Adresi</option>
+                                <option value="true">Fatura Adresi</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary font-weight-bold">Adresi Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@foreach (var addr in addresses)
+{
+    <!-- Edit Address Modal for @addr.AdressId -->
+    <div class="modal fade" id="editAddressModal-@addr.AdressId" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <form method="post" action="/UserProfile/UpdateAddress">
+                    <input type="hidden" name="AdressId" value="@addr.AdressId" />
+                    <div class="modal-header bg-primary text-dark font-weight-bold">
+                        <h5 class="modal-title font-weight-bold"><i class="fa fa-edit mr-2"></i> Adresi Düzenle</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">Ad <span class="text-danger">*</span></label>
+                                <input type="text" name="Name" class="form-control" value="@addr.Name" required />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">Soyad <span class="text-danger">*</span></label>
+                                <input type="text" name="Surname" class="form-control" value="@addr.Surname" required />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">E-Posta <span class="text-danger">*</span></label>
+                                <input type="email" name="Email" class="form-control" value="@addr.Email" required />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">Telefon <span class="text-danger">*</span></label>
+                                <input type="text" name="Phone" class="form-control" value="@addr.Phone" required />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">Şehir <span class="text-danger">*</span></label>
+                                <input type="text" name="City" class="form-control" value="@addr.City" required />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">İlçe <span class="text-danger">*</span></label>
+                                <input type="text" name="District" class="form-control" value="@addr.District" required />
+                            </div>
+                            <div class="col-12 form-group">
+                                <label class="font-weight-bold">Adres Detayı <span class="text-danger">*</span></label>
+                                <textarea name="Detail1" class="form-control" rows="2" required>@addr.Detail1</textarea>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">Posta Kodu</label>
+                                <input type="text" name="ZipCode" class="form-control" value="@addr.ZipCode" />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="font-weight-bold">Adres Türü</label>
+                                <select name="IsBillingOrShipping" class="form-control">
+                                    <option value="false" selected="@(!addr.IsBillingOrShipping)">Teslimat Adresi</option>
+                                    <option value="true" selected="@(addr.IsBillingOrShipping)">Fatura Adresi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                        <button type="submit" class="btn btn-primary font-weight-bold">Değişiklikleri Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

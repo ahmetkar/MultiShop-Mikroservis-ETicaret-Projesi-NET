@@ -22,6 +22,9 @@ namespace MultiShop.Cargo.EntityLayer.Concretes
 
         public CargoOperation CargoOperation { get; set; }
 
-
+        public string Status { get; set; } = "Kargoya Verildi";
+        public bool IsDelivered { get; set; } = false;
+        public DateTime? DeliveryDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

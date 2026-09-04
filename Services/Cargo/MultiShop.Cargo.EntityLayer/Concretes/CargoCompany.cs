@@ -10,8 +10,10 @@ namespace MultiShop.Cargo.EntityLayer.Concretes
     {
         public int CargoCompanyId { get; set; }
         public string CargoCompanyName { get; set; }
+        public decimal CargoPrice { get; set; } = 35;
 
         public List<CargoDetail> CargoDetails { get; set; }
        
     }
 }
+

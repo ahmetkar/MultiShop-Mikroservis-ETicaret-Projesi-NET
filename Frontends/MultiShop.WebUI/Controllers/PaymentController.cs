@@ -40,33 +40,34 @@ namespace MultiShop.WebUI.Controllers
             ViewBag.directory2 = "Sipariş İşlemleri";
             ViewBag.directory3 = "Ödeme İşlemi";
 
-
             CreatePaymentViewModel paymentViewModel = new CreatePaymentViewModel();
 
             try
             {
-
                 var decrypted = _protector.Unprotect(ActiveOrderingId);
                 int activeOrderingId = int.Parse(decrypted);
 
                 if (activeOrderingId != 0)
                 {
                     UserDetailViewModel userinfo = await _userService.GetUserInfo();
-                    var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(userinfo.Id);
-                    if (activeOrdering != null)
+                    var ordering = await _orderOderingService.GetOrderingById(activeOrderingId);
+                    if (ordering != null && (ordering.UserId == userinfo.Id || string.IsNullOrEmpty(ordering.UserId)))
                     {
-                        if (activeOrdering.OrderingId == activeOrderingId)
+                        paymentViewModel.OrderingId = ordering.OrderingId;
+                        paymentViewModel.PaymentTotal = Convert.ToInt32(ordering.TotalPrice);
+                        paymentViewModel.UserName = userinfo.Name + " " + userinfo.Surname;
+                    }
+                    else
+                    {
+                        var activeOrdering = await _orderOderingService.GetActiveOrderingByUserId(userinfo.Id);
+                        if (activeOrdering != null && activeOrdering.OrderingId == activeOrderingId)
                         {
                             paymentViewModel.OrderingId = activeOrdering.OrderingId;
                             paymentViewModel.PaymentTotal = Convert.ToInt32(activeOrdering.TotalPrice);
                             paymentViewModel.UserName = userinfo.Name + " " + userinfo.Surname;
-                            
-
                         }
                     }
                 }
-
-                
             }
             catch(Exception er)
             {
@@ -74,18 +75,28 @@ namespace MultiShop.WebUI.Controllers
                 return RedirectToAction("Index", "Default");
             }
 
-  
-
             return View(paymentViewModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> SendPayment(CreatePaymentViewModel createPaymentViewModel)
         {
-
-            string[] ownernamesurname = createPaymentViewModel.OwnerNameAndSurname.Split(' ');
-            string ownername = ownernamesurname[0];
-            string ownersurname = ownernamesurname[1];
+            string ownername = "";
+            string ownersurname = "";
+            if (!string.IsNullOrWhiteSpace(createPaymentViewModel.OwnerNameAndSurname))
+            {
+                var parts = createPaymentViewModel.OwnerNameAndSurname.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length == 1)
+                {
+                    ownername = parts[0];
+                    ownersurname = parts[0];
+                }
+                else if (parts.Length > 1)
+                {
+                    ownername = string.Join(" ", parts.Take(parts.Length - 1));
+                    ownersurname = parts[^1];
+                }
+            }
 
             var orderinginfo = await _orderOderingService.GetOrderingById(createPaymentViewModel.OrderingId);
 
@@ -110,10 +121,7 @@ namespace MultiShop.WebUI.Controllers
 
             bool added = await _paymentService.AddPayment(createPayment);
 
-            
-
             return RedirectToAction("PaymentResult", "Payment", new { PaymentResult = added });
-
         }
 
         [HttpPost]

@@ -17,5 +17,6 @@ namespace MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos
         CargoFailed = 7,
         Cancelled = 8,
         Completed = 9,
-  }
+        CargoApproved = 10
+    }
 }

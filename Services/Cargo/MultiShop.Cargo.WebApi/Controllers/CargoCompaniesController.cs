@@ -28,7 +28,8 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             CargoCompany cargoCompany = new CargoCompany
             {
-                CargoCompanyName = createCargoCompanyDto.CargoCompanyName
+                CargoCompanyName = createCargoCompanyDto.CargoCompanyName,
+                CargoPrice = createCargoCompanyDto.CargoPrice
             };
             _cargoCompanyService.TInsert(cargoCompany);
             return Ok("Kargo şirketi başarıyla oluşturuldu");
@@ -55,7 +56,8 @@ namespace MultiShop.Cargo.WebApi.Controllers
             CargoCompany cargoCompany = new CargoCompany
             {
                 CargoCompanyId = updateCargoCompanyDto.CargoCompanyId,
-                CargoCompanyName = updateCargoCompanyDto.CargoCompanyName
+                CargoCompanyName = updateCargoCompanyDto.CargoCompanyName,
+                CargoPrice = updateCargoCompanyDto.CargoPrice
             };
             _cargoCompanyService.TUpdate(cargoCompany);
             return Ok("Kargo şirketi başarıyla güncellendi");

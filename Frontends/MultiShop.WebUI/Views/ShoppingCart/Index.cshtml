@@ -1,81 +1,74 @@
 ﻿@model int
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sepetim";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
+    double totalPriceWithoutKDV = ViewBag.TotalPriceWithoutKDV != null ? (double)ViewBag.TotalPriceWithoutKDV : 0.0;
+    double kdv = ViewBag.KDV != null ? (double)ViewBag.KDV : 0.0;
+    double totalPrice = ViewBag.TotalPrice != null ? (double)ViewBag.TotalPrice : 0.0;
+    double totalPriceWithoutDiscount = ViewBag.TotalPriceWithoutDiscount != null ? (double)ViewBag.TotalPriceWithoutDiscount : totalPrice;
+    int? discountRate = ViewBag.DiscountRate;
+    string? discountCode = ViewBag.DiscountCode;
+    bool hasDiscount = discountRate.HasValue && discountRate.Value > 0;
 }
-
 
 <!-- Cart Start -->
 <div class="container-fluid">
     <div class="row px-xl-5">
         @await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
 
-
-
-
-        @*@await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial") *@ 
-        
         <div class="col-lg-4">
-        @await Html.PartialAsync("~/Views/Discount/ConfirmDiscountCoupon.cshtml")
+            @await Html.PartialAsync("~/Views/Discount/ConfirmDiscountCoupon.cshtml")
 
-
-        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Sipariş Özeti</span></h5>
-        <div class="bg-light p-30 mb-5">
-                @if(Model > 0)
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Sipariş Özeti</span></h5>
+            <div class="bg-light p-30 mb-5 rounded shadow-sm">
+                @if (Model > 0)
                 {
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
-                            <h6>Toplam Ürün Fiyatı</h6>
-                            <h6>@ViewBag.TotalPriceWithoutKDV ₺</h6>
+                            <h6 class="font-weight-medium">Ara Toplam (KDV Hariç)</h6>
+                            <h6>₺@totalPriceWithoutKDV.ToString("N2")</h6>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">KDV</h6>
-                            <h6 class="font-weight-medium">@ViewBag.KDV ₺</h6>
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6 class="font-weight-medium">KDV Tutarı (%20)</h6>
+                            <h6>₺@kdv.ToString("N2")</h6>
                         </div>
-                        @if (ViewBag.DiscountRate != null)
+                        @if (hasDiscount)
                         {
-                            <div class="d-flex justify-content-between">
-                                <h6 class="font-weight-medium">İndirim Oranı</h6>
-                                <h6 class="font-weight-medium">% @ViewBag.DiscountRate</h6>
-                            </div>
-
-                            <div class="d-flex justify-content-between">
-                                <h6 class="font-weight-medium">İndirim Kodu</h6>
-                                <h6 class="font-weight-medium">@ViewBag.DiscountCode</h6>
+                            <div class="d-flex justify-content-between mb-2 text-success font-weight-bold">
+                                <h6><i class="fa fa-tag mr-1"></i> Kupon İndirimi (@discountCode)</h6>
+                                <h6>-%@discountRate</h6>
                             </div>
                         }
                     </div>
                     <div class="pt-2">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5>Toplam</h5>
-
-                            @if (ViewBag != null)
-                            {
-                               
-                                @if(ViewBag.DiscountRate != null)
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <h5>Toplam Tutar</h5>
+                            <div class="text-right">
+                                @if (hasDiscount && totalPriceWithoutDiscount > totalPrice)
                                 {
-                                    <h5 style="text-decoration:line-through;">@ViewBag.TotalPriceWithoutDiscount ₺</h5>
+                                    <span class="text-muted mr-2" style="text-decoration: line-through; font-size: 15px;">
+                                        ₺@totalPriceWithoutDiscount.ToString("N2")
+                                    </span>
                                 }
-                                <h5>@ViewBag.TotalPrice ₺</h5>
-                            }
-                            else
-                            {
-                                <h5>@ViewBag.TotalPrice ₺</h5>
-                            }
+                                <h4 class="text-primary font-weight-bold d-inline mb-0">
+                                    ₺@totalPrice.ToString("N2")
+                                </h4>
+                            </div>
                         </div>
-                       
-                        <a href="/Order" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Sipariş Ver</a>
-                        
-                      
-                    </div>
-                }else
-                {
-                    <p>Sonraki aşamaya geçmek için ürün ekleyin.</p>
-                }
 
+                        <a href="/Order" class="btn btn-block btn-primary font-weight-bold my-3 py-3 shadow-sm">
+                            <i class="fa fa-credit-card mr-1"></i> Sipariş Ver
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-3 text-muted">
+                        <p class="m-0">Sipariş özetini görmek için sepetinize ürün ekleyiniz.</p>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
-        <!---->
     </div>
 </div>
 <!-- Cart End -->

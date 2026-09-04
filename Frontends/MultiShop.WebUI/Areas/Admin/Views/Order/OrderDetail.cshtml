@@ -1,0 +1,111 @@
+@model List<ResultOrderDetailDto>
+@{
+    ViewData["Title"] = "Sipariş Detayı";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var ordering = ViewBag.Ordering as GetOrderingByIdResultDto;
+    int count = 0;
+    decimal productsTotal = Model != null ? Model.Sum(x => x.ProductTotalPrice) : 0;
+    decimal kdvTotal = productsTotal * 0.20m;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3><i class="fa fa-receipt text-primary"></i> Sipariş #@(ordering?.OrderingId ?? 0) Detayı</h3>
+                        <p class="text-muted mb-0">Tarih: @(ordering != null ? ordering.OrderDate.ToString("dd.MM.yyyy HH:mm") : "-")</p>
+                    </div>
+                    <div>
+                        <a href="/Admin/Order/Index" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Sipariş Listesine Dön</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="chart-box">
+                <h4><i class="fa fa-shopping-cart text-primary"></i> Sipariş Edilen Ürünler</h4>
+                <div class="bs-example table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Ürün Adı</th>
+                                <th>Seçili Özellikler / Filtreler</th>
+                                <th>Adet</th>
+                                <th>Birim Fiyat</th>
+                                <th>Toplam Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td><strong>@item.ProductName</strong></td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(item.ProductFilters))
+                                            {
+                                                <span class="badge badge-info" style="font-size: 12px; background-color:#17a2b8; color:#fff; padding: 4px 8px;">@item.ProductFilters</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">Standart</span>
+                                            }
+                                        </td>
+                                        <td><span class="badge badge-secondary" style="font-size: 13px;">@item.ProductAmount</span></td>
+                                        <td>₺@item.ProductPrice.ToString("N2")</td>
+                                        <td><strong class="text-dark">₺@item.ProductTotalPrice.ToString("N2")</strong></td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">Bu siparişe ait ürün detayı bulunamadı.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="chart-box">
+                <h4><i class="fa fa-calculator text-primary"></i> Ödeme & Tutar Özeti</h4>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 15px;">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Ürünler Toplamı:</span>
+                        <span class="font-weight-bold">₺@productsTotal.ToString("N2")</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">KDV (%20 Dahil):</span>
+                        <span class="font-weight-bold">₺@kdvTotal.ToString("N2")</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Kargo Ücreti:</span>
+                        <span class="font-weight-bold">₺@((ordering != null && ordering.TotalPrice > productsTotal) ? (ordering.TotalPrice - productsTotal).ToString("N2") : "35.00")</span>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between mb-0">
+                        <span style="font-size: 16px; font-weight: bold;">Genel Toplam:</span>
+                        <span style="font-size: 18px; font-weight: bold; color: #28a745;">₺@(ordering?.TotalPrice.ToString("N2") ?? "0.00")</span>
+                    </div>
+                </div>
+
+                <hr style="margin: 20px 0;" />
+                <h4><i class="fa fa-user text-primary"></i> Müşteri & Sipariş Bilgisi</h4>
+                <p><strong>Kullanıcı ID:</strong> <code>@(ordering?.UserId ?? "-")</code></p>
+                <p><strong>Sipariş Durumu:</strong> <span class="badge badge-primary p-2">@(ordering?.Status.ToString() ?? "-")</span></p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -4,10 +4,10 @@ using MultiShop.DtoLayer.OrderDtos.OrderAddressDtos;
 using MultiShop.DtoLayer.OrderDtos.OrderDetailDtos;
 using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos;
 using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using Newtonsoft.Json;
-
 
 namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
 {
@@ -16,23 +16,41 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
         private readonly HttpClient _httpClient;
         private readonly IUserService _userService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
         private readonly IBasketService _basketService;
+        private readonly ICargoCompanyService _cargoCompanyService;
 
-        public OrderOderingService(HttpClient httpClient,
-            IUserService userService,IBasketService basketService, IHttpContextAccessor httpContextAccessor)
+        public OrderOderingService(
+            HttpClient httpClient,
+            IUserService userService,
+            IBasketService basketService,
+            ICargoCompanyService cargoCompanyService,
+            IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
             _userService = userService;
             _basketService = basketService;
+            _cargoCompanyService = cargoCompanyService;
             _httpContextAccessor = httpContextAccessor;
         }
+
+        public async Task<List<ResultOrderingByUserIdDto>> GetAllOrderingsAsync()
+        {
+            var responseMessage = await _httpClient.GetAsync("orderings/OrderingList");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultOrderingByUserIdDto>>(jsonData);
+                return values ?? new List<ResultOrderingByUserIdDto>();
+            }
+            return new List<ResultOrderingByUserIdDto>();
+        }
+
         public async Task<List<ResultOrderingByUserIdDto>> GetOrderingByUserId(string id)
         {
             var responseMessage = await _httpClient.GetAsync($"orderings/GetOrderingsByUserId/{id}");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultOrderingByUserIdDto>>(jsonData);
-            return values;
+            return values ?? new List<ResultOrderingByUserIdDto>();
         }
 
         public async Task<GetOrderingByIdResultDto> GetOrderingById(int id)
@@ -60,6 +78,12 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
                 return true;
             }
             return false;
+        }
+
+        public async Task<bool> UpdateOrderStatusAsync(int orderingId, OrderStatus status)
+        {
+            var response = await _httpClient.PostAsync($"orderings/SetOrderStatus/{orderingId}/{(int)status}", null);
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> SetOrderingStatus(int orderingId,bool newStatus)
@@ -90,7 +114,12 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderOderingServices
 
             var basket = await _basketService.GetBasketFromDatabase();
 
-            decimal cargoPrice = 15; // kargo fiyatını al
+            decimal cargoPrice = 35;
+            var companies = await _cargoCompanyService.GetAllCargoCompanyAsync();
+            if (companies != null && companies.Count > 0)
+            {
+                cargoPrice = companies.First().CargoPrice;
+            }
             decimal totalPrice = (decimal)basket.TotalPrice + cargoPrice;
            
             //CREATE ORDERING 

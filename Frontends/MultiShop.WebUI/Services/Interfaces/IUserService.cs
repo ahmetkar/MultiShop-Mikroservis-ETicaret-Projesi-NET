@@ -6,5 +6,8 @@ namespace MultiShop.WebUI.Services.Interfaces
     {
         Task<UserDetailViewModel> GetUserInfo();
         Task<string> GetUserId();
+        Task<bool> UpdateUserInfo(UserDetailViewModel userDetailViewModel);
+        Task<(bool Success, string Message)> ChangePassword(string currentPassword, string newPassword);
     }
 }
+

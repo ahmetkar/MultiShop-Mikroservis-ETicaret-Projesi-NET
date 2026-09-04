@@ -1,0 +1,113 @@
+@model List<ResultOrderingByUserIdDto>
+@{
+    ViewData["Title"] = "Kasa Bilgileri";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+    decimal totalGross = ViewBag.TotalGrossRevenue ?? 0m;
+    decimal totalKDV = ViewBag.TotalKDV ?? 0m;
+    decimal totalCargo = ViewBag.TotalCargoExpense ?? 0m;
+    decimal netIncome = ViewBag.NetIncome ?? 0m;
+    decimal defaultCargoFee = ViewBag.DefaultCargoFee ?? 35m;
+    var allDetails = ViewBag.AllDetails as List<ResultOrderDetailDto> ?? new List<ResultOrderDetailDto>();
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-blue">
+                <div class="media-icon pull-left"><i class="fa fa-turkish-lira-sign"></i></div>
+                <div class="media-info">
+                    <h5>Toplam Brüt Ciro</h5>
+                    <h3>₺@totalGross.ToString("N2")</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-sea">
+                <div class="media-icon pull-left"><i class="fa fa-percent"></i></div>
+                <div class="media-info">
+                    <h5>Toplam KDV (%20)</h5>
+                    <h3>₺@totalKDV.ToString("N2")</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box" style="background-color:#f39c12; color:#fff;">
+                <div class="media-icon pull-left"><i class="fa fa-truck"></i></div>
+                <div class="media-info">
+                    <h5>Toplam Kargo Kesintisi</h5>
+                    <h3>₺@totalCargo.ToString("N2")</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-green">
+                <div class="media-icon pull-left"><i class="fa fa-wallet"></i></div>
+                <div class="media-info">
+                    <h5>Net Kazanç</h5>
+                    <h3>₺@netIncome.ToString("N2")</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4><i class="fa fa-list text-primary"></i> Tamamlanan Siparişler & Kasa Detayları</h4>
+                <div class="bs-example table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Sipariş No</th>
+                                <th>Tarih</th>
+                                <th>Ürün Adedi</th>
+                                <th>Brüt Tutar</th>
+                                <th>Hesaplanan KDV (%20)</th>
+                                <th>Kargo Kesintisi</th>
+                                <th>Net Kazanç</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    var orderItemCount = allDetails.Where(d => d.OrderingId == item.OrderingId).Sum(d => d.ProductAmount);
+                                    if (orderItemCount == 0) { orderItemCount = 1; }
+                                    decimal orderKDV = item.TotalPrice * 0.20m;
+                                    decimal orderCargo = defaultCargoFee;
+                                    decimal orderNet = item.TotalPrice - orderKDV - orderCargo;
+                                    if (orderNet < 0) { orderNet = item.TotalPrice - orderKDV; }
+
+                                    <tr>
+                                        <th>@count</th>
+                                        <td><strong>#@item.OrderingId</strong></td>
+                                        <td>@item.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td><span class="badge badge-secondary">@orderItemCount Adet</span></td>
+                                        <td><strong class="text-dark">₺@item.TotalPrice.ToString("N2")</strong></td>
+                                        <td><span class="text-info font-weight-bold">₺@orderKDV.ToString("N2")</span></td>
+                                        <td><span class="text-warning font-weight-bold">₺@orderCargo.ToString("N2")</span></td>
+                                        <td><strong class="text-success">₺@orderNet.ToString("N2")</strong></td>
+                                        <td>
+                                            <span class="badge badge-success"><i class="fa fa-check-double mr-1"></i> Teslim Edildi (Completed)</span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="9" class="text-center text-muted p-4">Henüz kasa kaydı bulunmamaktadır.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

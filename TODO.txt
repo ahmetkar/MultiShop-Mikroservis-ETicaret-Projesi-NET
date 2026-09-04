@@ -1,11 +1,8 @@
 
-1-Profilde ve admin panelinde verilen sipari�ler ekran�
-1-Profilde kargo g�r�nt�leme,ADM�N panelinde kargo g�r�nt�leme ve onaylama
+1-kargo hemen verildi olmasın hazırlanıyordan verildiye geçiş admin panelinden düzenlensin.
+2-admin ve profil tasarımları düzenlensin ,bozuk kısımlar düzeltilsin
 
 2-iyizco herhangi birinin entegrasyonu ile client taraf�ndan �deme yap�ld�ktan sonra payment eklenmesini sa�la
-2-Kargo fiyatı Cargo mikroservisinden �ekilmeli
-2-Kargo şirketi seçimi,veritabanına eklenmesi ve consumerda eklenirken veritabanından bunun çekimi
-
 2-Redis caching
 
 3-Global error handler,exception hanler entegre edilecek.

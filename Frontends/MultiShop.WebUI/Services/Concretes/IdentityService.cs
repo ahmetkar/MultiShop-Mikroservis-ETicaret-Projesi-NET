@@ -34,89 +34,93 @@ namespace MultiShop.WebUI.Services.Concretes
 
         public async Task<string?> GetRefreshToken()
         {
-            var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+            try
             {
-                Address = _serviceApiSettings.IdentityServerUrl,
-                Policy = new DiscoveryPolicy
+                var httpContext = _httpContextAccessor.HttpContext;
+                if (httpContext == null)
                 {
-                    RequireHttps = false
+                    _logger.LogWarning("GetRefreshToken: HttpContext bulunamadı.");
+                    return null;
                 }
-            });
 
-            if (discoveryEndpoint.IsError)
-            {
-                throw new Exception($"Discovery error: {discoveryEndpoint.Error}");
+                var discoveryEndpoint = await GetDiscoveryDocumentOrThrowAsync();
+
+                var refreshToken = await httpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
+
+                if (string.IsNullOrWhiteSpace(refreshToken))
+                {
+                    _logger.LogWarning("GetRefreshToken: Refresh token bulunamadı.");
+                    return null;
+                }
+
+                // Determine client credentials dynamically based on user role (Admin, Manager, User)
+                var clientCreds = GetClientCredentialsForUser(httpContext.User);
+
+                var refreshTokenRequest = new RefreshTokenRequest
+                {
+                    ClientId = clientCreds.ClientId,
+                    ClientSecret = clientCreds.ClientSecret,
+                    RefreshToken = refreshToken,
+                    Address = discoveryEndpoint.TokenEndpoint
+                };
+
+                var token = await _httpClient.RequestRefreshTokenAsync(refreshTokenRequest);
+
+                if (token.IsError)
+                {
+                    _logger.LogWarning("Refresh token yenileme hatası: {Error} - {Description}", token.Error, token.ErrorDescription);
+                    return null;
+                }
+
+                if (string.IsNullOrWhiteSpace(token.AccessToken))
+                {
+                    _logger.LogWarning("Refresh sonrası access token boş geldi.");
+                    return null;
+                }
+
+                var newRefreshToken = !string.IsNullOrWhiteSpace(token.RefreshToken)
+                    ? token.RefreshToken
+                    : refreshToken;
+
+                var authToken = new List<AuthenticationToken>
+                {
+                    new AuthenticationToken
+                    {
+                        Name = OpenIdConnectParameterNames.AccessToken,
+                        Value = token.AccessToken
+                    },
+                    new AuthenticationToken
+                    {
+                        Name = OpenIdConnectParameterNames.RefreshToken,
+                        Value = newRefreshToken
+                    },
+                    new AuthenticationToken
+                    {
+                        Name = OpenIdConnectParameterNames.ExpiresIn,
+                        Value = DateTime.UtcNow.AddSeconds(token.ExpiresIn).ToString("O")
+                    }
+                };
+
+                var result = await httpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                if (result.Succeeded && result.Principal != null && result.Properties != null)
+                {
+                    result.Properties.StoreTokens(authToken);
+
+                    await httpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        result.Principal,
+                        result.Properties
+                    );
+                }
+
+                return token.AccessToken;
             }
-
-            var refreshToken = await _httpContextAccessor.HttpContext!
-                .GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
-
-            if (string.IsNullOrWhiteSpace(refreshToken))
+            catch (Exception ex)
             {
-                throw new Exception("Refresh token bulunamadı.");
+                _logger.LogError(ex, "GetRefreshToken işlemi sırasında hata oluştu.");
+                return null;
             }
-
-            var refreshTokenRequest = new RefreshTokenRequest
-            {
-                ClientId = _clientSettings.MultiShopManagerId.ClientId,
-                ClientSecret = _clientSettings.MultiShopManagerId.ClientSecret,
-                RefreshToken = refreshToken,
-                Address = discoveryEndpoint.TokenEndpoint
-            };
-
-            var token = await _httpClient.RequestRefreshTokenAsync(refreshTokenRequest);
-
-            if (token.IsError)
-            {
-                throw new Exception($"Refresh token error: {token.Error} - {token.ErrorDescription}");
-            }
-
-            if (string.IsNullOrWhiteSpace(token.AccessToken))
-            {
-                throw new Exception("Refresh sonrası access token boş geldi.");
-            }
-
-            var newRefreshToken = !string.IsNullOrWhiteSpace(token.RefreshToken)
-                ? token.RefreshToken
-                : refreshToken;
-
-            var authToken = new List<AuthenticationToken>
-    {
-        new AuthenticationToken
-        {
-            Name = OpenIdConnectParameterNames.AccessToken,
-            Value = token.AccessToken
-        },
-        new AuthenticationToken
-        {
-            Name = OpenIdConnectParameterNames.RefreshToken,
-            Value = newRefreshToken
-        },
-        new AuthenticationToken
-        {
-            Name = OpenIdConnectParameterNames.ExpiresIn,
-            Value = DateTime.Now.AddSeconds(token.ExpiresIn).ToString("O")
-        }
-    };
-
-            var result = await _httpContextAccessor.HttpContext.AuthenticateAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme
-            );
-
-            if (!result.Succeeded || result.Principal == null || result.Properties == null)
-            {
-                throw new Exception("Mevcut authentication bilgisi okunamadı.");
-            }
-
-            result.Properties.StoreTokens(authToken);
-
-            await _httpContextAccessor.HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                result.Principal,
-                result.Properties
-            );
-
-            return token.AccessToken;
         }
 
         public async Task<bool> SignIn(SignInDto signInDto)
@@ -125,17 +129,14 @@ namespace MultiShop.WebUI.Services.Concretes
             {
                 if (signInDto == null)
                 {
-                    throw new ArgumentNullException(nameof(signInDto), "Giriş bilgileri boş olamaz.");
+                    _logger.LogWarning("SignIn: Giriş bilgileri boş.");
+                    return false;
                 }
 
-                if (string.IsNullOrWhiteSpace(signInDto.Username))
+                if (string.IsNullOrWhiteSpace(signInDto.Username) || string.IsNullOrWhiteSpace(signInDto.Password))
                 {
-                    throw new ArgumentException("Kullanıcı adı boş olamaz.");
-                }
-
-                if (string.IsNullOrWhiteSpace(signInDto.Password))
-                {
-                    throw new ArgumentException("Şifre boş olamaz.");
+                    _logger.LogWarning("SignIn: Kullanıcı adı veya şifre boş.");
+                    return false;
                 }
 
                 var httpContext = _httpContextAccessor.HttpContext;
@@ -152,38 +153,35 @@ namespace MultiShop.WebUI.Services.Concretes
                     throw new InvalidOperationException("UserInfoEndpoint bulunamadı.");
                 }
 
+                // Password grant client: use Manager/Admin client (or configured client) for full scope acquisition across all user roles
+                var clientCreds = _clientSettings.MultiShopManagerId ?? _clientSettings.MultiShopAdminId ?? _clientSettings.MultiShopUserId;
+                if (clientCreds == null || string.IsNullOrWhiteSpace(clientCreds.ClientId))
+                {
+                    throw new InvalidOperationException("ResourceOwnerPassword Client ayarı bulunamadı.");
+                }
+
                 var passwordTokenRequest = new PasswordTokenRequest
                 {
-                    ClientId = GetClientId(),
-                    ClientSecret = GetClientSecret(),
+                    ClientId = clientCreds.ClientId,
+                    ClientSecret = clientCreds.ClientSecret,
                     UserName = signInDto.Username,
                     Password = signInDto.Password,
                     Address = discoveryEndpoint.TokenEndpoint,
-
-                    // Refresh token alabilmek için offline_access gerekir.
-                    // IdentityServer tarafında client AllowOfflineAccess = true olmalı.
-                    Scope = "openid profile email offline_access IdentityServerApi BasketFullPermission OcelotFullPermission CatalogFullPermission DiscountFullPermission OrderFullPermission PaymentReadPermission PaymentCreatePermission PaymentDeletePermission"
+                    Scope = "openid profile email roles offline_access IdentityServerApi BasketFullPermission OcelotFullPermission CatalogFullPermission DiscountFullPermission OrderFullPermission CargoFullPermission PaymentFullPermission PaymentCreatePermission PaymentReadPermission PaymentUpdatePermission PaymentDeletePermission ImagesFullPermission MessageFullPermission CommentFullPermission"
                 };
 
                 var token = await _httpClient.RequestPasswordTokenAsync(passwordTokenRequest);
 
                 if (token.IsError)
                 {
-                    throw new InvalidOperationException(
-                        $"Token error: {token.Error} - {token.ErrorDescription}"
-                    );
+                    _logger.LogWarning("SignIn başarısız: {Error} - {Description}", token.Error, token.ErrorDescription);
+                    return false;
                 }
 
                 if (string.IsNullOrWhiteSpace(token.AccessToken))
                 {
-                    throw new InvalidOperationException("Access token boş geldi.");
-                }
-
-                if (string.IsNullOrWhiteSpace(token.RefreshToken))
-                {
-                    _logger.LogWarning(
-                        "Refresh token boş geldi. offline_access scope veya IdentityServer client ayarları eksik olabilir."
-                    );
+                    _logger.LogWarning("SignIn: Access token boş geldi.");
+                    return false;
                 }
 
                 var userInfo = new UserInfoRequest
@@ -194,25 +192,44 @@ namespace MultiShop.WebUI.Services.Concretes
 
                 var userValues = await _httpClient.GetUserInfoAsync(userInfo);
 
-                if (userValues.IsError)
+                var claims = userValues?.Claims?.ToList() ?? new List<Claim>();
+
+                // Parse and map role claims from AccessToken JWT as well
+                var jwtHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+                if (jwtHandler.CanReadToken(token.AccessToken))
                 {
-                    throw new InvalidOperationException(
-                        $"UserInfo error: {userValues.Error}"
-                    );
+                    var jwtToken = jwtHandler.ReadJwtToken(token.AccessToken);
+                    foreach (var c in jwtToken.Claims)
+                    {
+                        if (c.Type == "role" || c.Type == ClaimTypes.Role || c.Type == "roles")
+                        {
+                            if (!claims.Any(x => (x.Type == "role" || x.Type == ClaimTypes.Role) && x.Value == c.Value))
+                            {
+                                claims.Add(new Claim(ClaimTypes.Role, c.Value));
+                            }
+                        }
+                    }
                 }
 
-                var claims = userValues.Claims?.ToList();
-
-                if (claims == null || claims.Count == 0)
+                // If sub / NameIdentifier is not present, extract from token
+                if (!claims.Any(x => x.Type == ClaimTypes.NameIdentifier || x.Type == "sub"))
                 {
-                    throw new InvalidOperationException("UserInfo endpointinden claim bilgisi gelmedi.");
+                    if (jwtHandler.CanReadToken(token.AccessToken))
+                    {
+                        var jwtToken = jwtHandler.ReadJwtToken(token.AccessToken);
+                        var sub = jwtToken.Claims.FirstOrDefault(x => x.Type == "sub")?.Value;
+                        if (!string.IsNullOrWhiteSpace(sub))
+                        {
+                            claims.Add(new Claim(ClaimTypes.NameIdentifier, sub));
+                        }
+                    }
                 }
 
                 var claimsIdentity = new ClaimsIdentity(
                     claims,
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     "name",
-                    "role"
+                    ClaimTypes.Role
                 );
 
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
@@ -256,6 +273,31 @@ namespace MultiShop.WebUI.Services.Concretes
             await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
+        private (string ClientId, string ClientSecret) GetClientCredentialsForUser(ClaimsPrincipal? user)
+        {
+            if (user != null && user.Identity != null && user.Identity.IsAuthenticated)
+            {
+                if (user.IsInRole("Admin") && _clientSettings.MultiShopAdminId != null)
+                {
+                    return (_clientSettings.MultiShopAdminId.ClientId, _clientSettings.MultiShopAdminId.ClientSecret);
+                }
+
+                if (user.IsInRole("Manager") && _clientSettings.MultiShopManagerId != null)
+                {
+                    return (_clientSettings.MultiShopManagerId.ClientId, _clientSettings.MultiShopManagerId.ClientSecret);
+                }
+
+                if (user.IsInRole("User") && _clientSettings.MultiShopUserId != null)
+                {
+                    return (_clientSettings.MultiShopUserId.ClientId, _clientSettings.MultiShopUserId.ClientSecret);
+                }
+            }
+
+            // Default fallback
+            var defaultClient = _clientSettings.MultiShopManagerId ?? _clientSettings.MultiShopUserId ?? _clientSettings.MultiShopAdminId;
+            return (defaultClient?.ClientId ?? "MultiShopManagerId", defaultClient?.ClientSecret ?? "multishopsecret");
+        }
+
         private async Task<DiscoveryDocumentResponse> GetDiscoveryDocumentOrThrowAsync()
         {
             if (string.IsNullOrWhiteSpace(_serviceApiSettings.IdentityServerUrl))
@@ -288,30 +330,6 @@ namespace MultiShop.WebUI.Services.Concretes
             return discoveryEndpoint;
         }
 
-        private string GetClientId()
-        {
-            var clientId = _clientSettings.MultiShopManagerId.ClientId;
-
-            if (string.IsNullOrWhiteSpace(clientId))
-            {
-                throw new InvalidOperationException("ClientId ayarı boş.");
-            }
-
-            return clientId;
-        }
-
-        private string GetClientSecret()
-        {
-            var clientSecret = _clientSettings.MultiShopManagerId.ClientSecret;
-
-            if (string.IsNullOrWhiteSpace(clientSecret))
-            {
-                throw new InvalidOperationException("ClientSecret ayarı boş.");
-            }
-
-            return clientSecret;
-        }
-
         private static List<AuthenticationToken> CreateAuthenticationTokens(
             string accessToken,
             string? refreshToken,
@@ -327,7 +345,7 @@ namespace MultiShop.WebUI.Services.Concretes
                 new AuthenticationToken
                 {
                     Name = OpenIdConnectParameterNames.ExpiresIn,
-                    Value = DateTime.Now.AddSeconds(expiresIn).ToString("O")
+                    Value = DateTime.UtcNow.AddSeconds(expiresIn).ToString("O")
                 }
             };
 

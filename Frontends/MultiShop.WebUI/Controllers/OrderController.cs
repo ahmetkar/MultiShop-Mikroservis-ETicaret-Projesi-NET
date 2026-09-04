@@ -8,6 +8,7 @@ using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos;
 using MultiShop.WebUI.Attributes;
 using MultiShop.WebUI.Models;
 using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
 using MultiShop.WebUI.Services.Concretes;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
@@ -23,21 +24,25 @@ namespace MultiShop.WebUI.Controllers
         private readonly IOrderAddressService _orderAddressService;
         private readonly IUserService _userService;
         private readonly IBasketService _basketService;
+        private readonly ICargoCompanyService _cargoCompanyService;
         private readonly IDataProtector _protector;
 
-
-
-        public OrderController(IBasketService basketService,IUserService userService,IOrderOderingService orderOderingService, IOrderAddressService orderAddressService,IDataProtectionProvider provider)
+        public OrderController(
+            IBasketService basketService,
+            IUserService userService,
+            IOrderOderingService orderOderingService,
+            IOrderAddressService orderAddressService,
+            ICargoCompanyService cargoCompanyService,
+            IDataProtectionProvider provider)
         {
             _orderOderingService = orderOderingService;
             _orderAddressService = orderAddressService;
             _userService = userService;
             _basketService = basketService;
+            _cargoCompanyService = cargoCompanyService;
             _protector = provider.CreateProtector("ActiveOrderingId_Protector");
         }
 
-
-      
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -64,19 +69,22 @@ namespace MultiShop.WebUI.Controllers
 
             count = basket.BasketItems.Count;
 
-            
             if (count == 0) return RedirectToAction("Index","Default");
-
 
             var adressCount = await _orderAddressService.GetUserAdressCount();
 
             ViewBag.AdressCount = adressCount;
 
-            ViewBag.CargoPrice = 15; // kargo fiyatını al
-            
+            decimal cargoPrice = 0;
+            var companies = await _cargoCompanyService.GetAllCargoCompanyAsync();
+            if (companies != null && companies.Count > 0)
+            {
+                cargoPrice = companies.First().CargoPrice;
+            }
+            ViewBag.CargoPrice = cargoPrice;
 
             return View();
-            }
+        }
 
 
         [HttpPost]

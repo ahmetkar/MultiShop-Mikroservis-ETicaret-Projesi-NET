@@ -5,10 +5,8 @@
     int count = 0;
 }
 
-
 <section class="content container-fluid">
     <div class="row">
-
         <div class="col-md-12">
             <div class="chart-box">
                 <h4>Kargo Şirketleri Listesi</h4>
@@ -20,8 +18,9 @@
                                 <th>#</th>
                                 <th>Id</th>
                                 <th>Kargo Şirketi Adı</th>
-                                <th> </th>
-                                <th></th>
+                                <th>Kargo Ücreti</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,15 +30,14 @@
                                 <tr>
                                     <th scope="row">@count</th>
                                     <td>@item.CargoCompanyId</td>
-                                    <td>@item.CargoCompanyName</td>                              
-                                    <td> <a class="btn btn-danger" href="/Admin/Cargo/DeleteCargoCompany/@item.CargoCompanyId">Sil</a></td>
-                                    <td> <a class="btn btn-success" href="/Admin/Cargo/UpdateCargoCompany/@item.CargoCompanyId">Güncelle</a></td>
+                                    <td>@item.CargoCompanyName</td>
+                                    <td><span class="badge badge-info" style="font-size:13px;">₺@item.CargoPrice.ToString("N2")</span></td>
+                                    <td><a class="btn btn-danger" href="/Admin/Cargo/DeleteCargoCompany/@item.CargoCompanyId"><i class="fa fa-trash"></i> Sil</a></td>
+                                    <td><a class="btn btn-success" href="/Admin/Cargo/UpdateCargoCompany/@item.CargoCompanyId"><i class="fa fa-pencil"></i> Güncelle</a></td>
                                 </tr>
                             }
-
                         </tbody>
                     </table>
-                
                 </div>
             </div>
         </div>

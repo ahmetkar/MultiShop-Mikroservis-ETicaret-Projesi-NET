@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MultiShop.DtoLayer.BasketDtos;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
+using MultiShop.WebUI.Services.DiscountServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,19 @@ namespace MultiShop.WebUI.Services.BasketServices
     public class BasketService : IBasketService
     {
         private readonly IProductService _productService;
+        private readonly IDiscountService _discountService;
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public BasketService(HttpClient httpClient, IProductService productService, IHttpContextAccessor httpContextAccessor)
+        public BasketService(
+            HttpClient httpClient,
+            IProductService productService,
+            IDiscountService discountService,
+            IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
             _productService = productService;
+            _discountService = discountService;
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -53,11 +60,11 @@ namespace MultiShop.WebUI.Services.BasketServices
                             }
                         }
 
-                        if (basketTotalFromCookie.DiscountCode != null)
+                        if (!string.IsNullOrEmpty(basketTotalFromCookie.DiscountCode))
                         {
                             basketTotalFromDatabase.DiscountCode = basketTotalFromCookie.DiscountCode;
                         }
-                        if (basketTotalFromCookie.DiscountRate != null)
+                        if (basketTotalFromCookie.DiscountRate.HasValue && basketTotalFromCookie.DiscountRate.Value > 0)
                         {
                             basketTotalFromDatabase.DiscountRate = basketTotalFromCookie.DiscountRate;
                         }
@@ -81,7 +88,7 @@ namespace MultiShop.WebUI.Services.BasketServices
                 if (!string.IsNullOrEmpty(basket))
                 {
                     var basketTotal = JsonConvert.DeserializeObject<BasketTotalDto>(basket);
-                    return basketTotal ?? new BasketTotalDto();
+                    return CalculateKDVAndTotal(basketTotal ?? new BasketTotalDto());
                 }
             }
             return new BasketTotalDto();
@@ -97,13 +104,15 @@ namespace MultiShop.WebUI.Services.BasketServices
             if (responseMessage.IsSuccessStatusCode)
             {
                 var values = await responseMessage.Content.ReadFromJsonAsync<BasketTotalDto>();
-                return values ?? new BasketTotalDto();
+                return CalculateKDVAndTotal(values ?? new BasketTotalDto());
             }
             return new BasketTotalDto();
         }
 
         public BasketTotalDto CalculateKDVAndTotal(BasketTotalDto basketTotalDto)
         {
+            if (basketTotalDto == null) return new BasketTotalDto();
+
             double totalkdvprice = 0;
             double totalpricewithoutkdv = 0;
             foreach (var i in basketTotalDto.BasketItems)
@@ -112,8 +121,20 @@ namespace MultiShop.WebUI.Services.BasketServices
                 totalpricewithoutkdv += (double)i.Price * i.Quantity;
             }
             basketTotalDto.TotalPriceWithoutKDV = totalpricewithoutkdv;
-            basketTotalDto.TotalPrice = totalpricewithoutkdv + totalkdvprice;
             basketTotalDto.KDVPrice = totalkdvprice;
+            double rawTotal = totalpricewithoutkdv + totalkdvprice;
+
+            if (basketTotalDto.DiscountRate.HasValue && basketTotalDto.DiscountRate.Value > 0)
+            {
+                basketTotalDto.TotalPriceWithoutDiscount = rawTotal;
+                basketTotalDto.TotalPrice = rawTotal - (rawTotal * basketTotalDto.DiscountRate.Value / 100.0);
+            }
+            else
+            {
+                basketTotalDto.TotalPriceWithoutDiscount = rawTotal;
+                basketTotalDto.TotalPrice = rawTotal;
+            }
+
             return basketTotalDto;
         }
 
@@ -134,25 +155,19 @@ namespace MultiShop.WebUI.Services.BasketServices
 
         public async Task SaveBasketToCookies(BasketTotalDto basketTotalDto, string discountCode, int discountRate)
         {
-            if (discountCode != "" && discountRate != 0)
-            {
-                double oldprice = basketTotalDto.TotalPrice;
-                basketTotalDto.TotalPriceWithoutDiscount = oldprice;
-                double newprice = basketTotalDto.TotalPrice - (basketTotalDto.TotalPrice * discountRate) / 100;
-                basketTotalDto.TotalPrice = newprice;
-                basketTotalDto.DiscountCode = discountCode;
-                basketTotalDto.DiscountRate = discountRate;
+            basketTotalDto.DiscountCode = discountCode;
+            basketTotalDto.DiscountRate = discountRate;
+            basketTotalDto = CalculateKDVAndTotal(basketTotalDto);
 
-                var context = _httpContextAccessor.HttpContext;
-                if (context != null)
+            var context = _httpContextAccessor.HttpContext;
+            if (context != null)
+            {
+                var json = JsonConvert.SerializeObject(basketTotalDto);
+                context.Response.Cookies.Append("basket", json, new CookieOptions
                 {
-                    var json = JsonConvert.SerializeObject(basketTotalDto);
-                    context.Response.Cookies.Append("basket", json, new CookieOptions
-                    {
-                        Expires = DateTimeOffset.UtcNow.AddDays(1),
-                        HttpOnly = false
-                    });
-                }
+                    Expires = DateTimeOffset.UtcNow.AddDays(1),
+                    HttpOnly = false
+                });
             }
         }
 
@@ -164,17 +179,11 @@ namespace MultiShop.WebUI.Services.BasketServices
 
         public async Task SaveBasketToDatabase(BasketTotalDto basketTotalDto, string discountCode, int discountRate)
         {
-            if (discountCode != "" && discountRate != 0)
-            {
-                double oldprice = basketTotalDto.TotalPrice;
-                basketTotalDto.TotalPriceWithoutDiscount = oldprice;
-                double newprice = basketTotalDto.TotalPrice - (basketTotalDto.TotalPrice * discountRate) / 100;
-                basketTotalDto.TotalPrice = newprice;
-                basketTotalDto.DiscountCode = discountCode;
-                basketTotalDto.DiscountRate = discountRate;
+            basketTotalDto.DiscountCode = discountCode;
+            basketTotalDto.DiscountRate = discountRate;
+            basketTotalDto = CalculateKDVAndTotal(basketTotalDto);
 
-                await _httpClient.PostAsJsonAsync("baskets", basketTotalDto);
-            }
+            await _httpClient.PostAsJsonAsync("baskets", basketTotalDto);
         }
 
         public async Task AddBasketItemToCookies(string id)
@@ -262,13 +271,27 @@ namespace MultiShop.WebUI.Services.BasketServices
                 var product = await _productService.GetByIdProduct(id);
                 if (product != null)
                 {
+                    decimal unitPrice = product.ProductPrice;
+
+                    // Apply active product discount if available from admin coupon/discount
+                    try
+                    {
+                        var productDiscount = await _discountService.GetDiscountByProductIdAsync(id);
+                        if (productDiscount != null && productDiscount.IsActive && productDiscount.ValidDate >= DateTime.UtcNow && productDiscount.Rate > 0)
+                        {
+                            unitPrice = unitPrice - (unitPrice * productDiscount.Rate / 100m);
+                        }
+                    }
+                    catch { }
+
+                    var kdvPercent = product.KDVPercent > 0 ? product.KDVPercent : 20m;
                     var item = new BasketItemDto
                     {
                         ProductId = id,
                         ProductName = product.ProductName,
-                        Price = product.ProductPrice,
-                        KDVPrice = (double)product.KDVPrice,
-                        KDVPercent = (double)product.KDVPercent,
+                        Price = unitPrice,
+                        KDVPrice = (double)(unitPrice * kdvPercent / 100m),
+                        KDVPercent = (double)kdvPercent,
                         Quantity = quantity > 0 ? quantity : 1,
                         ProductImageUrl = product.ProductImageUrl,
                         SelectedFilter = normalizedFilter

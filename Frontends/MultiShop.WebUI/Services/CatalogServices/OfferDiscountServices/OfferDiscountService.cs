@@ -25,16 +25,23 @@ namespace MultiShop.WebUI.Services.CatalogServices.OfferDiscountServices
         public async Task<List<ResultOfferDiscountDto>> GetAllOfferDiscountAsync()
         {
             var resp = await _httpClient.GetAsync("offerdiscounts");
-            var values = await resp.Content.ReadFromJsonAsync<List<ResultOfferDiscountDto>>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<List<ResultOfferDiscountDto>>();
+                return values ?? new List<ResultOfferDiscountDto>();
+            }
+            return new List<ResultOfferDiscountDto>();
         }
 
         public async Task<UpdateOfferDiscountDto> GetByIdOfferDiscount(string id)
         {
             var resp = await _httpClient.GetAsync("offerdiscounts/" + id);
-            var values = await resp.Content.ReadFromJsonAsync<UpdateOfferDiscountDto>();
-            return values;
-
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<UpdateOfferDiscountDto>();
+                return values!;
+            }
+            return new UpdateOfferDiscountDto();
         }
 
         public async Task UpdateOfferDiscountAsync(UpdateOfferDiscountDto updateOfferDiscountDto)

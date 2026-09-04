@@ -1,6 +1,161 @@
-﻿@{
+﻿@using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos
+@{
+    ViewData["Title"] = "Admin Dashboard";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
-  
+    var recentOrders = ViewBag.RecentOrders as List<ResultOrderingByUserIdDto> ?? new List<ResultOrderingByUserIdDto>();
 }
 
-Hoşgeldiniz.
+<section class="content container-fluid">
+    <!-- Quick Stats Row 1 -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-blue">
+                <div class="media-icon pull-left"><i class="fa fa-shopping-bag"></i></div>
+                <div class="media-info">
+                    <h5>Toplam Sipariş</h5>
+                    <h3>@ViewBag.TotalOrdersCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-green">
+                <div class="media-icon pull-left"><i class="fa fa-turkish-lira-sign"></i></div>
+                <div class="media-info">
+                    <h5>Kasa Geliri (Tamamlanan)</h5>
+                    <h3>₺@(((decimal)(ViewBag.TotalGrossRevenue ?? 0m)).ToString("N2"))</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-sea">
+                <div class="media-icon pull-left"><i class="fa fa-users"></i></div>
+                <div class="media-info">
+                    <h5>Toplam Kullanıcı</h5>
+                    <h3>@ViewBag.UserCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box" style="background-color:#f39c12; color:#fff;">
+                <div class="media-icon pull-left"><i class="fa fa-truck"></i></div>
+                <div class="media-info">
+                    <h5>Kargo İşlemleri</h5>
+                    <h3>@ViewBag.TotalCargoCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catalog Stats Row 2 -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box">
+                <div class="media-icon pull-left"><i class="fa fa-box-open"></i></div>
+                <div class="media-info">
+                    <h5>Toplam Ürün</h5>
+                    <h3>@ViewBag.ProductCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-sea">
+                <div class="media-icon pull-left"><i class="fa fa-tags"></i></div>
+                <div class="media-info">
+                    <h5>Toplam Kategori</h5>
+                    <h3>@ViewBag.CategoryCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-blue">
+                <div class="media-icon pull-left"><i class="fa fa-copyright"></i></div>
+                <div class="media-info">
+                    <h5>Toplam Marka</h5>
+                    <h3>@ViewBag.BrandCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <div class="media-box bg-green">
+                <div class="media-icon pull-left"><i class="fa fa-calculator"></i></div>
+                <div class="media-info">
+                    <h5>Ortalama Ürün Fiyatı</h5>
+                    <h3>₺@(((decimal)(ViewBag.ProductAvgPrice ?? 0m)).ToString("N2"))</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Highlight & Comments Row 3 -->
+    <div class="row">
+        <div class="col-lg-4 col-xs-12">
+            <div class="chart-box p-4" style="border-left: 4px solid #28a745;">
+                <h5 class="text-success font-weight-bold"><i class="fa fa-arrow-down mr-1"></i> En Uygun Fiyatlı Ürün</h5>
+                <h4 class="text-dark mt-2">@(ViewBag.MinPriceProductName ?? "-")</h4>
+                <p class="text-muted small m-0">Katalogdaki en ekonomik ürün</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+            <div class="chart-box p-4" style="border-left: 4px solid #e74c3c;">
+                <h5 class="text-danger font-weight-bold"><i class="fa fa-arrow-up mr-1"></i> En Yüksek Fiyatlı Ürün</h5>
+                <h4 class="text-dark mt-2">@(ViewBag.MaxPriceProductName ?? "-")</h4>
+                <p class="text-muted small m-0">Katalogdaki en değerli ürün</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+            <div class="chart-box p-4" style="border-left: 4px solid #3498db;">
+                <h5 class="text-primary font-weight-bold"><i class="fa fa-comments mr-1"></i> Müşteri Yorumları</h5>
+                <h4 class="text-dark mt-2">@ViewBag.ActiveCommentCount Aktif / @ViewBag.TotalCommentCount Toplam</h4>
+                <p class="text-muted small m-0">Onaylı ve değerlendirilmiş kullanıcı yorumları</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Shortcuts & Recent Orders -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="m-0"><i class="fa fa-clock text-primary"></i> Son Siparişler</h4>
+                    <a href="/Admin/Order/Index" class="btn btn-primary btn-sm font-weight-bold"><i class="fa fa-list mr-1"></i> Tüm Siparişleri Gör</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Sipariş No</th>
+                                <th>Tarih</th>
+                                <th>Toplam Tutar</th>
+                                <th>Durum</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (recentOrders.Count == 0)
+                            {
+                                <tr><td colspan="5" class="text-center text-muted p-4">Henüz sipariş kaydı bulunmamaktadır.</td></tr>
+                            }
+                            @foreach (var o in recentOrders)
+                            {
+                                <tr>
+                                    <td><strong>#@o.OrderingId</strong></td>
+                                    <td>@o.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                    <td><strong class="text-dark">₺@o.TotalPrice.ToString("N2")</strong></td>
+                                    <td>
+                                        <span class="badge @(o.Status == OrderStatus.Completed ? "badge-success" : (o.Status == OrderStatus.Cancelled ? "badge-danger" : "badge-info"))">
+                                            @(o.Status == OrderStatus.Completed ? "Teslim Edildi" : (o.Status == OrderStatus.CargoApproved ? "Kargo Onaylandı" : (o.Status == OrderStatus.Cancelled ? "İptal Edildi" : "Devam Ediyor")))
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/Order/OrderDetail/@o.OrderingId" class="btn btn-outline-primary btn-sm px-2 py-1">
+                                            <i class="fa fa-eye mr-1"></i> Detay
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

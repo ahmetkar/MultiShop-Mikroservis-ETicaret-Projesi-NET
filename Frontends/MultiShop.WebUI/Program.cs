@@ -7,6 +7,8 @@ using MultiShop.WebUI.Resources;
 using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
 using MultiShop.WebUI.Services.CargoServices.CargoCustomerServices;
+using MultiShop.WebUI.Services.CargoServices.CargoDetailServices;
+using MultiShop.WebUI.Services.CargoServices.CargoOperationServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -26,6 +28,7 @@ using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
+using MultiShop.WebUI.Services.OrderServices.OrderDetailServices;
 using MultiShop.WebUI.Services.OrderServices.OrderOderingServices;
 using MultiShop.WebUI.Services.PaymentServices;
 using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticsServices;
@@ -44,8 +47,8 @@ builder.Services.AddDataProtection();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
     AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
 {
-    opt.LoginPath = "/Login/Index";
-    opt.LogoutPath = "/Login/LogOut";
+    opt.LoginPath = "/Auth/Login";
+    opt.LogoutPath = "/Auth/Logout";
     opt.AccessDeniedPath = "/Pages/AccessDenied";
     opt.ExpireTimeSpan = TimeSpan.FromDays(5);
     opt.SlidingExpiration = true;
@@ -135,6 +138,16 @@ builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Cargo.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+builder.Services.AddHttpClient<ICargoDetailService, CargoDetailService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<ICargoOperationService, CargoOperationService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
 
 
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
@@ -157,16 +170,19 @@ builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
 builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Order.Path}");
-}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
-builder.Services.AddHttpClient<IPaymentService, PaymentService>("PaymentUserClient",opt =>
+builder.Services.AddHttpClient<IOrderDetailService, OrderDetailService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IPaymentService, PaymentService>("PaymentUserClient", opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Payment.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-
-
-builder.Services.AddHttpClient<IPaymentService, PaymentService>("PaymentClientCridentialClient",opt =>
+builder.Services.AddHttpClient<IPaymentService, PaymentService>("PaymentClientCredentialClient", opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Payment.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();

@@ -34,6 +34,9 @@ namespace MultiShop.Cargo.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("CargoPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("CargoCompanyId");
 
                     b.ToTable("CargoCompanies");
@@ -70,8 +73,21 @@ namespace MultiShop.Cargo.DataAccessLayer.Migrations
                     b.Property<int>("CargoCompanyId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeliveryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelivered")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CargoDetailId");
 

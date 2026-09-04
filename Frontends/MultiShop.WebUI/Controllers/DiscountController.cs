@@ -29,22 +29,29 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmDiscountCoupon(string code)
         {
-        
-            var value = await _discountService.GetDiscountCouponCountRate(code);
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                TempData["CouponError"] = "Lütfen bir indirim kupon kodu giriniz.";
+                return RedirectToAction("Index", "ShoppingCart");
+            }
 
+            var cleanCode = code.Trim();
+            var value = await _discountService.GetDiscountCouponCountRate(cleanCode);
+
+            if (value <= 0)
+            {
+                TempData["CouponError"] = "Girdiğiniz kupon kodu geçersiz veya süresi dolmuş.";
+                return RedirectToAction("Index", "ShoppingCart");
+            }
 
             var basketitems = new BasketTotalDto();
 
-            if (User.Identity!=null && User.Identity.IsAuthenticated)
+            if (User.Identity != null && User.Identity.IsAuthenticated)
             {
                 basketitems = await _basketService.GetBasketFromDatabase();
-
-
                 if (basketitems != null)
                 {
-
-                    await _basketService.SaveBasketToDatabase(basketitems, code, value);
-
+                    await _basketService.SaveBasketToDatabase(basketitems, cleanCode, value);
                 }
             }
             else
@@ -52,13 +59,11 @@ namespace MultiShop.WebUI.Controllers
                 basketitems = await _basketService.GetBasketFromCookies();
                 if (basketitems != null)
                 {
-                    await _basketService.SaveBasketToCookies(basketitems, code, value);
+                    await _basketService.SaveBasketToCookies(basketitems, cleanCode, value);
                 }
             }
 
-            
-
-            
+            TempData["CouponSuccess"] = $"'{cleanCode}' kupon kodu başarıyla uygulandı! (%{value} indirim)";
             return RedirectToAction("Index", "ShoppingCart");
         }
 

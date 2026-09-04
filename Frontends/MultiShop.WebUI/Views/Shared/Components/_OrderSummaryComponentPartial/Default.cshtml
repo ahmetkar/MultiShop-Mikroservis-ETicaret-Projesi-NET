@@ -1,64 +1,66 @@
 ﻿@model BasketTotalDto
+@{
+    decimal cargoPrice = ViewBag.CargoPrice != null ? Convert.ToDecimal(ViewBag.CargoPrice) : 35m;
+    decimal totalPrice = (decimal)(Model?.TotalPrice ?? 0);
+    decimal totalPriceWithoutKDV = (decimal)(Model?.TotalPriceWithoutKDV ?? 0);
+    decimal totalPriceWithoutDiscount = (decimal)(Model?.TotalPriceWithoutDiscount ?? 0);
+    decimal kdvPrice = (decimal)(Model?.KDVPrice ?? 0);
+    decimal grandTotal = totalPrice + cargoPrice;
+    bool hasDiscount = Model != null && Model.DiscountRate.HasValue && Model.DiscountRate.Value > 0;
+}
 
-<div class="bg-light p-30 mb-5">
-    <div class="border-bottom">
-        <h6 class="mb-3">Sipariş Ürün Listesi</h6>
-        @foreach(var item in Model.BasketItems)
+<div class="bg-light p-30 mb-5 rounded shadow-sm">
+    <div class="border-bottom pb-2">
+        <h6 class="mb-3 font-weight-bold text-dark"><i class="fa fa-shopping-bag text-primary mr-2"></i> Sipariş Özeti</h6>
+        @if (Model != null && Model.BasketItems != null)
         {
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <div>
-                    <span class="font-weight-bold">@item.ProductName</span>
-                    @if (!string.IsNullOrEmpty(item.SelectedFilter))
-                    {
-                        <span class="badge badge-info" style="font-size:11px; background-color:#17a2b8; color:#fff; padding:2px 5px; margin-left:4px;">@item.SelectedFilter</span>
-                    }
-                    <span class="text-muted ml-1">x @item.Quantity</span>
+            @foreach (var item in Model.BasketItems)
+            {
+                <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <div>
+                        <span class="font-weight-bold">@item.ProductName</span>
+                        @if (!string.IsNullOrEmpty(item.SelectedFilter))
+                        {
+                            <span class="badge badge-info" style="font-size:10px; background-color:#17a2b8; color:#fff; padding:2px 5px; margin-left:4px;">@item.SelectedFilter</span>
+                        }
+                        <span class="text-muted ml-1">x @item.Quantity</span>
+                    </div>
+                    <span class="font-weight-bold">₺@((item.Price * item.Quantity).ToString("N2"))</span>
                 </div>
-                <h6>₺@((item.Price * item.Quantity).ToString("N2"))</h6>
-            </div>
-        }        
+            }
+        }
     </div>
-    <div class="border-bottom pt-3 pb-2">
-        <div class="d-flex justify-content-between mb-3">
-            <h6>Alışveriş Tutarı (Kdv siz)</h6>
-            <h6>@Model.TotalPriceWithoutKDV ₺</h6>
+    <div class="border-bottom pt-3 pb-2 small">
+        <div class="d-flex justify-content-between mb-2">
+            <span class="text-muted">Ara Toplam (KDV Hariç)</span>
+            <span>₺@totalPriceWithoutKDV.ToString("N2")</span>
         </div>
-        @if (Model.TotalPriceWithoutDiscount != 0)
+        <div class="d-flex justify-content-between mb-2">
+            <span class="text-muted">KDV Tutarı (%20)</span>
+            <span>₺@kdvPrice.ToString("N2")</span>
+        </div>
+
+        @if (hasDiscount)
         {
-            <div class="d-flex justify-content-between mb-3">
-                <h6>Alışveriş Tutarı (Kdv dahil) - İndirimsiz</h6>
-            <h6>@Model.TotalPriceWithoutDiscount ₺</h6>
-        </div>
-
-            <div class="d-flex justify-content-between mb-3">
-                <h6>İndirim Oranı : </h6>
-                <h6>@Model.DiscountRate</h6>
+            <div class="d-flex justify-content-between mb-2 text-success font-weight-bold">
+                <span><i class="fa fa-tag mr-1"></i> İndirim (@Model.DiscountCode)</span>
+                <span>-%@Model.DiscountRate</span>
             </div>
-            <div class="d-flex justify-content-between mb-3">
-                <h6>İndirim Kodu : </h6>
-                <h6>@Model.DiscountCode</h6>
-            </div>
-
-            <div class="d-flex justify-content-between mb-3">
-                <h6>Alışveriş Tutarı (Kdv dahil) - İndirimli</h6>
-                <h6>@Model.TotalPrice ₺</h6>
+            <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">İndirimsiz Tutar</span>
+                <span style="text-decoration:line-through;" class="text-muted">₺@totalPriceWithoutDiscount.ToString("N2")</span>
             </div>
         }
 
-        <div class="d-flex justify-content-between mb-3">
-            <h6>KDV tutarı : </h6>
-            <h6>@Model.KDVPrice ₺</h6>
-        </div>
-
-        <div class="d-flex justify-content-between">
-            <h6 class="font-weight-medium">Kargo Ücreti</h6>
-            <h6 class="font-weight-medium">@ViewBag.CargoPrice ₺</h6>
+        <div class="d-flex justify-content-between mb-2">
+            <span class="text-muted">Kargo Ücreti</span>
+            <span>₺@cargoPrice.ToString("N2")</span>
         </div>
     </div>
-    <div class="pt-2">
-        <div class="d-flex justify-content-between mt-2">
-            <h5>Genel Toplam</h5>
-            <h5>@(Model.TotalPrice + ViewBag.CargoPrice ) ₺</h5>
+    <div class="pt-3">
+        <div class="d-flex justify-content-between align-items-center mt-2">
+            <h5 class="font-weight-bold mb-0">Genel Toplam</h5>
+            <h4 class="text-primary font-weight-bold mb-0">₺@grandTotal.ToString("N2")</h4>
         </div>
     </div>
 </div>

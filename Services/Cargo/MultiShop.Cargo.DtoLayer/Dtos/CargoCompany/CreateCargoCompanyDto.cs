@@ -9,5 +9,7 @@ namespace MultiShop.Cargo.DtoLayer.Dtos.CargoCompany
     public class CreateCargoCompanyDto
     {
         public string CargoCompanyName { get; set; }    
+        public decimal CargoPrice { get; set; } = 35;
     }
 }
+

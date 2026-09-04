@@ -1,0 +1,52 @@
+@model UserDetailViewModel
+
+<div class="bg-light p-4 rounded border mb-30">
+    <h4 class="font-weight-bold mb-4 text-dark"><i class="fa fa-user-cog text-primary mr-2"></i> Profil Bilgileri</h4>
+    <form method="post" action="/UserProfile/UpdateProfile">
+        <input type="hidden" asp-for="Id" value="@Model?.Id" />
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="font-weight-bold">Ad :</label>
+                <input type="text" asp-for="Name" class="form-control" required value="@Model?.Name">
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="font-weight-bold">Soyad :</label>
+                <input type="text" asp-for="Surname" class="form-control" required value="@Model?.Surname">
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="font-weight-bold">Kullanıcı Adı :</label>
+                <input type="text" asp-for="UserName" class="form-control" required value="@Model?.UserName">
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="font-weight-bold">E-Posta :</label>
+                <input type="email" asp-for="Email" class="form-control" required value="@Model?.Email">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary font-weight-bold px-4 py-2 mt-2">
+            <i class="fa fa-save mr-1"></i> Bilgilerimi Güncelle
+        </button>
+    </form>
+</div>
+
+<div class="bg-light p-4 rounded border mb-30">
+    <h4 class="font-weight-bold mb-4 text-dark"><i class="fa fa-key text-primary mr-2"></i> Şifre Değiştir</h4>
+    <form method="post" action="/UserProfile/ChangePassword">
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label class="font-weight-bold">Mevcut Şifre <span class="text-danger">*</span></label>
+                <input type="password" name="CurrentPassword" class="form-control" placeholder="Mevcut şifreniz" required>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="font-weight-bold">Yeni Şifre <span class="text-danger">*</span></label>
+                <input type="password" name="NewPassword" class="form-control" placeholder="En az 6 karakter" required>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="font-weight-bold">Yeni Şifre Tekrar <span class="text-danger">*</span></label>
+                <input type="password" name="ConfirmNewPassword" class="form-control" placeholder="Yeni şifrenizi tekrar giriniz" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-dark font-weight-bold px-4 py-2 mt-2">
+            <i class="fa fa-lock mr-1"></i> Şifremi Güncelle
+        </button>
+    </form>
+</div>

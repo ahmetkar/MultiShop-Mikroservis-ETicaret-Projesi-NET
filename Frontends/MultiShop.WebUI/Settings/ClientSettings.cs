@@ -3,6 +3,7 @@
     public class ClientSettings
     {
         public Client MultiShopVisitorClient { get; set; }
+        public Client MultiShopUserId { get; set; }
         public Client MultiShopAdminId { get; set; }
         public Client MultiShopManagerId { get; set; }
     }
@@ -14,3 +15,4 @@
     }
 
 }
+

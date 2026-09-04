@@ -35,16 +35,23 @@ namespace MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices
         public async Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderAsync()
         {
             var resp = await _httpClient.GetAsync("featuresliders");
-            var values = await resp.Content.ReadFromJsonAsync<List<ResultFeatureSliderDto>>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<List<ResultFeatureSliderDto>>();
+                return values ?? new List<ResultFeatureSliderDto>();
+            }
+            return new List<ResultFeatureSliderDto>();
         }
 
         public async Task<UpdateFeatureSliderDto> GetByIdFeatureSlider(string id)
         {
             var resp = await _httpClient.GetAsync("featuresliders/" + id);
-            var values = await resp.Content.ReadFromJsonAsync<UpdateFeatureSliderDto>();
-            return values;
-
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<UpdateFeatureSliderDto>();
+                return values!;
+            }
+            return new UpdateFeatureSliderDto();
         }
 
         public async Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto updateFeatureSliderDto)

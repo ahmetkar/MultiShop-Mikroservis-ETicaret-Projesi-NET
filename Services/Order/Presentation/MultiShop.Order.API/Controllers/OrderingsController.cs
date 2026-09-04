@@ -115,6 +115,26 @@ namespace MultiShop.Order.API.Controllers
             return Ok(orderStatus);
         }
 
-
+        [HttpPost("SetOrderStatus/{id}/{status}")]
+        [HttpGet("SetOrderStatus/{id}/{status}")]
+        public async Task<IActionResult> SetOrderStatus(int id, Domain.Entities.OrderStatus status)
+        {
+            var ordering = await _mediator.Send(new GetOrderingByIdQuery(id));
+            if (ordering != null)
+            {
+                await _mediator.Send(new UpdateOrderingCommand
+                {
+                    OrderingId = id,
+                    OrderDate = ordering.OrderDate,
+                    BillingAddressId = ordering.BillingAddressId,
+                    ShippingAdressId = ordering.ShippingAdressId,
+                    TotalPrice = ordering.TotalPrice,
+                    UserId = ordering.UserId,
+                    Status = status
+                });
+                return Ok(new { success = true, message = $"Sipariş durumu {status} olarak güncellendi." });
+            }
+            return NotFound("Sipariş bulunamadı.");
+        }
     }
 }

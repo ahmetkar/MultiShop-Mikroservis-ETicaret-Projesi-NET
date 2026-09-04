@@ -10,64 +10,55 @@ namespace MultiShop.WebUI.Handlers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IIdentityService _identityService;
+        private readonly ILogger<ResourceOwnerPasswordTokenHandler> _logger;
 
-        public ResourceOwnerPasswordTokenHandler(IHttpContextAccessor httpContextAccessor, IIdentityService identityService)
+        public ResourceOwnerPasswordTokenHandler(
+            IHttpContextAccessor httpContextAccessor,
+            IIdentityService identityService,
+            ILogger<ResourceOwnerPasswordTokenHandler> logger)
         {
             _httpContextAccessor = httpContextAccessor;
             _identityService = identityService;
+            _logger = logger;
         }
-
-
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-
-            var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer",accessToken);
-            var response = await base.SendAsync(request,cancellationToken);
-            if(response.StatusCode == HttpStatusCode.Unauthorized)
+            var httpContext = _httpContextAccessor.HttpContext;
+            if (httpContext != null)
             {
-                var tokenResponseNewAccessToken = await _identityService.GetRefreshToken();
-
-                if (!string.IsNullOrWhiteSpace(tokenResponseNewAccessToken))
+                var accessToken = await httpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+                if (!string.IsNullOrWhiteSpace(accessToken))
                 {
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponseNewAccessToken);
-                    response = await base.SendAsync(request, cancellationToken);
-                    if (response.StatusCode == HttpStatusCode.Unauthorized) {
-                        var errorBody = await response.Content.ReadAsStringAsync(cancellationToken);
-
-                        throw new Exception($@"
-                                    Refresh tokenden sonra yeniden yetkilendirme yapılamadı.
-
-                                    Method: {request.Method}
-                                    Url: {request.RequestUri}
-                                    Response Body: {errorBody}
-                                    ");
-                   
-                }else
-                    {
-                        throw new Exception("Refresh sonrası yeni access token alınamadı.");
-                    }
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 }
             }
 
-            if (response.StatusCode == HttpStatusCode.BadRequest)
-            {
-                var errorBody = await response.Content.ReadAsStringAsync(cancellationToken);
+            var response = await base.SendAsync(request, cancellationToken);
 
-                throw new Exception($@"
-                        Bad Request döndü.
-                        Method: {request.Method}
-                        Url: {request.RequestUri}
-                        Response Body: {errorBody}
-                        ");
-                                    }
+            if (response.StatusCode == HttpStatusCode.Unauthorized && httpContext != null)
+            {
+                try
+                {
+                    var tokenResponseNewAccessToken = await _identityService.GetRefreshToken();
+
+                    if (!string.IsNullOrWhiteSpace(tokenResponseNewAccessToken))
+                    {
+                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponseNewAccessToken);
+                        response = await base.SendAsync(request, cancellationToken);
+                    }
+                    else
+                    {
+                        _logger.LogWarning("Refresh token sonrasında yeni access token alınamadı. İstek yetkisiz (401) kaldı.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Token yenileme (refresh token) sırasında hata oluştu.");
+                }
+            }
 
             return response;
-            
-        }   
-
-
-
+        }
     }
 }

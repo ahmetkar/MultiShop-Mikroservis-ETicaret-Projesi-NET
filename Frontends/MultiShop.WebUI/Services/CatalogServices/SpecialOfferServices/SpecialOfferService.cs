@@ -25,16 +25,23 @@ namespace MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices
         public async Task<List<ResultSpecialOfferDto>> GetAllSpecialOfferAsync()
         {
             var resp = await _httpClient.GetAsync("specialoffers");
-            var values = await resp.Content.ReadFromJsonAsync<List<ResultSpecialOfferDto>>();
-            return values;
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<List<ResultSpecialOfferDto>>();
+                return values ?? new List<ResultSpecialOfferDto>();
+            }
+            return new List<ResultSpecialOfferDto>();
         }
 
         public async Task<UpdateSpecialOfferDto> GetByIdSpecialOffer(string id)
         {
             var resp = await _httpClient.GetAsync("specialoffers/" + id);
-            var values = await resp.Content.ReadFromJsonAsync<UpdateSpecialOfferDto>();
-            return values;
-
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<UpdateSpecialOfferDto>();
+                return values!;
+            }
+            return new UpdateSpecialOfferDto();
         }
 
         public async Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto updateSpecialOfferDto)

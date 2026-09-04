@@ -1,0 +1,91 @@
+@model List<ResultOrderingByUserIdDto>
+@{
+    ViewData["Title"] = "Sipariş Listesi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4><i class="fa fa-shopping-bag text-primary"></i> Tüm Siparişler</h4>
+                    <span class="badge badge-primary" style="font-size: 14px; padding: 6px 12px;">Toplam @(Model?.Count ?? 0) Sipariş</span>
+                </div>
+                
+                <div class="bs-example table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Sipariş No</th>
+                                <th>Kullanıcı ID</th>
+                                <th>Sipariş Tarihi</th>
+                                <th>Toplam Tutar</th>
+                                <th>Sipariş Durumu</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                @foreach (var item in Model.OrderByDescending(x => x.OrderDate))
+                                {
+                                    count++;
+                                    <tr>
+                                        <th>@count</th>
+                                        <td><strong>#@item.OrderingId</strong></td>
+                                        <td><code>@item.UserId</code></td>
+                                        <td>@item.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td><strong class="text-success">₺@item.TotalPrice.ToString("N2")</strong></td>
+                                        <td>
+                                            @switch (item.Status)
+                                            {
+                                                case OrderStatus.Completed:
+                                                    <span class="badge badge-success" style="padding: 6px 10px; font-size: 12px;">Tamamlandı</span>
+                                                    break;
+                                                case OrderStatus.PaymentCompleted:
+                                                    <span class="badge badge-primary" style="padding: 6px 10px; font-size: 12px;">Ödeme Alındı</span>
+                                                    break;
+                                                case OrderStatus.CargoCreated:
+                                                    <span class="badge badge-info" style="padding: 6px 10px; font-size: 12px;">Kargoya Verildi</span>
+                                                    break;
+                                                case OrderStatus.CargoFailed:
+                                                    <span class="badge badge-danger" style="padding: 6px 10px; font-size: 12px;">Kargo Hatası</span>
+                                                    break;
+                                                case OrderStatus.PaymentFailed:
+                                                    <span class="badge badge-danger" style="padding: 6px 10px; font-size: 12px;">Ödeme Başarısız</span>
+                                                    break;
+                                                case OrderStatus.Cancelled:
+                                                    <span class="badge badge-secondary" style="padding: 6px 10px; font-size: 12px;">İptal Edildi</span>
+                                                    break;
+                                                default:
+                                                    <span class="badge badge-warning" style="padding: 6px 10px; font-size: 12px;">Beklemede</span>
+                                                    break;
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="/Admin/Order/OrderDetail/@item.OrderingId" class="btn btn-info btn-sm">
+                                                <i class="fa fa-eye"></i> Detayları Gör
+                                            </a>
+                                            <a href="/Admin/Order/DeleteOrder/@item.OrderingId" class="btn btn-danger btn-sm" onclick="return confirm('Bu siparişi silmek istediğinize emin misiniz?');">
+                                                <i class="fa fa-trash"></i> Sil
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted p-4">Henüz kayıtlı bir sipariş bulunmamaktadır.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

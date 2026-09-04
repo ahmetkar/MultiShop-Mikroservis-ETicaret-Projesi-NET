@@ -36,32 +36,32 @@ builder.Services.AddAuthorization(options =>
     {
         policy.RequireAssertion(context =>
           context.User.Claims.Any(c =>
-              c.Type == "scope" &&
-              c.Value.Split(' ').Contains("PaymentReadPermission")));
+              (c.Type == "scope" || c.Type == "http://schemas.microsoft.com/identity/claims/scope") &&
+              (c.Value.Split(' ').Contains("PaymentReadPermission") || c.Value.Split(' ').Contains("PaymentFullPermission"))));
     });
 
     options.AddPolicy("PaymentCreatePolicy", policy =>
     {
         policy.RequireAssertion(context =>
           context.User.Claims.Any(c =>
-              c.Type == "scope" &&
-              c.Value.Split(' ').Contains("PaymentCreatePermission")));
+              (c.Type == "scope" || c.Type == "http://schemas.microsoft.com/identity/claims/scope") &&
+              (c.Value.Split(' ').Contains("PaymentCreatePermission") || c.Value.Split(' ').Contains("PaymentFullPermission"))));
     });
 
     options.AddPolicy("PaymentUpdatePolicy", policy =>
     {
         policy.RequireAssertion(context =>
-        context.User.Claims.Any(c =>
-            c.Type == "scope" &&
-            c.Value.Split(' ').Contains("PaymentUpdatePermission")));
+          context.User.Claims.Any(c =>
+              (c.Type == "scope" || c.Type == "http://schemas.microsoft.com/identity/claims/scope") &&
+              (c.Value.Split(' ').Contains("PaymentUpdatePermission") || c.Value.Split(' ').Contains("PaymentFullPermission"))));
     });
 
     options.AddPolicy("PaymentDeletePolicy", policy =>
     {
         policy.RequireAssertion(context =>
-        context.User.Claims.Any(c =>
-            c.Type == "scope" &&
-            c.Value.Split(' ').Contains("PaymentDeletePermission")));
+          context.User.Claims.Any(c =>
+              (c.Type == "scope" || c.Type == "http://schemas.microsoft.com/identity/claims/scope") &&
+              (c.Value.Split(' ').Contains("PaymentDeletePermission") || c.Value.Split(' ').Contains("PaymentFullPermission"))));
     });
 });
 

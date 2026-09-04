@@ -1,12 +1,23 @@
-﻿
-    <form class="mb-30" asp-controller="Discount" asp-action="ConfirmDiscountCoupon" method="post">
-        <div class="input-group">
-            <input type="text" name="code" class="form-control border-0 p-4" placeholder="Kupon Kodu">
-            <div class="input-group-append">
-                <button class="btn btn-primary">Kuponu Uygula</button><br />
-                
-            </div>
-           
+<form class="mb-3" asp-controller="Discount" asp-action="ConfirmDiscountCoupon" method="post">
+    <div class="input-group">
+        <input type="text" name="code" class="form-control border-0 p-4" placeholder="İndirim Kupon Kodu" required>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary font-weight-bold px-3">Kuponu Uygula</button>
         </div>
-    </form>
+    </div>
+</form>
+
+@if (TempData["CouponSuccess"] != null)
+{
+    <div class="alert alert-success py-2 small mb-3">
+        <i class="fa fa-check-circle mr-1"></i> @TempData["CouponSuccess"]
+    </div>
+}
+
+@if (TempData["CouponError"] != null)
+{
+    <div class="alert alert-danger py-2 small mb-3">
+        <i class="fa fa-exclamation-circle mr-1"></i> @TempData["CouponError"]
+    </div>
+}
     

@@ -4,13 +4,12 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Giriş Yap</title>
+    <title>Giriş Yap - MultiShop</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="~/ovioadmin/bootstrap/css/bootstrap.min.css">
@@ -22,15 +21,6 @@
     <link rel="stylesheet" href="~/ovioadmin/dist/css/style.css">
     <link rel="stylesheet" href="~/ovioadmin/pages/et-line-font/et-line-font.css">
     <link rel="stylesheet" href="~/ovioadmin/pages/font-awesome/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="~/ovioadmin/dist/weather/weather-icons.min.css">
-    <link type="text/css" rel="stylesheet" href="~/ovioadmin/dist/weather/weather-icons-wind.min.css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
 </head>
 
 <body class="body-bg-color">
@@ -38,35 +28,55 @@
         <div class="form-body">
            
             <form action="" method="post" class="col-form" novalidate>
-                <div class="col-logo"><a href="../index.html"><img width="300px" height="60px" alt="" src="~/img/logos/MULTISHOPPNG.png"></a></div>
+                <div class="col-logo"><a href="/"><img width="300px" height="60px" alt="MultiShop Logo" src="~/img/logos/MULTISHOPPNG.png"></a></div>
+                
+                @if (Context.Request.Query.ContainsKey("registered") || TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success" style="padding: 12px 15px; margin-bottom: 15px; border-radius: 4px; font-weight: 500; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; font-size: 13px;">
+                        <i class="fa fa-check-circle mr-1"></i> @(TempData["SuccessMessage"] ?? "Kayıt işleminiz başarıyla tamamlandı. Şimdi giriş yapabilirsiniz.")
+                    </div>
+                }
+
                 @if (Context.Request.Query.ContainsKey("reasonorder"))
                 {
-
-                    <h5>Sipariş işlemlerini yapabilmek için lütfen giriş yapınız.</h5>
+                    <div class="alert alert-warning" style="padding: 12px 15px; margin-bottom: 15px; border-radius: 4px; font-weight: 500; background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; font-size: 13px;">
+                        <i class="fa fa-info-circle mr-1"></i> Sipariş işlemlerini tamamlayabilmek için lütfen giriş yapınız.
+                    </div>
                 }
+
                 <header>Giriş Yap</header>
+
+                @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+                {
+                    <div asp-validation-summary="ModelOnly" class="text-danger" style="padding: 12px 15px; margin-bottom: 15px; background-color: #fff0f0; border-left: 4px solid #ff4d4d; border-radius: 4px; font-weight: 500; font-size: 13px;"></div>
+                }
+
                 <fieldset>
                     <section>
                         <div class="form-group has-feedback">
-                            <label class="control-label">Kullanıcı adınız : </label>
-                            <input asp-for="Username" class="form-control" placeholder="Kullanıcı adı ." type="text">
-                            <span class="fa fa-envelope form-control-feedback" aria-hidden="true"></span>
+                            <label class="control-label">Kullanıcı Adı <span class="text-danger">*</span></label>
+                            <input asp-for="Username" class="form-control" placeholder="Kullanıcı adınız" type="text" required>
+                            <span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
+                            <span asp-validation-for="Username" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </section>
                     <section>
                         <div class="form-group has-feedback">
-                            <label class="control-label">Şifre : </label>
-                            <input asp-for="Password" class="form-control" placeholder="Şifre :" type="password">
+                            <label class="control-label">Şifre <span class="text-danger">*</span></label>
+                            <input asp-for="Password" class="form-control" placeholder="Şifreniz" type="password" required>
                             <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+                            <span asp-validation-for="Password" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </section>
                     <section>
                         <div class="row">
-                            <div class="col-md-6 checkbox"> <a href="forgot-password.html" class="modal-opener">Forgot password?</a> </div>
+                            <div class="col-md-6 checkbox">
+                                <a href="javascript:void(0);" onclick="alert('Şifre sıfırlama için lütfen sistem yöneticisi ile iletişime geçiniz.');">Şifremi Unuttum</a>
+                            </div>
                             <div class="col-md-6 text-right">
                                 <label class="checkbox">
-                                    <input asp-for="RememberMe" name="remember" checked="" type="checkbox">
-                                    <i></i>Bilgilerimi Hatırla
+                                    <input asp-for="RememberMe" checked="" type="checkbox">
+                                    <i></i> Beni Hatırla
                                 </label>
                             </div>
                         </div>
@@ -79,7 +89,7 @@
             </form>
         </div>
     </div>
-    <!-- wrapper -->
+
     <!-- jQuery -->
     <script src="~/ovioadmin/dist/js/jquery.min.js"></script>
     <script src="~/ovioadmin/bootstrap/js/bootstrap.min.js"></script>

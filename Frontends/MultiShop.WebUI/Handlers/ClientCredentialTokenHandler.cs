@@ -8,32 +8,32 @@ namespace MultiShop.WebUI.Handlers
     public class ClientCredentialTokenHandler : DelegatingHandler
     {
         private readonly IClientCredentialTokenService _clientCredentialTokenService;
+        private readonly ILogger<ClientCredentialTokenHandler> _logger;
 
-        public ClientCredentialTokenHandler(IClientCredentialTokenService clientCredentialTokenService)
+        public ClientCredentialTokenHandler(
+            IClientCredentialTokenService clientCredentialTokenService,
+            ILogger<ClientCredentialTokenHandler> logger)
         {
             _clientCredentialTokenService = clientCredentialTokenService;
+            _logger = logger;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer",await _clientCredentialTokenService.GetToken());
+            try
+            {
+                var token = await _clientCredentialTokenService.GetToken();
+                if (!string.IsNullOrWhiteSpace(token))
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Client credential token alınırken hata oluştu.");
+            }
+
             var response = await base.SendAsync(request, cancellationToken);
-            if(response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                throw new Exception("Yetkilendirme yapılamadı.");
-
-            }
-            if (response.StatusCode == HttpStatusCode.BadRequest)
-            {
-                var errorBody = await response.Content.ReadAsStringAsync(cancellationToken);
-
-                throw new Exception($@"
-                        Bad Request döndü.
-                        Method: {request.Method}
-                        Url: {request.RequestUri}
-                        Response Body: {errorBody}
-                        ");
-            }
             return response;
         }
     }

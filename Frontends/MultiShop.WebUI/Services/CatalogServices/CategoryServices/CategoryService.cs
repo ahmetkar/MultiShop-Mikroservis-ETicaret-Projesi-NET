@@ -27,16 +27,23 @@ namespace MultiShop.WebUI.Services.CatalogServices.CategoryServices
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
            var resp =  await _httpClient.GetAsync("categories");
-           var values = await resp.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();  
-           return values;
+           if (resp.IsSuccessStatusCode)
+           {
+               var values = await resp.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();  
+               return values ?? new List<ResultCategoryDto>();
+           }
+           return new List<ResultCategoryDto>();
         }
 
         public async Task<GetByIdCategoryDto> GetByIdCategory(string id)
         {
             var resp = await _httpClient.GetAsync("categories/"+id);
-            var values = await resp.Content.ReadFromJsonAsync<GetByIdCategoryDto>();
-            return values;
-
+            if (resp.IsSuccessStatusCode)
+            {
+                var values = await resp.Content.ReadFromJsonAsync<GetByIdCategoryDto>();
+                return values!;
+            }
+            return new GetByIdCategoryDto();
         }
 
         public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
