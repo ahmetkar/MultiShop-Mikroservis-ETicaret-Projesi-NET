@@ -5,17 +5,22 @@
 
 # MultiShop E-TİCARET Sitesi Projesi
 
-Admin paneli ve e-ticaret sitesi arayüzü içeren ,frontend olarak .net core MVC backend olarak yaklaşık 12 mikroservis içeren web projesidir. Kategoriye göre ürünleri görüntüleme,ürün yorumlama,sepete ekleme,sipariş detayları girme ve ödeme için animasyonlu kart ekranı ,kupon uygulama,ana sayfa pörtfölyösü gibi özellikler içeriyor
+.NET Core ile admin paneli ve e-ticaret sitesi arayüzü olan ,frontend olarak .net core MVC kullanan, backend olarak 8 mikroservis içeren web projesidir. Sepet sistemi ve ödeme sistemi ,kupon uygulama,kampanya ekranları,sipariş ve kargo süreci yönetimi gibi özellikler içeriyor.
 
 Bu proje Murat Yücedağın Multishop E-ticaret eğitim serisinden faydalanılarak yazılmış ve benim tarafımdan düzeltmeler,eklemeler yapılmıştır.
 
 # Benim Eklediklerim
 
 - Cargo mikroservisi eklendi
-- Sepet yapısı güncellendi baştan yazıldı,giriş yapmayan ve yapanlar için cookieyle ekleme ve redise ekleme istisnaları eklendi.
+- Sepet yapısı güncellendi baştan yazıldı,giriş yapmayan ve yapanlar için cookieyle ekleme ve redise ekleme istisnaları eklendi. Ayrıca ürünlerinn filtreleriyle birlikte ayrıca sepete eklenmesi ve sipariş detaylarına eklenmesi sağlandı.
 - Payment frontend ve backend düzeltmeleri yapıldı.
 - Order servisi yeniden düzenlendi.
 - Kafka ile Order-Payment-Cargo arası asenkron kuyruk mesajlaşma yapısı choereography saga pattern ile kuruldu
+- Ürün filtreleme ve admin panelinden filtre ekleme,filtreleri ürünler ve kategorilerle ilişkilendirme özellikleri eklendi.
+- Ürün kampanya sayfaları eklendi ve ürünlerin admin panelinden bunlarla ilişkilendirilmesi , seçilen ürünlerin bu kampanya sayfalarında görüntülenmesi sağlandı.
+- Arama özellği eklendi.
+- Sayfalama özelliği eklendi.
+  
 
 
 # Kafka ile Mikroservis Arası Mesajlaşma Yapısı
