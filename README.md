@@ -20,7 +20,10 @@ Bu proje Murat Yücedağın Multishop E-ticaret eğitim serisinden faydalanılar
 - Ürün kampanya sayfaları eklendi ve ürünlerin admin panelinden bunlarla ilişkilendirilmesi , seçilen ürünlerin bu kampanya sayfalarında görüntülenmesi sağlandı.
 - Arama özellği eklendi.
 - Sayfalama özelliği eklendi.
-  
+- Kullanıcı için profil sayfası eklendi. Bilgilerinin yönetimi eklendi. Sipariş,kargo takibi eklendi. 
+- Admin panelde istatistik sayfası,sipariş yönetimi,kasa bilgileri,kargo yönetimi eklendi.
+- Admin panelde indirim ve kupon yönetimi ve bunların ilgili yerlere yansıtılması eklendi.
+- Admin panelde kargo şirketleri ve fiyatları yönetimi ve bunların ilgili yerlere yansıtılması eklendi.
 
 
 # Kafka ile Mikroservis Arası Mesajlaşma Yapısı
