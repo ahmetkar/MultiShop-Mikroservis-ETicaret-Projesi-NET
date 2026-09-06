@@ -3,9 +3,8 @@
 2-admin ve profil tasarımları düzenlensin ,bozuk kısımlar düzeltilsin
 
 2-iyizco herhangi birinin entegrasyonu ile client taraf�ndan �deme yap�ld�ktan sonra payment eklenmesini sa�la
-2-Redis caching
+2-Redis caching ekleme ve kafka batching,partition,consumer optimizasyonları
 
 3-Global error handler,exception hanler entegre edilecek.
-3-OpenTelemery ile al�nan veriler prometheus+grafana ya g�nderilip depolan�p kullan�l�p g�rselle�trilecek
 
 
