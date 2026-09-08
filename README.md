@@ -90,49 +90,60 @@ IdentityService
 
 # Resimler
 
-Alttaki resimler eskidir. Yeni resimler yakın zamanda eklenecek.
-
 # Web Sitesi Ana Sayfa Ekran Görüntüleri
 
-![resim1](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203429.png)
+![resim1](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20015613.png?raw=true)
 
-![resim2](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203442.png)
-
-![resim3](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203507.png)
+![resim2](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20015630.png?raw=true)
 
 
 # Sepet Ekran Görüntüsü
 
-![resim4](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20203939.png)
+![resim4](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20015859.png?raw=true)
 
-![resim5](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20204113.png)
 
 # Sipariş Detayları Ekranı
 
-![resim6](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20205552.png)
+![resim6](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20015928.png?raw=true)
 
-# Ödeme Ekranı 
+# Profil/Siparişlerim Ekranı 
 
-![resim7](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20210256.png)
+![resim7](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020006.png?raw=true)
 
 # Ürün Listesi Ekranı
 
-![resim8](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20210431.png)
+![resim8](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020044.png?raw=true)
 
-![resim81](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20213811.png)
+![resim81](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020113.png?raw=true)
 
 
 # Ürün Detayı Ekranı
 
-![resim8](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20213637.png)
+![resim8](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20015738.png?raw=true)
 
-![resim9](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20213647.png)
 
 # Admin Paneli Ekranı
 
-![resim9](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/3a5b9d65de7d5791fddb98457b3909840cafbb30/ekrangoruntuleri/Screenshot%202025-08-07%20214411.png)
+![resim9](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020149.png?raw=true)
 
+# Admin Paneli Filtre Yönetimi Ekranı
 
+![resim10](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020211.png?raw=true)
 
+# Ürün güncelleme ekranı
 
+![resim11](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020229.png?raw=true)
 
+![resim12](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020240.png?raw=true)
+
+# Sipariş İşlemleri Ekranı
+
+![resim13](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020315.png?raw=true)
+
+# Kasa İşlemleri Ekranı
+
+![resim14](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020340.png?raw=true)
+
+# İndirim&Kupon İşlemleri Ekranı
+
+![resim15](https://github.com/ahmetkar/MultiShop-Mikroservis-ETicaret-Projesi-NET/blob/main/ekrangoruntuleri/Screenshot%202026-09-09%20020353.png?raw=true)
