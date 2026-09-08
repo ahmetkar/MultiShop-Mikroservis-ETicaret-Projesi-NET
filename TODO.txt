@@ -1,8 +1,16 @@
 
 
+<<<<<<< HEAD
 1-iyizco herhangi birinin entegrasyonu ile client taraf�ndan �deme yap�ld�ktan sonra payment eklenmesini sa�la
 2-Redis caching
 2-Redis ve kafka optimizasyonları
 
 3-Global error handler,exception hanler entegre edilecek.
+=======
+2-iyizco herhangi birinin entegrasyonu ile client taraf�ndan �deme yap�ld�ktan sonra payment eklenmesini sa�la
+2-Redis caching ekleme ve kafka batching,partition,consumer optimizasyonları
+
+3-Global error handler,exception hanler entegre edilecek.
+
+>>>>>>> 96bdc63fccf51207fbdace4bad613739df1b928a
 
