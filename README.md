@@ -1,4 +1,4 @@
-[🇹🇷 Türkçe README](README.tr.md) | [🇬🇧 English README](README.en.md)
+[🇹🇷 Türkçe README](README.md) | [🇬🇧 English README](README.en.md)
 
 
 
@@ -24,7 +24,7 @@ Bu proje Murat Yücedağın Multishop E-ticaret eğitim serisinden faydalanılar
 - Admin panelde istatistik sayfası,sipariş yönetimi,kasa bilgileri,kargo yönetimi eklendi.
 - Admin panelde indirim ve kupon yönetimi ve bunların ilgili yerlere yansıtılması eklendi.
 - Admin panelde kargo şirketleri ve fiyatları yönetimi ve bunların ilgili yerlere yansıtılması eklendi.
-
+- Her ürün filtresi için stok bilgisi eklenndi ve ödeme yapıldığında ve sipariş iptal edildiğide değişmesi sağlandı.Admin panelden her ürün filtrsi için stok bilgisi güncellenmesi sağlandı.
 
 # Kafka ile Mikroservis Arası Mesajlaşma Yapısı
 
@@ -33,9 +33,13 @@ ve veritabanında PaymentOrderSnapshot kaydı oluşturur .
  - Kullanıcı devam eder ödeme yapar Payment oluşturur.Payment oluşturulurken PaymentOrderSnapshot tablosundaki bilgiler kontrol edilir. Ve payment oluşturulup payment işlemi taklit edilip PaymentCompleted veya PaymentFailed Eventi yayınlanır.
  - Order PaymentCompleted veya PaymentFailed eventini dinler ve ona göre Ordering tablosundaki Status durumunu değiştirir
  - Cargo PaymentCompleted eventini dinler ve gerçekleşince kargo müşterisi,kargo detayı ve kargo operasyonu oluşturma işlemini tamamlar.CargoCreated veya CargoFailed olayını yayınlar
+ - Catalog PaymentCompleted deventini dinler ve gerçekleşince ordering deki productların idlerini alıp catalogdaki product servisi ffonksiyonları ile productların stok sayılarını azaltır.
  - Order bu olayları dinler ve ona göre tablosundaki Status durumunu değiştirir.
  - Cargo teslim edildi olarak işaretlenirse CargoDelivered olayı Cargo servisi tarafından yayınlanır.
  - Order bu CargoDelivered olayını dinler ve Ordering tablosundaki Status durumunu Completed olarak değiştirir.
+ - Order iptal edilirse OrderCancelled olayı yayınlanır
+ - Catalog bu OrderCancelled olayını dinler ve ordering deki product ların idlerini alıp product servisi fonksiyonları aracılığıyla productların stok sayılarını tekrar artırır.
+
 
  Her mikroservis alakalı olduğu olayı dinlediği berirli bir orkestratör olmadığı için buna choereography saga pattern deniyor. Ve patterni bu uygullamaya bu şekilde uyarladım.
 

@@ -1,27 +1,40 @@
 ### MultiShop E-Commerce Website Project
 
-This is a web project that includes an admin panel and e-commerce website interface, with a .NET Core MVC frontend and approximately 12 microservices as the backend. It features categorized product display, product reviews, cart additions, order details entry, and an animated payment card screen, coupon application, and a homepage portfolio.
+This is a web project built with .NET Core, featuring an admin panel and an e-commerce site interface; it utilizes .NET Core MVC for the frontend and comprises eight microservices for the backend. It includes features such as a shopping cart and payment system, coupon application, campaign screens, and management of order and shipping processes.
 
-This project was written using Murat Yücedağ's Multishop E-commerce training series, and I have made corrections and additions.
+This project was developed based on Murat Yücedağ's "Multishop E-commerce" training series, with subsequent corrections and additions made by me.
 
 ### My Additions
 
 - Cargo microservice added.
-- Cart structure updated and rewritten; exceptions for adding items via cookies and rediscounting were added for both logged-in and non-logged-in users.
-- Payment frontend and backend corrections were made. - Order service was redesigned.
-- Asynchronous queue messaging structure between Order-Payment-Cargo in Kafka was established using the choreography saga pattern.
+- Cart structure rewritten; added logic to handle cart additions via cookies for unauthenticated users and Redis for authenticated users. Ensured that products are added to the cart and order details along with their specific filter attributes.
+- Payment frontend and backend fixes implemented.
+- Order service refactored.
+- Asynchronous queue-based messaging established between Order, Payment, and Cargo services using the choreography-based Saga pattern.
+- Added features for product filtering, adding filters via the admin panel, and associating filters with products and categories.
+- Added product campaign pages; implemented functionality to associate products with campaigns via the admin panel and display selected products on these campaign pages.
+- Search functionality added.
+- Pagination functionality added.
+- User profile page added, including information management and order/cargo tracking.
+- Admin panel features added: statistics page, order management, cash register/financial data, and cargo management.
+- Admin panel features added: discount and coupon management, with updates reflected across the system.
+- Admin panel features added: management of shipping companies and rates, with updates reflected across the system.
+- Stock information added for each product filter variant; implemented automatic updates upon payment and order cancellation, as well as manual stock updates via the admin panel.
 
 # Messaging Structure Between Kafka and Microservices
 
-- The user adds products to the cart, continues, selects an address, and creates an Order. When the Order is created, the OrderCreated event is published to Kafka. The Payment service listens to OrderCreated and creates a PaymentOrderSnapshot record in the database.
-- The user continues, makes a payment, and creates a Payment. While creating the Payment, the information in the PaymentOrderSnapshot table is checked. The Payment is created, the payment process is simulated, and a PaymentCompleted or PaymentFailed event is published.
-- Order listens to the PaymentCompleted or PaymentFailed event and changes the Status in the Ordering table accordingly.
-- Cargo listens to the PaymentCompleted event, and when it occurs, completes the process of creating the cargo customer, cargo details, and cargo operation. It publishes a CargoCreated or CargoFailed event.
-- Order listens to these events and changes the Status in its table accordingly.
-- If the cargo is marked as delivered, the CargoDelivered event is published by the Cargo service.
-- Order listens to this CargoDelivered event and changes the Status in the Ordering table to Completed.
+- The user adds items to the cart, proceeds to select an address, and creates an order. Once the order is created, an `OrderCreated` event is published to Kafka. The Payment service listens for `OrderCreated` and creates a `PaymentOrderSnapshot` record in the database.
+- The user proceeds to make a payment, triggering the creation of a payment record. During payment creation, the information in the `PaymentOrderSnapshot` table is verified. The payment is created, the payment process is simulated, and either a `PaymentCompleted` or `PaymentFailed` event is published.
+- The Order service listens for the `PaymentCompleted` or `PaymentFailed` event and updates the status in the `Ordering` table accordingly.
+- The Cargo service listens for the `PaymentCompleted` event; upon receiving it, it completes the process of creating the cargo customer, cargo details, and cargo operation, then publishes a `CargoCreated` or `CargoFailed` event.
+- The Catalog service listens for the `PaymentCompleted` event; upon receiving it, it retrieves the product IDs from the order and uses Product service functions to decrement the stock levels for those products.
+- The Order service listens for these events and updates the status in its table accordingly.
+- If the cargo is marked as delivered, the Cargo service publishes a `CargoDelivered` event.
+- The Order service listens for the `CargoDelivered` event and updates the status in the `Ordering` table to "Completed."
+- If the order is cancelled, an `OrderCancelled` event is published.
+- The Catalog service listens for the `OrderCancelled` event; upon receiving it, it retrieves the product IDs from the order and uses Product service functions to increment the stock levels for those products again.
 
-Since each microservice doesn't have a specific orchestrator to listen to for its relevant event, this is called the choreography saga pattern. And I adapted the pattern to this application in this way.
+Since there is no central orchestrator and each microservice listens for the events relevant to it, this approach is known as the Choreography Saga pattern; I have adapted this pattern to the application in this manner.
 
 # Microservices Included
 
