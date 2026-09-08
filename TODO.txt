@@ -1,4 +1,7 @@
 1-iyizco herhangi birinin entegrasyonu ile client taraf�ndan �deme yap�ld�ktan sonra payment eklenmesini sa�la
+1-kdv miktarı uygulama kontrol edilecek
+1-kargo ekleme ve silme kontrol edilecek fazladan kargo var kargolar silinmiyor olabilir
+1-kategori ürünlerinde birden fazla filtre uygulanmıyor düzeltilecek
 2-Redis caching
 2-Redis ve kafka optimizasyonları
 
