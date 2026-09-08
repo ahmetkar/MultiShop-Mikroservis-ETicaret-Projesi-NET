@@ -2,6 +2,7 @@
 1-kdv miktarı uygulama kontrol edilecek
 1-kargo ekleme ve silme kontrol edilecek fazladan kargo var kargolar silinmiyor olabilir
 1-kategori ürünlerinde birden fazla filtre uygulanmıyor düzeltilecek
+1-Kargo fiyatının uygulanmasında sorun var kontrol edilecek her sepet için bir kez uygulanmalı
 2-Redis caching
 2-Redis ve kafka optimizasyonları
 
