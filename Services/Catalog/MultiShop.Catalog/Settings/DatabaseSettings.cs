@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Settings
+namespace MultiShop.Catalog.Settings
 {
     public class DatabaseSettings : IDatabaseSettings
     {
@@ -17,5 +17,6 @@
         public string FeatureSliderCollectionName { get; set; }
         public string FilterCollectionName { get; set; }
         public string ProductFilterCollectionName { get; set; }
+        public string ProcessedEventCollectionName { get; set; }
     }
 }

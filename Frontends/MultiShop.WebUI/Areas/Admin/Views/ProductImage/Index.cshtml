@@ -1,0 +1,193 @@
+﻿@model List<ResultProductImageDto>
+@{
+    ViewData["Title"] = "Görsel / Resim Yönetimi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var products = ViewBag.Products as List<ResultProductDto> ?? new List<ResultProductDto>();
+    int count = 0;
+}
+
+<style>
+    .gallery-thumb {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 2px solid #e9ecef;
+        margin-right: 6px;
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .gallery-thumb:hover {
+        transform: scale(1.15);
+        border-color: #ffc107;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        z-index: 10;
+        position: relative;
+    }
+    .empty-thumb {
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+        border: 2px dashed #dee2e6;
+        background: #f8f9fa;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #adb5bd;
+        font-size: 18px;
+        margin-right: 6px;
+    }
+</style>
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="m-0 font-weight-bold text-dark"><i class="fa fa-images text-primary mr-2"></i> Ürün Görselleri & Galeri Yönetimi</h4>
+                        <p class="text-muted small mb-0 mt-1">Katalogdaki ürünlere ait tüm çoklu görselleri buradan görüntüleyebilir, düzenleyebilir veya yeni görsel setleri tanımlayabilirsiniz.</p>
+                    </div>
+                    <div>
+                        <a href="/Admin/ProductImage/CreateProductImage" class="btn btn-primary font-weight-bold shadow-sm">
+                            <i class="fa fa-plus-circle mr-1"></i> Yeni Görsel Seti Ekle
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bs-example table-responsive" data-example-id="bordered-table">
+                    <table class="table table-bordered table-striped table-hover align-middle">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th style="width: 50px;">#</th>
+                                <th style="width: 200px;">Ürün Bilgisi</th>
+                                <th>Görsel Galerisi (4 Açı)</th>
+                                <th style="width: 100px;" class="text-center">Görsel Adedi</th>
+                                <th style="width: 160px;" class="text-center">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    var product = products.FirstOrDefault(p => p.ProductId == item.ProductId);
+                                    int imgCount = 0;
+                                    if (!string.IsNullOrEmpty(item.Image1)) imgCount++;
+                                    if (!string.IsNullOrEmpty(item.Image2)) imgCount++;
+                                    if (!string.IsNullOrEmpty(item.Image3)) imgCount++;
+                                    if (!string.IsNullOrEmpty(item.Image4)) imgCount++;
+
+                                    <tr>
+                                        <th scope="row" class="text-center">@count</th>
+                                        <td>
+                                            <strong class="text-dark d-block">@(product != null ? product.ProductName : "Bilinmeyen Ürün")</strong>
+                                            <small class="text-muted"><code>ID: @item.ProductId</code></small>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center flex-wrap">
+                                                @if (!string.IsNullOrEmpty(item.Image1))
+                                                {
+                                                    <img src="@item.Image1" class="gallery-thumb" alt="Görsel 1" title="Ana Görsel" onclick="openPreviewModal('@item.Image1', '@(product?.ProductName ?? "") - Görsel 1')" onerror="this.src='/img/no-image.png'" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="empty-thumb" title="Görsel 1 Yok"><i class="fa fa-image"></i></span>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(item.Image2))
+                                                {
+                                                    <img src="@item.Image2" class="gallery-thumb" alt="Görsel 2" title="Görsel 2" onclick="openPreviewModal('@item.Image2', '@(product?.ProductName ?? "") - Görsel 2')" onerror="this.src='/img/no-image.png'" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="empty-thumb" title="Görsel 2 Yok"><i class="fa fa-image"></i></span>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(item.Image3))
+                                                {
+                                                    <img src="@item.Image3" class="gallery-thumb" alt="Görsel 3" title="Görsel 3" onclick="openPreviewModal('@item.Image3', '@(product?.ProductName ?? "") - Görsel 3')" onerror="this.src='/img/no-image.png'" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="empty-thumb" title="Görsel 3 Yok"><i class="fa fa-image"></i></span>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(item.Image4))
+                                                {
+                                                    <img src="@item.Image4" class="gallery-thumb" alt="Görsel 4" title="Görsel 4" onclick="openPreviewModal('@item.Image4', '@(product?.ProductName ?? "") - Görsel 4')" onerror="this.src='/img/no-image.png'" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="empty-thumb" title="Görsel 4 Yok"><i class="fa fa-image"></i></span>
+                                                }
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="badge @(imgCount == 4 ? "badge-success" : (imgCount > 0 ? "badge-info" : "badge-secondary")) p-2">
+                                                @imgCount / 4 Görsel
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="/Admin/ProductImage/UpdateProductImage/@item.ProductImageID" class="btn btn-warning btn-sm mr-1 font-weight-bold" title="Düzenle">
+                                                <i class="fa fa-pencil"></i> Düzenle
+                                            </a>
+                                            <a href="/Admin/ProductImage/DeleteProductImage/@item.ProductImageID" class="btn btn-danger btn-sm font-weight-bold" onclick="return confirm('Bu ürünün tüm görsel setini silmek istediğinize emin misiniz?');" title="Sil">
+                                                <i class="fa fa-trash"></i> Sil
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted p-5">
+                                        <i class="fa fa-images fa-3x mb-3 text-muted"></i>
+                                        <h5>Kayıtlı ürün görseli bulunamadı.</h5>
+                                        <a href="/Admin/ProductImage/CreateProductImage" class="btn btn-primary btn-sm mt-2 font-weight-bold">
+                                            <i class="fa fa-plus-circle mr-1"></i> İlk Görsel Setini Ekle
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Görsel Önizleme Modalı -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title font-weight-bold" id="previewModalTitle">Görsel Önizleme</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center p-4 bg-light">
+                <img id="previewModalImg" src="" class="img-fluid rounded shadow" style="max-height: 500px; object-fit: contain;" alt="Önizleme" />
+            </div>
+            <div class="modal-footer bg-white">
+                <a id="previewModalLink" href="" target="_blank" class="btn btn-primary btn-sm font-weight-bold">
+                    <i class="fa fa-external-link-alt mr-1"></i> Tam Boyutta Aç
+                </a>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openPreviewModal(url, title) {
+        document.getElementById('previewModalImg').src = url;
+        document.getElementById('previewModalTitle').innerText = title || 'Görsel Önizleme';
+        document.getElementById('previewModalLink').href = url;
+        $('#imagePreviewModal').modal('show');
+    }
+</script>

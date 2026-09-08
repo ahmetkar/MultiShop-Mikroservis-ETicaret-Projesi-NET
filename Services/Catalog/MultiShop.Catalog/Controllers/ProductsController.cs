@@ -107,5 +107,27 @@ namespace MultiShop.Catalog.Controllers
             var values = await _ProductService.GetProductsByIdsAsync(productIds);
             return Ok(values);
         }
+
+        [HttpPost("DecreaseProductFilterStock/{id}")]
+        public async Task<IActionResult> DecreaseProductFilterStock(string id, [FromBody] List<string>? filterIdentifiers, [FromQuery] int amount = 1)
+        {
+            await _ProductService.DecreaseProductFilterStockAsync(id, filterIdentifiers, amount);
+            return Ok("Ürün filtre stoğu düşürüldü");
+        }
+
+        [AllowAnonymous]
+        [HttpPost("IncreaseProductFilterStock/{id}")]
+        public async Task<IActionResult> IncreaseProductFilterStock(string id, [FromBody] List<string>? filterIdentifiers, [FromQuery] int amount = 1)
+        {
+            await _ProductService.IncreaseProductFilterStockAsync(id, filterIdentifiers, amount);
+            return Ok("Ürün filtre stoğu artırıldı");
+        }
+
+        [HttpPost("AdjustProductFilterStock/{id}")]
+        public async Task<IActionResult> AdjustProductFilterStock(string id, [FromQuery] string filterId, [FromQuery] int delta)
+        {
+            await _ProductService.AdjustProductFilterStockAsync(id, filterId, delta);
+            return Ok("Ürün filtre stoğu güncellendi");
+        }
     }
 }

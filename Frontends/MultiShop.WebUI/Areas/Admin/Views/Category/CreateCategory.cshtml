@@ -10,20 +10,48 @@
     <div class="row">
         <div class="col-md-10">
             <div class="chart-box">
-                <h4>Yeni Kategori Ekle</h4>
-                <form method="post">
-                    <div class="form-group">
-                        <label>Kategori Adı : </label>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="m-0 font-weight-bold text-dark"><i class="fa fa-plus-circle text-primary mr-2"></i> Yeni Kategori Ekle</h4>
+                    <a href="/Admin/Category/Index" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-left mr-1"></i> Listeye Dön</a>
+                </div>
+
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group mb-3">
+                        <label class="font-weight-bold">Kategori Adı <span class="text-danger">*</span> : </label>
                         <input type="text" asp-for="CategoryName" class="form-control" required placeholder="Kategori Adı">
                     </div>
-                    <div class="form-group">
-                        <label>Kategori Görseli : </label>
-                        <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Kategori Görsel Url">
+
+                    <!-- Görsel Yükleme Paneli -->
+                    <div class="panel panel-default p-3 bg-light rounded border mb-3" style="padding:15px; margin-bottom:20px;">
+                        <h5 class="font-weight-bold text-dark mb-3"><i class="fa fa-image text-primary mr-1"></i> Kategori Görseli</h5>
+                        <div class="row align-items-center">
+                            <div class="col-md-5 form-group">
+                                <label>Görsel Dosyası Yükle (Bilgisayardan):</label>
+                                <input type="file" name="imageFile" accept="image/*" class="form-control" onchange="previewFile(this, 'catImgBox', 'catUrlInput')" />
+                                <small class="text-muted">Görsel doğrudan sunucuya yüklenecektir.</small>
+                            </div>
+                            <div class="col-md-5 form-group">
+                                <label>Veya Görsel URL'si / Galeriden:</label>
+                                <div class="input-group">
+                                    <input type="text" asp-for="ImageUrl" id="catUrlInput" class="form-control" placeholder="https://..." oninput="previewUrl(this.value, 'catImgBox')" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info font-weight-bold" onclick="openMediaPicker('catUrlInput', 'catImgBox')">
+                                            <i class="fa fa-folder-open mr-1"></i> Galeriden Seç
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <div id="catImgBox" style="width:70px; height:70px; border:2px dashed #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff;">
+                                    <span class="text-muted small">Yok</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <hr style="margin: 20px 0;" />
-                    <h5><i class="fa fa-filter"></i> Kategoriye Filtre Ata</h5>
-                    <p class="text-muted">Önce filtre başlığını seçiniz, ardından kategoriye atanacak seçenekleri işaretleyiniz.</p>
+                    <h5 class="font-weight-bold text-dark"><i class="fa fa-filter text-primary mr-1"></i> Kategoriye Filtre Ata</h5>
+                    <p class="text-muted small mb-2">Önce filtre başlığını seçiniz, ardından kategoriye atanacak seçenekleri işaretleyiniz.</p>
 
                     <div class="form-group">
                         <label><strong>Filtre Grubu Seçiniz:</strong></label>
@@ -59,9 +87,10 @@
                         <div id="selectedBadgeList"></div>
                     </div>
 
-                    <br />
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Kategori Ekle</button>
-                    <a href="/Admin/Category/Index" class="btn btn-secondary">İptal</a>
+                    <div class="mt-4 pt-3 border-top">
+                        <button class="btn btn-primary font-weight-bold px-4 py-2" type="submit"><i class="fa fa-save mr-1"></i> Kategori Ekle</button>
+                        <a href="/Admin/Category/Index" class="btn btn-secondary px-4 py-2 ml-2">İptal</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -69,6 +98,24 @@
 </section>
 
 <script>
+    function previewFile(input, boxId, urlInputId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById(boxId).innerHTML = '<img src="' + e.target.result + '" style="width:100%; height:100%; object-fit:contain;" />';
+            };
+            reader.readAsDataURL(input.files[0]);
+            if (urlInputId) document.getElementById(urlInputId).value = '';
+        }
+    }
+    function previewUrl(url, boxId) {
+        if (url && url.length > 5) {
+            document.getElementById(boxId).innerHTML = '<img src="' + url + '" style="width:100%; height:100%; object-fit:contain;" onerror="this.parentElement.innerHTML=\'<span class=\\\'text-danger small\\\'>Hata</span>\'" />';
+        } else {
+            document.getElementById(boxId).innerHTML = '<span class="text-muted small">Yok</span>';
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         var groupSelect = document.getElementById('filterGroupSelect');
         var groupPanels = document.querySelectorAll('.filter-group-panel');
@@ -76,12 +123,15 @@
         var summaryDiv = document.getElementById('selectedFiltersSummary');
         var badgeList = document.getElementById('selectedBadgeList');
 
-        groupSelect.addEventListener('change', function() {
-            var val = this.value;
-            groupPanels.forEach(function(panel) { panel.style.display = (panel.id === val) ? 'block' : 'none'; });
-        });
+        if (groupSelect) {
+            groupSelect.addEventListener('change', function() {
+                var val = this.value;
+                groupPanels.forEach(function(panel) { panel.style.display = (panel.id === val) ? 'block' : 'none'; });
+            });
+        }
 
         function updateSummary() {
+            if (!badgeList) return;
             badgeList.innerHTML = '';
             var selected = document.querySelectorAll('.filter-chk:checked');
             if (selected.length > 0) {
@@ -99,3 +149,5 @@
         updateSummary();
     });
 </script>
+
+@await Html.PartialAsync("~/Areas/Admin/Views/Shared/_MediaPickerModalPartial.cshtml")

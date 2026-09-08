@@ -27,13 +27,25 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductFilterById(string id)
         {
+            if (string.IsNullOrWhiteSpace(id) || id.Length != 24 || !id.All(c => "0123456789abcdefABCDEF".Contains(c)))
+            {
+                return NotFound("Geçersiz filtre ID formatı");
+            }
             var values = await _productFilterService.GetByIdProductFilterAsync(id);
+            if (values == null)
+            {
+                return NotFound("Ürün filtresi bulunamadı");
+            }
             return Ok(values);
         }
 
-        [HttpGet("GetProductFiltersByCategoryId/{categoryId}")]
-        public async Task<IActionResult> GetProductFiltersByCategoryId(string categoryId)
+        [HttpGet("GetProductFiltersByCategoryId/{categoryId?}")]
+        public async Task<IActionResult> GetProductFiltersByCategoryId(string? categoryId)
         {
+            if (string.IsNullOrWhiteSpace(categoryId))
+            {
+                return Ok(new List<ResultProductFilterDto>());
+            }
             var values = await _productFilterService.GetProductFiltersByCategoryIdAsync(categoryId);
             return Ok(values);
         }

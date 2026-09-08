@@ -71,12 +71,20 @@ namespace MultiShop.Catalog.Services.ProductFilterServices
 
         public async Task<GetByIdProductFilterDto> GetByIdProductFilterAsync(string id)
         {
+            if (string.IsNullOrWhiteSpace(id) || id.Length != 24 || !id.All(c => "0123456789abcdefABCDEF".Contains(c)))
+            {
+                return null;
+            }
             var value = await _productFilterCollection.Find(x => x.ProductFilterId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductFilterDto>(value);
         }
 
         public async Task<List<ResultProductFilterDto>> GetProductFiltersByCategoryIdAsync(string categoryId)
         {
+            if (string.IsNullOrWhiteSpace(categoryId))
+            {
+                return new List<ResultProductFilterDto>();
+            }
             var values = await _productFilterCollection.Find(x => x.CategoryId == categoryId).ToListAsync();
             var dtos = _mapper.Map<List<ResultProductFilterDto>>(values);
             foreach (var item in dtos)

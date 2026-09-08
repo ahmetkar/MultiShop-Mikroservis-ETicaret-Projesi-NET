@@ -1,4 +1,4 @@
-@using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos
+﻿@using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos
 @model List<ResultCargoOperationDto>
 @{
     ViewData["Title"] = "Kargo Süreçleri";
@@ -82,10 +82,10 @@
                                             <td><strong>#@item.OrderingId</strong></td>
                                             <td>@(comp?.CargoCompanyName ?? "MultiShop Kargo")</td>
                                             <td>@item.OperationDate.ToString("dd.MM.yyyy HH:mm")</td>
-                                            <td><span class="badge badge-warning">Kargoda / Hazırlanıyor</span></td>
+                                            <td><span class="badge badge-warning">Kargo Oluşturuldu (Hazırlanıyor)</span></td>
                                             <td>
                                                 <a href="/Admin/Cargo/ConfirmDelivery/@item.CargoOperationId" class="btn btn-primary btn-sm font-weight-bold" onclick="return confirm('Kargo onaylanarak sipariş durumu CargoApproved yapılsın mı?');">
-                                                    <i class="fa fa-check mr-1"></i> Kargoyu Onayla (CargoApproved)
+                                                    <i class="fa fa-check mr-1"></i> Kargoya Ver (Kargoyu Onayla)
                                                 </a>
                                             </td>
                                         </tr>

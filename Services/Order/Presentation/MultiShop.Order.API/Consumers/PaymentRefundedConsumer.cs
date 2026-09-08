@@ -35,7 +35,7 @@
                     GroupId = "order-service-group-payment-refunded",
                     AutoOffsetReset = AutoOffsetReset.Earliest,
                     EnableAutoCommit = false,
-
+                    AllowAutoCreateTopics = true
                 };
 
                 using var consumer = new ConsumerBuilder<string, string>(config).Build();
@@ -85,6 +85,11 @@
                         }
 
                     }
+                    catch (ConsumeException ex)
+                    {
+                        _logger.LogWarning("Kafka topic ({Topic}) henüz hazır değil veya erişilemiyor: {Reason}. 5 saniye sonra tekrar denenecek.", KafkaTopics.PaymentRefunded, ex.Error.Reason);
+                        await Task.Delay(5000, stoppingToken);
+                    }
                     catch (OperationCanceledException)
                     {
                         break;
@@ -92,6 +97,7 @@
                     catch (Exception ex)
                     {
                         _logger.LogError(ex, "PaymentRefunded consumer hata aldı.");
+                        await Task.Delay(3000, stoppingToken);
                     }
 
                 }

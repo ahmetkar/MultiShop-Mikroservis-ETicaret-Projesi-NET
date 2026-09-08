@@ -53,14 +53,6 @@ namespace MultiShop.IdentityServer
                     "PaymentDeletePermission",
                     "PaymentFullPermission"
                 }
-            },
-            new ApiResource("ResourceImages")
-            {
-                Scopes = {"ImagesFullPermission"}
-            },
-            new ApiResource("ResourceMessage")
-            {
-                Scopes = {"MessageFullPermission"}
             }
         };
 
@@ -89,8 +81,6 @@ namespace MultiShop.IdentityServer
                 new ApiScope("PaymentUpdatePermission", "Can update payment records"),
                 new ApiScope("PaymentDeletePermission", "Can delete payment records"),
                 new ApiScope("PaymentFullPermission", "Full authority for payment operations"),
-                new ApiScope("ImagesFullPermission","Full authority for image operations"),
-                new ApiScope("MessageFullPermission","Full authority for message operations"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -139,8 +129,8 @@ namespace MultiShop.IdentityServer
                     AllowedScopes = {
                         "PaymentReadPermission", "PaymentCreatePermission", "PaymentDeletePermission", "PaymentUpdatePermission",
                         "CatalogFullPermission", "CatalogReadPermission", "BasketFullPermission", "OcelotFullPermission",
-                        "PaymentFullPermission", "CommentFullPermission", "ImagesFullPermission", "DiscountFullPermission",
-                        "MessageFullPermission", "CargoFullPermission", "OrderFullPermission", "roles",
+                        "PaymentFullPermission", "CommentFullPermission", "DiscountFullPermission",
+                        "CargoFullPermission", "OrderFullPermission", "roles",
                         IdentityServerConstants.LocalApi.ScopeName,
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.OpenId,
@@ -160,7 +150,7 @@ namespace MultiShop.IdentityServer
                         "CatalogFullPermission", "CatalogReadPermission", 
                         "DiscountFullPermission", "OrderFullPermission",
                         "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission", "CommentFullPermission", "PaymentFullPermission",
-                        "ImagesFullPermission", "MessageFullPermission", "roles",
+                         "roles",
                         "PaymentReadPermission", "PaymentCreatePermission", "PaymentDeletePermission", "PaymentUpdatePermission",
                         IdentityServerConstants.LocalApi.ScopeName,
                         IdentityServerConstants.StandardScopes.Email,

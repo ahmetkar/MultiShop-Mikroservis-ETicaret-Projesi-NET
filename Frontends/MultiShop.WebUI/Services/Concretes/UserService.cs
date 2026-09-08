@@ -1,5 +1,7 @@
-﻿using MultiShop.WebUI.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MultiShop.WebUI.Models;
 using MultiShop.WebUI.Services.Interfaces;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace MultiShop.WebUI.Services.Concretes
@@ -7,10 +9,12 @@ namespace MultiShop.WebUI.Services.Concretes
     public class UserService : IUserService
     {
         private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserService(HttpClient httpClient)
+        public UserService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<UserDetailViewModel> GetUserInfo()
@@ -21,7 +25,33 @@ namespace MultiShop.WebUI.Services.Concretes
 
         public async Task<string> GetUserId()
         {
-            return await _httpClient.GetStringAsync("/api/users/getuserid");
+            var claimUserId = _httpContextAccessor.HttpContext?.User?.Claims?
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier || x.Type == "sub")?.Value;
+
+            if (!string.IsNullOrWhiteSpace(claimUserId))
+            {
+                return claimUserId;
+            }
+
+            try
+            {
+                var userInfo = await GetUserInfo();
+                if (!string.IsNullOrWhiteSpace(userInfo?.Id))
+                {
+                    return userInfo.Id;
+                }
+            }
+            catch { }
+
+            try
+            {
+                var raw = await _httpClient.GetStringAsync("/api/users/getuserid");
+                return raw?.Trim('\"', ' ', '\r', '\n') ?? string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         public async Task<bool> UpdateUserInfo(UserDetailViewModel userDetailViewModel)

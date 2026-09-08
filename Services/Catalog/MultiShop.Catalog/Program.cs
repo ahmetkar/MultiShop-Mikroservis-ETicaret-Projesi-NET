@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MultiShop.Catalog.Consumers;
 using MultiShop.Catalog.Services.AboutServices;
 using MultiShop.Catalog.Services.BrandServices;
 using MultiShop.Catalog.Services.CategoryServices;
@@ -17,6 +21,11 @@ using MultiShop.Catalog.Services.StatisticServices;
 using MultiShop.Catalog.Settings;
 using System.Reflection;
 
+try
+{
+    BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+}
+catch { }
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +38,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 
 // Add services to the container.
+
+builder.Services.AddHttpClient();
+builder.Services.AddHostedService<PaymentCompletedConsumer>();
+builder.Services.AddHostedService<OrderCancelledConsumer>();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();    
 builder.Services.AddScoped<IProductService, ProductService>();

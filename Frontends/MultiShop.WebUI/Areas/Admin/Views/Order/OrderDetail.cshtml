@@ -1,3 +1,4 @@
+﻿@using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos
 @model List<ResultOrderDetailDto>
 @{
     ViewData["Title"] = "Sipariş Detayı";
@@ -104,7 +105,35 @@
                 <hr style="margin: 20px 0;" />
                 <h4><i class="fa fa-user text-primary"></i> Müşteri & Sipariş Bilgisi</h4>
                 <p><strong>Kullanıcı ID:</strong> <code>@(ordering?.UserId ?? "-")</code></p>
-                <p><strong>Sipariş Durumu:</strong> <span class="badge badge-primary p-2">@(ordering?.Status.ToString() ?? "-")</span></p>
+                <p><strong>Sipariş Durumu:</strong> 
+                    @if (ordering != null)
+                    {
+                        switch (ordering.Status)
+                        {
+                            case OrderStatus.Completed:
+                                <span class="badge badge-success p-2">Teslim Edildi</span>
+                                break;
+                            case OrderStatus.CargoApproved:
+                                <span class="badge badge-info p-2">Kargoya Verildi</span>
+                                break;
+                            case OrderStatus.CargoCreated:
+                                <span class="badge badge-warning p-2" style="background-color:#f0ad4e; color:#fff;">Kargo Oluşturuldu</span>
+                                break;
+                            case OrderStatus.PaymentCompleted:
+                                <span class="badge badge-primary p-2">Ödeme Alındı</span>
+                                break;
+                            case OrderStatus.OrderCreated:
+                                <span class="badge badge-secondary p-2">Sipariş Alındı</span>
+                                break;
+                            case OrderStatus.Cancelled:
+                                <span class="badge badge-danger p-2">İptal Edildi</span>
+                                break;
+                            default:
+                                <span class="badge badge-secondary p-2">@ordering.Status.ToString()</span>
+                                break;
+                        }
+                    }
+                </p>
             </div>
         </div>
     </div>

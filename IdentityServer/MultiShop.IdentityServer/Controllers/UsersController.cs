@@ -53,8 +53,51 @@ namespace MultiShop.IdentityServer.Controllers
             return Ok(users);
         }
 
+        [HttpGet("GetUserById/{id}")]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound("Kullanıcı bulunamadı.");
+            return Ok(user);
+        }
+
+        [HttpPost("AdminUpdateUser")]
+        public async Task<IActionResult> AdminUpdateUser([FromBody] AdminUserUpdateDto dto)
+        {
+            if (dto == null || string.IsNullOrWhiteSpace(dto.Id)) return BadRequest("Geçersiz kullanıcı verisi.");
+            var user = await _userManager.FindByIdAsync(dto.Id);
+            if (user == null) return NotFound("Kullanıcı bulunamadı.");
+
+            user.Name = dto.Name ?? user.Name;
+            user.Surname = dto.Surname ?? user.Surname;
+            user.Email = dto.Email ?? user.Email;
+            user.UserName = dto.UserName ?? user.UserName;
+            user.PhoneNumber = dto.PhoneNumber;
+            user.LockoutEnabled = dto.LockoutEnabled;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return Ok(new { success = true, message = "Kullanıcı başarıyla güncellendi." });
+            }
+            return BadRequest(result.Errors);
+        }
+
+        [HttpDelete("DeleteUser/{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound("Kullanıcı bulunamadı.");
+
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return Ok(new { success = true, message = "Kullanıcı başarıyla silindi." });
+            }
+            return BadRequest(result.Errors);
+        }
+
         [HttpPost("UpdateUserInfo")]
-        [HttpPut("UpdateUserInfo")]
         public async Task<IActionResult> UpdateUserInfo([FromBody] UserUpdateDto dto)
         {
             var userClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
@@ -109,5 +152,16 @@ namespace MultiShop.IdentityServer.Controllers
         public string Surname { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
+    }
+
+    public class AdminUserUpdateDto
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public bool LockoutEnabled { get; set; }
     }
 }

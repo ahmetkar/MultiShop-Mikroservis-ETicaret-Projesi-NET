@@ -11,6 +11,7 @@ namespace MultiShop.Catalog.Services.ProductServices
         private readonly IMapper _mapper;
         private readonly IMongoCollection<Product> _productCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
+        private readonly IMongoCollection<Filter> _filterCollection;
         public ProductService(IMapper mapper,IDatabaseSettings _databaseSettings)
         {
             _mapper = mapper;
@@ -18,7 +19,7 @@ namespace MultiShop.Catalog.Services.ProductServices
             var database = client.GetDatabase(_databaseSettings.DatabaseName);
             _productCollection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);
             _categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);
-
+            _filterCollection = database.GetCollection<Filter>(_databaseSettings.FilterCollectionName);
         }
         public async Task CreateProductAsync(CreateProductDto createProductDto)
         {
@@ -189,7 +190,161 @@ namespace MultiShop.Catalog.Services.ProductServices
         {
             var values = _mapper.Map<Product>(updateProductDto);
             await _productCollection.FindOneAndReplaceAsync(x=>x.ProductId == updateProductDto.ProductId,values);
+        }
 
+        public async Task AdjustProductFilterStockAsync(string productId, string filterId, int delta)
+        {
+            var product = await _productCollection.Find(x => x.ProductId == productId).FirstOrDefaultAsync();
+            if (product == null) return;
+
+            if (product.FilterStocks == null) product.FilterStocks = new Dictionary<string, int>();
+
+            if (product.FilterStocks.ContainsKey(filterId))
+            {
+                product.FilterStocks[filterId] = Math.Max(0, product.FilterStocks[filterId] + delta);
+            }
+            else
+            {
+                product.FilterStocks[filterId] = Math.Max(0, delta);
+            }
+
+            await _productCollection.ReplaceOneAsync(x => x.ProductId == productId, product);
+        }
+
+        public async Task DecreaseProductFilterStockAsync(string productId, List<string>? filterIdentifiers, int amount = 1)
+        {
+            var product = await _productCollection.Find(x => x.ProductId == productId).FirstOrDefaultAsync();
+            if (product == null) return;
+
+            if (product.FilterStocks == null) product.FilterStocks = new Dictionary<string, int>();
+
+            if (filterIdentifiers != null && filterIdentifiers.Count > 0)
+            {
+                var allFilters = await _filterCollection.Find(x => true).ToListAsync();
+                var productFilterIds = product.FilterIds ?? new List<string>();
+
+                var relevantFilters = allFilters.Where(f => productFilterIds.Contains(f.FilterId)).ToList();
+                if (relevantFilters.Count == 0) relevantFilters = allFilters;
+
+                var decrementedFilterIds = new HashSet<string>();
+
+                foreach (var desc in filterIdentifiers)
+                {
+                    if (string.IsNullOrWhiteSpace(desc)) continue;
+                    var trimmed = desc.Trim();
+
+                    Filter? matched = null;
+
+                    var colonIdx = trimmed.IndexOf(':');
+                    if (colonIdx >= 0)
+                    {
+                        var title = trimmed.Substring(0, colonIdx).Trim();
+                        var val = trimmed.Substring(colonIdx + 1).Trim();
+
+                        matched = relevantFilters.FirstOrDefault(f =>
+                            f.FilterTitle.Equals(title, StringComparison.OrdinalIgnoreCase) &&
+                            f.FilterName.Equals(val, StringComparison.OrdinalIgnoreCase));
+                    }
+                    else
+                    {
+                        matched = relevantFilters.FirstOrDefault(f => f.FilterId == trimmed);
+                        if (matched == null)
+                        {
+                            matched = relevantFilters.FirstOrDefault(f =>
+                                f.FilterName.Equals(trimmed, StringComparison.OrdinalIgnoreCase));
+                        }
+                    }
+
+                    if (matched != null && !decrementedFilterIds.Contains(matched.FilterId))
+                    {
+                        var fId = matched.FilterId;
+                        if (product.FilterStocks.ContainsKey(fId))
+                        {
+                            product.FilterStocks[fId] = Math.Max(0, product.FilterStocks[fId] - amount);
+                            decrementedFilterIds.Add(fId);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var key in product.FilterStocks.Keys.ToList())
+                {
+                    product.FilterStocks[key] = Math.Max(0, product.FilterStocks[key] - amount);
+                }
+            }
+
+            await _productCollection.ReplaceOneAsync(x => x.ProductId == productId, product);
+        }
+
+        public async Task IncreaseProductFilterStockAsync(string productId, List<string>? filterIdentifiers, int amount = 1)
+        {
+            var product = await _productCollection.Find(x => x.ProductId == productId).FirstOrDefaultAsync();
+            if (product == null) return;
+
+            if (product.FilterStocks == null) product.FilterStocks = new Dictionary<string, int>();
+
+            if (filterIdentifiers != null && filterIdentifiers.Count > 0)
+            {
+                var allFilters = await _filterCollection.Find(x => true).ToListAsync();
+                var productFilterIds = product.FilterIds ?? new List<string>();
+
+                var relevantFilters = allFilters.Where(f => productFilterIds.Contains(f.FilterId)).ToList();
+                if (relevantFilters.Count == 0) relevantFilters = allFilters;
+
+                var incrementedFilterIds = new HashSet<string>();
+
+                foreach (var desc in filterIdentifiers)
+                {
+                    if (string.IsNullOrWhiteSpace(desc)) continue;
+                    var trimmed = desc.Trim();
+
+                    Filter? matched = null;
+
+                    var colonIdx = trimmed.IndexOf(':');
+                    if (colonIdx >= 0)
+                    {
+                        var title = trimmed.Substring(0, colonIdx).Trim();
+                        var val = trimmed.Substring(colonIdx + 1).Trim();
+
+                        matched = relevantFilters.FirstOrDefault(f =>
+                            f.FilterTitle.Equals(title, StringComparison.OrdinalIgnoreCase) &&
+                            f.FilterName.Equals(val, StringComparison.OrdinalIgnoreCase));
+                    }
+                    else
+                    {
+                        matched = relevantFilters.FirstOrDefault(f => f.FilterId == trimmed);
+                        if (matched == null)
+                        {
+                            matched = relevantFilters.FirstOrDefault(f =>
+                                f.FilterName.Equals(trimmed, StringComparison.OrdinalIgnoreCase));
+                        }
+                    }
+
+                    if (matched != null && !incrementedFilterIds.Contains(matched.FilterId))
+                    {
+                        var fId = matched.FilterId;
+                        if (product.FilterStocks.ContainsKey(fId))
+                        {
+                            product.FilterStocks[fId] += amount;
+                        }
+                        else
+                        {
+                            product.FilterStocks[fId] = amount;
+                        }
+                        incrementedFilterIds.Add(fId);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var key in product.FilterStocks.Keys.ToList())
+                {
+                    product.FilterStocks[key] += amount;
+                }
+            }
+
+            await _productCollection.ReplaceOneAsync(x => x.ProductId == productId, product);
         }
     }
 }

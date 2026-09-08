@@ -83,7 +83,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [Route("UpdateCargoCompany/{id}")]
-        [Route("UpdateCargoCompany")]
         public async Task<IActionResult> UpdateCargoCompany(UpdateCargoCompanyDto updateCargoCompanyDto)
         {
             await _cargoCompanyService.UpdateCargoCompanyAsync(updateCargoCompanyDto);

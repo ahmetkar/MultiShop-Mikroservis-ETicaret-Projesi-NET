@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
+using MultiShop.WebUI.Services.CatalogServices.FilterServices;
 using MultiShop.WebUI.Services.CatalogServices.OfferDiscountServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
@@ -18,6 +19,7 @@ namespace MultiShop.WebUI.Controllers
         private readonly IFeatureSliderService _featureSliderService;
         private readonly ISpecialOfferService _specialOfferService;
         private readonly IOfferDiscountService _offerDiscountService;
+        private readonly IFilterService _filterService;
 
         public ProductListController(
             ICommentService commentService,
@@ -25,7 +27,8 @@ namespace MultiShop.WebUI.Controllers
             IDiscountService discountService,
             IFeatureSliderService featureSliderService,
             ISpecialOfferService specialOfferService,
-            IOfferDiscountService offerDiscountService)
+            IOfferDiscountService offerDiscountService,
+            IFilterService filterService)
         {
             _commentService = commentService;
             _productService = productService;
@@ -33,6 +36,7 @@ namespace MultiShop.WebUI.Controllers
             _featureSliderService = featureSliderService;
             _specialOfferService = specialOfferService;
             _offerDiscountService = offerDiscountService;
+            _filterService = filterService;
         }
 
         public IActionResult Index(string id, List<string>? filterIds, int page = 1)
@@ -93,6 +97,9 @@ namespace MultiShop.WebUI.Controllers
             var discounts = await _discountService.GetActiveProductDiscountsAsync();
             var discountDict = discounts.GroupBy(x => x.ProductId).ToDictionary(g => g.Key, g => g.First().Rate);
             ViewBag.DiscountDict = discountDict;
+
+            var allFilters = await _filterService.GetAllFilterAsync();
+            ViewBag.AllFilters = allFilters;
 
             ViewBag.TotalCount = totalCount;
             ViewBag.TotalPages = (int)Math.Ceiling((double)totalCount / pageSize);
@@ -155,6 +162,9 @@ namespace MultiShop.WebUI.Controllers
             var discounts = await _discountService.GetActiveProductDiscountsAsync();
             var discountDict = discounts.GroupBy(x => x.ProductId).ToDictionary(g => g.Key, g => g.First().Rate);
             ViewBag.DiscountDict = discountDict;
+
+            var allFilters = await _filterService.GetAllFilterAsync();
+            ViewBag.AllFilters = allFilters;
 
             return View(products);
         }

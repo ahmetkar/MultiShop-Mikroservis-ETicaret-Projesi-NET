@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.API.Dtos;
 using MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
+using MultiShop.Order.Application.Interfaces;
 using MultiShop.SharedLayer.Kafka;
 using MultiShop.SharedLayer.Events;
 using MultiShop.Order.Application.Features.Mediator.Results.OrderingResult;
+using System.Net.Http.Json;
 
 namespace MultiShop.Order.API.Controllers
 {
@@ -19,7 +21,7 @@ namespace MultiShop.Order.API.Controllers
         private readonly IMediator _mediator;
         private readonly IKafkaProducer _kafkaProducer;
 
-        public OrderingsController(IMediator mediator,IKafkaProducer kafkaProducer)
+        public OrderingsController(IMediator mediator, IKafkaProducer kafkaProducer)
         {
             _mediator = mediator;
             _kafkaProducer = kafkaProducer;
@@ -116,7 +118,6 @@ namespace MultiShop.Order.API.Controllers
         }
 
         [HttpPost("SetOrderStatus/{id}/{status}")]
-        [HttpGet("SetOrderStatus/{id}/{status}")]
         public async Task<IActionResult> SetOrderStatus(int id, Domain.Entities.OrderStatus status)
         {
             var ordering = await _mediator.Send(new GetOrderingByIdQuery(id));
@@ -132,6 +133,20 @@ namespace MultiShop.Order.API.Controllers
                     UserId = ordering.UserId,
                     Status = status
                 });
+
+                if (status == Domain.Entities.OrderStatus.Cancelled)
+                {
+                    var orderCancelledEvent = new OrderCancelledEvent
+                    {
+                        OrderingId = id,
+                        UserId = ordering.UserId,
+                        Reason = "Order cancelled by user",
+                        CorrrelationId = Guid.NewGuid(),
+                        CreatedDate = DateTime.UtcNow
+                    };
+                    await _kafkaProducer.PublishAsync(KafkaTopics.OrderCancelled, orderCancelledEvent, id.ToString());
+                }
+
                 return Ok(new { success = true, message = $"Sipariş durumu {status} olarak güncellendi." });
             }
             return NotFound("Sipariş bulunamadı.");

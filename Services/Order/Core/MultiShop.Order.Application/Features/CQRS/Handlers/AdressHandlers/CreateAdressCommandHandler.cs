@@ -22,20 +22,19 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
         {
             var adress = new Adress()
             {
-                City = values.City,
-                Detail1 = values.Detail1,
-                Detail2 = values.Detail2,
-                District = values.District,
-                UserId = values.UserId,
-                Email = values.Email,
-                Phone = values.Phone,
-                Country = values.Country,
-                ZipCode = values.ZipCode,
-                Description = values.Description,
-                Name = values.Name,
-                Surname = values.Surname,
+                City = values.City ?? "",
+                Detail1 = values.Detail1 ?? "",
+                Detail2 = values.Detail2 ?? "",
+                District = values.District ?? "",
+                UserId = values.UserId ?? "",
+                Email = values.Email ?? "",
+                Phone = values.Phone ?? "",
+                Country = string.IsNullOrWhiteSpace(values.Country) ? "Türkiye" : values.Country,
+                ZipCode = values.ZipCode ?? "",
+                Description = values.Description ?? "",
+                Name = values.Name ?? "",
+                Surname = values.Surname ?? "",
                 IsBillingOrShipping = values.IsBillingOrShipping
-
             };
             await _repository.CreateAsync(adress);
 

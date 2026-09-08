@@ -36,6 +36,7 @@ namespace MultiShop.Order.API.Controllers
             return Ok(values);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderDetailByOrderingId(int id)
         {

@@ -1,70 +1,202 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 @await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
 
 <body class="sidebar-mini">
-   
-     
-        @await Component.InvokeAsync("_AdminLayoutHeaderComponentPartial")
+    @await Component.InvokeAsync("_AdminLayoutHeaderComponentPartial")
+    @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
 
-      
-        @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        @await Component.InvokeAsync("_AdminLayoutTopSectionComponentPartial")
+        
+        <!-- Main content -->
+        @RenderBody()
+        <!-- content -->
+    </div>
+    <!-- content-wrapper -->
 
+    <!-- Main Footer -->
+    <footer class="main-footer dark-bg">
+        <div class="pull-right hidden-xs"> Version 1.0</div>
+        Copyright &copy; @DateTime.Now.Year MultiShop All rights reserved.
+    </footer>
 
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-
-            @await Component.InvokeAsync("_AdminLayoutTopSectionComponentPartial")
-            
-            <!-- Main content -->
-            @RenderBody()
-            <!-- content -->
-        </div>
-        <!-- content-wrapper -->
-        <!-- Main Footer -->
-
-        <footer class="main-footer dark-bg">
-            <div class="pull-right hidden-xs"> Version 1.0</div>
-            Copyright &copy; @DateTime.Now.Year MultiShop All rights reserved.
-        </footer>
-   
-    <!-- wrapper -->
-    <!-- jQuery -->
-    <script src="~/ovioadmin/dist/js/jquery.min.js"></script>
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/ovioadmin/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/ovioadmin/dist/js/ovio.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.slim.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
 
-
+    <!-- SignalR & Realtime Comments -->
     <script type="text/javascript">
-
-        $(document).ready(()=>{
-            var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7188/SignalRHub").build();
-            $("#connstatus").text(connection.state);
-
-            connection.start().then(()=>{
-                $("#connstatus").text(connection.state);
-                connection.invoke("SendStatisticsCount");
-            }).catch((err)=>{
-                    console.log(err);
-            });
-            connection.on("ReceiveCommentCount",(value)=>{
-                $(".commentcount").text(value);
-            });
-
-
-
+        $(document).ready(function () {
+            try {
+                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7188/SignalRHub").build();
+                connection.start().then(function () {
+                    connection.invoke("SendStatisticsCount");
+                }).catch(function (err) {
+                    console.log("SignalR Connection Notice:", err.toString());
+                });
+                connection.on("ReceiveCommentCount", function (value) {
+                    $(".commentcount").text(value);
+                });
+            } catch (e) { }
         });
-
     </script>
-    
+
+    <!-- Universal Admin Table Pagination & Instant Search -->
+    <script type="text/javascript">
+        (function ($) {
+            function initTablePagination($table, index) {
+                if ($table.hasClass('table-paginated-init')) return;
+                var $tbody = $table.find('tbody');
+                var $allRows = $tbody.find('tr');
+                if ($allRows.length <= 5 && !$allRows.first().find('td[colspan]').length) return;
+                if ($allRows.first().find('td[colspan]').length && $allRows.length === 1) return;
+
+                $table.addClass('table-paginated-init');
+                var tableId = $table.attr('id') || ('admin_table_' + index);
+                $table.attr('id', tableId);
+
+                var pageSize = 10;
+                var currentPage = 1;
+                var filteredRows = $allRows.toArray();
+
+                // Build Control Toolbar
+                var $toolbar = $(
+                    '<div class="admin-table-controls row" style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">' +
+                        '<div class="col-sm-6" style="margin-bottom: 6px;">' +
+                            '<label style="font-size: 13px; font-weight: normal; margin: 0;">' +
+                                'Sayfa Başına Göster: ' +
+                                '<select class="form-control input-sm table-page-size-select" style="width: auto; display: inline-block; margin-left: 6px;">' +
+                                    '<option value="5">5</option>' +
+                                    '<option value="10" selected>10</option>' +
+                                    '<option value="25">25</option>' +
+                                    '<option value="50">50</option>' +
+                                    '<option value="1000">Tümü</option>' +
+                                '</select>' +
+                            '</label>' +
+                        '</div>' +
+                        '<div class="col-sm-6 text-right" style="margin-bottom: 6px;">' +
+                            '<label style="font-size: 13px; font-weight: normal; margin: 0;">' +
+                                'Tabloda Ara: ' +
+                                '<input type="text" class="form-control input-sm table-search-input" placeholder="Hızlı filtrele..." style="width: 180px; display: inline-block; margin-left: 6px;" />' +
+                            '</label>' +
+                        '</div>' +
+                    '</div>'
+                );
+
+                // Build Pagination Footer
+                var $footer = $(
+                    '<div class="admin-pagination-wrapper" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">' +
+                        '<div class="admin-pagination-info" style="font-size: 13px; color: #555; margin-bottom: 6px;"></div>' +
+                        '<ul class="pagination pagination-sm" style="margin: 0;"></ul>' +
+                    '</div>'
+                );
+
+                $table.closest('.table-responsive, .bs-example, .chart-box').before($toolbar);
+                $table.closest('.table-responsive, .bs-example, .chart-box').after($footer);
+
+                function render() {
+                    var totalRecords = filteredRows.length;
+                    var totalPages = Math.ceil(totalRecords / pageSize) || 1;
+                    if (currentPage > totalPages) currentPage = totalPages;
+                    if (currentPage < 1) currentPage = 1;
+
+                    var startIdx = (currentPage - 1) * pageSize;
+                    var endIdx = startIdx + pageSize;
+                    if (endIdx > totalRecords) endIdx = totalRecords;
+
+                    $allRows.hide();
+                    for (var i = startIdx; i < endIdx; i++) {
+                        $(filteredRows[i]).show();
+                    }
+
+                    // Update Info
+                    if (totalRecords === 0) {
+                        $footer.find('.admin-pagination-info').html('Kayıt bulunamadı.');
+                    } else {
+                        $footer.find('.admin-pagination-info').html(
+                            'Toplam <strong>' + totalRecords + '</strong> kayıttan <strong>' + (startIdx + 1) + ' - ' + endIdx + '</strong> arası gösteriliyor.'
+                        );
+                    }
+
+                    // Update Pagination Buttons
+                    var $pagination = $footer.find('.pagination');
+                    $pagination.empty();
+
+                    if (totalPages > 1) {
+                        // Previous
+                        var $prev = $('<li class="' + (currentPage === 1 ? 'disabled' : '') + '"><a href="javascript:void(0)">&laquo; Önceki</a></li>');
+                        $prev.click(function () {
+                            if (currentPage > 1) { currentPage--; render(); }
+                        });
+                        $pagination.append($prev);
+
+                        // Page Numbers
+                        var startPage = Math.max(1, currentPage - 2);
+                        var endPage = Math.min(totalPages, currentPage + 2);
+
+                        if (startPage > 1) {
+                            var $first = $('<li><a href="javascript:void(0)">1</a></li>');
+                            $first.click(function () { currentPage = 1; render(); });
+                            $pagination.append($first);
+                            if (startPage > 2) $pagination.append('<li class="disabled"><span>...</span></li>');
+                        }
+
+                        for (var p = startPage; p <= endPage; p++) {
+                            (function (pageNum) {
+                                var $pageLi = $('<li class="' + (pageNum === currentPage ? 'active' : '') + '"><a href="javascript:void(0)">' + pageNum + '</a></li>');
+                                $pageLi.click(function () { currentPage = pageNum; render(); });
+                                $pagination.append($pageLi);
+                            })(p);
+                        }
+
+                        if (endPage < totalPages) {
+                            if (endPage < totalPages - 1) $pagination.append('<li class="disabled"><span>...</span></li>');
+                            var $last = $('<li><a href="javascript:void(0)">' + totalPages + '</a></li>');
+                            $last.click(function () { currentPage = totalPages; render(); });
+                            $pagination.append($last);
+                        }
+
+                        // Next
+                        var $next = $('<li class="' + (currentPage === totalPages ? 'disabled' : '') + '"><a href="javascript:void(0)">Sonraki &raquo;</a></li>');
+                        $next.click(function () {
+                            if (currentPage < totalPages) { currentPage++; render(); }
+                        });
+                        $pagination.append($next);
+                    }
+                }
+
+                // Page size change
+                $toolbar.find('.table-page-size-select').on('change', function () {
+                    pageSize = parseInt($(this).val());
+                    currentPage = 1;
+                    render();
+                });
+
+                // Instant Search filter
+                $toolbar.find('.table-search-input').on('keyup input', function () {
+                    var query = $(this).val().toLowerCase();
+                    filteredRows = $allRows.filter(function () {
+                        return $(this).text().toLowerCase().indexOf(query) > -1;
+                    }).toArray();
+                    currentPage = 1;
+                    render();
+                });
+
+                render();
+            }
+
+            $(document).ready(function () {
+                $('table.table').each(function (idx) {
+                    initTablePagination($(this), idx);
+                });
+            });
+        })(jQuery);
+    </script>
 </body>
 
 </html>

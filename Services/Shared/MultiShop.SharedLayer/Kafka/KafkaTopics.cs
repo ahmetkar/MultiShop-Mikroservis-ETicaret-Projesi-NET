@@ -4,6 +4,7 @@
     {
         public const string OrderCreated = "order-created";
         public const string OrderNotCreated = "order-not-created";
+        public const string OrderCancelled = "order-cancelled";
 
         public const string PaymentCompleted = "payment-completed";
         public const string PaymentFailed = "payment-failed";

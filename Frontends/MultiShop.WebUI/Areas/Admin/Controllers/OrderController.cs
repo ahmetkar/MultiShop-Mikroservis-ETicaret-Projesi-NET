@@ -38,7 +38,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
 
         [Route("Index")]
-        [Route("")]
         public async Task<IActionResult> Index()
         {
             OrderViewBag("Sipariş Listesi");

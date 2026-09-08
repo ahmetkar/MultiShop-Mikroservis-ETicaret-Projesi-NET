@@ -1,10 +1,15 @@
-﻿using MultiShop.DtoLayer.DiscountDtos;
+using MultiShop.DtoLayer.DiscountDtos;
+using System.Text.Json;
 
 namespace MultiShop.WebUI.Services.DiscountServices
 {
     public class DiscountService : IDiscountService
     {
         private readonly HttpClient _httpClient;
+        private static readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
 
         public DiscountService(HttpClient httpClient)
         {
@@ -13,25 +18,55 @@ namespace MultiShop.WebUI.Services.DiscountServices
 
         public async Task<GetDiscountCodeDetailByCode> GetDiscountCode(string code)
         {
-            var responseMessage = await _httpClient.GetAsync($"discounts/GetCodeDetailByCode/{code}");
-            var values = await responseMessage.Content.ReadFromJsonAsync<GetDiscountCodeDetailByCode>();
-            return values;
+            try
+            {
+                var responseMessage = await _httpClient.GetAsync($"discounts/GetCodeDetailByCode/{code}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var content = await responseMessage.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrWhiteSpace(content) && content != "null")
+                    {
+                        return JsonSerializer.Deserialize<GetDiscountCodeDetailByCode>(content, _jsonOptions);
+                    }
+                }
+            }
+            catch { }
+            return null;
         }
 
         public async Task<int> GetDiscountCouponCountRate(string code)
         {
-            var responseMessage = await _httpClient.GetAsync($"discounts/GetDiscountCouponCountRate/{code}");
-            var value = await responseMessage.Content.ReadFromJsonAsync<int>();
-            return value;
+            try
+            {
+                var responseMessage = await _httpClient.GetAsync($"discounts/GetDiscountCouponCountRate/{code}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var content = await responseMessage.Content.ReadAsStringAsync();
+                    if (int.TryParse(content, out int val))
+                    {
+                        return val;
+                    }
+                }
+            }
+            catch { }
+            return 0;
         }
 
         public async Task<List<ResultDiscountCouponDto>> GetAllCouponAsync()
         {
-            var response = await _httpClient.GetAsync("discounts");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                return await response.Content.ReadFromJsonAsync<List<ResultDiscountCouponDto>>() ?? new List<ResultDiscountCouponDto>();
+                var response = await _httpClient.GetAsync("discounts");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrWhiteSpace(content) && content != "null")
+                    {
+                        return JsonSerializer.Deserialize<List<ResultDiscountCouponDto>>(content, _jsonOptions) ?? new List<ResultDiscountCouponDto>();
+                    }
+                }
             }
+            catch { }
             return new List<ResultDiscountCouponDto>();
         }
 
@@ -52,27 +87,55 @@ namespace MultiShop.WebUI.Services.DiscountServices
 
         public async Task<GetByIdDiscountCouponDto> GetByIdCouponAsync(int id)
         {
-            var response = await _httpClient.GetAsync("discounts/" + id);
-            return await response.Content.ReadFromJsonAsync<GetByIdDiscountCouponDto>();
+            try
+            {
+                var response = await _httpClient.GetAsync("discounts/" + id);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrWhiteSpace(content) && content != "null")
+                    {
+                        return JsonSerializer.Deserialize<GetByIdDiscountCouponDto>(content, _jsonOptions);
+                    }
+                }
+            }
+            catch { }
+            return null;
         }
 
         public async Task<ResultDiscountCouponDto?> GetDiscountByProductIdAsync(string productId)
         {
-            var response = await _httpClient.GetAsync("discounts/GetDiscountByProductId/" + productId);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                return await response.Content.ReadFromJsonAsync<ResultDiscountCouponDto>();
+                var response = await _httpClient.GetAsync("discounts/GetDiscountByProductId/" + productId);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrWhiteSpace(content) && content != "null")
+                    {
+                        return JsonSerializer.Deserialize<ResultDiscountCouponDto>(content, _jsonOptions);
+                    }
+                }
             }
+            catch { }
             return null;
         }
 
         public async Task<List<ResultDiscountCouponDto>> GetActiveProductDiscountsAsync()
         {
-            var response = await _httpClient.GetAsync("discounts/GetActiveProductDiscounts");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                return await response.Content.ReadFromJsonAsync<List<ResultDiscountCouponDto>>() ?? new List<ResultDiscountCouponDto>();
+                var response = await _httpClient.GetAsync("discounts/GetActiveProductDiscounts");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrWhiteSpace(content) && content != "null")
+                    {
+                        return JsonSerializer.Deserialize<List<ResultDiscountCouponDto>>(content, _jsonOptions) ?? new List<ResultDiscountCouponDto>();
+                    }
+                }
             }
+            catch { }
             return new List<ResultDiscountCouponDto>();
         }
 

@@ -110,7 +110,6 @@ namespace MultiShop.Cargo.WebApi.Controllers
             
         }
 
-        [HttpGet("ConfirmDelivery/{id}")]
         [HttpPost("ConfirmDelivery/{id}")]
         public IActionResult ConfirmDelivery(int id)
         {

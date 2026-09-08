@@ -18,5 +18,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductServices
         Task<List<ResultProductWithCategory>> SearchProductsAsync(string query, int page = 1, int pageSize = 9);
         Task<long> GetSearchProductCountAsync(string query);
         Task<List<ResultProductWithCategory>> GetProductsByIdsAsync(List<string> productIds);
+        Task DecreaseProductFilterStockAsync(string productId, List<string>? filterIdentifiers, int amount = 1);
+        Task AdjustProductFilterStockAsync(string productId, string filterId, int delta);
     }
 }

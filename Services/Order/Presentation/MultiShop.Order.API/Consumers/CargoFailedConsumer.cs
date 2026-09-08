@@ -35,7 +35,7 @@
                     GroupId = "order-service-group-cargo-failed",
                     AutoOffsetReset = AutoOffsetReset.Earliest,
                     EnableAutoCommit = false,
-
+                    AllowAutoCreateTopics = true
                 };
 
                 using var consumer = new ConsumerBuilder<string, string>(config).Build();
@@ -66,8 +66,6 @@
                             continue;
                         }
 
-
-
                         var order = await dbContext.Orderings.FirstOrDefaultAsync(x => x.OrderingId == message.OrderingId, stoppingToken);
 
                         if (order is not null)
@@ -87,6 +85,11 @@
                         }
 
                     }
+                    catch (ConsumeException ex)
+                    {
+                        _logger.LogWarning("Kafka topic ({Topic}) henüz hazır değil veya erişilemiyor: {Reason}. 5 saniye sonra tekrar denenecek.", KafkaTopics.CargoFailed, ex.Error.Reason);
+                        await Task.Delay(5000, stoppingToken);
+                    }
                     catch (OperationCanceledException)
                     {
                         break;
@@ -94,6 +97,7 @@
                     catch (Exception ex)
                     {
                         _logger.LogError(ex, "CargoFailed consumer hata aldı.");
+                        await Task.Delay(3000, stoppingToken);
                     }
 
                 }

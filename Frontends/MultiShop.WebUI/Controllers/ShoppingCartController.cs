@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.BasketDtos;
 using MultiShop.DtoLayer.OrderDtos.OrderOrderingDtos;
+using MultiShop.WebUI.Helpers;
 using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
+using MultiShop.WebUI.Services.CatalogServices.FilterServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.OrderServices.OrderOderingServices;
@@ -16,20 +19,28 @@ namespace MultiShop.WebUI.Controllers
     {
         private readonly IProductService _productService;
         private readonly IBasketService _basketService;
+        private readonly IFilterService _filterService;
+        private readonly ICargoCompanyService _cargoCompanyService;
         private readonly IOrderOderingService _orderOderingService;
         private readonly IUserService _userService;
         private readonly IDataProtector _protector;
 
-        public ShoppingCartController
-            (IBasketService basketService, IProductService productService, IOrderOderingService orderOderingService, IUserService userService,
+        public ShoppingCartController(
+            IBasketService basketService,
+            IProductService productService,
+            IFilterService filterService,
+            ICargoCompanyService cargoCompanyService,
+            IOrderOderingService orderOderingService,
+            IUserService userService,
             IDataProtectionProvider provider)
         {
             _basketService = basketService;
             _productService = productService;
+            _filterService = filterService;
+            _cargoCompanyService = cargoCompanyService;
             _orderOderingService = orderOderingService;
             _userService = userService;
             _protector = provider.CreateProtector("ActiveOrderingId_Protector");
-
         }
 
         public async Task<IActionResult> Index()
@@ -106,6 +117,64 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBasketToItem(string ProductId, int Quantity = 1, string? selectedFilter = null)
         {
+            var product = await _productService.GetByIdProduct(ProductId);
+            if (product == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var allFilters = await _filterService.GetAllFilterAsync();
+            bool isOutOfStock = ProductStockHelper.IsProductOutOfStock(product.FilterIds, product.FilterStocks, allFilters);
+            if (isOutOfStock)
+            {
+                return RedirectToAction("Index");
+            }
+
+            if (product.FilterIds != null && product.FilterIds.Count > 0)
+            {
+                var prodFilters = allFilters.Where(f => product.FilterIds.Contains(f.FilterId)).ToList();
+                if (prodFilters.Count == 0)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                if (string.IsNullOrWhiteSpace(selectedFilter))
+                {
+                    var defaultParts = new List<string>();
+                    var grouped = prodFilters.GroupBy(f => f.FilterTitle);
+                    foreach (var group in grouped)
+                    {
+                        var opt = group.FirstOrDefault(f => product.FilterStocks != null && product.FilterStocks.TryGetValue(f.FilterId, out int s) && s > 0);
+                        if (opt == null)
+                        {
+                            return RedirectToAction("Index");
+                        }
+                        defaultParts.Add($"{group.Key}: {opt.FilterName}");
+                    }
+                    selectedFilter = string.Join(", ", defaultParts);
+                }
+                else
+                {
+                    var parts = selectedFilter.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var part in parts)
+                    {
+                        var trimmed = part.Trim();
+                        var matchedFilter = prodFilters.FirstOrDefault(f =>
+                            trimmed.Equals(f.FilterName, StringComparison.OrdinalIgnoreCase) ||
+                            trimmed.Contains($"{f.FilterTitle}: {f.FilterName}", StringComparison.OrdinalIgnoreCase) ||
+                            trimmed.Contains($"{f.FilterTitle}:{f.FilterName}", StringComparison.OrdinalIgnoreCase));
+
+                        if (matchedFilter != null)
+                        {
+                            if (product.FilterStocks == null || !product.FilterStocks.TryGetValue(matchedFilter.FilterId, out int s) || s <= 0)
+                            {
+                                return RedirectToAction("Index");
+                            }
+                        }
+                    }
+                }
+            }
+
             if (User.Identity.IsAuthenticated)
             {
                 await _basketService.AddBasketItemToDatabase(ProductId, Quantity, selectedFilter);
@@ -138,6 +207,44 @@ namespace MultiShop.WebUI.Controllers
 
         public async Task<IActionResult> AddBasketItem(string id, string? selectedFilter = null)
         {
+            var product = await _productService.GetByIdProduct(id);
+            if (product == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var allFilters = await _filterService.GetAllFilterAsync();
+            bool isOutOfStock = ProductStockHelper.IsProductOutOfStock(product.FilterIds, product.FilterStocks, allFilters);
+            if (isOutOfStock)
+            {
+                return RedirectToAction("Index");
+            }
+
+            if (product.FilterIds != null && product.FilterIds.Count > 0)
+            {
+                var prodFilters = allFilters.Where(f => product.FilterIds.Contains(f.FilterId)).ToList();
+                if (prodFilters.Count == 0)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                if (string.IsNullOrWhiteSpace(selectedFilter))
+                {
+                    var defaultParts = new List<string>();
+                    var grouped = prodFilters.GroupBy(f => f.FilterTitle);
+                    foreach (var group in grouped)
+                    {
+                        var opt = group.FirstOrDefault(f => product.FilterStocks != null && product.FilterStocks.TryGetValue(f.FilterId, out int s) && s > 0);
+                        if (opt == null)
+                        {
+                            return RedirectToAction("Index");
+                        }
+                        defaultParts.Add($"{group.Key}: {opt.FilterName}");
+                    }
+                    selectedFilter = string.Join(", ", defaultParts);
+                }
+            }
+
             if (User.Identity.IsAuthenticated)
             {
                 await _basketService.AddBasketItemToDatabase(id, 1, selectedFilter);

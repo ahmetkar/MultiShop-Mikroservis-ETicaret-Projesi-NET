@@ -1,4 +1,4 @@
-@model List<ResultOrderingByUserIdDto>
+﻿@model List<ResultOrderingByUserIdDto>
 @{
     ViewData["Title"] = "Sipariş Listesi";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -43,13 +43,19 @@
                                             @switch (item.Status)
                                             {
                                                 case OrderStatus.Completed:
-                                                    <span class="badge badge-success" style="padding: 6px 10px; font-size: 12px;">Tamamlandı</span>
+                                                    <span class="badge badge-success" style="padding: 6px 10px; font-size: 12px;">Teslim Edildi</span>
+                                                    break;
+                                                case OrderStatus.CargoApproved:
+                                                    <span class="badge badge-info" style="padding: 6px 10px; font-size: 12px;">Kargoya Verildi</span>
+                                                    break;
+                                                case OrderStatus.CargoCreated:
+                                                    <span class="badge badge-warning" style="padding: 6px 10px; font-size: 12px; background-color:#f0ad4e; color:#fff;">Kargo Oluşturuldu</span>
                                                     break;
                                                 case OrderStatus.PaymentCompleted:
                                                     <span class="badge badge-primary" style="padding: 6px 10px; font-size: 12px;">Ödeme Alındı</span>
                                                     break;
-                                                case OrderStatus.CargoCreated:
-                                                    <span class="badge badge-info" style="padding: 6px 10px; font-size: 12px;">Kargoya Verildi</span>
+                                                case OrderStatus.OrderCreated:
+                                                    <span class="badge badge-secondary" style="padding: 6px 10px; font-size: 12px;">Sipariş Alındı</span>
                                                     break;
                                                 case OrderStatus.CargoFailed:
                                                     <span class="badge badge-danger" style="padding: 6px 10px; font-size: 12px;">Kargo Hatası</span>
@@ -61,7 +67,7 @@
                                                     <span class="badge badge-secondary" style="padding: 6px 10px; font-size: 12px;">İptal Edildi</span>
                                                     break;
                                                 default:
-                                                    <span class="badge badge-warning" style="padding: 6px 10px; font-size: 12px;">Beklemede</span>
+                                                    <span class="badge badge-default" style="padding: 6px 10px; font-size: 12px;">Beklemede</span>
                                                     break;
                                             }
                                         </td>

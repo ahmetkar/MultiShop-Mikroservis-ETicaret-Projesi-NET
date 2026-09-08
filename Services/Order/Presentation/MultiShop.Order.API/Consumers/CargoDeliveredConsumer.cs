@@ -35,7 +35,7 @@
                     GroupId = "order-service-group-cargo-delivered",
                     AutoOffsetReset = AutoOffsetReset.Earliest,
                     EnableAutoCommit = false,
-
+                    AllowAutoCreateTopics = true
                 };
 
                 using var consumer = new ConsumerBuilder<string, string>(config).Build();
@@ -88,6 +88,11 @@
                         
 
                     }
+                    catch (ConsumeException ex)
+                    {
+                        _logger.LogWarning("Kafka topic ({Topic}) henüz hazır değil veya erişilemiyor: {Reason}. 5 saniye sonra tekrar denenecek.", KafkaTopics.CargoDelivered, ex.Error.Reason);
+                        await Task.Delay(5000, stoppingToken);
+                    }
                     catch (OperationCanceledException)
                     {
                         break;
@@ -95,6 +100,7 @@
                     catch (Exception ex)
                     {
                         _logger.LogError(ex, "CargoDelivered consumer hata aldı.");
+                        await Task.Delay(3000, stoppingToken);
                     }
 
                 }

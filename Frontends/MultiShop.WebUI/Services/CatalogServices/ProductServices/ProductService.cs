@@ -150,5 +150,23 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductServices
         {
             await _httpClient.PutAsJsonAsync<UpdateProductDto>("products", updateProductDto);
         }
+
+        public async Task DecreaseProductFilterStockAsync(string productId, List<string>? filterIdentifiers, int amount = 1)
+        {
+            try
+            {
+                await _httpClient.PostAsJsonAsync($"products/DecreaseProductFilterStock/{productId}?amount={amount}", filterIdentifiers ?? new List<string>());
+            }
+            catch { }
+        }
+
+        public async Task AdjustProductFilterStockAsync(string productId, string filterId, int delta)
+        {
+            try
+            {
+                await _httpClient.PostAsync($"products/AdjustProductFilterStock/{productId}?filterId={filterId}&delta={delta}", null);
+            }
+            catch { }
+        }
     }
 }

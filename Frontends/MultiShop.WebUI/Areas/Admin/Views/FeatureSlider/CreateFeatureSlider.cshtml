@@ -9,25 +9,53 @@
     <div class="row">
         <div class="col-md-10">
             <div class="chart-box">
-                <h4>Yeni Öne Çıkan Görsel (Slider) Ekle</h4>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="m-0 font-weight-bold text-dark"><i class="fa fa-plus-circle text-primary mr-2"></i> Yeni Öne Çıkan Görsel (Slider) Ekle</h4>
+                    <a href="/Admin/FeatureSlider/Index" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-left mr-1"></i> Listeye Dön</a>
+                </div>
+
                 <div class="bs-example">
-                    <form method="post">
-                        <div class="form-group">
-                            <label>Görsel Başlığı : </label>
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group mb-3">
+                            <label class="font-weight-bold">Görsel Başlığı <span class="text-danger">*</span> : </label>
                             <input type="text" asp-for="Title" class="form-control" required placeholder="Görsel Başlığı">
                         </div>
-                        <div class="form-group">
-                            <label>Görsel Açıklaması : </label>
+                        <div class="form-group mb-3">
+                            <label class="font-weight-bold">Görsel Açıklaması : </label>
                             <input type="text" asp-for="Description" class="form-control" placeholder="Görsel Açıklaması">
                         </div>
-                        <div class="form-group">
-                            <label>Görsel Url : </label>
-                            <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Görsel Resim Url">
+
+                        <!-- Görsel Yükleme Paneli -->
+                        <div class="panel panel-default p-3 bg-light rounded border mb-3" style="padding:15px; margin-bottom:20px;">
+                            <h5 class="font-weight-bold text-dark mb-3"><i class="fa fa-image text-primary mr-1"></i> Slider Görseli</h5>
+                            <div class="row align-items-center">
+                                <div class="col-md-5 form-group">
+                                    <label>Görsel Dosyası Yükle (Bilgisayardan):</label>
+                                    <input type="file" name="imageFile" accept="image/*" class="form-control" onchange="previewFile(this, 'sliderImgBox', 'sliderUrlInput')" />
+                                    <small class="text-muted">Görsel doğrudan sunucuya yüklenecektir.</small>
+                                </div>
+                                <div class="col-md-5 form-group">
+                                    <label>Veya Görsel URL'si / Galeriden:</label>
+                                    <div class="input-group">
+                                        <input type="text" asp-for="ImageUrl" id="sliderUrlInput" class="form-control" placeholder="https://..." oninput="previewUrl(this.value, 'sliderImgBox')" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-info font-weight-bold" onclick="openMediaPicker('sliderUrlInput', 'sliderImgBox')">
+                                                <i class="fa fa-folder-open mr-1"></i> Galeriden Seç
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div id="sliderImgBox" style="width:100px; height:60px; border:2px dashed #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff;">
+                                        <span class="text-muted small">Önizleme Yok</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <hr style="margin: 20px 0;" />
-                        <h5><i class="fa fa-shopping-bag"></i> Bu Görsel ile İlişkilendirilecek Ürünleri Seçin</h5>
-                        <p class="text-muted">Kullanıcılar ana sayfada bu slider görseline veya butonuna tıkladığında seçtiğiniz bu ürünler listelenecektir.</p>
+                        <h5 class="font-weight-bold text-dark"><i class="fa fa-shopping-bag text-primary mr-1"></i> Bu Görsel ile İlişkilendirilecek Ürünleri Seçin</h5>
+                        <p class="text-muted small mb-2">Kullanıcılar ana sayfada bu slider görseline veya butonuna tıkladığında seçtiğiniz bu ürünler listelenecektir.</p>
 
                         <div style="max-height: 250px; overflow-y: auto; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 5px; padding: 15px;">
                             <div class="row">
@@ -45,12 +73,35 @@
                             </div>
                         </div>
 
-                        <br />
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Görsel Ekle</button>
-                        <a href="/Admin/FeatureSlider/Index" class="btn btn-secondary">İptal</a>
+                        <div class="mt-4 pt-3 border-top">
+                            <button class="btn btn-primary font-weight-bold px-4 py-2" type="submit"><i class="fa fa-save mr-1"></i> Görsel Ekle</button>
+                            <a href="/Admin/FeatureSlider/Index" class="btn btn-secondary px-4 py-2 ml-2">İptal</a>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    function previewFile(input, boxId, urlInputId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById(boxId).innerHTML = '<img src="' + e.target.result + '" style="width:100%; height:100%; object-fit:cover;" />';
+            };
+            reader.readAsDataURL(input.files[0]);
+            if (urlInputId) document.getElementById(urlInputId).value = '';
+        }
+    }
+    function previewUrl(url, boxId) {
+        if (url && url.length > 5) {
+            document.getElementById(boxId).innerHTML = '<img src="' + url + '" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML=\'<span class=\\\'text-danger small\\\'>Geçersiz</span>\'" />';
+        } else {
+            document.getElementById(boxId).innerHTML = '<span class="text-muted small">Önizleme Yok</span>';
+        }
+    }
+</script>
+
+@await Html.PartialAsync("~/Areas/Admin/Views/Shared/_MediaPickerModalPartial.cshtml")

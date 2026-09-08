@@ -9,7 +9,6 @@ using MultiShop.WebUI.Services.StatisticServices.UserStatisticsServices;
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin")]
     [Route("Admin/Home")]
     public class HomeController : Controller
     {

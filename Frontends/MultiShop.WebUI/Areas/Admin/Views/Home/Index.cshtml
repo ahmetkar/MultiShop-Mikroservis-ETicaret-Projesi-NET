@@ -142,7 +142,7 @@
                                     <td><strong class="text-dark">₺@o.TotalPrice.ToString("N2")</strong></td>
                                     <td>
                                         <span class="badge @(o.Status == OrderStatus.Completed ? "badge-success" : (o.Status == OrderStatus.Cancelled ? "badge-danger" : "badge-info"))">
-                                            @(o.Status == OrderStatus.Completed ? "Teslim Edildi" : (o.Status == OrderStatus.CargoApproved ? "Kargo Onaylandı" : (o.Status == OrderStatus.Cancelled ? "İptal Edildi" : "Devam Ediyor")))
+                                            @(o.Status == OrderStatus.Completed ? "Teslim Edildi" : (o.Status == OrderStatus.CargoApproved ? "Kargoya Verildi" : (o.Status == OrderStatus.CargoCreated ? "Kargo Oluşturuldu" : (o.Status == OrderStatus.Cancelled ? "İptal Edildi" : "Devam Ediyor"))))
                                         </span>
                                     </td>
                                     <td>

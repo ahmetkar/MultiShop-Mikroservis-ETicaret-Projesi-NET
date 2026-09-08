@@ -167,7 +167,7 @@ namespace MultiShop.WebUI.Services.Concretes
                     UserName = signInDto.Username,
                     Password = signInDto.Password,
                     Address = discoveryEndpoint.TokenEndpoint,
-                    Scope = "openid profile email roles offline_access IdentityServerApi BasketFullPermission OcelotFullPermission CatalogFullPermission DiscountFullPermission OrderFullPermission CargoFullPermission PaymentFullPermission PaymentCreatePermission PaymentReadPermission PaymentUpdatePermission PaymentDeletePermission ImagesFullPermission MessageFullPermission CommentFullPermission"
+                    Scope = "openid profile email roles offline_access IdentityServerApi BasketFullPermission OcelotFullPermission CatalogFullPermission DiscountFullPermission OrderFullPermission CargoFullPermission PaymentFullPermission PaymentCreatePermission PaymentReadPermission PaymentUpdatePermission PaymentDeletePermission  CommentFullPermission"
                 };
 
                 var token = await _httpClient.RequestPasswordTokenAsync(passwordTokenRequest);

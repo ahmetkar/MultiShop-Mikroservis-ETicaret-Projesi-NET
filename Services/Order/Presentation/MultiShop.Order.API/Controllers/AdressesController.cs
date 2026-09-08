@@ -19,14 +19,18 @@ namespace MultiShop.Order.API.Controllers
         private readonly UpdateAdressCommandHandler _updateAdressCommandHandler;
         private readonly RemoveAdressCommandHandler _removeAdressCommandHandler;
 
-        public AdressesController(GetAdressQueryHandler getAdressQueryHandler, GetAdressByIdQueryHandler getAdressByIdQueryHandler, CreateAdressCommandHandler createAdressCommandHandler,
-            UpdateAdressCommandHandler updateAdressCommandHandler, RemoveAdressCommandHandler deleteAdressCommandHandler)
+        public AdressesController(
+            GetAdressQueryHandler getAdressQueryHandler,
+            GetAdressByIdQueryHandler getAdressByIdQueryHandler,
+            CreateAdressCommandHandler createAdressCommandHandler,
+            UpdateAdressCommandHandler updateAdressCommandHandler,
+            RemoveAdressCommandHandler removeAdressCommandHandler)
         {
             _getAdressQueryHandler = getAdressQueryHandler;
             _getAdressByIdQueryHandler = getAdressByIdQueryHandler;
             _createAdressCommandHandler = createAdressCommandHandler;
             _updateAdressCommandHandler = updateAdressCommandHandler;
-            _removeAdressCommandHandler = deleteAdressCommandHandler;
+            _removeAdressCommandHandler = removeAdressCommandHandler;
         }
 
         [HttpGet]
@@ -47,7 +51,7 @@ namespace MultiShop.Order.API.Controllers
         public async Task<IActionResult> CreateAdress(CreateAdressCommand createAdressCommand)
         {
             int id = await _createAdressCommandHandler.Handle(createAdressCommand);
-            return Ok(new CreateAdressResultDto {AdressId = id });
+            return Ok(new CreateAdressResultDto { AdressId = id });
         }
 
         [HttpPut]
@@ -57,13 +61,11 @@ namespace MultiShop.Order.API.Controllers
             return Ok("Adres başarıyla güncellendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveAdress(int id)
         {
             await _removeAdressCommandHandler.Handle(new RemoveAdressCommand(id));
             return Ok("Adres başarıyla silindi.");
         }
-
-
-        }
+    }
 }

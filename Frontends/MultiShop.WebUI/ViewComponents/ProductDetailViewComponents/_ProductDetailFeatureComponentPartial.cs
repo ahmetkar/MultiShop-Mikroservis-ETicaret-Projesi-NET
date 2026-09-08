@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FilterDtos;
+using MultiShop.WebUI.Helpers;
 using MultiShop.WebUI.Services.CatalogServices.FilterServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.DiscountServices;
@@ -30,6 +31,10 @@ namespace MultiShop.WebUI.ViewComponents.ProductDetailViewComponents
                 productFilters = allFilters.Where(f => result.FilterIds.Contains(f.FilterId)).ToList();
             }
             ViewBag.ProductFilters = productFilters;
+            ViewBag.AllFilters = allFilters;
+
+            bool isOutOfStock = ProductStockHelper.IsProductOutOfStock(result?.FilterIds, result?.FilterStocks, allFilters);
+            ViewBag.IsOutOfStock = isOutOfStock;
 
             var discount = await _discountService.GetDiscountByProductIdAsync(id);
             ViewBag.DiscountRate = discount?.Rate ?? 0;

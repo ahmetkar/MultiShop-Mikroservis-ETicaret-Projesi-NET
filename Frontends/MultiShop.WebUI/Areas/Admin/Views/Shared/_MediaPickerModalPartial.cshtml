@@ -1,0 +1,105 @@
+@{
+    var existingImages = ViewBag.ExistingImages as List<string> ?? new List<string>();
+    existingImages = existingImages.Where(x => !string.IsNullOrWhiteSpace(x)).Distinct().ToList();
+}
+
+<!-- Media Gallery Picker Modal -->
+<div class="modal fade" id="mediaPickerModal" tabindex="-1" role="dialog" aria-labelledby="mediaPickerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header bg-light d-flex justify-content-between align-items-center">
+                <h4 class="modal-title font-weight-bold text-dark m-0" id="mediaPickerModalLabel">
+                    <i class="fa fa-image text-primary mr-2"></i> Varolan Görsellerden Seç
+                </h4>
+                <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Kapat" style="font-size:24px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-3">
+                <div class="mb-3" style="margin-bottom: 15px;">
+                    <input type="text" id="galleryFilterInput" class="form-control" placeholder="Görsellerde ara (dosya adı veya url)..." onkeyup="filterGalleryImages()" />
+                    <small class="text-muted mt-1 d-block">Seçmek istediğiniz görsel kartına tıklayarak ilgili alana aktarabilirsiniz.</small>
+                </div>
+
+                <div id="mediaGalleryContainer" class="row" style="max-height: 460px; overflow-y: auto; padding: 5px; margin: 0;">
+                    @if (existingImages != null && existingImages.Count > 0)
+                    {
+                        foreach (var img in existingImages)
+                        {
+                            var fileName = System.IO.Path.GetFileName(img);
+                            if (string.IsNullOrEmpty(fileName)) { fileName = img; }
+
+                            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item-wrapper" style="padding: 6px;" data-url="@img" data-filename="@fileName">
+                                <div class="gallery-thumbnail-card" onclick="selectGalleryImage('@img')" style="border: 2px solid #dee2e6; border-radius: 6px; padding: 6px; cursor: pointer; transition: all 0.2s ease; background: #fff; text-align: center;" onmouseover="this.style.borderColor='#3c8dbc'; this.style.boxShadow='0 4px 10px rgba(60,141,188,0.3)';" onmouseout="this.style.borderColor='#dee2e6'; this.style.boxShadow='none';">
+                                    <div style="height: 100px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #f8f9fa; border-radius: 4px;">
+                                        <img src="@img" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="Görsel" />
+                                    </div>
+                                    <span class="text-dark d-block text-truncate mt-1 gallery-img-name" style="font-size: 11px; font-weight: 500; margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="@img">@fileName</span>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-xs-12 text-center text-muted py-5" style="padding: 40px 0;">
+                            <i class="fa fa-folder-open-o fa-3x text-muted mb-2"></i>
+                            <h5 class="font-weight-bold">Henüz Sistemde Görsel Bulunmuyor</h5>
+                            <p class="small">Bilgisayarınızdan dosya yükleyebilir veya geçerli bir URL girebilirsiniz.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Vazgeç</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var currentTargetInputId = '';
+    var currentPreviewBoxId = '';
+
+    function openMediaPicker(targetInputId, previewBoxId) {
+        currentTargetInputId = targetInputId;
+        currentPreviewBoxId = previewBoxId;
+        var filterEl = document.getElementById('galleryFilterInput');
+        if (filterEl) { filterEl.value = ''; }
+        filterGalleryImages();
+        $('#mediaPickerModal').modal('show');
+    }
+
+    function selectGalleryImage(url) {
+        if (currentTargetInputId) {
+            var inputEl = document.getElementById(currentTargetInputId);
+            if (inputEl) {
+                inputEl.value = url;
+                inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+                inputEl.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+        if (currentPreviewBoxId) {
+            var previewEl = document.getElementById(currentPreviewBoxId);
+            if (previewEl) {
+                previewEl.innerHTML = '<img src="' + url + '" style="width:100%; height:100%; object-fit:contain;" />';
+            }
+        }
+        $('#mediaPickerModal').modal('hide');
+    }
+
+    function filterGalleryImages() {
+        var input = document.getElementById('galleryFilterInput');
+        if (!input) return;
+        var filter = input.value.toLowerCase();
+        var items = document.querySelectorAll('.gallery-item-wrapper');
+        items.forEach(function(item) {
+            var url = item.getAttribute('data-url') || '';
+            var fn = item.getAttribute('data-filename') || '';
+            if (url.toLowerCase().indexOf(filter) > -1 || fn.toLowerCase().indexOf(filter) > -1) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+</script>

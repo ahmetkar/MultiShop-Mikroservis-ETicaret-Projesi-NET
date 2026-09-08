@@ -34,7 +34,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
 
         [Route("Index")]
-        [Route("")]
         public async Task<IActionResult> Index()
         {
             FinanceViewBag("Kasa ve Gelir Raporu");

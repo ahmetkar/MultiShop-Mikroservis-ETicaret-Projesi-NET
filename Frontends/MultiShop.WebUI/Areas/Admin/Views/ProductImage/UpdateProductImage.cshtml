@@ -1,44 +1,136 @@
 ﻿@model UpdateProductImageDto
-
 @{
+    ViewData["Title"] = "Ürün Görselleri Güncelle";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var products = ViewBag.Products as List<ResultProductDto> ?? new List<ResultProductDto>();
+    var currentProduct = products.FirstOrDefault(p => p.ProductId == Model.ProductId);
+    bool isNew = ViewBag.IsNew == true;
 }
+
+<style>
+    .preview-card {
+        border: 2px dashed #dee2e6;
+        border-radius: 8px;
+        background: #f8f9fa;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-top: 8px;
+    }
+    .preview-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+</style>
 
 <section class="content container-fluid">
     <div class="row">
-
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="chart-box">
-
-                @if ((bool)TempData.Peek("MustAdd"))
-                {
-                    <h4> Ürüne Yeni Resimler Ekle</h4>
-                }else {
-                    <h4>
-                        Resimleri Güncelleme</h4>
-                }
-
-                <div class="bs-example" data-example-id="bordered-table">
-                    <form method="post">
-                        @if (!(bool)TempData.Peek("MustAdd"))
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="m-0 font-weight-bold text-dark">
+                            <i class="fa fa-edit text-primary mr-2"></i> @(isNew ? "Ürüne Yeni Görseller Ekle" : "Ürün Görsellerini Düzenle")
+                        </h4>
+                        @if (currentProduct != null)
                         {
-                            <input type="hidden" asp-for="ProductImageID" class="form-control" readonly>
-                            <input type="hidden" asp-for="ProductId" class="form-control" readonly>
+                            <p class="text-muted small mb-0 mt-1">
+                                <strong>Ürün:</strong> @currentProduct.ProductName <span class="badge badge-secondary ml-1">ID: @currentProduct.ProductId</span>
+                            </p>
                         }
-                        
-                                <label>Resim 1 URL: </label>
-                                <input type="text" asp-for="Image1" class="form-control" placeholder="Resim 1 URL : ">
-                                <label>Resim 2 URL: </label>
-                                <input type="text" asp-for="Image2" class="form-control" placeholder="Resim 2 URL : ">
-                                <label>Resim 3 URL: </label>
-                                <input type="text" asp-for="Image3" class="form-control" placeholder="Resim 3 URL : ">
-                                <label>Resim 4 URL: </label>
-                                <input type="text" asp-for="Image4" class="form-control" placeholder="Resim 4 URL : ">
+                    </div>
+                    <a href="/Admin/ProductImage/Index" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-left mr-1"></i> Görsel Listesine Dön</a>
+                </div>
 
-                                <button class="btn btn-primary" type="submit">Resimleri Güncelle</button>
-                            </form>
+                <form method="post">
+                    <input type="hidden" asp-for="ProductImageID" />
+                    <input type="hidden" asp-for="ProductId" />
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Görsel 1 URL (Ana Görsel) <span class="text-danger">*</span></label>
+                            <input type="url" asp-for="Image1" id="img1Input" class="form-control" placeholder="https://example.com/image1.jpg" required oninput="updatePreview('img1Input', 'img1Preview')" />
+                            <div class="preview-card" id="img1Preview">
+                                @if (!string.IsNullOrEmpty(Model.Image1))
+                                {
+                                    <img src="@Model.Image1" onerror="this.parentElement.innerHTML='<span class=\'text-danger small\'>Geçersiz Görsel URL</span>'" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted small"><i class="fa fa-image mr-1"></i> Görsel 1 Önizleme</span>
+                                }
+                            </div>
                         </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Görsel 2 URL</label>
+                            <input type="url" asp-for="Image2" id="img2Input" class="form-control" placeholder="https://example.com/image2.jpg" oninput="updatePreview('img2Input', 'img2Preview')" />
+                            <div class="preview-card" id="img2Preview">
+                                @if (!string.IsNullOrEmpty(Model.Image2))
+                                {
+                                    <img src="@Model.Image2" onerror="this.parentElement.innerHTML='<span class=\'text-danger small\'>Geçersiz Görsel URL</span>'" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted small"><i class="fa fa-image mr-1"></i> Görsel 2 Önizleme</span>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Görsel 3 URL</label>
+                            <input type="url" asp-for="Image3" id="img3Input" class="form-control" placeholder="https://example.com/image3.jpg" oninput="updatePreview('img3Input', 'img3Preview')" />
+                            <div class="preview-card" id="img3Preview">
+                                @if (!string.IsNullOrEmpty(Model.Image3))
+                                {
+                                    <img src="@Model.Image3" onerror="this.parentElement.innerHTML='<span class=\'text-danger small\'>Geçersiz Görsel URL</span>'" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted small"><i class="fa fa-image mr-1"></i> Görsel 3 Önizleme</span>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="font-weight-bold">Görsel 4 URL</label>
+                            <input type="url" asp-for="Image4" id="img4Input" class="form-control" placeholder="https://example.com/image4.jpg" oninput="updatePreview('img4Input', 'img4Preview')" />
+                            <div class="preview-card" id="img4Preview">
+                                @if (!string.IsNullOrEmpty(Model.Image4))
+                                {
+                                    <img src="@Model.Image4" onerror="this.parentElement.innerHTML='<span class=\'text-danger small\'>Geçersiz Görsel URL</span>'" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted small"><i class="fa fa-image mr-1"></i> Görsel 4 Önizleme</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top">
+                        <button type="submit" class="btn btn-primary font-weight-bold px-4 py-2">
+                            <i class="fa fa-save mr-1"></i> Değişiklikleri Kaydet
+                        </button>
+                        <a href="/Admin/ProductImage/Index" class="btn btn-secondary px-4 py-2 ml-2">Vazgeç</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    function updatePreview(inputId, previewId) {
+        var url = document.getElementById(inputId).value;
+        var container = document.getElementById(previewId);
+        if (url && url.length > 5) {
+            container.innerHTML = '<img src="' + url + '" onerror="this.parentElement.innerHTML=\'<span class=\\\'text-danger small\\\'>Geçersiz Görsel URL</span>\'" />';
+        } else {
+            container.innerHTML = '<span class="text-muted small"><i class="fa fa-image mr-1"></i> Önizleme Yok</span>';
+        }
+    }
+</script>

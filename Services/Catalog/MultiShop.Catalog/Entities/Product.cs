@@ -19,5 +19,6 @@ namespace MultiShop.Catalog.Entities
         [BsonIgnore]
         public Category Category { get; set; }
         public List<string> FilterIds { get; set; } = new List<string>();
+        public Dictionary<string, int> FilterStocks { get; set; } = new Dictionary<string, int>();
     }
 }

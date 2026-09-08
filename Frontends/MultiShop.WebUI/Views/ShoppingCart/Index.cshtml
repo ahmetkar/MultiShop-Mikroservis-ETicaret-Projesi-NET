@@ -1,4 +1,4 @@
-﻿@model int
+@model int
 @{
     ViewData["Title"] = "Sepetim";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
@@ -9,6 +9,8 @@
     int? discountRate = ViewBag.DiscountRate;
     string? discountCode = ViewBag.DiscountCode;
     bool hasDiscount = discountRate.HasValue && discountRate.Value > 0;
+    double cargoPrice = ViewBag.CargoPrice != null ? (double)ViewBag.CargoPrice : 35.0;
+    double grandTotal = Model > 0 ? (totalPrice + cargoPrice) : 0.0;
 }
 
 <!-- Cart Start -->
@@ -39,19 +41,23 @@
                                 <h6>-%@discountRate</h6>
                             </div>
                         }
+                        <div class="d-flex justify-content-between mb-2">
+                            <h6 class="font-weight-medium text-muted">Kargo Ücreti (Tek Seferlik)</h6>
+                            <h6>₺@cargoPrice.ToString("N2")</h6>
+                        </div>
                     </div>
                     <div class="pt-2">
                         <div class="d-flex justify-content-between align-items-center mt-2">
-                            <h5>Toplam Tutar</h5>
+                            <h5>Genel Toplam</h5>
                             <div class="text-right">
                                 @if (hasDiscount && totalPriceWithoutDiscount > totalPrice)
                                 {
                                     <span class="text-muted mr-2" style="text-decoration: line-through; font-size: 15px;">
-                                        ₺@totalPriceWithoutDiscount.ToString("N2")
+                                        ₺@((totalPriceWithoutDiscount + cargoPrice).ToString("N2"))
                                     </span>
                                 }
                                 <h4 class="text-primary font-weight-bold d-inline mb-0">
-                                    ₺@totalPrice.ToString("N2")
+                                    ₺@grandTotal.ToString("N2")
                                 </h4>
                             </div>
                         </div>

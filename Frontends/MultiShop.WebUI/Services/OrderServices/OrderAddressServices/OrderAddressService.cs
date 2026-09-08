@@ -22,7 +22,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderAddressServices
                 createOrderAddressDto.UserId = userId;
             }
 
-            var response = await _httpClient.PostAsJsonAsync("adresses", createOrderAddressDto);
+            var response = await _httpClient.PostAsJsonAsync("Adresses", createOrderAddressDto);
 
             if (response.IsSuccessStatusCode)
             {
@@ -41,7 +41,17 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderAddressServices
                 return new List<ResultOrderAddressDto>();
             }
 
-            var response = await _httpClient.GetAsync($"adresses/GetAdressesByUserId/{userId}");
+            return await GetAddressesByExplicitUserIdAsync(userId);
+        }
+
+        public async Task<List<ResultOrderAddressDto>> GetAddressesByExplicitUserIdAsync(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                return new List<ResultOrderAddressDto>();
+            }
+
+            var response = await _httpClient.GetAsync($"Adresses/GetAdressesByUserId/{userId}");
             if (response.IsSuccessStatusCode)
             {
                 var adresses = await response.Content.ReadFromJsonAsync<List<ResultOrderAddressDto>>();
@@ -65,12 +75,12 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderAddressServices
                 updateOrderAddressDto.UserId = userId;
             }
 
-            await _httpClient.PutAsJsonAsync("adresses", updateOrderAddressDto);
+            await _httpClient.PutAsJsonAsync("Adresses", updateOrderAddressDto);
         }
 
         public async Task DeleteOrderAddressAsync(int addressId)
         {
-            await _httpClient.DeleteAsync($"adresses?id={addressId}");
+            await _httpClient.DeleteAsync($"Adresses/{addressId}");
         }
 
         public async Task<int> GetUserAdressCount()

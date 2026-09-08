@@ -26,7 +26,6 @@ using MultiShop.WebUI.Services.CommentServices;
 using MultiShop.WebUI.Services.Concretes;
 using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.Interfaces;
-using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderDetailServices;
 using MultiShop.WebUI.Services.OrderServices.OrderOderingServices;
@@ -35,6 +34,7 @@ using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticsServices;
 using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.UserStatisticsServices;
 using MultiShop.WebUI.Services.UserIdentityServices;
+using MultiShop.WebUI.Services.FileUploadServices;
 using MultiShop.WebUI.Settings;
 using System.Globalization;
 using System.Reflection;
@@ -75,6 +75,7 @@ builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IFileUploadService, FileUploadService>();
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 
 
@@ -114,11 +115,6 @@ builder.Services.AddHttpClient<ICommentStasticService, CommentStasticService>(op
     opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Comment.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-
-builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
-{
-    opt.BaseAddress = new Uri($"{values.OcelotServerUrl}/{values.Message.Path}");
-}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
 builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>

@@ -1,22 +1,178 @@
-﻿@model GetCargoCustomerByIdDto
+﻿@using MultiShop.DtoLayer.CargoDtos.CargoCustotmerDtos
+@using MultiShop.DtoLayer.OrderDtos.OrderAddressDtos
+@using MultiShop.DtoLayer.IdentityDtos.UserDtos
+@model GetCargoCustomerByIdDto
 @{
-    ViewData["Title"] = "UserAddressInfo";
+    ViewData["Title"] = "Kullanıcı Detayları & Güncelleme";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    var user = ViewBag.User as ResultUserDto;
+    var orderAddresses = ViewBag.OrderAddresses as List<ResultOrderAddressDto> ?? new List<ResultOrderAddressDto>();
+    string userId = user?.id ?? Model?.UserCustomerId ?? (string)ViewContext.RouteData.Values["id"] ?? "";
 }
 
-
 <section class="content container-fluid">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible" style="margin-bottom: 20px;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <i class="fa fa-check-circle mr-1"></i> @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible" style="margin-bottom: 20px;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <i class="fa fa-exclamation-triangle mr-1"></i> @TempData["ErrorMessage"]
+        </div>
+    }
+
     <div class="row">
-
-        <div class="col-md-12">
-            <div class="chart-box">
-
-                <div class="bs-example" data-example-id="bordered-table">
-                    <div>Kullanici id : @Model.CargoCustomerId</div><br />
-                    <div>Kullanıcı Adı ve Soyadı : @Model.Name @Model.Surname </div><br />
-                    <div>Adres : @Model.Address / Şehir ve İlçe : @Model.City @Model.District </div><br />
-                    <div>Email : @Model.Email</div><br />
+        <!-- Kullanıcı Bilgileri & Güncelleme Formu -->
+        <div class="col-md-5">
+            <div class="chart-box" style="margin-bottom: 25px;">
+                <div style="border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 20px;">
+                    <h4 style="margin:0; font-weight: bold; color: #333;">
+                        <i class="fa fa-user text-primary" style="margin-right: 8px;"></i> Kullanıcı Profilini Düzenle
+                    </h4>
+                    <p class="text-muted" style="margin-top: 5px; margin-bottom: 0; font-size: 13px;">
+                        Kullanıcının temel hesap ve iletişim bilgilerini bu panelden güncelleyebilirsiniz.
+                    </p>
                 </div>
+
+                <form method="post" action="/Admin/User/UpdateUser">
+                    <input type="hidden" name="Id" value="@userId" />
+
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="font-weight: 600; color: #444;">Kullanıcı ID (Değiştirilemez):</label>
+                        <input type="text" class="form-control" value="@userId" readonly style="background-color: #f8f9fa; font-family: monospace; font-size: 12px;" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 form-group" style="margin-bottom: 15px;">
+                            <label style="font-weight: 600; color: #444;">Ad <span class="text-danger">*</span>:</label>
+                            <input type="text" name="Name" class="form-control" value="@(user?.name ?? Model?.Name ?? "")" required placeholder="Ad" />
+                        </div>
+                        <div class="col-sm-6 form-group" style="margin-bottom: 15px;">
+                            <label style="font-weight: 600; color: #444;">Soyad <span class="text-danger">*</span>:</label>
+                            <input type="text" name="Surname" class="form-control" value="@(user?.surname ?? Model?.Surname ?? "")" required placeholder="Soyad" />
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="font-weight: 600; color: #444;">Kullanıcı Adı <span class="text-danger">*</span>:</label>
+                        <input type="text" name="UserName" class="form-control" value="@(user?.userName ?? "")" required placeholder="kullaniciadi" />
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="font-weight: 600; color: #444;">E-Posta Adresi <span class="text-danger">*</span>:</label>
+                        <input type="email" name="Email" class="form-control" value="@(user?.email ?? Model?.Email ?? "")" required placeholder="ornek@mail.com" />
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="font-weight: 600; color: #444;">Telefon Numarası:</label>
+                        <input type="text" name="PhoneNumber" class="form-control" value="@(user?.phoneNumber?.ToString() ?? Model?.PhoneNumber ?? "")" placeholder="05XX XXX XX XX" />
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="font-weight: 600; color: #444;">Hesap Durumu:</label>
+                        <select name="LockoutEnabled" class="form-control">
+                            <option value="true" selected="@(user?.lockoutEnabled ?? true)">Aktif (Kullanıma Açık)</option>
+                            <option value="false" selected="@(!(user?.lockoutEnabled ?? true))">Kilitli / Pasif</option>
+                        </select>
+                    </div>
+
+                    <div style="padding-top: 15px; border-top: 1px solid #eee;">
+                        <button type="submit" class="btn btn-primary" style="font-weight: 600; padding: 8px 18px;">
+                            <i class="fa fa-save" style="margin-right: 5px;"></i> Değişiklikleri Kaydet
+                        </button>
+                        <a href="/Admin/User/UserList" class="btn btn-default" style="margin-left: 8px; padding: 8px 16px;">
+                            <i class="fa fa-arrow-left" style="margin-right: 5px;"></i> Listeye Dön
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Kayıtlı Sipariş & Teslimat Adresleri -->
+        <div class="col-md-7">
+            <div class="chart-box">
+                <div style="border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h4 style="margin:0; font-weight: bold; color: #333;">
+                            <i class="fa fa-map-marker text-primary" style="margin-right: 8px;"></i> Kullanıcının Kayıtlı Adresleri
+                        </h4>
+                        <p class="text-muted" style="margin-top: 5px; margin-bottom: 0; font-size: 13px;">
+                            Kullanıcının sistemde tanımlı fatura, teslimat ve kargo adresleri.
+                        </p>
+                    </div>
+                    <span class="badge badge-primary" style="font-size: 13px; padding: 6px 12px; background-color: #337ab7;">
+                        Toplam @orderAddresses.Count Adres
+                    </span>
+                </div>
+
+                @if (orderAddresses.Count > 0)
+                {
+                    <div class="row">
+                        @foreach (var addr in orderAddresses)
+                        {
+                            <div class="col-sm-6" style="margin-bottom: 15px;">
+                                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); min-height: 200px; display: flex; flex-column; justify-content: space-between;">
+                                    <div>
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                            <span class="badge" style="background-color: @(addr.IsBillingOrShipping ? "#17a2b8" : "#f0ad4e"); color: #fff; font-size: 11px; padding: 4px 8px;">
+                                                @(addr.IsBillingOrShipping ? "Fatura Adresi" : "Teslimat Adresi")
+                                            </span>
+                                            <strong style="color: #555; font-size: 13px;">@addr.City / @addr.District</strong>
+                                        </div>
+
+                                        <h5 style="margin: 0 0 8px 0; font-weight: bold; color: #222;">@addr.Name @addr.Surname</h5>
+                                        <p style="margin: 0 0 4px 0; font-size: 13px; color: #666;">
+                                            <i class="fa fa-phone" style="color: #5cb85c; margin-right: 5px;"></i> @addr.Phone
+                                        </p>
+                                        <p style="margin: 0 0 8px 0; font-size: 13px; color: #666;">
+                                            <i class="fa fa-envelope" style="color: #337ab7; margin-right: 5px;"></i> @addr.Email
+                                        </p>
+
+                                        <div style="background: #f8f9fa; border: 1px solid #eee; border-radius: 4px; padding: 8px; font-size: 12px; color: #333;">
+                                            <i class="fa fa-home" style="color: #d9534f; margin-right: 4px;"></i>
+                                            @addr.Detail1 @addr.Detail2
+                                            @if (!string.IsNullOrEmpty(addr.ZipCode))
+                                            {
+                                                <span style="display: block; color: #888; margin-top: 4px;">Posta Kodu: @addr.ZipCode</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else if (Model != null && !string.IsNullOrEmpty(Model.Address))
+                {
+                    <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span class="badge" style="background-color: #5bc0de; color: #fff; padding: 4px 8px;">Kargo Müşteri Kaydı</span>
+                            <strong style="color: #555;">@Model.City / @Model.District</strong>
+                        </div>
+                        <h5 style="margin: 0 0 8px 0; font-weight: bold;">@Model.Name @Model.Surname</h5>
+                        <p style="margin: 0 0 4px 0; font-size: 13px; color: #666;"><i class="fa fa-phone" style="color: #5cb85c; margin-right: 5px;"></i> @Model.PhoneNumber</p>
+                        <p style="margin: 0 0 8px 0; font-size: 13px; color: #666;"><i class="fa fa-envelope" style="color: #337ab7; margin-right: 5px;"></i> @Model.Email</p>
+                        <div style="background: #f8f9fa; border: 1px solid #eee; border-radius: 4px; padding: 8px; font-size: 12px;">
+                            <i class="fa fa-home" style="color: #d9534f; margin-right: 4px;"></i> @Model.Address
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div style="text-align: center; padding: 40px 20px; background: #fdfdfd; border: 2px dashed #e2e8f0; border-radius: 8px;">
+                        <i class="fa fa-map-marker fa-3x" style="color: #ccc; margin-bottom: 12px;"></i>
+                        <h5 style="color: #555; font-weight: bold; margin-bottom: 5px;">Henüz kayıtlı bir adres bulunamadı.</h5>
+                        <p class="text-muted" style="font-size: 13px; margin: 0;">
+                            Kullanıcı profil sayfasından veya sipariş adımından bir adres kaydettiğinde burada görüntülenecektir.
+                        </p>
+                    </div>
+                }
             </div>
         </div>
     </div>

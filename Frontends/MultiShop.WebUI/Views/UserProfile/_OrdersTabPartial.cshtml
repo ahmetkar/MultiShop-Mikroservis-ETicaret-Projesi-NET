@@ -15,8 +15,8 @@
             OrderStatus.OrderNotCreated => "Oluşturulamadı",
             OrderStatus.PendingPayment => "Ödeme Bekleniyor",
             OrderStatus.PaymentCompleted => "Hazırlanıyor",
-            OrderStatus.CargoCreated => "Kargoya Verildi",
-            OrderStatus.CargoApproved => "Kargo Onaylandı",
+            OrderStatus.CargoCreated => "Hazırlanıyor",
+            OrderStatus.CargoApproved => "Kargoya Verildi",
             OrderStatus.Completed => "Teslim Edildi",
             OrderStatus.Cancelled => "İptal Edildi",
             OrderStatus.PaymentFailed => "Ödeme Başarısız",
@@ -25,15 +25,15 @@
         };
     }
 
-    string GetStatusBadgeClass(OrderStatus status)
+        string GetStatusBadgeClass(OrderStatus status)
     {
         if ((int)status == 0) return "badge-warning";
         return status switch
         {
             OrderStatus.Completed => "badge-success",
             OrderStatus.Cancelled or OrderStatus.PaymentFailed or OrderStatus.CargoFailed or OrderStatus.OrderNotCreated => "badge-danger",
-            OrderStatus.CargoApproved or OrderStatus.CargoCreated => "badge-info",
-            OrderStatus.PendingPayment or OrderStatus.PaymentCompleted => "badge-warning",
+            OrderStatus.CargoApproved => "badge-info",
+            OrderStatus.CargoCreated or OrderStatus.PendingPayment or OrderStatus.PaymentCompleted => "badge-warning",
             _ => "badge-secondary"
         };
     }
@@ -44,8 +44,8 @@
         {
             OrderStatus.Cancelled or OrderStatus.PaymentFailed or OrderStatus.CargoFailed or OrderStatus.OrderNotCreated => -1,
             OrderStatus.Completed => 4,
-            OrderStatus.CargoApproved or OrderStatus.CargoCreated => 3,
-            OrderStatus.PaymentCompleted => 2,
+            OrderStatus.CargoApproved => 3,
+            OrderStatus.CargoCreated or OrderStatus.PaymentCompleted => 2,
             _ => 1
         };
     }

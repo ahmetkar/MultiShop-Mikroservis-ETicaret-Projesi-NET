@@ -3,11 +3,27 @@
     var productFilters = ViewBag.ProductFilters as List<ResultFilterDto> ?? new List<ResultFilterDto>();
     var groupedFilters = productFilters.GroupBy(x => x.FilterTitle).ToList();
     var discountRate = ViewBag.DiscountRate as int? ?? 0;
+    bool isOutOfStock = ViewBag.IsOutOfStock as bool? ?? false;
     decimal displayPrice = Model.ProductPrice;
     if (discountRate > 0)
     {
         displayPrice = Model.ProductPrice - (Model.ProductPrice * discountRate / 100);
     }
+
+    var defaultSelectedParts = new List<string>();
+    foreach (var group in groupedFilters)
+    {
+        var firstInStock = group.FirstOrDefault(f => Model.FilterStocks != null && Model.FilterStocks.TryGetValue(f.FilterId, out int s) && s > 0);
+        if (firstInStock != null)
+        {
+            defaultSelectedParts.Add($"{group.Key}: {firstInStock.FilterName}");
+        }
+        else if (group.Any())
+        {
+            defaultSelectedParts.Add($"{group.Key}: {group.First().FilterName}");
+        }
+    }
+    var defaultSelectedFilterString = string.Join(", ", defaultSelectedParts);
 }
 
 <div class="col-lg-7 h-auto mb-30">
@@ -16,6 +32,14 @@
         
         <div class="d-flex align-items-center mb-3" style="font-size:14px; color:#6c757d;">
             <span><i class="fa fa-comment text-primary mr-1"></i> @(ViewBag.commentCount ?? 0) Yorum</span>
+            @if (isOutOfStock)
+            {
+                <span class="badge badge-danger ml-3" style="font-size:13px; padding:6px 12px; border-radius:4px;"><i class="fa fa-times-circle mr-1"></i> STOKTA YOK</span>
+            }
+            else
+            {
+                <span class="badge badge-success ml-3" style="font-size:13px; padding:6px 12px; border-radius:4px;"><i class="fa fa-check-circle mr-1"></i> STOKTA VAR</span>
+            }
         </div>
 
         <div class="d-flex align-items-baseline mb-3 pb-2" style="border-bottom: 1px solid #dee2e6;">
@@ -35,9 +59,16 @@
             @Model.ProductDescription
         </p>
 
+        @if (isOutOfStock)
+        {
+            <div class="alert alert-danger font-weight-bold mb-4">
+                <i class="fa fa-exclamation-triangle mr-2"></i> Bu ürünün stokları tükenmiştir. Şu anda sipariş verilemez.
+            </div>
+        }
+
         <form method="post" asp-action="AddBasketToItem" asp-controller="ShoppingCart" id="addToCartForm">
             <input type="hidden" name="ProductId" value="@Model.ProductId" />
-            <input type="hidden" name="selectedFilter" id="selectedFilterInput" value="" />
+            <input type="hidden" name="selectedFilter" id="selectedFilterInput" value="@defaultSelectedFilterString" />
 
             @if (groupedFilters.Count > 0)
             {
@@ -46,7 +77,9 @@
                     @foreach (var group in groupedFilters)
                     {
                         var groupName = "filter_group_" + Math.Abs(group.Key.GetHashCode());
-                        <div class="d-flex flex-wrap align-items-center mb-2">
+                        var firstAvailableChecked = false;
+
+                        <div class="d-flex flex-wrap align-items-center mb-3">
                             <strong class="text-dark mr-3" style="min-width: 90px;">@group.Key:</strong>
                             <div class="d-flex flex-wrap">
                                 @{ int fIdx = 0; }
@@ -54,9 +87,41 @@
                                 {
                                     fIdx++;
                                     var rId = $"{groupName}_{fIdx}";
-                                    <div class="custom-control custom-radio custom-control-inline mr-3 mb-1">
-                                        <input type="radio" class="custom-control-input filter-radio-opt" id="@rId" name="@groupName" value="@filter.FilterName" data-group="@group.Key" @(fIdx == 1 ? "checked" : "")>
-                                        <label class="custom-control-label" for="@rId" style="cursor:pointer; font-weight:500;">@filter.FilterName</label>
+                                    var optStock = (Model.FilterStocks != null && Model.FilterStocks.ContainsKey(filter.FilterId))
+                                        ? Model.FilterStocks[filter.FilterId]
+                                        : 0;
+                                    var isOptAvailable = optStock > 0 && !isOutOfStock;
+                                    var shouldCheck = false;
+
+                                    if (isOptAvailable && !firstAvailableChecked)
+                                    {
+                                        shouldCheck = true;
+                                        firstAvailableChecked = true;
+                                    }
+
+                                    <div class="custom-control custom-radio custom-control-inline mr-3 mb-2" style="position:relative;">
+                                        <input type="radio" 
+                                               class="custom-control-input filter-radio-opt" 
+                                               id="@rId" 
+                                               name="@groupName" 
+                                               value="@filter.FilterName" 
+                                               data-group="@group.Key" 
+                                               data-stock="@optStock"
+                                               @(shouldCheck ? "checked" : "")
+                                               @(isOptAvailable ? "" : "disabled")>
+                                        <label class="custom-control-label" 
+                                               for="@rId" 
+                                               style="cursor:@(isOptAvailable ? "pointer" : "not-allowed"); font-weight:500; @(isOptAvailable ? "" : "opacity:0.45; text-decoration:line-through; color:#999;")">
+                                            @filter.FilterName
+                                            @if (!isOptAvailable)
+                                            {
+                                                <span class="badge badge-secondary ml-1" style="font-size:10px; padding:2px 4px; text-decoration:none;">Tükendi</span>
+                                            }
+                                            else
+                                            {
+                                                <small class="text-muted ml-1" style="font-size:11px;">(@optStock adet)</small>
+                                            }
+                                        </label>
                                     </div>
                                 }
                             </div>
@@ -66,23 +131,32 @@
             }
         
             <div class="d-flex align-items-center mb-4 pt-2">
-                <div class="input-group quantity mr-3" style="width: 130px;">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-minus" id="btnMinusQty">
-                            <i class="fa fa-minus"></i>
-                        </button>
+                @if (!isOutOfStock)
+                {
+                    <div class="input-group quantity mr-3" style="width: 130px;">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary btn-minus" id="btnMinusQty">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="number" id="prodQuantityInput" name="Quantity" class="form-control bg-secondary border-0 text-center" value="1" min="1" style="font-weight:bold;">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary btn-plus" id="btnPlusQty">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
                     </div>
-                    <input type="number" id="prodQuantityInput" name="Quantity" class="form-control bg-secondary border-0 text-center" value="1" min="1" style="font-weight:bold;">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-plus" id="btnPlusQty">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
 
-                <button type="submit" class="btn btn-primary px-4 py-2 font-weight-bold">
-                    <i class="fa fa-shopping-cart mr-1"></i> Sepete Ekle
-                </button>
+                    <button type="submit" class="btn btn-primary px-4 py-2 font-weight-bold">
+                        <i class="fa fa-shopping-cart mr-1"></i> Sepete Ekle
+                    </button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-secondary px-4 py-2 font-weight-bold" disabled style="cursor:not-allowed;">
+                        <i class="fa fa-ban mr-1"></i> Stokta Yok (Sepete Eklenemez)
+                    </button>
+                }
             </div>
         </form>
     </div>
@@ -112,18 +186,38 @@
             });
         }
 
-        if (form) {
-            form.addEventListener('submit', function() {
-                var checkedRadios = document.querySelectorAll('.filter-radio-opt:checked');
-                var selectedParts = [];
-                checkedRadios.forEach(function(r) {
-                    var grp = r.getAttribute('data-group');
-                    var val = r.value;
+        function updateSelectedFilterValue() {
+            var checkedRadios = document.querySelectorAll('.filter-radio-opt:checked');
+            var selectedParts = [];
+            checkedRadios.forEach(function(r) {
+                var grp = r.getAttribute('data-group');
+                var val = r.value;
+                if (grp && val) {
                     selectedParts.push(grp + ': ' + val);
-                });
-                if (filterInput) {
-                    filterInput.value = selectedParts.join(', ');
                 }
+            });
+            if (filterInput && selectedParts.length > 0) {
+                filterInput.value = selectedParts.join(', ');
+            }
+        }
+
+        document.querySelectorAll('.filter-radio-opt').forEach(function(r) {
+            r.addEventListener('change', updateSelectedFilterValue);
+        });
+
+        // Run once on load to ensure value matches initially checked radios
+        updateSelectedFilterValue();
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                var isOut = @(isOutOfStock ? "true" : "false");
+                if (isOut) {
+                    e.preventDefault();
+                    alert('Bu ürün stokta bulunmamaktadır.');
+                    return false;
+                }
+
+                updateSelectedFilterValue();
             });
         }
     });

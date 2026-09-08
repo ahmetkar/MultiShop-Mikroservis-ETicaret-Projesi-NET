@@ -35,7 +35,7 @@
                     GroupId = "order-service-group-payment-completed",
                     AutoOffsetReset = AutoOffsetReset.Earliest,
                     EnableAutoCommit = false,
-
+                    AllowAutoCreateTopics = true
                 };
 
                 using var consumer = new ConsumerBuilder<string, string>(config).Build();
@@ -57,7 +57,6 @@
                         using var scope = _serviceProvider.CreateScope();
                         var dbContext = scope.ServiceProvider.GetRequiredService<OrderContext>();
 
-
                         var alreadyProcessed = await dbContext.ProcessedEvents
                           .AnyAsync(x => x.EventId == message.EventId, stoppingToken);
 
@@ -73,7 +72,6 @@
                         {
                             order.Status = OrderStatus.PaymentCompleted;
 
-
                             await dbContext.ProcessedEvents.AddAsync(new ProcessedEvent
                             {
                                 EventId = message.EventId,
@@ -87,6 +85,11 @@
                         }
 
                     }
+                    catch (ConsumeException ex)
+                    {
+                        _logger.LogWarning("Kafka topic ({Topic}) henüz hazır değil veya erişilemiyor: {Reason}. 5 saniye sonra tekrar denenecek.", KafkaTopics.PaymentCompleted, ex.Error.Reason);
+                        await Task.Delay(5000, stoppingToken);
+                    }
                     catch (OperationCanceledException)
                     {
                         break;
@@ -94,6 +97,7 @@
                     catch (Exception ex)
                     {
                         _logger.LogError(ex,"PaymentCompleted consumer hata aldı.");
+                        await Task.Delay(3000, stoppingToken);
                     }
 
                 }

@@ -44,6 +44,10 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductFilterServices
 
         public async Task<List<ResultProductFilterDto>> GetProductFiltersByCategoryIdAsync(string categoryId)
         {
+            if (string.IsNullOrWhiteSpace(categoryId))
+            {
+                return new List<ResultProductFilterDto>();
+            }
             var response = await _httpClient.GetAsync("productfilters/GetProductFiltersByCategoryId/" + categoryId);
             if (response.IsSuccessStatusCode)
             {

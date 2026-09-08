@@ -1,6 +1,9 @@
-﻿@model List<ResultProductWithCategory>
+@using MultiShop.WebUI.Helpers
+@using MultiShop.DtoLayer.CatalogDtos.FilterDtos
+@model List<ResultProductWithCategory>
 @{
     var discountDict = ViewBag.DiscountDict as Dictionary<string, int> ?? new Dictionary<string, int>();
+    var allFilters = ViewBag.AllFilters as List<ResultFilterDto> ?? new List<ResultFilterDto>();
 }
 
 <!-- Products Start -->
@@ -18,22 +21,35 @@
                 finalPrice = item.ProductPrice - (item.ProductPrice * discountRate / 100);
             }
 
+            bool isOutOfStock = ProductStockHelper.IsProductOutOfStock(item.FilterIds, item.FilterStocks, allFilters);
+
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4 position-relative">
-                    @if (hasDiscount && discountRate > 0)
-                    {
-                        <div class="position-absolute" style="top: 10px; right: 10px; z-index: 2;">
-                            <span class="badge badge-danger" style="font-size: 13px; padding: 6px 10px; border-radius: 4px; background-color: #dc3545;">-%@discountRate İndirim</span>
-                        </div>
-                    }
+                    <div class="position-absolute d-flex flex-column" style="top: 10px; right: 10px; z-index: 2; gap: 4px;">
+                        @if (isOutOfStock)
+                        {
+                            <span class="badge badge-dark" style="font-size: 12px; padding: 5px 8px; border-radius: 4px; background-color: #343a40; color: #fff;">Stokta Yok</span>
+                        }
+                        @if (hasDiscount && discountRate > 0)
+                        {
+                            <span class="badge badge-danger" style="font-size: 12px; padding: 5px 8px; border-radius: 4px; background-color: #dc3545;">-%@discountRate İndirim</span>
+                        }
+                    </div>
 
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="@item.ProductName" style="height: 250px; object-fit: cover;">
+                        <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="@item.ProductName" style="height: 250px; object-fit: cover; @(isOutOfStock ? "filter: grayscale(60%); opacity: 0.85;" : "")">
                         <div class="product-action">
-                            <form method="post" asp-action="AddBasketToItem" asp-controller="ShoppingCart" style="display:inline;">
-                                <input type="hidden" name="ProductId" value="@item.ProductId" />
-                                <button type="submit" class="btn btn-outline-dark btn-square" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i></button>
-                            </form>
+                            @if (!isOutOfStock)
+                            {
+                                <form method="post" asp-action="AddBasketToItem" asp-controller="ShoppingCart" style="display:inline;">
+                                    <input type="hidden" name="ProductId" value="@item.ProductId" />
+                                    <button type="submit" class="btn btn-outline-dark btn-square" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i></button>
+                                </form>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-outline-secondary btn-square" disabled title="Stokta Yok" style="cursor:not-allowed;"><i class="fa fa-ban text-danger"></i></button>
+                            }
                             <a class="btn btn-outline-dark btn-square" href="/ProductList/ProductDetail/@item.ProductId" title="İncele"><i class="fa fa-search"></i></a>
                         </div>
                     </div>

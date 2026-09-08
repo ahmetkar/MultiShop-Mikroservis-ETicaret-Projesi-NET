@@ -1,4 +1,4 @@
-@model UserDetailViewModel
+﻿@model UserDetailViewModel
 @{
     ViewData["Title"] = "Profilim";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
@@ -6,6 +6,44 @@
     var addresses = ViewBag.Addresses as List<ResultOrderAddressDto> ?? new List<ResultOrderAddressDto>();
     var activeTab = ViewBag.ActiveTab as string ?? "orders";
 }
+
+<style>
+    .profile-nav .nav-link {
+        color: #3D464D;
+        font-weight: 500;
+        padding: 12px 16px;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+        background: #fff;
+    }
+    .profile-nav .nav-link:hover {
+        background-color: #f1f3f5;
+        color: #111;
+        border-color: #dee2e6;
+    }
+    .profile-nav .nav-link.active {
+        background-color: #FFD333 !important;
+        color: #3D464D !important;
+        font-weight: 700 !important;
+        border-color: #e6be2d;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .user-avatar-badge {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #FFD333 0%, #ffc107 100%);
+        color: #3D464D;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(255, 211, 51, 0.4);
+    }
+</style>
 
 <div class="container-fluid">
     <div class="row px-xl-5">
@@ -20,53 +58,63 @@
 
 <div class="container-fluid">
     <div class="row px-xl-5">
+        <!-- Sol Kenar Çubuğu: Profil Bilgisi ve Menü -->
         <div class="col-lg-3 mb-4">
-            <div class="bg-light p-4 text-center rounded border">
-                <img src="~/img/user.png" class="rounded-circle mb-3" style="width:80px;height:80px;">
-                <h5 class="font-weight-bold mb-1">@Model?.Name @Model?.Surname</h5>
-                <p class="text-muted small mb-3">@Model?.Email</p>
-                <hr />
-                <div class="nav flex-column nav-pills text-left" role="tablist">
-                    <a class="nav-link @(activeTab == "orders" ? "active bg-primary text-dark font-weight-bold" : "text-dark")" data-toggle="pill" href="#v-orders">
-                        <i class="fa fa-shopping-bag mr-2"></i> Siparişlerim <span class="badge badge-dark float-right mt-1">@userOrders.Count</span>
+            <div class="bg-light p-4 rounded border shadow-sm">
+                <div class="text-center mb-3">
+                    <div class="user-avatar-badge mb-3">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-1 text-dark">@Model?.Name @Model?.Surname</h5>
+                    <p class="text-muted small mb-0"><i class="fa fa-envelope mr-1"></i>@Model?.Email</p>
+                </div>
+                <hr class="my-3" />
+                <div class="nav flex-column nav-pills profile-nav" role="tablist">
+                    <a class="nav-link @(activeTab == "orders" ? "active" : "") d-flex justify-content-between align-items-center" data-toggle="pill" href="#v-orders">
+                        <span><i class="fa fa-shopping-bag mr-2"></i> Siparişlerim</span>
+                        <span class="badge badge-dark">@userOrders.Count</span>
                     </a>
-                    <a class="nav-link @(activeTab == "addresses" ? "active bg-primary text-dark font-weight-bold" : "text-dark")" data-toggle="pill" href="#v-addresses">
-                        <i class="fa fa-map-marker-alt mr-2"></i> Adreslerim <span class="badge badge-dark float-right mt-1">@addresses.Count</span>
+                    <a class="nav-link @(activeTab == "addresses" ? "active" : "") d-flex justify-content-between align-items-center" data-toggle="pill" href="#v-addresses">
+                        <span><i class="fa fa-map-marker-alt mr-2"></i> Adreslerim</span>
+                        <span class="badge badge-dark">@addresses.Count</span>
                     </a>
-                    <a class="nav-link @(activeTab == "settings" ? "active bg-primary text-dark font-weight-bold" : "text-dark")" data-toggle="pill" href="#v-settings">
-                        <i class="fa fa-user-cog mr-2"></i> Kullanıcı Ayarları
+                    <a class="nav-link @(activeTab == "settings" ? "active" : "") d-flex align-items-center" data-toggle="pill" href="#v-settings">
+                        <span><i class="fa fa-user-cog mr-2"></i> Kullanıcı Ayarları</span>
                     </a>
                 </div>
             </div>
         </div>
 
+        <!-- Sağ Taraf: Sekme İçerikleri -->
         <div class="col-lg-9">
             @if (TempData["SuccessMessage"] != null)
             {
-                <div class="alert alert-success alert-dismissible fade show">
-                    <i class="fa fa-check-circle mr-1"></i> @TempData["SuccessMessage"]
+                <div class="alert alert-success alert-dismissible fade show shadow-sm">
+                    <i class="fa fa-check-circle mr-2"></i> @TempData["SuccessMessage"]
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                 </div>
             }
 
             @if (TempData["ErrorMessage"] != null)
             {
-                <div class="alert alert-danger alert-dismissible fade show">
-                    <i class="fa fa-exclamation-triangle mr-1"></i> @TempData["ErrorMessage"]
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm">
+                    <i class="fa fa-exclamation-triangle mr-2"></i> @TempData["ErrorMessage"]
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                 </div>
             }
 
             <div class="tab-content">
+                <!-- Siparişler Sekmesi -->
                 <div class="tab-pane fade @(activeTab == "orders" ? "show active" : "")" id="v-orders">
                     @await Html.PartialAsync("_OrdersTabPartial")
                 </div>
 
+                <!-- Adresler Sekmesi -->
                 <div class="tab-pane fade @(activeTab == "addresses" ? "show active" : "")" id="v-addresses">
-                    <div class="bg-light p-4 rounded border mb-30">
+                    <div class="bg-light p-4 rounded border mb-30 shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="font-weight-bold text-dark m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i> Kayıtlı Adreslerim</h4>
-                            <button type="button" class="btn btn-primary font-weight-bold btn-sm px-3" data-toggle="modal" data-target="#newAddressModal">
+                            <button type="button" class="btn btn-primary font-weight-bold btn-sm px-3 shadow-sm" data-toggle="modal" data-target="#newAddressModal">
                                 <i class="fa fa-plus mr-1"></i> Yeni Adres Ekle
                             </button>
                         </div>
@@ -76,6 +124,7 @@
                             <div class="text-center py-5 bg-white rounded border">
                                 <i class="fa fa-map-marker-alt fa-3x text-muted mb-3"></i>
                                 <h5 class="text-dark font-weight-bold">Kayıtlı adresiniz bulunmamaktadır.</h5>
+                                <p class="text-muted small">Siparişlerinizi hızlıca teslim almak için hemen yeni bir adres tanımlayabilirsiniz.</p>
                                 <button type="button" class="btn btn-primary font-weight-bold px-4 py-2 mt-2" data-toggle="modal" data-target="#newAddressModal">
                                     <i class="fa fa-plus mr-1"></i> İlk Adresimi Ekle
                                 </button>
@@ -90,20 +139,24 @@
                                         <div class="card border p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
                                             <div>
                                                 <div class="d-flex justify-content-between align-items-start mb-2">
-                                                    <span class="badge @(addr.IsBillingOrShipping ? "badge-info" : "badge-primary") px-2 py-1">
-                                                        @(addr.IsBillingOrShipping ? "Fatura" : "Teslimat")
+                                                    <span class="badge @(addr.IsBillingOrShipping ? "badge-info" : "badge-warning") px-2 py-1 text-dark font-weight-bold">
+                                                        @(addr.IsBillingOrShipping ? "Fatura Adresi" : "Teslimat Adresi")
                                                     </span>
-                                                    <span class="font-weight-bold text-dark">@addr.City / @addr.District</span>
+                                                    <span class="font-weight-bold text-dark small">@addr.City / @addr.District</span>
                                                 </div>
                                                 <h6 class="font-weight-bold text-dark mb-1">@addr.Name @addr.Surname</h6>
                                                 <p class="mb-1 text-muted small"><i class="fa fa-phone mr-1"></i> @addr.Phone</p>
                                                 <p class="mb-2 text-muted small"><i class="fa fa-map-pin mr-1"></i> @addr.Detail1 @addr.Detail2</p>
+                                                @if (!string.IsNullOrEmpty(addr.ZipCode))
+                                                {
+                                                    <p class="mb-0 text-muted small"><i class="fa fa-mail-bulk mr-1"></i> PK: @addr.ZipCode</p>
+                                                }
                                             </div>
-                                            <div class="border-top pt-2 mt-2 d-flex justify-content-end">
-                                                <button type="button" class="btn btn-outline-primary btn-sm mr-2 px-2 py-1" data-toggle="modal" data-target="#editAddressModal-@addr.AdressId">
+                                            <div class="border-top pt-2 mt-3 d-flex justify-content-end">
+                                                <button type="button" class="btn btn-outline-primary btn-sm mr-2 px-3 py-1 font-weight-bold" data-toggle="modal" data-target="#editAddressModal-@addr.AdressId">
                                                     <i class="fa fa-edit mr-1"></i> Düzenle
                                                 </button>
-                                                <a href="/UserProfile/DeleteAddress/@addr.AdressId" class="btn btn-outline-danger btn-sm px-2 py-1" onclick="return confirm('Bu adresi silmek istediğinizden emin misiniz?');">
+                                                <a href="/UserProfile/DeleteAddress/@addr.AdressId" class="btn btn-outline-danger btn-sm px-3 py-1 font-weight-bold" onclick="return confirm('Bu adresi silmek istediğinizden emin misiniz?');">
                                                     <i class="fa fa-trash mr-1"></i> Sil
                                                 </a>
                                             </div>
@@ -115,6 +168,7 @@
                     </div>
                 </div>
 
+                <!-- Ayarlar Sekmesi -->
                 <div class="tab-pane fade @(activeTab == "settings" ? "show active" : "")" id="v-settings">
                     @await Html.PartialAsync("_SettingsTabPartial", Model)
                 </div>
@@ -123,10 +177,10 @@
     </div>
 </div>
 
-<!-- New Address Modal -->
+<!-- Yeni Adres Modalı -->
 <div class="modal fade" id="newAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content border-0 shadow">
             <form method="post" action="/UserProfile/CreateAddress">
                 <div class="modal-header bg-primary text-dark font-weight-bold">
                     <h5 class="modal-title font-weight-bold"><i class="fa fa-plus-circle mr-2"></i> Yeni Adres Ekle</h5>
@@ -134,7 +188,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body p-4">
+                <div class="modal-body p-4 bg-light">
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label class="font-weight-bold">Ad <span class="text-danger">*</span></label>
@@ -161,8 +215,8 @@
                             <input type="text" name="District" class="form-control" placeholder="Örn: Kadıköy" required />
                         </div>
                         <div class="col-12 form-group">
-                            <label class="font-weight-bold">Adres Detayı <span class="text-danger">*</span></label>
-                            <textarea name="Detail1" class="form-control" rows="2" placeholder="Mahalle, Cadde, Sokak, Bina No, Daire No" required></textarea>
+                            <label class="font-weight-bold">Açık Adres <span class="text-danger">*</span></label>
+                            <textarea name="Detail1" class="form-control" rows="3" placeholder="Cadde, Mahalle, Sokak, Bina No, Daire No..." required></textarea>
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="font-weight-bold">Posta Kodu</label>
@@ -171,36 +225,37 @@
                         <div class="col-md-6 form-group">
                             <label class="font-weight-bold">Adres Türü</label>
                             <select name="IsBillingOrShipping" class="form-control">
-                                <option value="false" selected>Teslimat Adresi</option>
+                                <option value="false">Teslimat Adresi</option>
                                 <option value="true">Fatura Adresi</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
-                    <button type="submit" class="btn btn-primary font-weight-bold">Adresi Kaydet</button>
+                <div class="modal-footer bg-white">
+                    <button type="button" class="btn btn-secondary px-4" data-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary font-weight-bold px-4">Adresi Kaydet</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+<!-- Adres Düzenleme Modalları -->
 @foreach (var addr in addresses)
 {
-    <!-- Edit Address Modal for @addr.AdressId -->
     <div class="modal fade" id="editAddressModal-@addr.AdressId" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
+            <div class="modal-content border-0 shadow">
                 <form method="post" action="/UserProfile/UpdateAddress">
                     <input type="hidden" name="AdressId" value="@addr.AdressId" />
+                    <input type="hidden" name="UserId" value="@addr.UserId" />
                     <div class="modal-header bg-primary text-dark font-weight-bold">
                         <h5 class="modal-title font-weight-bold"><i class="fa fa-edit mr-2"></i> Adresi Düzenle</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body p-4">
+                    <div class="modal-body p-4 bg-light">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label class="font-weight-bold">Ad <span class="text-danger">*</span></label>
@@ -227,8 +282,8 @@
                                 <input type="text" name="District" class="form-control" value="@addr.District" required />
                             </div>
                             <div class="col-12 form-group">
-                                <label class="font-weight-bold">Adres Detayı <span class="text-danger">*</span></label>
-                                <textarea name="Detail1" class="form-control" rows="2" required>@addr.Detail1</textarea>
+                                <label class="font-weight-bold">Açık Adres <span class="text-danger">*</span></label>
+                                <textarea name="Detail1" class="form-control" rows="3" required>@addr.Detail1</textarea>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="font-weight-bold">Posta Kodu</label>
@@ -243,9 +298,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
-                        <button type="submit" class="btn btn-primary font-weight-bold">Değişiklikleri Kaydet</button>
+                    <div class="modal-footer bg-white">
+                        <button type="button" class="btn btn-secondary px-4" data-dismiss="modal">Vazgeç</button>
+                        <button type="submit" class="btn btn-primary font-weight-bold px-4">Değişiklikleri Kaydet</button>
                     </div>
                 </form>
             </div>

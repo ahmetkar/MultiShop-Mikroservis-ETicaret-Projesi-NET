@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Settings
+namespace MultiShop.Catalog.Settings
 {
     public interface IDatabaseSettings
     {
@@ -15,6 +15,7 @@
         public string ContactCollectionName { get; set; }
         public string OfferDiscountCollectionName { get; set; }
         public string FeatureCollectionName { get; set; }
+        public string ProcessedEventCollectionName { get; set; }
         public string ConnectionStrings { get; set; }
         public string DatabaseName { get; set; }
     }

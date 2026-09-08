@@ -2,7 +2,7 @@
 <header class="main-header dark-bg">
 
     <!-- Logo -->
-    <a href="" class="logo dark-bg">
+    <a href="/Admin/Home/Index" class="logo dark-bg">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><img src="~/img/logos/multishop.jpg" style="width:180px;height:30px; important!" alt="Ovio"></span>
         <!-- logo for regular state and mobile devices -->
@@ -13,30 +13,32 @@
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"> <span class="sr-only">Toggle navigation</span> </a>
-        <div class="pull-left search-box">
-            <form action="#" method="get" class="search-form">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Aranacak anahtar kelimeyi girin...">
-                    <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i> </button>
-                    </span>
-                </div>
-            </form>
-            <!-- search form -->
-        </div>
+        
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-             
+            <ul class="nav navbar-nav" style="display: flex; align-items: center;">
+                <li>
+                    <a href="/Default/Index" target="_blank" title="Siteye Git" style="font-weight: 500;">
+                        <i class="fa-solid fa-share mr-1"></i> Siteye Git
+                    </a>
+                </li>
                 <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="~/ovioadmin/dist/img/img1.jpg" class="user-image" alt="User Image"> Admin Menü</a>
-                    <ul class="dropdown-menu">
-                        <li> <a href="/Admin/Comment/"> <i class="fa-solid fa-gear"></i> <span>Ayarlar</span></a> </li>
-                        <li><a href="#"><i class="icon-wallet"></i> Kasa Bilgileri</a></li>
-                        <li><a href="#"><i class="icon-envelope"></i> Bildirimler</a></li>
-                        <li> <a href="/Admin/Comment/"> <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Çıkış Yap</span></a> </li>
-                        <li> <a href="/Default/Index/"> <i class="fa-solid fa-share"></i> <span>Siteye Git</span></a> </li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/ovioadmin/dist/img/img1.jpg" class="user-image" alt="User Image">
+                        <span>Admin Menü</span> <i class="fa fa-angle-down ml-1"></i>
+                    </a>
+                    <ul class="dropdown-menu" style="border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        <li> <a href="/Admin/Home/Index"> <i class="fa-solid fa-gauge-high mr-2 text-primary"></i> <span>Dashboard</span></a> </li>
+                        <li> <a href="/Admin/Finance/Index"><i class="fa-solid fa-cash-register mr-2 text-success"></i> <span>Kasa Bilgileri</span></a> </li>
+                        <li> <a href="/Admin/Order/Index"><i class="fa-solid fa-shopping-basket mr-2 text-info"></i> <span>Siparişler</span></a> </li>
+                        <li role="separator" class="divider"></li>
+                        <li> <a href="/Auth/Logout" style="color: #dc3545; font-weight: 600;" onclick="return confirm('Yönetim panelinden çıkış yapmak istediğinize emin misiniz?');"><i class="fa-solid fa-arrow-right-from-bracket mr-2 text-danger"></i> <span>Güvenli Çıkış Yap</span></a> </li>
                     </ul>
+                </li>
+                <li style="margin-right: 15px; margin-left: 5px;">
+                    <a href="/Auth/Logout" class="btn btn-sm btn-danger" style="color: #fff !important; font-weight: 600; padding: 6px 14px; border-radius: 4px; display: inline-flex; align-items: center;" onclick="return confirm('Yönetim panelinden çıkış yapmak istediğinize emin misiniz?');">
+                        <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 6px;"></i> Çıkış Yap
+                    </a>
                 </li>
             </ul>
         </div>

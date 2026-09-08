@@ -17,10 +17,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.RequireHttpsMetadata = false;
 });
 
-
-
 builder.Services.AddControllers();
-
+builder.Services.AddHttpClient();
 
 builder.Services.AddDbContext<OrderContext>(options =>
 {

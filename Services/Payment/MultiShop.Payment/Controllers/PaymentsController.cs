@@ -91,7 +91,7 @@ namespace MultiShop.Payment.Controllers
                 };
 
                 await _kafkaProducer.PublishAsync(KafkaTopics.PaymentFailed,paymentFailedEvent,orderSnapshot.OrderingId.ToString(), cancellationToken);
-                
+
                 return Ok(new { success = false });
 
             }
@@ -106,7 +106,7 @@ namespace MultiShop.Payment.Controllers
         public async Task<IActionResult> CancelPaymentByOrderingId(int id)
         {
             var delete = await _paymentService.CancelPaymentByOrderingId(id);
-            return Ok(new {success = delete});
+            return Ok(new { success = delete });
         }
     }
 }

@@ -1,51 +1,76 @@
 ﻿@model List<ResultUserDto>
 @{
-    ViewData["Title"] = "UserList";
+    ViewData["Title"] = "Kullanıcı Listesi";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
 
 <section class="content container-fluid">
     <div class="row">
-
         <div class="col-md-12">
             <div class="chart-box">
-                <h4>Kullanıcı Listesi</h4>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4><i class="fa fa-users text-primary"></i> Kayıtlı Kullanıcı Listesi</h4>
+                    <span class="badge badge-primary p-2">Toplam @(Model?.Count ?? 0) Kullanıcı</span>
+                </div>
             
-                <div class="bs-example" data-example-id="bordered-table">
-                    <table class="table table-bordered">
-                        <thead>
+                <div class="bs-example table-responsive" data-example-id="bordered-table">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
-                                <th>Kullaıcı Adı</th>
-                                <th>Ad ve soyad</th>
-                                <th>Email</th>
-                                <th>Telefon nu</th>
-                                <th>Lockout enabled ?</th>
-                                <th>Adres detayları</th>
-                                <th> </th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Ad ve Soyad</th>
+                                <th>E-Posta</th>
+                                <th>Telefon</th>
+                                <th>Hesap Durumu</th>
+                                <th>Adres Detayları</th>
+                                <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @if (Model != null && Model.Count > 0)
                             {
-                                count++;
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td><strong>@item.userName</strong></td>
+                                        <td>@item.name @item.surname</td>
+                                        <td>@item.email</td>
+                                        <td>@(item.phoneNumber != null ? item.phoneNumber.ToString() : "-")</td>
+                                        <td>
+                                            @if (item.lockoutEnabled)
+                                            {
+                                                <span class="badge badge-success">Aktif</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-warning">Kilitli / Pasif</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="/Admin/User/UserAddressInfo/@item.id">
+                                                <i class="fa fa-map-marker-alt mr-1"></i> Adres Detayı
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger btn-sm" href="/Admin/User/DeleteUser/@item.id" onclick="return confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?');">
+                                                <i class="fa fa-trash mr-1"></i> Sil
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
                                 <tr>
-                                    <th scope="row">@count</th>
-                                    <td>@item.userName</td>
-                                    <td>@item.name @item.surname</td>
-                                    <td>@item.email</td>
-                                    <td>@item.phoneNumber (@item.phoneNumberConfirmed)</td>
-                                    <td>@item.lockoutEnabled</td>
-                                    <td><a class="btn btn-danger" href="/Admin/User/UserAddressInfo/@item.id">Adres Detaylarını Gör</a></td>
-                                    <td> <a class="btn btn-danger" href="/Admin/User/DeleteUser/@item.id">Sil</a></td>
-                                    
+                                    <td colspan="8" class="text-center text-muted p-4">Kayıtlı kullanıcı bulunamadı.</td>
                                 </tr>
                             }
-
                         </tbody>
                     </table>
-         
                 </div>
             </div>
         </div>

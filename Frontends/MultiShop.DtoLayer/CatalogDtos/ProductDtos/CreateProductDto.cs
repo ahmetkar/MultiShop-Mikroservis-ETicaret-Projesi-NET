@@ -17,5 +17,6 @@ namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
         public string ProductDescription { get; set; }
         public string CategoryID { get; set; }
         public List<string> FilterIds { get; set; } = new List<string>();
+        public Dictionary<string, int> FilterStocks { get; set; } = new Dictionary<string, int>();
     }
 }

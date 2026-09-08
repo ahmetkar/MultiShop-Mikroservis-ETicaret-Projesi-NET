@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CargoDtos.CargoDetailDtos;
@@ -20,8 +20,6 @@ namespace MultiShop.WebUI.Controllers
 {
     [Authorize]
     [Route("UserProfile")]
-    [Route("User/Index")]
-    [Route("User/Profile")]
     public class UserProfileController : Controller
     {
         private readonly IUserService _userService;
@@ -89,33 +87,37 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost("UpdateProfile")]
         public async Task<IActionResult> UpdateProfile(UserDetailViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var success = await _userService.UpdateUserInfo(model);
-                if (success)
-                {
-                    TempData["SuccessMessage"] = "Profil bilgileriniz başarıyla güncellendi.";
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = "Profil bilgileri güncellenirken bir hata oluştu.";
-                }
+                TempData["ErrorMessage"] = "Lütfen alanları doğru formatta doldurunuz.";
+                return RedirectToAction("Index", new { activeTab = "settings" });
             }
+
+            var result = await _userService.UpdateUserInfo(model);
+            if (result)
+            {
+                TempData["SuccessMessage"] = "Profil bilgileriniz başarıyla güncellendi.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Profil güncellenirken bir hata oluştu.";
+            }
+
             return RedirectToAction("Index", new { activeTab = "settings" });
         }
 
         [HttpPost("ChangePassword")]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            if (string.IsNullOrWhiteSpace(model.CurrentPassword) || string.IsNullOrWhiteSpace(model.NewPassword))
+            if (string.IsNullOrWhiteSpace(model.CurrentPassword) || string.IsNullOrWhiteSpace(model.NewPassword) || string.IsNullOrWhiteSpace(model.ConfirmNewPassword))
             {
-                TempData["ErrorMessage"] = "Mevcut şifre ve yeni şifre alanları boş bırakılamaz.";
+                TempData["ErrorMessage"] = "Tüm şifre alanlarını doldurunuz.";
                 return RedirectToAction("Index", new { activeTab = "settings" });
             }
 
             if (model.NewPassword != model.ConfirmNewPassword)
             {
-                TempData["ErrorMessage"] = "Girdiğiniz yeni şifreler birbiriyle eşleşmiyor.";
+                TempData["ErrorMessage"] = "Yeni şifreler birbiriyle uyuşmuyor.";
                 return RedirectToAction("Index", new { activeTab = "settings" });
             }
 
@@ -147,6 +149,13 @@ namespace MultiShop.WebUI.Controllers
                 return RedirectToAction("Index", new { activeTab = "addresses" });
             }
 
+            var userId = await _userService.GetUserId();
+            dto.UserId = userId;
+            dto.Country = string.IsNullOrWhiteSpace(dto.Country) ? "Türkiye" : dto.Country;
+            dto.Detail2 = dto.Detail2 ?? "";
+            dto.Description = dto.Description ?? "";
+            dto.ZipCode = dto.ZipCode ?? "";
+
             var addressId = await _orderAddressService.CreateOrderAddressAsync(dto);
             if (addressId > 0)
             {
@@ -171,6 +180,13 @@ namespace MultiShop.WebUI.Controllers
 
             try
             {
+                var userId = await _userService.GetUserId();
+                dto.UserId = userId;
+                dto.Country = string.IsNullOrWhiteSpace(dto.Country) ? "Türkiye" : dto.Country;
+                dto.Detail2 = dto.Detail2 ?? "";
+                dto.Description = dto.Description ?? "";
+                dto.ZipCode = dto.ZipCode ?? "";
+
                 await _orderAddressService.UpdateOrderAddressAsync(dto);
                 TempData["SuccessMessage"] = "Adresiniz başarıyla güncellendi.";
             }
@@ -183,7 +199,6 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [HttpGet("DeleteAddress/{id}")]
-        [HttpPost("DeleteAddress/{id}")]
         public async Task<IActionResult> DeleteAddress(int id)
         {
             try
@@ -200,7 +215,6 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [HttpGet("ConfirmDelivery/{orderingId}")]
-        [HttpPost("ConfirmDelivery/{orderingId}")]
         public async Task<IActionResult> ConfirmDelivery(int orderingId)
         {
             // 1. Set cargo operation isdelivered / completed
@@ -226,7 +240,6 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [HttpGet("CancelOrder/{orderingId}")]
-        [HttpPost("CancelOrder/{orderingId}")]
         public async Task<IActionResult> CancelOrder(int orderingId)
         {
             // Set order status to Cancelled

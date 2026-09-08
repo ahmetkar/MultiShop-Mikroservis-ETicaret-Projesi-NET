@@ -1,4 +1,4 @@
-﻿using MultiShop.Catalog.DTOs.CategoryDTOs;
+using MultiShop.Catalog.DTOs.CategoryDTOs;
 
 namespace MultiShop.Catalog.DTOs.ProductDTOs
 {
@@ -15,5 +15,6 @@ namespace MultiShop.Catalog.DTOs.ProductDTOs
         public string ProductDescription { get; set; }
         public ResultCategoryDto Category { get; set; }
         public List<string> FilterIds { get; set; } = new List<string>();
+        public Dictionary<string, int> FilterStocks { get; set; } = new Dictionary<string, int>();
     }
 }

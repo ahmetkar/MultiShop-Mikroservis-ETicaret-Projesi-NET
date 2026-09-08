@@ -1,4 +1,4 @@
-@model List<ResultFilterDto>
+﻿@model List<ResultFilterDto>
 @{
     ViewData["Title"] = "Filtre Listesi";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -32,8 +32,8 @@
             <div class="tab-content">
                 <!-- ALL FILTERS TAB -->
                 <div role="tabpanel" class="tab-pane active" id="tab_all">
-                    <div class="bs-example" data-example-id="bordered-table">
-                        <table class="table table-bordered table-striped">
+                    <div class="bs-example table-responsive" data-example-id="bordered-table">
+                        <table class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -66,8 +66,8 @@
                 {
                     var tabId = "tab_" + Math.Abs(group.Key.GetHashCode());
                     <div role="tabpanel" class="tab-pane" id="@tabId">
-                        <div class="bs-example" data-example-id="bordered-table">
-                            <table class="table table-bordered table-striped">
+                        <div class="bs-example table-responsive" data-example-id="bordered-table">
+                            <table class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>

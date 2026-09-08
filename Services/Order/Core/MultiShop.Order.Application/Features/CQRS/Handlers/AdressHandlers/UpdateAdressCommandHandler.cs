@@ -24,23 +24,25 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers
 
         public async Task Handle(UpdateAdressCommand command)
         {
-           var values = await _repository.GetByIdAsync(command.AdressId);
-            
-            values.District = command.District;
-            values.City = command.City;
-            values.UserId = command.UserId;
-            values.Detail1 = values.Detail1;
-            values.Detail2 = values.Detail2;
-            values.Phone = values.Phone;
-            values.Country = values.Country;
-            values.ZipCode = values.ZipCode;
-            values.Description = values.Description;
-            values.Name = values.Name;
-            values.Surname = values.Surname;
-            values.Email = values.Email;
-            values.IsBillingOrShipping = values.IsBillingOrShipping;
+            var values = await _repository.GetByIdAsync(command.AdressId);
+            if (values != null)
+            {
+                values.District = command.District ?? values.District ?? "";
+                values.City = command.City ?? values.City ?? "";
+                values.UserId = command.UserId ?? values.UserId ?? "";
+                values.Detail1 = command.Detail1 ?? values.Detail1 ?? "";
+                values.Detail2 = command.Detail2 ?? values.Detail2 ?? "";
+                values.Phone = command.Phone ?? values.Phone ?? "";
+                values.Country = string.IsNullOrWhiteSpace(command.Country) ? (values.Country ?? "Türkiye") : command.Country;
+                values.ZipCode = command.ZipCode ?? values.ZipCode ?? "";
+                values.Description = command.Description ?? values.Description ?? "";
+                values.Name = command.Name ?? values.Name ?? "";
+                values.Surname = command.Surname ?? values.Surname ?? "";
+                values.Email = command.Email ?? values.Email ?? "";
+                values.IsBillingOrShipping = command.IsBillingOrShipping;
 
-            await _repository.UpdateAsync(values);
+                await _repository.UpdateAsync(values);
+            }
         }
     }
 }

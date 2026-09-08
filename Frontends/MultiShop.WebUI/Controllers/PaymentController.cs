@@ -6,7 +6,10 @@ using MultiShop.DtoLayer.PaymentDtos;
 using MultiShop.WebUI.Attributes;
 using MultiShop.WebUI.Models;
 using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CatalogServices.FilterServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.Interfaces;
+using MultiShop.WebUI.Services.OrderServices.OrderDetailServices;
 using MultiShop.WebUI.Services.OrderServices.OrderOderingServices;
 using MultiShop.WebUI.Services.PaymentServices;
 
@@ -15,22 +18,33 @@ namespace MultiShop.WebUI.Controllers
     [OrderAuthorize]
     public class PaymentController : Controller
     {
-
         private readonly IBasketService _basketService;
         private readonly IOrderOderingService _orderOderingService;
+        private readonly IOrderDetailService _orderDetailService;
+        private readonly IFilterService _filterService;
+        private readonly IProductService _productService;
         private readonly IUserService _userService;
         private readonly IDataProtector _protector;
         private readonly IPaymentService _paymentService;
 
-        public PaymentController(IBasketService basketService, IOrderOderingService orderOderingService, IUserService userService, IDataProtectionProvider provider, IPaymentService paymentService)
+        public PaymentController(
+            IBasketService basketService,
+            IOrderOderingService orderOderingService,
+            IOrderDetailService orderDetailService,
+            IFilterService filterService,
+            IProductService productService,
+            IUserService userService,
+            IDataProtectionProvider provider,
+            IPaymentService paymentService)
         {
-
             _basketService = basketService;
             _orderOderingService = orderOderingService;
+            _orderDetailService = orderDetailService;
+            _filterService = filterService;
+            _productService = productService;
             _userService = userService;
             _protector = provider.CreateProtector("ActiveOrderingId_Protector");
             _paymentService = paymentService;
-
         }
 
         [HttpGet]
