@@ -11,10 +11,10 @@ Bu proje Murat Yücedağın Multishop E-ticaret eğitim serisinden faydalanılar
 
 # Benim Eklediklerim
 
-- Cargo mikroservisi eklendi
+- Cargo mikroservisi ve kargo veritabanı için CRUD işlemleri yapacak controller ve servisler yazıldı. 
 - Sepet yapısı güncellendi baştan yazıldı,giriş yapmayan ve yapanlar için cookieyle ekleme ve redise ekleme istisnaları eklendi. Ayrıca ürünlerinn filtreleriyle birlikte ayrıca sepete eklenmesi ve sipariş detaylarına eklenmesi sağlandı.
-- Payment frontend ve backend düzeltmeleri yapıldı.
-- Order servisi yeniden düzenlendi.
+- Payment frontendinde ödeme input ve butonları tekrar tasarlandı ve backend kısmında ordering tablosu üzerinde kontrol ve düzeltmelerin ödeme süreciyle birlikte yapılması sağlandı.
+- Order servisindeki oluşan hatalar giderildi. Ve event driven messaginge uygun consumerlar,servislerde,mediatr,cqrs dosyalarında ve controllerde gerekli düzeltmeler yapıldı.
 - Kafka ile Order-Payment-Cargo arası asenkron kuyruk mesajlaşma yapısı choereography saga pattern ile kuruldu
 - Ürün filtreleme ve admin panelinden filtre ekleme,filtreleri ürünler ve kategorilerle ilişkilendirme özellikleri eklendi.
 - Ürün kampanya sayfaları eklendi ve ürünlerin admin panelinden bunlarla ilişkilendirilmesi , seçilen ürünlerin bu kampanya sayfalarında görüntülenmesi sağlandı.
@@ -22,8 +22,8 @@ Bu proje Murat Yücedağın Multishop E-ticaret eğitim serisinden faydalanılar
 - Sayfalama özelliği eklendi.
 - Kullanıcı için profil sayfası eklendi. Bilgilerinin yönetimi eklendi. Sipariş,kargo takibi eklendi. 
 - Admin panelde istatistik sayfası,sipariş yönetimi,kasa bilgileri,kargo yönetimi eklendi.
-- Admin panelde indirim ve kupon yönetimi ve bunların ilgili yerlere yansıtılması eklendi.
-- Admin panelde kargo şirketleri ve fiyatları yönetimi ve bunların ilgili yerlere yansıtılması eklendi.
+- Admin panelde indirim ve kupon yönetimi ve bunların ürün detaylarına ve sipairş verme sayfasına yansıtılması eklendi.
+- Admin panelde kargo şirketleri ve fiyatları yönetimi ve bunların ürün detaylarına ve sipariş verme sayfasına yansıtılması eklendi.
 - Her ürün filtresi için stok bilgisi eklenndi ve ödeme yapıldığında ve sipariş iptal edildiğide değişmesi sağlandı.Admin panelden her ürün filtrsi için stok bilgisi güncellenmesi sağlandı.
 
 # Kafka ile Mikroservis Arası Mesajlaşma Yapısı
