@@ -1,9 +1,17 @@
-1-iyizco herhangi birinin entegrasyonu ile client taraf�ndan �deme yap�ld�ktan sonra payment eklenmesini sa�la
+1-iyizco ödeme entegrasyon api si yazılacak
 1-kdv miktarı uygulama kontrol edilecek
 1-kargo ekleme ve silme kontrol edilecek fazladan kargo var kargolar silinmiyor olabilir
 1-kategori ürünlerinde birden fazla filtre uygulanmıyor düzeltilecek
 1-Kargo fiyatının uygulanmasında sorun var kontrol edilecek her sepet için bir kez uygulanmalı
-2-Redis caching
-2-Redis ve kafka optimizasyonları
+
+2-Redis caching ekleme, Distrubuted caching desteği ile
+2-Redis ve kafka birden fazla shard ve replica eklenmesi
+
+3-Unit of Work düzeltmeleri,Application Service / Command Handler lere transaction rollback desteği eklenmesi,EF Core Query'leri AsNoTracking() desteği eklenecek,
+3-Repository ler için N+1 Query kontrolü,MediatR için TransactionBehavior özelliği, Entityler için Optimistic Concurrency özelliği
+
+4-Database index eklemeleri
+4-Outbox pattern eklenecek kafka kullanan işlemler için
+4-Retry + Circuit Breaker patternleri eklenecek
 
 3-Global error handler,exception hanler entegre edilecek.
